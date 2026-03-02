@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Internal utility modules | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/dev/dev_internal_utils/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="External reference targets" href="../dev_external_reference_targets/" />
+    <link rel="prev" title="Internal problem-class modules" href="../dev_internal_problemclass/" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/dev/dev_internal_utils/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/dev/dev_internal_utils/"/>
+<meta property="og:url" content="https://autolyap.github.io/dev/dev_internal_utils/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/dev/dev_internal_utils/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:43Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:43Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="These helpers are shared across algorithms, problem classes, and analysis/solver modules."/>
+<meta name="keywords" content="AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis, AutoLyap Internal utility modules, AutoLyap dev dev internal utils"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="Internal utility modules"/>
+<meta property="og:description" content="These helpers are shared across algorithms, problem classes, and analysis/solver modules."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Internal utility modules"/>
+<meta name="twitter:description" content="These helpers are shared across algorithms, problem classes, and analysis/solver modules."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Dev"/>
+<meta property="article:tag" content="AutoLyap"/>
+<meta property="article:tag" content="Lyapunov analysis Python"/>
+<meta property="article:tag" content="first-order optimization"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/dev/dev_internal_utils/#webpage",
+  "name": "Internal utility modules",
+  "headline": "Internal utility modules",
+  "description": "These helpers are shared across algorithms, problem classes, and analysis/solver modules.",
+  "keywords": "AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis, AutoLyap Internal utility modules, AutoLyap dev dev internal utils",
+  "url": "https://autolyap.github.io/dev/dev_internal_utils/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/dev/dev_internal_utils/",
+  "dateModified": "2026-03-02T19:05:43Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contributing",
+      "item": "https://autolyap.github.io/contributing/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Developer reference",
+      "item": "https://autolyap.github.io/dev_reference/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Internal utility modules",
+      "item": "https://autolyap.github.io/dev/dev_internal_utils/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../contributing/">Contributing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/getting_started/">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/development_workflow/">Development workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/pull_request_process/">Pull request process</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../dev_reference/">Developer reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../dev_reference/#start-here">Start here</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../dev_reference/#documentation-map">Documentation map</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../dev_reference/#public-docs-stable-api">Public docs (stable API)</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../dev_reference/#internal-docs-implementation-details">Internal docs (implementation details)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dev_reference/#architecture-at-a-glance">Architecture at a glance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev_reference/#common-extension-tasks">Common extension tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev_reference/#invariants-and-common-pitfalls">Invariants and common pitfalls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../../contributing/">Contributing</a></li>
+      <li class="breadcrumb-item"><a href="../dev_reference/">Developer reference</a></li>
+    <li class="breadcrumb-item active">Internal utility modules</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="internal-utility-modules">
+<h1>Internal utility modules<a class="headerlink" href="#internal-utility-modules" title="Link to this heading"></a></h1>
+<p>These helpers are shared across algorithms, problem classes, and analysis/solver modules.</p>
+<p>Public API docs using these helpers are surfaced through <a class="reference internal" href="../../solver_backends/"><span class="doc">Solver backends</span></a> and <a class="reference internal" href="../../api_reference/"><span class="doc">API reference</span></a>.</p>
+<section id="module-map">
+<h2>Module map<a class="headerlink" href="#module-map" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Module</p></th>
+<th class="head"><p>Responsibility</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-autolyap.utils.validation" title="autolyap.utils.validation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.utils.validation</span></code></a></p></td>
+<td><p>Scalar, index, and finite-array validation helpers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-autolyap.utils.helper_functions" title="autolyap.utils.helper_functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.utils.helper_functions</span></code></a></p></td>
+<td><p>Symmetric-matrix construction helpers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-autolyap.utils.backend_types" title="autolyap.utils.backend_types"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.utils.backend_types</span></code></a></p></td>
+<td><p>Protocol-based structural typing aliases for optional solver backends.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-autolyap.utils">
+<span id="package-namespace"></span><h2>Package namespace<a class="headerlink" href="#module-autolyap.utils" title="Link to this heading"></a></h2>
+</section>
+<section id="module-autolyap.utils.validation">
+<span id="validation-helpers"></span><h2>Validation helpers<a class="headerlink" href="#module-autolyap.utils.validation" title="Link to this heading"></a></h2>
+<p>Validation helpers shared across algorithms and problem classes.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.utils.validation.ensure_finite_array">
+<span class="sig-prename descclassname"><span class="pre">autolyap.utils.validation.</span></span><span class="sig-name descname"><span class="pre">ensure_finite_array</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/autolyap/utils/validation/#ensure_finite_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.validation.ensure_finite_array" title="Link to this definition"></a></dt>
+<dd><p>Raise if <cite>array</cite> contains non-finite entries (NaN or inf).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.utils.validation.ensure_index_list">
+<span class="sig-prename descclassname"><span class="pre">autolyap.utils.validation.</span></span><span class="sig-name descname"><span class="pre">ensure_index_list</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">integer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">floating</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/autolyap/utils/validation/#ensure_index_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.validation.ensure_index_list" title="Link to this definition"></a></dt>
+<dd><p>Validate a sorted, duplicate-free component-index list.</p>
+<p>The returned list is guaranteed to contain integers in <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">m]</span></code> in
+strictly increasing order.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.utils.validation.ensure_integral">
+<span class="sig-prename descclassname"><span class="pre">autolyap.utils.validation.</span></span><span class="sig-name descname"><span class="pre">ensure_integral</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">integer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">floating</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">minimum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">maximum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></span><a class="reference internal" href="../../_modules/autolyap/utils/validation/#ensure_integral"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.validation.ensure_integral" title="Link to this definition"></a></dt>
+<dd><p>Validate and normalize an integer-valued scalar.</p>
+<p>Rejects booleans explicitly and optionally enforces lower/upper bounds.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.utils.validation.ensure_m_bar_list">
+<span class="sig-prename descclassname"><span class="pre">autolyap.utils.validation.</span></span><span class="sig-name descname"><span class="pre">ensure_m_bar_list</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">integer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">floating</span><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/autolyap/utils/validation/#ensure_m_bar_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.validation.ensure_m_bar_list" title="Link to this definition"></a></dt>
+<dd><p>Validate per-component evaluation counts.</p>
+<p>Ensures the sequence length equals <code class="docutils literal notranslate"><span class="pre">m</span></code> and every entry is an integer
+strictly greater than zero.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.utils.validation.ensure_real_number">
+<span class="sig-prename descclassname"><span class="pre">autolyap.utils.validation.</span></span><span class="sig-name descname"><span class="pre">ensure_real_number</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">integer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">floating</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">finite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#bool" title="bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">minimum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">maximum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../../_modules/autolyap/utils/validation/#ensure_real_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.validation.ensure_real_number" title="Link to this definition"></a></dt>
+<dd><p>Validate and normalize a real-valued scalar.</p>
+<p>Rejects booleans and NaNs explicitly. Optional flags enforce finiteness
+and lower/upper bounds.</p>
+</dd></dl>
+
+</section>
+<section id="module-autolyap.utils.helper_functions">
+<span id="symmetric-matrix-helpers"></span><h2>Symmetric-matrix helpers<a class="headerlink" href="#module-autolyap.utils.helper_functions" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.utils.helper_functions.create_symmetric_matrix">
+<span class="sig-prename descclassname"><span class="pre">autolyap.utils.helper_functions.</span></span><span class="sig-name descname"><span class="pre">create_symmetric_matrix</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">upper_triangle_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#autolyap.utils.backend_types.UpperTriangleValuesProtocol" title="autolyap.utils.backend_types.UpperTriangleValuesProtocol"><span class="pre">UpperTriangleValuesProtocol</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a></span></span><a class="reference internal" href="../../_modules/autolyap/utils/helper_functions/#create_symmetric_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.helper_functions.create_symmetric_matrix" title="Link to this definition"></a></dt>
+<dd><p>Convert a list of upper triangle values to a symmetric matrix.</p>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>upper_triangle_values</cite>: List of length <span class="math notranslate nohighlight">\(n(n+1)/2\)</span> containing the upper triangle
+and diagonal values.</p></li>
+<li><p><cite>n</cite>: Size of the symmetric matrix.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul class="simple">
+<li><p>Symmetric matrix of size <span class="math notranslate nohighlight">\(n \times n\)</span>.</p></li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If the length of <cite>upper_triangle_values</cite> is not <span class="math notranslate nohighlight">\(n(n+1)/2\)</span>.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.utils.helper_functions.create_symmetric_matrix_expression">
+<span class="sig-prename descclassname"><span class="pre">autolyap.utils.helper_functions.</span></span><span class="sig-name descname"><span class="pre">create_symmetric_matrix_expression</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">Xij</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#autolyap.utils.backend_types.MosekUpperTriangleVectorProtocol" title="autolyap.utils.backend_types.MosekUpperTriangleVectorProtocol"><span class="pre">MosekUpperTriangleVectorProtocol</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev_external_reference_targets/#typing.Any" title="typing.Any"><span class="pre">Any</span></a></span></span><a class="reference internal" href="../../_modules/autolyap/utils/helper_functions/#create_symmetric_matrix_expression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.helper_functions.create_symmetric_matrix_expression" title="Link to this definition"></a></dt>
+<dd><p>Convert a list of upper triangle variables to a symmetric matrix expression.</p>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>Xij</cite>: MOSEK variable containing the upper triangle and diagonal values.</p></li>
+<li><p><cite>n</cite>: Size of the symmetric matrix.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul class="simple">
+<li><p>Symmetric matrix expression of size <span class="math notranslate nohighlight">\(n \times n\)</span>.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-autolyap.utils.backend_types">
+<span id="backend-typing-protocols"></span><h2>Backend typing protocols<a class="headerlink" href="#module-autolyap.utils.backend_types" title="Link to this heading"></a></h2>
+<p>Shared structural typing protocols for optional solver backends.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.CvxpyModuleProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">CvxpyModuleProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#CvxpyModuleProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.CvxpyModuleProtocol" title="Link to this definition"></a></dt>
+<dd><p>Subset of the CVXPY module API used by AutoLyap.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.CvxpyStatusModuleProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">CvxpyStatusModuleProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#CvxpyStatusModuleProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.CvxpyStatusModuleProtocol" title="Link to this definition"></a></dt>
+<dd><p>Subset of CVXPY status constants used by AutoLyap.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.CvxpyValueHandleProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">CvxpyValueHandleProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#CvxpyValueHandleProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.CvxpyValueHandleProtocol" title="Link to this definition"></a></dt>
+<dd><p>Protocol for solved CVXPY handles exposing <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.MosekExprProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">MosekExprProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#MosekExprProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.MosekExprProtocol" title="Link to this definition"></a></dt>
+<dd><p>Subset of <code class="docutils literal notranslate"><span class="pre">mosek.fusion.Expr</span></code> used in helper builders.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.MosekFusionModuleProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">MosekFusionModuleProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#MosekFusionModuleProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.MosekFusionModuleProtocol" title="Link to this definition"></a></dt>
+<dd><p>Subset of MOSEK Fusion module attributes used by AutoLyap.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.MosekLevelHandleProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">MosekLevelHandleProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#MosekLevelHandleProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.MosekLevelHandleProtocol" title="Link to this definition"></a></dt>
+<dd><p>Protocol for solved MOSEK handles exposing <code class="docutils literal notranslate"><span class="pre">level()</span></code>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.MosekModelProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">MosekModelProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#MosekModelProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.MosekModelProtocol" title="Link to this definition"></a></dt>
+<dd><p>Protocol for MOSEK Fusion model parameter forwarding.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.MosekUpperTriangleSolutionHandleProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">MosekUpperTriangleSolutionHandleProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#MosekUpperTriangleSolutionHandleProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.MosekUpperTriangleSolutionHandleProtocol" title="Link to this definition"></a></dt>
+<dd><p>Protocol for MOSEK upper-triangle handles reused after solve.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.MosekUpperTriangleVectorProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">MosekUpperTriangleVectorProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#MosekUpperTriangleVectorProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.MosekUpperTriangleVectorProtocol" title="Link to this definition"></a></dt>
+<dd><p>Protocol for MOSEK upper-triangle vector handles.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.SupportsScalarProduct">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">SupportsScalarProduct</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#SupportsScalarProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.SupportsScalarProduct" title="Link to this definition"></a></dt>
+<dd><p>Protocol for scalar-like symbols participating in backend products.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.SupportsStringConversion">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">SupportsStringConversion</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#SupportsStringConversion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.SupportsStringConversion" title="Link to this definition"></a></dt>
+<dd><p>Protocol for values normalized through <code class="docutils literal notranslate"><span class="pre">str(value)</span></code>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.utils.backend_types.UpperTriangleValuesProtocol">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.utils.backend_types.</span></span><span class="sig-name descname"><span class="pre">UpperTriangleValuesProtocol</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/utils/backend_types/#UpperTriangleValuesProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.utils.backend_types.UpperTriangleValuesProtocol" title="Link to this definition"></a></dt>
+<dd><p>Finite indexable container of numeric upper-triangle entries.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../dev_internal_problemclass/" class="btn btn-neutral float-left" title="Internal problem-class modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../dev_external_reference_targets/" class="btn btn-neutral float-right" title="External reference targets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

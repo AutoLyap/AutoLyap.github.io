@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /search/
+Disallow: /genindex/
+Disallow: /py-modindex/
+Disallow: /modindex/
+Disallow: /_sources/
+Disallow: /_modules/
+Sitemap: https://autolyap.github.io/sitemap.xml

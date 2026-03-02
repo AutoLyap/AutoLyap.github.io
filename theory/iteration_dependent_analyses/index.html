@@ -1,0 +1,679 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>5.3. Iteration-dependent analyses | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/theory/iteration_dependent_analyses/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../_static/proof_toggle.js?v=3eed1268"></script><script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Examples" href="../../examples/" />
+    <link rel="prev" title="5.2. Iteration-independent analyses" href="../iteration_independent_analyses/" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/theory/iteration_dependent_analyses/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/theory/iteration_dependent_analyses/"/>
+<meta property="og:url" content="https://autolyap.github.io/theory/iteration_dependent_analyses/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/theory/iteration_dependent_analyses/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:44Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:44Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Iteration-dependent theory in AutoLyap for finite-horizon guarantees and chained Lyapunov inequalities."/>
+<meta name="keywords" content="AutoLyap iteration-dependent theory, finite-horizon guarantees, chained Lyapunov inequalities"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="5.3. Iteration-dependent analyses"/>
+<meta property="og:description" content="Iteration-dependent theory in AutoLyap for finite-horizon guarantees and chained Lyapunov inequalities."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="5.3. Iteration-dependent analyses"/>
+<meta name="twitter:description" content="Iteration-dependent theory in AutoLyap for finite-horizon guarantees and chained Lyapunov inequalities."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Theory"/>
+<meta property="article:tag" content="AutoLyap iteration-dependent theory"/>
+<meta property="article:tag" content="finite-horizon guarantees"/>
+<meta property="article:tag" content="chained Lyapunov inequalities"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/theory/iteration_dependent_analyses/#webpage",
+  "name": "5.3. Iteration-dependent analyses",
+  "headline": "5.3. Iteration-dependent analyses",
+  "description": "Iteration-dependent theory in AutoLyap for finite-horizon guarantees and chained Lyapunov inequalities.",
+  "keywords": "AutoLyap iteration-dependent theory, finite-horizon guarantees, chained Lyapunov inequalities",
+  "url": "https://autolyap.github.io/theory/iteration_dependent_analyses/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/theory/iteration_dependent_analyses/",
+  "dateModified": "2026-03-02T19:05:44Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Theory",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "5. Lyapunov analyses",
+      "item": "https://autolyap.github.io/lyapunov_analyses/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "5.3. Iteration-dependent analyses",
+      "item": "https://autolyap.github.io/theory/iteration_dependent_analyses/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Theory</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../notation_and_preliminaries/">1. Notation and preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem_class/">2. Problem classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm_representation/">3. Algorithm representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation_conditions/">4. Interpolation conditions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../lyapunov_analyses/">5. Lyapunov analyses</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../performance_estimation_via_sdps/">5.1. Performance estimation via SDPs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iteration_independent_analyses/">5.2. Iteration-independent analyses</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.3. Iteration-dependent analyses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../">Theory</a></li>
+      <li class="breadcrumb-item"><a href="../lyapunov_analyses/"><span class="section-number">5. </span>Lyapunov analyses</a></li>
+    <li class="breadcrumb-item active"><span class="section-number">5.3. </span>Iteration-dependent analyses</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="iteration-dependent-analyses">
+<h1><span class="section-number">5.3. </span>Iteration-dependent analyses<a class="headerlink" href="#iteration-dependent-analyses" title="Link to this heading"></a></h1>
+<p>Here, we focus on finite-horizon analyses, which apply to
+algorithms that run indefinitely, as well as algorithms with finite
+iteration budgets matching or exceeding the horizon. For notational
+simplicity, we assume that</p>
+<div class="math notranslate nohighlight">
+\[K\in\mathbb{N}\]</div>
+<p>in
+<a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>,
+representing the horizon.</p>
+<p>Following <span id="id1">[<a class="reference internal" href="#id195" title="Adrien Taylor and Francis Bach. Stochastic first-order methods: Non-asymptotic and computer-aided analyses via potential functions. In Conference on Learning Theory (COLT). 2019.">TB19</a>]</span>, we adopt an ansatz
+consisting of a sequence of iteration-dependent and quadratic Lyapunov
+functions, also often referred to as <em>potential functions</em>
+<span id="id2">[<a class="reference internal" href="#id19" title="Nikhil Bansal and Anupam Gupta. Potential-function proofs for gradient methods. Theory of Computing, 15(1):1–32, 2019. doi:10.4086/toc.2019.v015a004.">BG19</a>]</span>.</p>
+<div class="definition docutils container">
+<p id="def-iteration-dependent-lyapunov-chain"><strong>Definition 5.3.1 (Chained Lyapunov inequalities).</strong></p>
+<p>Suppose that
+<a class="reference internal" href="../algorithm_representation/#ass-well-posedness"><span class="std std-ref">Assumption 3.1 (Well-posedness)</span></a> holds. Let</p>
+<div class="math notranslate nohighlight">
+\[\bx_{0}\in\calH^{n}, \qquad
+\p{ ( \bx^{k}, \bu^{k}, \by^{k}, \bFcn^{k} ) }_{k=0}^{K},\]</div>
+<p>be an initial point and a sequence of iterates satisfying
+<a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>, and let</p>
+<div class="math notranslate nohighlight">
+\[\p{y^{\star}, \hat{\bu}^{\star}, \bFcn^{\star}}\]</div>
+<p>be a point satisfying <a class="reference internal" href="../lyapunov_analyses/#equation-eq-solution">(5.1)</a>. Also let</p>
+<div class="math notranslate nohighlight">
+\[c_K\in\reals_{+}.\]</div>
+<p>Define</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-chain-v">
+<span id="eq-iteration-dependent-lyapunov-chain-v"></span><span class="eqno">(5.49)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-chain-v" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \p{\forall k \in \llbracket0,K\rrbracket} \quad
+        \left[
+        \begin{aligned}
+            &amp;\mathcal{V}(Q_k,q_k,k) {}={} \quadform{Q_{k}}{\p{\bx^{k},\bu^{k},\hat{\bu}^{\star},y^{\star}}} + q_{k}^{\top}\p{\bFcn^{k},\bFcn^{\star}}, \\
+            &amp;Q_{k} \in \sym^{n+\NumEval+m}, \\
+            &amp;q_{k} \in \reals^{\NumEvalFunc + \NumFunc}.
+        \end{aligned}
+        \right.
+    \end{aligned}\end{split}\]</div>
+<p>We say that <span class="math notranslate nohighlight">\((\p{Q_{k},q_{k}})_{k=0}^{K}\)</span> and <span class="math notranslate nohighlight">\(c_K\)</span> satisfy
+a <em>length</em> <span class="math notranslate nohighlight">\(K\)</span> <em>sequence of chained Lyapunov inequalities for
+algorithm</em>
+<a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>
+<em>over the problem class defined by</em>
+<span class="math notranslate nohighlight">\((\mathcal{F}_i)_{i\in\IndexFunc}\)</span> <em>and</em>
+<span class="math notranslate nohighlight">\((\mathcal{G}_i)_{i\in\IndexOp}\)</span> if</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-chain">
+<span id="eq-iteration-dependent-lyapunov-chain"></span><span class="eqno">(5.50)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-chain" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \mathcal{V}\p{Q_K,q_K,K} &amp;\leq \mathcal{V}\p{Q_{K-1},q_{K-1},K-1} \\
+        &amp;\leq \ldots \\
+        &amp;\leq \mathcal{V}\p{Q_1,q_1,1} \\
+        &amp;\leq c_K \mathcal{V}\p{Q_0,q_0,0}
+    \end{aligned}\end{split}\]</div>
+<p>holds for each</p>
+<div class="math notranslate nohighlight">
+\[\bx_{0}, \qquad
+\p{ ( \bx^{k}, \bu^{k}, \by^{k}, \bFcn^{k} ) }_{k=0}^{K}, \qquad
+\p{y^{\star}, \hat{\bu}^{\star},\bFcn^{\star}},\]</div>
+<p>and for each</p>
+<div class="math notranslate nohighlight">
+\[\p{f_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc} \mathcal{F}_{i},
+\qquad
+\p{G_i}_{i\in\IndexOp} \in \prod_{i\in\IndexOp}\mathcal{G}_i.\]</div>
+</div>
+<p>In the proposed methodology, the user specifies the boundary parameters
+<span class="math notranslate nohighlight">\(\p{Q_{0},q_{0},Q_{K},q_{K}}\)</span>, which define the initial and final
+Lyapunov expressions <span class="math notranslate nohighlight">\(\mathcal{V}\p{Q_0,q_0,0}\)</span> and
+<span class="math notranslate nohighlight">\(\mathcal{V}\p{Q_K,q_K,K}\)</span>. The SDP then searches for
+<span class="math notranslate nohighlight">\((\p{Q_{k},q_{k}})_{k=1}^{K-1}\)</span> and the smallest <span class="math notranslate nohighlight">\(c_K\)</span> such that
+<a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-chain">(5.50)</a> holds. When feasible, this yields</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \mathcal{V}\p{Q_K,q_K,K} \leq c_K \mathcal{V}\p{Q_0,q_0,0}.\end{aligned}\]</div>
+<p>For built-in choices of these boundary terms:</p>
+<ul class="simple">
+<li><p>Distance to solution:
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_distance_to_solution" title="autolyap.IterationDependent.get_parameters_distance_to_solution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Distance-to-solution</span> <span class="pre">helper</span></code></a>.</p></li>
+<li><p>State-component distance to solution:
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_distance_to_solution" title="autolyap.IterationDependent.get_parameters_state_component_distance_to_solution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">State-component-distance</span> <span class="pre">helper</span></code></a>.</p></li>
+<li><p>State-component same-iteration difference:
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_difference" title="autolyap.IterationDependent.get_parameters_state_component_difference"><code class="xref py py-meth docutils literal notranslate"><span class="pre">State-component-difference</span> <span class="pre">helper</span></code></a>.</p></li>
+<li><p>State-component cross-iteration difference:
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference" title="autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference"><code class="xref py py-meth docutils literal notranslate"><span class="pre">State-component-cross-iteration-difference</span> <span class="pre">helper</span></code></a>.</p></li>
+<li><p>Function-value suboptimality:
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_function_value_suboptimality" title="autolyap.IterationDependent.get_parameters_function_value_suboptimality"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Function-value-suboptimality</span> <span class="pre">helper</span></code></a>.</p></li>
+<li><p>Fixed-point residual:
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_fixed_point_residual" title="autolyap.IterationDependent.get_parameters_fixed_point_residual"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Fixed-point-residual</span> <span class="pre">helper</span></code></a>.</p></li>
+<li><p>Optimality measure:
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_optimality_measure" title="autolyap.IterationDependent.get_parameters_optimality_measure"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Optimality-measure</span> <span class="pre">helper</span></code></a>.</p></li>
+</ul>
+<p>The corresponding API entry point is
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_lyapunov()</span></code></a>.</p>
+<p>The SDP characterization is given in
+<a class="reference internal" href="#thm-iteration-dependent-lyapunov"><span class="std std-ref">Theorem 5.3.2 (Chained Lyapunov inequalities via SDP)</span></a>. Computationally,
+each inequality in <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-chain">(5.50)</a> is enforced by
+a one-step analysis with positive semidefinite constraints of constant
+dimension. As a result, the number of variables and constraints grows
+linearly with <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<div class="theorem docutils container">
+<p id="thm-iteration-dependent-lyapunov"><strong>Theorem 5.3.2 (Chained Lyapunov inequalities via SDP).</strong></p>
+<p>Suppose that
+<a class="reference internal" href="../algorithm_representation/#ass-well-posedness"><span class="std std-ref">Assumption 3.1 (Well-posedness)</span></a> and
+<a class="reference internal" href="../interpolation_conditions/#ass-interpolation"><span class="std std-ref">Assumption 4.1 (Interpolation conditions)</span></a>
+hold, and</p>
+<div class="math notranslate nohighlight">
+\[K\in\mathbb{N}, \qquad
+Q_{0},Q_{K} \in \sym^{n+\NumEval+m}, \qquad
+q_{0},q_{K} \in \reals^{\NumEvalFunc + \NumFunc}.\]</div>
+<p>Then a sufficient condition for there to exist</p>
+<div class="math notranslate nohighlight">
+\[\p{ (Q_{k},q_{k}) }_{k=1}^{K-1}, \qquad c_K,\]</div>
+<p>such that <span class="math notranslate nohighlight">\(\p{ (Q_{k},q_{k}) }_{k=0}^{K}\)</span> and <span class="math notranslate nohighlight">\(c_K\)</span>
+satisfy a length <span class="math notranslate nohighlight">\(K\)</span> sequence of chained Lyapunov
+inequalities for algorithm
+<a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>
+over the problem class defined by
+<span class="math notranslate nohighlight">\(\p{\mathcal{F}_i}_{i\in\IndexFunc}\)</span> and
+<span class="math notranslate nohighlight">\(\p{\mathcal{G}_i}_{i\in\IndexOp}\)</span> is that the following
+system of constraints, which reuses the lifted
+matrices/vectors from <a class="reference internal" href="../performance_estimation_via_sdps/"><span class="doc">5.1. Performance estimation via SDPs</span></a>, including the lifted state
+matrices <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-x-mats">(5.3)</a>, and the interpolation terms
+<a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-w-func-ineq">(5.12)</a>, <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-w-func-eq">(5.13)</a>, <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-w-op">(5.14)</a>,
+<a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-f-func-ineq">(5.15)</a>, and <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-f-func-eq">(5.16)</a>,</p>
+<div class="subequations docutils container">
+<div class="math notranslate nohighlight" id="eq-iteration-dependent-lyapunov-condition-func-ineq">
+<span id="eq-iteration-dependent-lyapunov-condition-a-k"></span><span id="eq-iteration-dependent-lyapunov-condition-q"></span><span id="eq-iteration-dependent-lyapunov-condition-q-mat"></span><span id="eq-iteration-dependent-lyapunov-condition-zero"></span><span id="eq-iteration-dependent-lyapunov-condition-psd"></span><span id="eq-iteration-dependent-lyapunov-condition-op"></span><span id="eq-iteration-dependent-lyapunov-condition-func-eq"></span><span id="eq-iteration-dependent-lyapunov-condition"></span>\begin{align}
+            &amp;\textbf{for each}\ k \in \llbracket 0, K-1 \rrbracket \notag \\
+            &amp;\quad
+            \left(
+            \begin{array}{&#64;{}c&#64;{}}
+                \forall i \in\IndexFunc \\
+                \forall o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\
+                \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1}
+            \end{array}
+            \right) \quad \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq},\,k} \geq 0, \tag{5.51a}\\
+            &amp;\quad
+            \left(
+            \begin{array}{&#64;{}c&#64;{}}
+                \forall i \in\IndexFunc \\
+                \forall o \in \mathcal{O}^{\textup{func-eq}}_{i} \\
+                \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1}
+            \end{array}
+            \right) \quad
+            \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq},\,k} \in \reals, \tag{5.51b}\\
+            &amp;\quad
+            \left(
+            \begin{array}{&#64;{}c&#64;{}}
+                \forall i \in\IndexFunc \\
+                \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
+                \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1}
+            \end{array}
+            \right) \quad
+            \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op},\,k} \geq 0, \tag{5.51c}\\
+            &amp;\quad - W_{k}
+            + \sum_{\substack{i\in\IndexFunc \\ o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1} }}
+            \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq},\,k}
+            W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{func-ineq}} \notag \\
+            &amp;\quad \quad + \sum_{\substack{i\in\IndexFunc  \\ o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1} }}
+            \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq},\,k}
+            W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{func-eq}} \notag \\
+            &amp;\quad \quad + \sum_{\substack{i\in\IndexOp \\ o \in \mathcal{O}^{\textup{op}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1} }}
+            \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op},\,k}
+            W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{op}}
+            \succeq 0, \tag{5.51d}\\
+            &amp;\quad
+            - w_{k}
+            + \sum_{\substack{i\in\IndexFunc \\ o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1} }}
+            \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq},\,k}
+            F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{func-ineq}} \notag \\
+            &amp;\quad \quad + \sum_{\substack{i\in\IndexFunc  \\ o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1} }}
+            \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq},\,k}
+            F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{func-eq}}
+            = 0, \tag{5.51e}\\
+            &amp;\mathbf{end} \notag \\
+            &amp; \p{\forall k\in \llbracket1,K-1\rrbracket} \quad Q_{k} \in \sym^{n+\NumEval+m}, \tag{5.51f}\\
+            &amp; \p{\forall k\in \llbracket1,K-1\rrbracket} \quad q_{k} \in \mathbb{R}^{\NumEvalFunc + \NumFunc}, \tag{5.51g}\\
+            &amp; c_K \in \reals_{+}. \tag{5.51h}
+        \end{align}</div></div>
+<p>is feasible for the scalars</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq},\,k}, \\
+        \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq},\,k}, \\
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op},\,k},
+    \end{aligned}\end{split}\]</div>
+<p>the matrices and vectors <span class="math notranslate nohighlight">\(\p{\p{Q_{k},q_{k}}}_{k=1}^{K-1}\)</span>, and
+the scalar <span class="math notranslate nohighlight">\(c_K\)</span>, where we have introduced</p>
+<div class="eq-align-dep-w math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-w-0-mat">
+<span class="eqno">(5.52)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-w-0-mat" title="Link to this equation"></a></span>\[\begin{aligned}
+        W_{0} &amp;= \p{\Theta_{1}^{\p{0}}}^{\top}Q_{1}\Theta_{1}^{\p{0}}
+        - c_K \Theta_{0}^{\top}Q_{0}\Theta_{0}.
+    \end{aligned}\]</div>
+<div class="eq-align-dep-w math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-w-0-vec">
+<span class="eqno">(5.53)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-w-0-vec" title="Link to this equation"></a></span>\[\begin{aligned}
+        w_{0} &amp;= \theta_{1}^{\top}q_{1} - c_K\theta_{0}^{\top}q_{0}.
+    \end{aligned}\]</div>
+<div class="eq-align-dep-w math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-w-k-mat">
+<span class="eqno">(5.54)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-w-k-mat" title="Link to this equation"></a></span>\[\begin{aligned}
+        \p{\forall k\in\llbracket1,K-1\rrbracket}\quad
+        W_{k} &amp;= \p{\Theta_{1}^{\p{k}}}^{\top}Q_{k+1}\Theta_{1}^{\p{k}}
+        - \Theta_{0}^{\top}Q_{k}\Theta_{0}.
+    \end{aligned}\]</div>
+<div class="eq-align-dep-w math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-w-k-vec">
+<span class="eqno">(5.55)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-w-k-vec" title="Link to this equation"></a></span>\[\begin{aligned}
+        \p{\forall k\in\llbracket1,K-1\rrbracket}\quad
+        w_{k} &amp;= \theta_{1}^{\top}q_{k+1} - \theta_{0}^{\top}q_{k}.
+    \end{aligned}\]</div>
+<p>and</p>
+<div class="eq-align-dep-theta math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-theta0-mat">
+<span class="eqno">(5.56)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-theta0-mat" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \Theta_{0} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            I_{n+\NumEval } &amp; 0_{\p{n+\NumEval}\times\NumEval } &amp; 0_{\p{n+\NumEval}\times m} \\
+            0_{m \times \p{n+\NumEval}} &amp; 0_{m \times\NumEval } &amp; I_{m}
+        \end{bmatrix}
+        }_{
+        \in \reals^{ \p{n + \NumEval + m} \times \p{n + 2\NumEval + m} }
+        }.
+    \end{aligned}\end{split}\]</div>
+<div class="eq-align-dep-theta math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-theta0-vec">
+<span class="eqno">(5.57)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-theta0-vec" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \theta_{0} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            I_{\NumEvalFunc} &amp; 0_{\NumEvalFunc \times \NumEvalFunc } &amp; 0_{\NumEvalFunc \times \NumFunc } \\
+            0_{\NumFunc\times \NumEvalFunc} &amp;0_{\NumFunc\times \NumEvalFunc} &amp; I_{\NumFunc}
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{\NumEvalFunc + \NumFunc}\times\p{2\NumEvalFunc + \NumFunc}}
+        }.
+    \end{aligned}\end{split}\]</div>
+<div class="eq-align-dep-theta math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-theta1-mat">
+<span class="eqno">(5.58)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-theta1-mat" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \p{\forall k\in\llbracket0,K-1\rrbracket}\quad
+        \Theta_{1}^{\p{k}} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            X_{k+1}^{k,k+1} \\
+            0_{\p{\NumEval + m} \times \p{n + \NumEval } } \quad I_{\NumEval + m}
+        \end{bmatrix}
+        }_{
+        \in \reals^{ \p{n + \NumEval + m} \times \p{n + 2\NumEval + m} }
+        }.
+    \end{aligned}\end{split}\]</div>
+<div class="eq-align-dep-theta math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-theta1-vec">
+<span class="eqno">(5.59)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-theta1-vec" title="Link to this equation"></a></span>\[\begin{aligned}
+        \theta_{1} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            0_{\p{\NumEvalFunc + \NumFunc}\times\NumEvalFunc} &amp; I_{\NumEvalFunc + \NumFunc}
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{\NumEvalFunc + \NumFunc}\times\p{2\NumEvalFunc + \NumFunc}}
+        }.
+    \end{aligned}\]</div>
+<p>Furthermore, if the interpolation conditions for
+<span class="math notranslate nohighlight">\(\p{\mathcal{F}_{i}}_{i\in\IndexFunc}\)</span> and
+<span class="math notranslate nohighlight">\(\p{\mathcal{G}_{i}}_{i\in\IndexOp}\)</span> are tight,
+<span class="math notranslate nohighlight">\(\dim \calH \geq n + 2\NumEval + m\)</span>, and there exists</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        \p{\forall k\in \llbracket0,K-1\rrbracket}
+        \quad
+        \left[
+        \begin{aligned}
+            &amp;G_{k}\in\sym_{++}^{n + 2\NumEval + m}, \\
+            &amp;\bchi_{k}\in\reals^{2\NumEvalFunc + \NumFunc},
+        \end{aligned}
+        \right.
+    \end{aligned}\end{split}\]</div>
+<p>such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        &amp; \textbf{for each}\ k\in \llbracket0,K-1\rrbracket \\
+        &amp; \quad
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1}
+        \end{array}
+        \right) \quad
+        \begin{aligned}
+            &amp; \bm{\chi}^{\top}_{k} F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{func-ineq}} \\
+            &amp; + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{func-ineq}}G_{k}} \leq 0,
+        \end{aligned}
+        \\
+        &amp; \quad
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-eq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1}
+        \end{array}
+        \right) \quad
+        \begin{aligned}
+            &amp; \bm{\chi}^{\top}_{k} F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{func-eq}} \\
+            &amp; + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{func-eq}}G_{k}} = 0,
+        \end{aligned}
+        \\
+        &amp; \quad
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1}
+        \end{array}
+        \right) \quad
+        \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{k,\,k+1,\,\textup{op}}G_{k}} \leq 0,
+        \\
+        &amp; \mathbf{end}
+    \end{aligned}\end{split}\]</div>
+<p>then <a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition"><span class="std std-ref">(5.51)</span></a> is
+also a necessary condition.</p>
+</div>
+<div class="proof docutils container">
+<p><em>Proof.</em> Note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        \p{\bx^{k},\bu^{k},\hat{\bu}^{\star},y^{\star}} &amp;= \p{\Theta_{0} \kron \Id }\p{\bx^{k},\bu^{k},\bu^{k+1},\hat{\bu}^{\star},y^{\star}}, \\
+        \p{\bFcn^{k},\bFcn^{\star}} &amp;= \theta_{0}\p{\bFcn^{k},\bFcn^{k+1},\bFcn^{\star}}, \\
+        \p{\bx^{k+1},\bu^{k+1},\hat{\bu}^{\star},y^{\star}} &amp;= \p{ \Theta_{1}^{\p{k}} \kron \Id }\p{\bx^{k},\bu^{k},\bu^{k+1},\hat{\bu}^{\star},y^{\star}}, \\
+        \p{\bFcn^{k+1},\bFcn^{\star}} &amp;= \theta_{1}\p{\bFcn^{k},\bFcn^{k+1},\bFcn^{\star}},
+    \end{aligned}\end{split}\]</div>
+<p>where we have used
+in <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-theta0-mat">(5.56)</a>,
+<a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-theta0-vec">(5.57)</a>,
+<a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-theta1-mat">(5.58)</a>, and
+<a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-theta1-vec">(5.59)</a>, respectively.</p>
+<p>First, suppose that the parameters
+<span class="math notranslate nohighlight">\(\p{\p{Q_{k},q_{k}}}_{k=1}^{K-1}\)</span> and <span class="math notranslate nohighlight">\(c_K\)</span> are fixed and
+consider <span class="math notranslate nohighlight">\(\p{\mathcal{V}\p{Q_k,q_k,k}}_{k=0}^{K}\)</span> in
+<a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-chain-v">(5.49)</a>.
+Note that</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-obj-0">
+<span id="eq-iteration-independent-lyapunov-obj-0"></span><span class="eqno">(5.60)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-obj-0" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        &amp;\mathcal{V}\p{Q_1,q_1,1} - c_K\mathcal{V}\p{Q_0,q_0,0} \notag\\
+        &amp; = \quadform{\p{\Theta_{1}^{\p{0}}}^{\top}Q_{1}\Theta_{1}^{\p{0}}  - c_K\Theta_{0}^{\top}Q_{0}\Theta_{0}}{\p{\bx^{0},\bu^{0},\bu^{1},\hat{\bu}^{\star},y^{\star}}}  \notag \\
+        &amp; \quad + \p{q_{1}^{\top}\theta_{1} - c_K q_{0}^{\top}\theta_{0} } \p{\bFcn^{0},\bFcn^{1},\bFcn^{\star}} \notag \\
+        &amp;= \quadform{W_{0}}{\p{\bx^{0},\bu^{0},\bu^{1},\hat{\bu}^{\star},y^{\star}}} + w_{0}^{\top} \p{\bFcn^{0},\bFcn^{1},\bFcn^{\star}}
+    \end{aligned}\end{split}\]</div>
+<p>where <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-w-0-mat">(5.52)</a>
+and <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-w-0-vec">(5.53)</a>
+is used in the last equality. Therefore, using the
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-0">(5.60)</a>
+as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
+<a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
+gives that <a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition"><span class="std std-ref">(5.51)</span></a>,
+with <span class="math notranslate nohighlight">\(k=0\)</span>, is a sufficient condition for the inequality
+<span class="math notranslate nohighlight">\(\mathcal{V}\p{Q_1,q_1,1} \leq c_K\mathcal{V}\p{Q_0,q_0,0}\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(k\in \llbracket1,K-1\rrbracket\)</span>, note that</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-obj-k">
+<span id="eq-iteration-independent-lyapunov-obj-k"></span><span class="eqno">(5.61)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-obj-k" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        &amp;\mathcal{V}\p{Q_{k+1},q_{k+1},k+1} - \mathcal{V}\p{Q_k,q_k,k} \notag \\
+        &amp; =\quadform{Q_{k+1}}{\p{\bx^{k+1},\bu^{k+1},\hat{\bu}^{\star},y^{\star}}}  + q_{k+1}^{\top}\p{\bFcn^{k+1},\bFcn^{\star}} \notag\\
+        &amp;\quad -\quadform{Q_{k}}{\p{\bx^{k},\bu^{k},\hat{\bu}^{\star},y^{\star}}}  - q_{k}^{\top} \p{\bFcn^{k},\bFcn^{\star}} \notag \\
+        &amp; = \quadform{\p{\Theta_{1}^{\p{k}}}^{\top}Q_{k+1}\Theta_{1}^{\p{k}} - \Theta_{0}^{\top}Q_{k}\Theta_{0}}{\p{\bx^{k},\bu^{k},\bu^{k+1},\hat{\bu}^{\star},y^{\star}}} \notag\\
+        &amp;\quad + \p{q_{k+1}^{\top}\theta_{1} - q_{k}^{\top}\theta_{0} } \p{\bFcn^{k},\bFcn^{k+1},\bFcn^{\star}} \notag \\
+        &amp; = \quadform{W_k}{\p{\bx^{k},\bu^{k},\bu^{k+1},\hat{\bu}^{\star},y^{\star}}} + w_k^{\top}\p{\bFcn^{k},\bFcn^{k+1},\bFcn^{\star}}
+    \end{aligned}\end{split}\]</div>
+<p>where <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-w-k-mat">(5.54)</a>
+and <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-w-k-vec">(5.55)</a>
+is used in the last equality. Therefore, using the
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-k">(5.61)</a>
+as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
+<a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
+gives that <a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition"><span class="std std-ref">(5.51)</span></a>,
+constrained to this particular <span class="math notranslate nohighlight">\(k\)</span>, is a sufficient condition
+for the inequality <span class="math notranslate nohighlight">\(\mathcal{V}\p{Q_{k+1},q_{k+1},k+1} \leq \mathcal{V}\p{Q_k,q_k,k}\)</span>.</p>
+<p>Second, note that the proof is complete if we let the parameters
+<span class="math notranslate nohighlight">\(\p{\p{Q_{k},q_{k}}}_{k=1}^{K-1}\)</span> and <span class="math notranslate nohighlight">\(c_K\)</span> free, as
+in <a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition-q-mat"><span class="std std-ref">(5.51f)</span></a>,
+<a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition-q"><span class="std std-ref">(5.51g)</span></a>, and
+<a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition-a-k"><span class="std std-ref">(5.51h)</span></a>. <span class="math notranslate nohighlight">\(\square\)</span></p>
+</div>
+<p class="rubric">References</p>
+<div class="docutils container" id="id3">
+<div role="list" class="citation-list">
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">BG19</a><span class="fn-bracket">]</span></span>
+<p>Nikhil Bansal and Anupam Gupta. Potential-function proofs for gradient methods. <em>Theory of Computing</em>, 15(1):1–32, 2019. <a class="reference external" href="https://doi.org/10.4086/toc.2019.v015a004">doi:10.4086/toc.2019.v015a004</a>.</p>
+</div>
+<div class="citation" id="id195" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">TB19</a><span class="fn-bracket">]</span></span>
+<p>Adrien Taylor and Francis Bach. Stochastic first-order methods: Non-asymptotic and computer-aided analyses via potential functions. In <em>Conference on Learning Theory (COLT)</em>. 2019.</p>
+</div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../iteration_independent_analyses/" class="btn btn-neutral float-left" title="5.2. Iteration-independent analyses" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../examples/" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

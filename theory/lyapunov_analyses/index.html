@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>5. Lyapunov analyses | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/theory/lyapunov_analyses/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="5.1. Performance estimation via SDPs" href="../performance_estimation_via_sdps/" />
+    <link rel="prev" title="4. Interpolation conditions" href="../interpolation_conditions/" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/theory/lyapunov_analyses/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/theory/lyapunov_analyses/"/>
+<meta property="og:url" content="https://autolyap.github.io/theory/lyapunov_analyses/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/theory/lyapunov_analyses/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:44Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:44Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Lyapunov-analysis theory in AutoLyap, including certificate inequalities and feasibility interpretations."/>
+<meta name="keywords" content="AutoLyap Lyapunov theory, Lyapunov certificate inequalities, convergence certificate feasibility"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="5. Lyapunov analyses"/>
+<meta property="og:description" content="Lyapunov-analysis theory in AutoLyap, including certificate inequalities and feasibility interpretations."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="5. Lyapunov analyses"/>
+<meta name="twitter:description" content="Lyapunov-analysis theory in AutoLyap, including certificate inequalities and feasibility interpretations."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Theory"/>
+<meta property="article:tag" content="AutoLyap Lyapunov theory"/>
+<meta property="article:tag" content="Lyapunov certificate inequalities"/>
+<meta property="article:tag" content="convergence certificate feasibility"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/theory/lyapunov_analyses/#webpage",
+  "name": "5. Lyapunov analyses",
+  "headline": "5. Lyapunov analyses",
+  "description": "Lyapunov-analysis theory in AutoLyap, including certificate inequalities and feasibility interpretations.",
+  "keywords": "AutoLyap Lyapunov theory, Lyapunov certificate inequalities, convergence certificate feasibility",
+  "url": "https://autolyap.github.io/theory/lyapunov_analyses/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/theory/lyapunov_analyses/",
+  "dateModified": "2026-03-02T19:05:44Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Theory",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "5. Lyapunov analyses",
+      "item": "https://autolyap.github.io/theory/lyapunov_analyses/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Theory</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../notation_and_preliminaries/">1. Notation and preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem_class/">2. Problem classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm_representation/">3. Algorithm representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation_conditions/">4. Interpolation conditions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Lyapunov analyses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../performance_estimation_via_sdps/">5.1. Performance estimation via SDPs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iteration_independent_analyses/">5.2. Iteration-independent analyses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iteration_dependent_analyses/">5.3. Iteration-dependent analyses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../">Theory</a></li>
+    <li class="breadcrumb-item active"><span class="section-number">5. </span>Lyapunov analyses</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lyapunov-analyses">
+<h1><span class="section-number">5. </span>Lyapunov analyses<a class="headerlink" href="#lyapunov-analyses" title="Link to this heading"></a></h1>
+<p>This page explains how AutoLyap uses the algorithm representation and
+interpolation assumptions to cast the existence of a Lyapunov analysis
+as the feasibility of a particular SDP.
+Moreover, this formulation is constructive, in the sense that any feasible
+solution directly yields an explicit Lyapunov function and associated
+convergence certificate.</p>
+<p>For later convenience across pages
+<a class="reference internal" href="../performance_estimation_via_sdps/"><span class="doc">5.1</span></a>,
+<a class="reference internal" href="../iteration_independent_analyses/"><span class="doc">5.2</span></a>, and
+<a class="reference internal" href="../iteration_dependent_analyses/"><span class="doc">5.3</span></a>, we introduce the
+solution variables used in the Lyapunov analyses.</p>
+<p>We are interested in analyses that may depend on a solution to the inclusion
+problem <a class="reference internal" href="../problem_class/#equation-eq-the-problem-inclusion">(2.1)</a>. Without loss of generality and for
+computational efficiency, we use</p>
+<div class="math notranslate nohighlight" id="equation-eq-solution">
+<span id="eq-solution"></span><span class="eqno">(5.1)<a class="headerlink" href="#equation-eq-solution" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+    \p{y^{\star}, \hat{\bu}^{\star}, \bFcn^{\star}} \in
+    \Bigset{
+    \underbracket{\p{y,\hat{\bu}, \bFcn}}_{ \in \calH \times\calH^{m-1} \times \reals^{\NumFunc}  } \xmiddle|
+    \begin{aligned}
+        &amp;\p{u_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc}\partial f_{i}\p{y}, \\
+        &amp;\p{u_{i}}_{i\in\IndexOp} \in \prod_{i\in\IndexOp}G_{i}\p{y}, \\
+        &amp;\sum_{i=1}^{m} u_{i} = 0, \\
+        &amp;\hat{\bu} = \p{u_{1},\ldots,u_{m-1}}, \\
+        &amp;\bFcn=\p{\bfcn_{i}\p{y}}_{i\in\IndexFunc}
+    \end{aligned}
+    },\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{\bu}^{\star}\)</span> is void when <span class="math notranslate nohighlight">\(m=1\)</span>. In particular,
+<span class="math notranslate nohighlight">\(y^{\star}\)</span> in <a class="reference internal" href="#equation-eq-solution">(5.1)</a> is a solution to
+<a class="reference internal" href="../problem_class/#equation-eq-the-problem-inclusion">(2.1)</a>.</p>
+<p>The three subpages below are organized as follows. Page
+<a class="reference internal" href="../performance_estimation_via_sdps/"><span class="doc">5.1</span></a> introduces a technical
+SDP primitive. Pages <a class="reference internal" href="../iteration_independent_analyses/"><span class="doc">5.2</span></a> and
+<a class="reference internal" href="../iteration_dependent_analyses/"><span class="doc">5.3</span></a> then build on that
+primitive. The actual Lyapunov analyses, together with their corresponding
+convergence conclusions, are presented in pages
+<a class="reference internal" href="../iteration_independent_analyses/"><span class="doc">5.2</span></a> and
+<a class="reference internal" href="../iteration_dependent_analyses/"><span class="doc">5.3</span></a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../performance_estimation_via_sdps/">5.1. Performance estimation via SDPs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iteration_independent_analyses/">5.2. Iteration-independent analyses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iteration_dependent_analyses/">5.3. Iteration-dependent analyses</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../interpolation_conditions/" class="btn btn-neutral float-left" title="4. Interpolation conditions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../performance_estimation_via_sdps/" class="btn btn-neutral float-right" title="5.1. Performance estimation via SDPs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

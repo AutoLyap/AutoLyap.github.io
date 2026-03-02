@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>The gradient method: Gradient-dominated and smooth | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/" /><script src="../../../_static/jquery.js?v=5d32c60e"></script><script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../../_static/copybutton.js?v=36830154"></script><script defer="defer" src="../../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../../_static/perf.js?v=c85d9623"></script><script defer="defer" src="../../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+    <link rel="next" title="The gradient method: Smooth and strongly convex" href="../smooth_strongly_convex/" />
+    <link rel="prev" title="The gradient method" href="../" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/"/>
+<meta property="og:url" content="https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:43Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:43Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Gradient-method gradient-dominated smooth example in AutoLyap with certified linear function-value rates."/>
+<meta name="keywords" content="gradient method nonconvex, gradient dominated smooth, AutoLyap function-value convergence"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="The gradient method: Gradient-dominated and smooth"/>
+<meta property="og:description" content="Gradient-method gradient-dominated smooth example in AutoLyap with certified linear function-value rates."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="The gradient method: Gradient-dominated and smooth"/>
+<meta name="twitter:description" content="Gradient-method gradient-dominated smooth example in AutoLyap with certified linear function-value rates."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Examples"/>
+<meta property="article:tag" content="gradient method nonconvex"/>
+<meta property="article:tag" content="gradient dominated smooth"/>
+<meta property="article:tag" content="AutoLyap function-value convergence"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/#webpage",
+  "name": "The gradient method: Gradient-dominated and smooth",
+  "headline": "The gradient method: Gradient-dominated and smooth",
+  "description": "Gradient-method gradient-dominated smooth example in AutoLyap with certified linear function-value rates.",
+  "keywords": "gradient method nonconvex, gradient dominated smooth, AutoLyap function-value convergence",
+  "url": "https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/",
+  "dateModified": "2026-03-02T19:05:43Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Examples",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The gradient method",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "The gradient method: Gradient-dominated and smooth",
+      "item": "https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../theory/">Theory</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../define_your_own_algorithm/">Define your own algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../nesterov_fast_gradient/">Nesterov’s fast gradient method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../accelerated_proximal_point/">The accelerated proximal point method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chambolle_pock/">The Chambolle–Pock method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../davis_yin_three_operator/">The Davis–Yin three-operator splitting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../douglas_rachford/">The Douglas–Rachford method</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../">The gradient method</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Gradient-dominated and smooth</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem-setup">Problem setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model-the-problem-in-autolyap-and-search-for-the-smallest-rho">Model the problem in AutoLyap and search for the smallest rho</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-the-iteration-independent-analysis">Run the iteration-independent analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../smooth_strongly_convex/">Smooth and strongly convex</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../nesterov_momentum/">The gradient method with constant Nesterov momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../heavy_ball/">The heavy-ball method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../information_theoretic_exact_method/">The information-theoretic exact method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../malitsky_tam_frb/">The Malitsky–Tam forward-reflected-backward method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../optimized_gradient/">The optimized gradient method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../proximal_point/">The proximal point method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../../">Examples</a></li>
+      <li class="breadcrumb-item"><a href="../">The gradient method</a></li>
+    <li class="breadcrumb-item active">Gradient-dominated and smooth</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-gradient-method-gradient-dominated-and-smooth">
+<h1>The gradient method: Gradient-dominated and smooth<a class="headerlink" href="#the-gradient-method-gradient-dominated-and-smooth" title="Link to this heading"></a></h1>
+<section id="problem-setup">
+<h2>Problem setup<a class="headerlink" href="#problem-setup" title="Link to this heading"></a></h2>
+<p>Consider the unconstrained minimization problem</p>
+<div class="math notranslate nohighlight">
+\[\minimize_{x \in \calH} f(x) \quad \iff \quad \text{find } x \in \calH \;\text{ such that }\; 0 \in \partial f(x) = \set{\nabla f(x)},\]</div>
+<p>where <span class="math notranslate nohighlight">\(f : \calH \to \reals\)</span> is <span class="math notranslate nohighlight">\(\mu_{\textup{gd}}\)</span>-gradient
+dominated and <span class="math notranslate nohighlight">\(L\)</span>-smooth with <span class="math notranslate nohighlight">\(0&lt;\mu_{\textup{gd}}\le L\)</span>. This
+setting is not necessarily convex.</p>
+<p>For an initial point <span class="math notranslate nohighlight">\(x^0 \in \calH\)</span> and step size
+<span class="math notranslate nohighlight">\(0 &lt; \gamma &lt; 2/L\)</span>, the gradient update is</p>
+<div class="math notranslate nohighlight">
+\[(\forall k \in \naturals)\quad
+x^{k+1} = x^k - \gamma \nabla f(x^k).\]</div>
+<p>In this example, we search for the smallest contraction factor
+<span class="math notranslate nohighlight">\(\rho\in[0,1)\)</span> provable using AutoLyap such that</p>
+<div class="math notranslate nohighlight">
+\[f(x^k) - f(x^\star) = O(\rho^k) \quad \textup{ as } \quad k\to\infty,\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[x^\star \in \Argmin_{x \in \calH} f(x).\]</div>
+</section>
+<section id="model-the-problem-in-autolyap-and-search-for-the-smallest-rho">
+<h2>Model the problem in AutoLyap and search for the smallest rho<a class="headerlink" href="#model-the-problem-in-autolyap-and-search-for-the-smallest-rho" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f\)</span> is modeled as an intersection of
+<a class="reference internal" href="../../../function_classes/#autolyap.problemclass.GradientDominated" title="autolyap.problemclass.GradientDominated"><code class="xref py py-class docutils literal notranslate"><span class="pre">GradientDominated</span></code></a> and
+<a class="reference internal" href="../../../function_classes/#autolyap.problemclass.Smooth" title="autolyap.problemclass.Smooth"><code class="xref py py-class docutils literal notranslate"><span class="pre">Smooth</span></code></a>.</p></li>
+<li><p>The optimization problem is represented by
+<a class="reference internal" href="../../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a>.</p></li>
+<li><p>The update rule is represented by
+<a class="reference internal" href="../../../concrete_algorithms/#autolyap.algorithms.GradientMethod" title="autolyap.algorithms.GradientMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">GradientMethod</span></code></a>.</p></li>
+<li><p>Function-value parameters are obtained with
+<a class="reference internal" href="../../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.get_parameters_function_value_suboptimality" title="autolyap.IterationIndependent.LinearConvergence.get_parameters_function_value_suboptimality"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationIndependent.LinearConvergence.get_parameters_function_value_suboptimality</span></code></a>.</p></li>
+<li><p>The contraction factor is searched with
+<a class="reference internal" href="../../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho" title="autolyap.IterationIndependent.LinearConvergence.bisection_search_rho"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationIndependent.LinearConvergence.bisection_search_rho</span></code></a>.</p></li>
+</ul>
+</section>
+<section id="run-the-iteration-independent-analysis">
+<h2>Run the iteration-independent analysis<a class="headerlink" href="#run-the-iteration-independent-analysis" title="Link to this heading"></a></h2>
+<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate"><span class="pre">backend=&quot;mosek_fusion&quot;</span></code>).
+Install the optional MOSEK dependency first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;autolyap[mosek]&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolverOptions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientMethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientDominated</span><span class="p">,</span> <span class="n">InclusionProblem</span><span class="p">,</span> <span class="n">Smooth</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.iteration_independent</span><span class="w"> </span><span class="kn">import</span> <span class="n">IterationIndependent</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rho_theory_theorem3_specialized</span><span class="p">(</span><span class="n">mu_gd</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="c1"># Theorem 3 in abbaszadehpeivasti2023conditionslinearconvergence,</span>
+    <span class="c1"># specialized to the L-smooth (possibly nonconvex) setting via mu = -L.</span>
+    <span class="n">threshold_1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">L</span>
+    <span class="n">threshold_2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span>
+
+    <span class="k">if</span> <span class="n">gamma</span> <span class="o">&lt;</span> <span class="n">threshold_1</span><span class="p">:</span>
+        <span class="n">discriminant</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">L</span> <span class="o">-</span> <span class="p">(</span>
+            <span class="mf">2.0</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="n">mu_gd</span><span class="p">)</span> <span class="o">*</span> <span class="n">mu_gd</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">discriminant</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">discriminant</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">numerator</span> <span class="o">=</span> <span class="n">mu_gd</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">discriminant</span><span class="p">)</span>
+        <span class="n">denominator</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">L</span> <span class="o">+</span> <span class="n">mu_gd</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="n">gamma</span> <span class="o">&lt;=</span> <span class="n">threshold_2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu_gd</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">+</span> <span class="n">mu_gd</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span>
+
+    <span class="n">numerator</span> <span class="o">=</span> <span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">+</span> <span class="n">mu_gd</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+
+
+<span class="n">mu_gd</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">InclusionProblem</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="n">GradientDominated</span><span class="p">(</span><span class="n">mu_gd</span><span class="o">=</span><span class="n">mu_gd</span><span class="p">),</span> <span class="n">Smooth</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">)],</span>  <span class="c1"># f in intersection</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">algorithm</span> <span class="o">=</span> <span class="n">GradientMethod</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+<span class="n">solver_options</span> <span class="o">=</span> <span class="n">SolverOptions</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span><span class="p">)</span>
+<span class="c1"># License-free option:</span>
+<span class="c1"># solver_options = SolverOptions(backend=&quot;cvxpy&quot;, cvxpy_solver=&quot;CLARABEL&quot;)</span>
+
+<span class="n">P</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">IterationIndependent</span><span class="o">.</span><span class="n">LinearConvergence</span><span class="o">.</span><span class="n">get_parameters_function_value_suboptimality</span><span class="p">(</span>
+    <span class="n">algorithm</span><span class="p">,</span>
+    <span class="n">tau</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">IterationIndependent</span><span class="o">.</span><span class="n">LinearConvergence</span><span class="o">.</span><span class="n">bisection_search_rho</span><span class="p">(</span>
+    <span class="n">problem</span><span class="p">,</span>
+    <span class="n">algorithm</span><span class="p">,</span>
+    <span class="n">P</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">,</span>
+    <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span>
+    <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
+    <span class="n">solver_options</span><span class="o">=</span><span class="n">solver_options</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No feasible Lyapunov certificate in the requested rho interval.&quot;</span><span class="p">)</span>
+
+<span class="n">rho_autolyap</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">]</span>
+<span class="n">rho_theory</span> <span class="o">=</span> <span class="n">rho_theory_theorem3_specialized</span><span class="p">(</span><span class="n">mu_gd</span><span class="o">=</span><span class="n">mu_gd</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (AutoLyap): </span><span class="si">{</span><span class="n">rho_autolyap</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (theory):   </span><span class="si">{</span><span class="n">rho_theory</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the <span class="math notranslate nohighlight">\(L\)</span>-smooth (possibly nonconvex) setting, we can specialize
+<span id="id1">[<a class="reference internal" href="#id4" title="Hadi Abbaszadehpeivasti, Etienne de Klerk, and Moslem Zamani. Conditions for linear convergence of the gradient method for non-convex optimization. Optimization Letters, 17(5):1105–1125, 2023. doi:10.1007/s11590-023-01981-2.">AdKZ23</a>, Theorem 3]</span> by setting
+<span class="math notranslate nohighlight">\(\mu=-L\)</span>. This gives the reference rate
+<span class="math notranslate nohighlight">\(\rho_{\textup{AdKZ}}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\rho_{\textup{AdKZ}}=
+\begin{cases}
+\left(
+\dfrac{
+\mu_{\textup{gd}}(1-L\gamma)
++\sqrt{
+4L^2-2L(L+\mu_{\textup{gd}})\mu_{\textup{gd}}\gamma(2-L\gamma)
+}
+}{2L+\mu_{\textup{gd}}}
+\right)^2, &amp; 0 &lt; \gamma &lt; \dfrac{1}{L},\\[1.0em]
+1-\dfrac{\mu_{\textup{gd}}\gamma\bigl(4-(L\gamma)^2\bigr)}{2+\mu_{\textup{gd}}\gamma},
+&amp; \dfrac{1}{L} \le \gamma \le \dfrac{\sqrt{3}}{L},\\[1.0em]
+\dfrac{(L\gamma-1)^2}{(L\gamma-1)^2+\mu_{\textup{gd}}\gamma(2-L\gamma)},
+&amp; \dfrac{\sqrt{3}}{L}&lt;\gamma&lt;\dfrac{2}{L}.
+\end{cases}\end{split}\]</div>
+<p>We then sweep <span class="math notranslate nohighlight">\(\gamma \in (0,2)\)</span> with
+<span class="math notranslate nohighlight">\(\mu_{\textup{gd}}=0.5\)</span> and <span class="math notranslate nohighlight">\(L=1\)</span>.
+In the plot below, the black curve is
+<span class="math notranslate nohighlight">\(\rho_{\textup{AdKZ}}\)</span>, while the blue markers are AutoLyap
+certificates.</p>
+<p>Numerically, AutoLyap gives tighter rates for
+<span class="math notranslate nohighlight">\(\gamma \in (1.74,2)\)</span>.
+One plausible reason is that
+<span id="id2">[<a class="reference internal" href="#id4" title="Hadi Abbaszadehpeivasti, Etienne de Klerk, and Moslem Zamani. Conditions for linear convergence of the gradient method for non-convex optimization. Optimization Letters, 17(5):1105–1125, 2023. doi:10.1007/s11590-023-01981-2.">AdKZ23</a>, Theorem 3]</span> does not
+use interpolation conditions at solutions
+<span class="math notranslate nohighlight">\(x^\star \in \Argmin_{x\in \calH} f(x)\)</span> when passing from (7) to (10),
+which introduces a source of a priori conservatism.</p>
+<a class="reference internal image-reference" href="../../../_images/gradient_method_gradient_dominated_smooth_rho_vs_gamma.svg"><img alt="Gradient-method rho versus gamma for gradient-dominated smooth objectives, comparing AutoLyap and Theorem 3." class="align-center" src="../../../_images/gradient_method_gradient_dominated_smooth_rho_vs_gamma.svg" style="width: 100%;" />
+</a>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<div class="docutils container" id="id3">
+<div role="list" class="citation-list">
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>AdKZ23<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>Hadi Abbaszadehpeivasti, Etienne de Klerk, and Moslem Zamani. Conditions for linear convergence of the gradient method for non-convex optimization. <em>Optimization Letters</em>, 17(5):1105–1125, 2023. <a class="reference external" href="https://doi.org/10.1007/s11590-023-01981-2">doi:10.1007/s11590-023-01981-2</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="The gradient method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../smooth_strongly_convex/" class="btn btn-neutral float-right" title="The gradient method: Smooth and strongly convex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

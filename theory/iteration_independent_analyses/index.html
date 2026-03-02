@@ -1,0 +1,854 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>5.2. Iteration-independent analyses | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/theory/iteration_independent_analyses/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../_static/proof_toggle.js?v=3eed1268"></script><script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="5.3. Iteration-dependent analyses" href="../iteration_dependent_analyses/" />
+    <link rel="prev" title="5.1. Performance estimation via SDPs" href="../performance_estimation_via_sdps/" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/theory/iteration_independent_analyses/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/theory/iteration_independent_analyses/"/>
+<meta property="og:url" content="https://autolyap.github.io/theory/iteration_independent_analyses/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/theory/iteration_independent_analyses/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:44Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:44Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Iteration-independent theory in AutoLyap for certifying asymptotic linear and sublinear convergence rates."/>
+<meta name="keywords" content="AutoLyap iteration-independent theory, asymptotic convergence certification, linear and sublinear rates"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="5.2. Iteration-independent analyses"/>
+<meta property="og:description" content="Iteration-independent theory in AutoLyap for certifying asymptotic linear and sublinear convergence rates."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="5.2. Iteration-independent analyses"/>
+<meta name="twitter:description" content="Iteration-independent theory in AutoLyap for certifying asymptotic linear and sublinear convergence rates."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Theory"/>
+<meta property="article:tag" content="AutoLyap iteration-independent theory"/>
+<meta property="article:tag" content="asymptotic convergence certification"/>
+<meta property="article:tag" content="linear and sublinear rates"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/theory/iteration_independent_analyses/#webpage",
+  "name": "5.2. Iteration-independent analyses",
+  "headline": "5.2. Iteration-independent analyses",
+  "description": "Iteration-independent theory in AutoLyap for certifying asymptotic linear and sublinear convergence rates.",
+  "keywords": "AutoLyap iteration-independent theory, asymptotic convergence certification, linear and sublinear rates",
+  "url": "https://autolyap.github.io/theory/iteration_independent_analyses/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/theory/iteration_independent_analyses/",
+  "dateModified": "2026-03-02T19:05:44Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Theory",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "5. Lyapunov analyses",
+      "item": "https://autolyap.github.io/lyapunov_analyses/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "5.2. Iteration-independent analyses",
+      "item": "https://autolyap.github.io/theory/iteration_independent_analyses/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Theory</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../notation_and_preliminaries/">1. Notation and preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem_class/">2. Problem classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm_representation/">3. Algorithm representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation_conditions/">4. Interpolation conditions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../lyapunov_analyses/">5. Lyapunov analyses</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../performance_estimation_via_sdps/">5.1. Performance estimation via SDPs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.2. Iteration-independent analyses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iteration_dependent_analyses/">5.3. Iteration-dependent analyses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../">Theory</a></li>
+      <li class="breadcrumb-item"><a href="../lyapunov_analyses/"><span class="section-number">5. </span>Lyapunov analyses</a></li>
+    <li class="breadcrumb-item active"><span class="section-number">5.2. </span>Iteration-independent analyses</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="iteration-independent-analyses">
+<h1><span class="section-number">5.2. </span>Iteration-independent analyses<a class="headerlink" href="#iteration-independent-analyses" title="Link to this heading"></a></h1>
+<p>For iteration-independent analyses, we consider algorithms that continue to iterate
+indefinitely and have iteration-independent parameters. I.e.,
+in <a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>,
+we assume that <span class="math notranslate nohighlight">\(K=\infty\)</span> and that there exist fixed matrices</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \p{A,B,C,D}\in\reals^{n\times n}\times\reals^{n\times \NumEval}\times\reals^{\NumEval\times n}\times\reals^{\NumEval \times \NumEval}\end{aligned}\]</div>
+<p>such that</p>
+<div class="math notranslate nohighlight" id="equation-eq-constant-abcd">
+<span id="eq-constant-abcd"></span><span class="eqno">(5.24)<a class="headerlink" href="#equation-eq-constant-abcd" title="Link to this equation"></a></span>\[\begin{aligned}
+    \p{\forall k \in \naturals }\quad \p{A_{k},B_{k},C_{k},D_{k}} = \p{A,B,C,D}.\end{aligned}\]</div>
+<div class="definition docutils container">
+<p id="def-iteration-independent-lyapunov"><strong>Definition 5.2.1 (Iteration-independent quadratic Lyapunov inequality).</strong></p>
+<p>Suppose that
+<a class="reference internal" href="../algorithm_representation/#ass-well-posedness"><span class="std std-ref">Assumption 3.1 (Well-posedness)</span></a>
+and <a class="reference internal" href="#equation-eq-constant-abcd">(5.24)</a> hold. Let</p>
+<div class="math notranslate nohighlight">
+\[\bx_{0}\in\calH^{n}, \qquad
+\p{ ( \bx^{k}, \bu^{k}, \by^{k}, \bFcn^{k} ) }_{k\in\naturals},\]</div>
+<p>be an initial point and a sequence of iterates satisfying
+<a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>, and let</p>
+<div class="math notranslate nohighlight">
+\[\p{y^{\star}, \hat{\bu}^{\star}, \bFcn^{\star}}\]</div>
+<p>be a point satisfying <a class="reference internal" href="../lyapunov_analyses/#equation-eq-solution">(5.1)</a>. Also let</p>
+<div class="math notranslate nohighlight">
+\[\rho \in [0,1], \qquad h\in\naturals, \qquad \alpha\in\naturals.\]</div>
+<p>Define</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-v">
+<span id="eq-iteration-independent-lyapunov-v"></span><span class="eqno">(5.25)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-v" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \p{\forall k \in \naturals}
+        \quad
+            \mathcal{V}(W,w,k) {}={}&amp;{} \quadform{W}{\p{\bx^{k},\bu^{k},\ldots,\bu^{k+h},\hat{\bu}^{\star},y^{\star}}} \\
+            &amp; + w^{\top}\p{\bFcn^{k},\ldots,\bFcn^{k+h},\bFcn^{\star}},
+    \end{aligned}\end{split}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(\p{W,w}\in\set{\p{Q,q},\p{P,p}}\)</span>, where</p>
+<div class="math notranslate nohighlight">
+\[Q,P \in \sym^{n+\p{h+1}\NumEval+m}, \qquad
+q,p\in\mathbb{R}^{\p{h+1}\NumEvalFunc + \NumFunc},\]</div>
+<p>and define</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-r">
+<span id="eq-iteration-independent-lyapunov-r"></span><span class="eqno">(5.26)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-r" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \p{\forall k \in \naturals}
+        \quad
+            \mathcal{R}(W,w,k) {}={}&amp;{} \quadform{W}{\p{\bx^{k},\bu^{k},\ldots,\bu^{k+h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}} \\
+            &amp;{} + w^{\top}\p{\bFcn^{k},\ldots,\bFcn^{k+h + \alpha + 1},\bFcn^{\star}},
+    \end{aligned}\end{split}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(\p{W,w}\in\set{\p{S,s},\p{T,t}}\)</span>, where</p>
+<div class="math notranslate nohighlight">
+\[S,T\in\sym^{n+\p{h+\alpha+2}\NumEval+m}, \qquad
+s, t \in\mathbb{R}^{\p{h+\alpha+2}\NumEvalFunc + \NumFunc}.\]</div>
+<p>We say that <span class="math notranslate nohighlight">\(\p{Q,q,S,s}\)</span> satisfies a
+<span class="math notranslate nohighlight">\(\p{P,p,T,t,\rho, h, \alpha}\)</span>-<em>quadratic Lyapunov inequality</em>
+for algorithm
+<a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>
+over the problem class defined by
+<span class="math notranslate nohighlight">\((\mathcal{F}_i)_{i\in\IndexFunc}\)</span> and
+<span class="math notranslate nohighlight">\((\mathcal{G}_i)_{i\in\IndexOp}\)</span> if</p>
+<div class="math notranslate nohighlight" id="eq-c1">
+<span id="eq-c4"></span><span id="eq-c3"></span><span id="eq-c2"></span>\begin{align}
+\p{\forall k \in \naturals} &amp;\quad \mathcal{V}\p{Q,q,k+\alpha+1} \leq \rho \mathcal{V}\p{Q,q,k} - \mathcal{R}\p{S,s,k}, \tag{C1} \\
+\p{\forall k \in \naturals} &amp;\quad \mathcal{V}\p{Q,q,k} \geq \mathcal{V}\p{P,p,k} \geq 0, \tag{C2} \\
+\p{\forall k \in \naturals} &amp;\quad \mathcal{R}\p{S,s,k} \geq \mathcal{R}\p{T,t,k}\geq 0, \tag{C3} \\
+\p{\forall k \in \naturals} &amp;\quad \mathcal{R}\p{S,s,k+1} \leq \mathcal{R}\p{S,s,k}, \tag{C4}
+\end{align}</div><p>hold for each</p>
+<div class="math notranslate nohighlight">
+\[\bx_{0}, \qquad
+\p{ ( \bx^{k}, \bu^{k}, \by^{k}, \bFcn^{k} ) }_{k\in\naturals}, \qquad
+\p{y^{\star}, \hat{\bu}^{\star},\bFcn^{\star}},\]</div>
+<p>and for each</p>
+<div class="math notranslate nohighlight">
+\[\p{f_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc} \mathcal{F}_{i},
+\qquad
+\p{G_i}_{i\in\IndexOp} \in \prod_{i\in\IndexOp} \mathcal{G}_i,\]</div>
+<p>where <a class="reference internal" href="#eq-c4"><span class="std std-ref">(C4)</span></a> is an optional requirement that may be
+removed.</p>
+</div>
+<p>Definition 5.2.1 is a trajectory-level condition:
+<a class="reference internal" href="#eq-c1"><span class="std std-ref">(C1)</span></a>-<a class="reference internal" href="#eq-c3"><span class="std std-ref">(C3)</span></a> (and optionally
+<a class="reference internal" href="#eq-c4"><span class="std std-ref">(C4)</span></a>) must hold for all iterates and all admissible
+functions/operators in the class. This statement is not directly
+computational. In practice, the user specifies
+<span class="math notranslate nohighlight">\(\p{P,p,T,t,\rho,h,\alpha}\)</span> and searches for
+<span class="math notranslate nohighlight">\(\p{Q,q,S,s}\)</span>. The SDP sufficient condition that makes this search
+computable is given in <a class="reference internal" href="#thm-iteration-independent-lyapunov"><span class="std std-ref">Theorem 5.2.2 (Iteration-independent Lyapunov inequality via SDP)</span></a>.
+When such <span class="math notranslate nohighlight">\(\p{Q,q,S,s}\)</span> exists, the choice of
+<span class="math notranslate nohighlight">\(\p{P,p,T,t,\rho,h,\alpha}\)</span> determines the convergence guarantee.
+In particular, we obtain:</p>
+<ul>
+<li><p>Linear setting: if <span class="math notranslate nohighlight">\(\rho \in [0,1[\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+        0 \leq \mathcal{V}\p{P,p,k} \leq \mathcal{V}\p{Q,q,k} \leq \rho^{\lfloor k/\p{\alpha+1}\rfloor }\max_{i\in\llbracket0,\alpha\rrbracket}\mathcal{V}\p{Q,q,i} \xrightarrow[k\rightarrow \infty]{} 0.
+    \end{aligned}\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\((\mathcal{V}\p{P,p,k})_{k\in\naturals}\)</span> converges to zero</p>
+<div class="math notranslate nohighlight">
+\[\sqrt[\alpha + 1]{\rho}\textup{-linearly}.\]</div>
+</li>
+<li><p>Sublinear setting: if <span class="math notranslate nohighlight">\(\rho = 1\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+        \p{\forall k \in \naturals}\quad \sum_{i=0}^{k} \mathcal{R}\p{T,t,i} \leq \sum_{i=0}^{k} \mathcal{R}\p{S,s,i} \leq \sum_{j=0}^{\alpha} \mathcal{V}\p{Q,q,j},
+    \end{aligned}\]</div>
+<p>by a telescoping summation argument. In particular,</p>
+<div class="math notranslate nohighlight">
+\[(\mathcal{R}\p{T,t,k})_{k\in\naturals}\]</div>
+<p>is summable, converges to zero, and, e.g.,</p>
+<div class="math notranslate nohighlight">
+\[\min_{i\in \llbracket 0,k \rrbracket } \mathcal{R}\p{T,t,i} \in \mathcal{O}\p{1/k} \quad \textup{ as } \quad  k\to\infty.\]</div>
+<p>If the optional requirement <a class="reference internal" href="#eq-c4"><span class="std std-ref">(C4)</span></a> holds, we obtain the
+stronger last-iterate convergence result</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{R}\p{T,t,k} \in o\p{1/k} \quad \textup{ as } \quad  k\to\infty.\]</div>
+</li>
+</ul>
+<p>The user-chosen <span class="math notranslate nohighlight">\(\p{P,p,T,t}\)</span> fixes the particular Lyapunov and
+residual expressions <span class="math notranslate nohighlight">\(\mathcal{V}\p{P,p,\cdot}\)</span> and
+<span class="math notranslate nohighlight">\(\mathcal{R}\p{T,t,\cdot}\)</span> to be analyzed. For built-in choices:</p>
+<ul class="simple" id="theory-iter-independent-linear-builtins">
+<li><p>Linear convergence:
+<a class="reference internal" href="../../iteration_independent_analysis/#iter-independent-linear-helpers"><span class="std std-ref">Linear-convergence helpers</span></a>.</p></li>
+</ul>
+<ul class="simple" id="theory-iter-independent-sublinear-builtins">
+<li><p>Sublinear convergence:
+<a class="reference internal" href="../../iteration_independent_analysis/#iter-independent-sublinear-helpers"><span class="std std-ref">Sublinear-convergence helpers</span></a>.</p></li>
+</ul>
+<p>For the corresponding API entry points, use
+<a class="reference internal" href="../../iteration_independent_analysis/#autolyap.IterationIndependent.search_lyapunov" title="autolyap.IterationIndependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_lyapunov()</span></code></a> for fixed
+<span class="math notranslate nohighlight">\(\rho\)</span>, and
+<a class="reference internal" href="../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho" title="autolyap.IterationIndependent.LinearConvergence.bisection_search_rho"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bisection_search_rho()</span></code></a>
+to estimate the smallest feasible contraction factor in the
+linear-convergence setting.</p>
+<p>Role of <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(h\)</span> is a history parameter for <span class="math notranslate nohighlight">\(\mathcal{V}\)</span>
+(see <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-v">(5.25)</a>).</p>
+<div class="math notranslate nohighlight">
+\[\text{the } \mathcal{V}\text{-window length is } h+1.\]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is an overlap parameter that induces the shift
+<span class="math notranslate nohighlight">\(k \mapsto k+\alpha+1\)</span> in <a class="reference internal" href="#eq-c1"><span class="std std-ref">(C1)</span></a>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> determine the <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> window
+(see <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-r">(5.26)</a>).</p>
+<div class="math notranslate nohighlight">
+\[\text{the } \mathcal{R}\text{-window length is } h+\alpha+2.\]</div>
+</li>
+</ul>
+<p>We now state the finite-dimensional SDP condition that certifies the
+existence of such <span class="math notranslate nohighlight">\(\p{Q,q,S,s}\)</span>.</p>
+<div class="theorem docutils container">
+<p id="thm-iteration-independent-lyapunov"><strong>Theorem 5.2.2 (Iteration-independent Lyapunov inequality via SDP).</strong></p>
+<p>Suppose that
+<a class="reference internal" href="../algorithm_representation/#ass-well-posedness"><span class="std std-ref">Assumption 3.1 (Well-posedness)</span></a>, <a class="reference internal" href="../interpolation_conditions/#ass-interpolation"><span class="std std-ref">Assumption 4.1 (Interpolation conditions)</span></a>
+and <a class="reference internal" href="#equation-eq-constant-abcd">(5.24)</a> hold. Let</p>
+<div class="math notranslate nohighlight">
+\[\rho \in [0,1], \qquad h\in\naturals, \qquad \alpha\in\naturals,\]</div>
+<p>and let</p>
+<div class="math notranslate nohighlight">
+\[P \in \sym^{n+\p{h+1}\NumEval+m}, \qquad
+p\in\mathbb{R}^{\p{h+1}\NumEvalFunc + \NumFunc},\]</div>
+<p>such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+        \p{\forall k \in \naturals} \qquad \mathcal{V}\p{P,p,k} \geq 0,
+    \end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> is defined in
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-v">(5.25)</a>,
+and let</p>
+<div class="math notranslate nohighlight">
+\[T\in\sym^{n+\p{h+\alpha+2}\NumEval+m}, \qquad
+t\in\mathbb{R}^{\p{h+\alpha+2}\NumEvalFunc + \NumFunc},\]</div>
+<p>such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+        \p{\forall k \in \naturals} \qquad \mathcal{R}\p{T,t,k} \geq 0,
+    \end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> is defined in
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-r">(5.26)</a>.
+Then a sufficient condition for there to exist <span class="math notranslate nohighlight">\(\p{Q,q,S,s}\)</span>
+that satisfies a <span class="math notranslate nohighlight">\(\p{P,p,T,t,\rho, h, \alpha}\)</span>-quadratic
+Lyapunov inequality for algorithm
+<a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>
+over the problem class defined by
+<span class="math notranslate nohighlight">\(\p{\mathcal{F}_i}_{i\in\IndexFunc}\)</span> and
+<span class="math notranslate nohighlight">\(\p{\mathcal{G}_i}_{i\in\IndexOp}\)</span> (recall that
+<a class="reference internal" href="#eq-c4"><span class="std std-ref">(C4)</span></a> is optional and may be omitted) is that the
+following system of constraints, which reuses the lifted
+matrices/vectors from <a class="reference internal" href="../performance_estimation_via_sdps/"><span class="doc">5.1. Performance estimation via SDPs</span></a>, including the lifted state
+matrices <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-x-mats">(5.3)</a>, and the interpolation terms
+<a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-w-func-ineq">(5.12)</a>, <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-w-func-eq">(5.13)</a>, <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-w-op">(5.14)</a>,
+<a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-f-func-ineq">(5.15)</a>, and <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-f-func-eq">(5.16)</a>,</p>
+<div class="subequations docutils container">
+<div class="math notranslate nohighlight" id="eq-iteration-independent-lyapunov-condition-s">
+<span id="eq-iteration-independent-lyapunov-condition-s-mat"></span><span id="eq-iteration-independent-lyapunov-condition-q"></span><span id="eq-iteration-independent-lyapunov-condition-q-mat"></span><span id="eq-iteration-independent-lyapunov-condition-zero"></span><span id="eq-iteration-independent-lyapunov-condition-psd"></span><span id="eq-iteration-independent-lyapunov-condition-op"></span><span id="eq-iteration-independent-lyapunov-condition-func-eq"></span><span id="eq-iteration-independent-lyapunov-condition-func-ineq"></span><span id="eq-iteration-independent-lyapunov-condition"></span>\begin{align}
+        &amp; \textbf{for each}\ \textup{cond} \in\set{\href{#eq-c1}{\textup{C1}},\href{#eq-c2}{\textup{C2}},\href{#eq-c3}{\textup{C3}},\href{#eq-c4}{\textup{C4}}} \notag \\
+        &amp;\qquad
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}}
+        \end{array}
+        \right) \qquad \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq},\,\textup{cond}} \geq 0, \tag{5.28a}\\
+        &amp;\qquad
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-eq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}}
+        \end{array}
+        \right) \qquad
+        \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq},\,\textup{cond}} \in \reals, \tag{5.28b}\\
+        &amp;\qquad
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}}
+        \end{array}
+        \right) \qquad
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op},\,\textup{cond}} \geq 0, \tag{5.28c}\\
+        &amp;\qquad - W^{\textup{cond}}
+        + \sum_{\substack{i\in\IndexFunc \\ o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}} }}
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq},\,\textup{cond}}
+        W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{func-ineq}} \notag \\
+        &amp;\qquad \qquad + \sum_{\substack{i\in\IndexFunc  \\ o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}} }}
+        \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq},\,\textup{cond}}
+        W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{func-eq}} \notag \\
+        &amp;\qquad \qquad + \sum_{\substack{i\in\IndexOp \\ o \in \mathcal{O}^{\textup{op}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}} }}
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op},\,\textup{cond}}
+        W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{op}}
+        \succeq 0, \tag{5.28d}\\
+        &amp;\qquad
+        - w^{\textup{cond}}
+        + \sum_{\substack{i\in\IndexFunc \\ o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}} }}
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq},\,\textup{cond}}
+        F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{func-ineq}} \notag \\
+        &amp;\qquad \qquad + \sum_{\substack{i\in\IndexFunc  \\ o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}} }}
+        \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq},\,\textup{cond}}
+        F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{func-eq}}
+        = 0, \tag{5.28e}\\
+        &amp; \mathbf{end} \notag \\
+        &amp; Q \in \sym^{n+\p{h+1}\NumEval+m}, \tag{5.28f}\\
+        &amp; q \in \mathbb{R}^{\p{h+1}\NumEvalFunc + \NumFunc}, \tag{5.28g}\\
+        &amp; S \in \sym^{n+\p{h+\alpha+2}\NumEval+m}, \tag{5.28h}\\
+        &amp; s \in \reals^{\p{h+\alpha+2}\NumEvalFunc + \NumFunc}. \tag{5.28i}
+\end{align}</div></div>
+<p>is feasible for the scalars</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        &amp;\lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq},\,\textup{cond}}, \\
+        &amp;\nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq},\,\textup{cond}}, \\
+        &amp;\lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op},\,\textup{cond}},
+    \end{aligned}\end{split}\]</div>
+<p>the matrices <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(S\)</span>, and the vectors <span class="math notranslate nohighlight">\(q\)</span> and
+<span class="math notranslate nohighlight">\(s\)</span>, where</p>
+<div class="eq-align-w math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-w-c1-mat">
+<span class="eqno">(5.29)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-w-c1-mat" title="Link to this equation"></a></span>\[\begin{aligned}
+        W^{\href{#eq-c1}{\textup{C1}}} &amp;= \p{\Theta_{1}^{\href{#eq-c1}{\textup{C1}}}}^{\top}Q\Theta_{1}^{\href{#eq-c1}{\textup{C1}}} - \rho \p{\Theta_{0}^{\href{#eq-c1}{\textup{C1}}}}^{\top}Q\Theta_{0}^{\href{#eq-c1}{\textup{C1}}} + S,
+    \end{aligned}\]</div>
+<div class="eq-align-w math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-w-c1">
+<span class="eqno">(5.30)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-w-c1" title="Link to this equation"></a></span>\[\begin{aligned}
+        w^{\href{#eq-c1}{\textup{C1}}} &amp;= \p{\theta_{1}^{\href{#eq-c1}{\textup{C1}}} - \rho \theta_{0}^{\href{#eq-c1}{\textup{C1}}} }^{\top}q + s,
+    \end{aligned}\]</div>
+<div class="eq-align-w math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-w-c2-mat">
+<span class="eqno">(5.31)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-w-c2-mat" title="Link to this equation"></a></span>\[\begin{aligned}
+        W^{\href{#eq-c2}{\textup{C2}}} &amp;= P-Q,
+    \end{aligned}\]</div>
+<div class="eq-align-w math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-w-c2">
+<span class="eqno">(5.32)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-w-c2" title="Link to this equation"></a></span>\[\begin{aligned}
+        w^{\href{#eq-c2}{\textup{C2}}} &amp;= p-q,
+    \end{aligned}\]</div>
+<div class="eq-align-w math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-w-c3-mat">
+<span class="eqno">(5.33)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-w-c3-mat" title="Link to this equation"></a></span>\[\begin{aligned}
+        W^{\href{#eq-c3}{\textup{C3}}} &amp;= T - S,
+    \end{aligned}\]</div>
+<div class="eq-align-w math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-w-c3">
+<span class="eqno">(5.34)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-w-c3" title="Link to this equation"></a></span>\[\begin{aligned}
+        w^{\href{#eq-c3}{\textup{C3}}} &amp;= t - s,
+    \end{aligned}\]</div>
+<div class="eq-align-w math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-w-c4-mat">
+<span class="eqno">(5.35)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-w-c4-mat" title="Link to this equation"></a></span>\[\begin{aligned}
+        W^{\href{#eq-c4}{\textup{C4}}} &amp;= \p{\Theta_{1}^{\href{#eq-c4}{\textup{C4}}}}^{\top}S\Theta_{1}^{\href{#eq-c4}{\textup{C4}}} - \p{\Theta_{0}^{\href{#eq-c4}{\textup{C4}}}}^{\top}S\Theta_{0}^{\href{#eq-c4}{\textup{C4}}},
+    \end{aligned}\]</div>
+<div class="eq-align-w math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-w-c4">
+<span class="eqno">(5.36)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-w-c4" title="Link to this equation"></a></span>\[\begin{aligned}
+        w^{\href{#eq-c4}{\textup{C4}}} &amp;= \p{\theta_{1}^{\href{#eq-c4}{\textup{C4}}} - \theta_{0}^{\href{#eq-c4}{\textup{C4}}} }^{\top}s,
+    \end{aligned}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        \PEPMaxIter_{\textup{cond}} &amp;=
+        \begin{cases}
+            h + \alpha + 1&amp; \text{ if } \textup{cond} \in \set{\href{#eq-c1}{\textup{C1}},\href{#eq-c3}{\textup{C3}}},\\
+            h &amp; \text{ if } \textup{cond} \in \set{\href{#eq-c2}{\textup{C2}}}, \\
+            h + \alpha + 2 &amp; \text{ if } \textup{cond} \in \set{\href{#eq-c4}{\textup{C4}}},
+        \end{cases} \nonumber
+    \end{aligned}\end{split}\]</div>
+<p>and</p>
+<div class="eq-align-theta math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-theta0-c1-mat">
+<span class="eqno">(5.37)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-theta0-c1-mat" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \Theta_{0}^{\href{#eq-c1}{\textup{C1}}} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            I_{n+\p{h+1}\NumEval } &amp; 0_{\p{n+\p{h+1}\NumEval}\times\p{\alpha + 1}\NumEval } &amp; 0_{\p{n+\p{h+1}\NumEval}\times m} \\
+            0_{m \times \p{n+\p{h+1}\NumEval}} &amp; 0_{m \times\p{\alpha + 1}\NumEval } &amp; I_{m}
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{n+\p{h+1}\NumEval+m}\times\p{n+\p{h + \alpha +2}\NumEval+m}}
+        },
+    \end{aligned}\end{split}\]</div>
+<div class="eq-align-theta math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-theta0-c1">
+<span class="eqno">(5.38)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-theta0-c1" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \theta_{0}^{\href{#eq-c1}{\textup{C1}}} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            I_{\p{h+1}\NumEvalFunc} &amp; 0_{\p{h+1}\NumEvalFunc \times \p{\alpha + 1}\NumEvalFunc } &amp; 0_{\p{h+1}\NumEvalFunc \times \NumFunc } \\
+            0_{\NumFunc\times \p{h+1}\NumEvalFunc} &amp;0_{\NumFunc\times \p{\alpha + 1}\NumEvalFunc} &amp; I_{\NumFunc}
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{\p{h+1}\NumEvalFunc + \NumFunc}\times\p{\p{h+\alpha+2}\NumEvalFunc + \NumFunc}}
+        },
+    \end{aligned}\end{split}\]</div>
+<div class="eq-align-theta math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-theta1-c1-mat">
+<span class="eqno">(5.39)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-theta1-c1-mat" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \Theta_{1}^{\href{#eq-c1}{\textup{C1}}} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+          X_{\alpha + 1}^{0,h + \alpha + 1} \\
+          0_{\p{\p{h + 1}\NumEval + m} \times \p{n + \p{\alpha + 1}\NumEval } } \quad I_{\p{h + 1}\NumEval + m}
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{n+\p{h+1}\NumEval+m} \times \p{n+\p{h + \alpha +2}\NumEval+m}}
+        }
+        ,
+    \end{aligned}\end{split}\]</div>
+<div class="eq-align-theta math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-theta1-c1">
+<span class="eqno">(5.40)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-theta1-c1" title="Link to this equation"></a></span>\[\begin{aligned}
+        \theta_{1}^{\href{#eq-c1}{\textup{C1}}} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            0_{\p{\p{h+1}\NumEvalFunc + \NumFunc} \times \p{\alpha+1}\NumEvalFunc } &amp; I_{\p{h+1}\NumEvalFunc + \NumFunc }
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{\p{h+1}\NumEvalFunc + \NumFunc}\times\p{\p{h+\alpha+2}\NumEvalFunc + \NumFunc}}
+        },
+    \end{aligned}\]</div>
+<div class="eq-align-theta math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-theta0-c4-mat">
+<span class="eqno">(5.41)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-theta0-c4-mat" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \Theta_{0}^{\href{#eq-c4}{\textup{C4}}} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            I_{n+\p{h+\alpha+2}\NumEval } &amp; 0_{\p{n+\p{h+\alpha+2}\NumEval}\times \NumEval } &amp; 0_{\p{n+\p{h+\alpha+2}\NumEval}\times m} \\
+            0_{m \times \p{n+\p{h+\alpha+2}\NumEval}} &amp; 0_{m \times \NumEval } &amp; I_{m}
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{n+\p{h+\alpha+2}\NumEval+m}\times\p{n+\p{h + \alpha +3}\NumEval+m}}
+        },
+    \end{aligned}\end{split}\]</div>
+<div class="eq-align-theta math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-theta0-c4">
+<span class="eqno">(5.42)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-theta0-c4" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \theta_{0}^{\href{#eq-c4}{\textup{C4}}} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            I_{\p{h+\alpha+2}\NumEvalFunc} &amp; 0_{\p{h+\alpha+2}\NumEvalFunc \times \NumEvalFunc } &amp; 0_{\p{h+\alpha+2}\NumEvalFunc \times \NumFunc } \\
+            0_{\NumFunc\times \p{h+\alpha+2}\NumEvalFunc} &amp;0_{\NumFunc\times \NumEvalFunc} &amp; I_{\NumFunc}
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{\p{h+\alpha+2}\NumEvalFunc + \NumFunc}\times\p{\p{h+\alpha+3}\NumEvalFunc + \NumFunc}}
+        },
+    \end{aligned}\end{split}\]</div>
+<div class="eq-align-theta math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-theta1-c4-mat">
+<span class="eqno">(5.43)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-theta1-c4-mat" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        \Theta_{1}^{\href{#eq-c4}{\textup{C4}}} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+          X_{1}^{0,h + \alpha + 2} \\
+          0_{\p{\p{h + \alpha + 2}\NumEval + m} \times \p{n + \NumEval } } \quad I_{\p{h + \alpha + 2}\NumEval + m}
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{n+\p{h+\alpha+2}\NumEval+m} \times \p{n+\p{h + \alpha +3}\NumEval+m}}
+        }
+        ,
+    \end{aligned}\end{split}\]</div>
+<div class="eq-align-theta math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-theta1-c4">
+<span class="eqno">(5.44)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-theta1-c4" title="Link to this equation"></a></span>\[\begin{aligned}
+        \theta_{1}^{\href{#eq-c4}{\textup{C4}}} &amp;=
+        \underbracket{
+        \begin{bmatrix}
+            0_{\p{\p{h+\alpha+2}\NumEvalFunc + \NumFunc} \times \NumEvalFunc } &amp; I_{\p{h+\alpha+2}\NumEvalFunc + \NumFunc }
+        \end{bmatrix}
+        }_{
+        \in \reals^{\p{\p{h+\alpha+2}\NumEvalFunc + \NumFunc}\times\p{\p{h+\alpha+3}\NumEvalFunc + \NumFunc}}
+        }.
+    \end{aligned}\]</div>
+<p>Furthermore, if the interpolation conditions for
+<span class="math notranslate nohighlight">\(\p{\mathcal{F}_{i}}_{i\in\IndexFunc}\)</span> and
+<span class="math notranslate nohighlight">\(\p{\mathcal{G}_{i}}_{i\in\IndexOp}\)</span> are tight,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        &amp; \textbf{for each}\ \textup{cond} \in\set{\href{#eq-c1}{\textup{C1}},\href{#eq-c2}{\textup{C2}},\href{#eq-c3}{\textup{C3}},\href{#eq-c4}{\textup{C4}}}   \\
+        &amp; \quad \dim \calH \geq n + \p{\PEPMaxIter_{\textup{cond}}+1}\NumEval + m, \\
+        &amp; \mathbf{end}
+    \end{aligned}\end{split}\]</div>
+<p>and there exists</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        &amp; \textbf{for each}\ \textup{cond} \in\set{\href{#eq-c1}{\textup{C1}},\href{#eq-c2}{\textup{C2}},\href{#eq-c3}{\textup{C3}},\href{#eq-c4}{\textup{C4}}}   \\
+        &amp; \quad G_{\textup{cond}}\in\sym_{++}^{n + \p{\PEPMaxIter_{\textup{cond}}+1}\NumEval + m}, \\
+        &amp; \quad \bchi_{\textup{cond}}\in\reals^{\p{\PEPMaxIter_{\textup{cond}}+1}\NumEvalFunc + \NumFunc}, \\
+        &amp; \mathbf{end}
+    \end{aligned}\end{split}\]</div>
+<p>such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        &amp; \textbf{for each}\ \textup{cond} \in\set{\href{#eq-c1}{\textup{C1}},\href{#eq-c2}{\textup{C2}},\href{#eq-c3}{\textup{C3}},\href{#eq-c4}{\textup{C4}}} \\
+        &amp; \quad
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}}
+        \end{array}
+        \right) \quad
+        \begin{aligned}
+            &amp; \bm{\chi}^{\top}_{\textup{cond}} F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{func-ineq}} \\
+            &amp; + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{func-ineq}}G_{\textup{cond}}} \leq 0,
+        \end{aligned}
+        \\
+        &amp; \quad
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-eq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}}
+        \end{array}
+        \right) \quad
+        \begin{aligned}
+            &amp; \bm{\chi}^{\top}_{\textup{cond}} F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{func-eq}} \\
+            &amp; + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{func-eq}}G_{\textup{cond}}} = 0,
+        \end{aligned}
+        \\
+        &amp; \quad
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}}
+        \end{array}
+        \right) \quad
+        \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{0,\,\PEPMaxIter_{\textup{cond}},\,\textup{op}}G_{\textup{cond}}} \leq 0,
+        \\
+        &amp; \mathbf{end}
+    \end{aligned}\end{split}\]</div>
+<p>then <a class="reference internal" href="#eq-iteration-independent-lyapunov-condition"><span class="std std-ref">(5.28)</span></a> is
+also a necessary condition.</p>
+</div>
+<div class="proof docutils container">
+<p><em>Proof.</em> By induction, we only need to consider the case <span class="math notranslate nohighlight">\(k=0\)</span>
+in <a class="reference internal" href="#eq-c1"><span class="std std-ref">(C1)</span></a> to <a class="reference internal" href="#eq-c4"><span class="std std-ref">(C4)</span></a>. Additionally, note
+that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        \p{\bx^{0},\bu^{0},\ldots,\bu^{h},\hat{\bu}^{\star},y^{\star}} &amp;= \p{\Theta_{0}^{\href{#eq-c1}{\textup{C1}}} \kron \Id }\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}, \\
+        \p{\bFcn^{0},\ldots,\bFcn^{h},\bFcn^{\star}} &amp;= \theta_{0}^{\href{#eq-c1}{\textup{C1}}}\p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}}, \\
+        \p{\bx^{\alpha + 1},\bu^{\alpha + 1},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}} &amp;= \p{\Theta_{1}^{\href{#eq-c1}{\textup{C1}}} \kron \Id }\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}, \\
+        \p{\bFcn^{\alpha + 1},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}} &amp;= \theta_{1}^{\href{#eq-c1}{\textup{C1}}}\p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}}, \\
+        \p{\bx^{0},\bu^{0},\ldots,\bu^{h+\alpha + 1},\hat{\bu}^{\star},y^{\star}} &amp;= \p{\Theta_{0}^{\href{#eq-c4}{\textup{C4}}} \kron \Id }\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 2},\hat{\bu}^{\star},y^{\star}}, \\
+        \p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}} &amp;= \theta_{0}^{\href{#eq-c4}{\textup{C4}}} \p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 2},\bFcn^{\star}}, \\
+        \p{\bx^{1},\bu^{1},\ldots,\bu^{h + \alpha + 2},\hat{\bu}^{\star},y^{\star}} &amp;= \p{\Theta_{1}^{\href{#eq-c4}{\textup{C4}}} \kron \Id }\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 2},\hat{\bu}^{\star},y^{\star}}, \\
+        \p{\bFcn^{1},\ldots,\bFcn^{h + \alpha + 2},\bFcn^{\star}} &amp;= \theta_{1}^{\href{#eq-c4}{\textup{C4}}} \p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 2},\bFcn^{\star}},
+    \end{aligned}\end{split}\]</div>
+<p>where we have used
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-theta0-c1-mat">(5.37)</a>,
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-theta0-c1">(5.38)</a>,
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-theta1-c1-mat">(5.39)</a>,
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-theta1-c1">(5.40)</a>,
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-theta0-c4-mat">(5.41)</a>,
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-theta0-c4">(5.42)</a>,
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-theta1-c4-mat">(5.43)</a>, and
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-theta1-c4">(5.44)</a>, respectively.</p>
+<p>First, suppose that the parameters <span class="math notranslate nohighlight">\(\p{Q,q,S,s}\)</span> are fixed.
+Note that</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-obj-c1">
+<span id="eq-iteration-independent-lyapunov-obj-c1"></span><span class="eqno">(5.45)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-obj-c1" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        &amp;\mathcal{V}\p{Q,q,\alpha+1} - \rho \mathcal{V}\p{Q,q,0} + \mathcal{R}\p{S,s,0} \nonumber \\
+        &amp; = \quadform{Q}{\p{\bx^{\alpha + 1},\bu^{\alpha + 1},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}} + q^{\top}\p{\bFcn^{\alpha + 1},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}} \nonumber \\
+        &amp;\quad - \rho
+        \quadform{Q}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h},\hat{\bu}^{\star},y^{\star}}} - \rho q^{\top}\p{\bFcn^{0},\ldots,\bFcn^{h},\bFcn^{\star}}
+         \nonumber \\
+        &amp;\quad + \quadform{S}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}} + s^{\top}\p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}} \nonumber \\
+        &amp; = \quadform{\p{\Theta_{1}^{\href{#eq-c1}{\textup{C1}}}}^{\top}Q\Theta_{1}^{\href{#eq-c1}{\textup{C1}}} - \rho \p{\Theta_{0}^{\href{#eq-c1}{\textup{C1}}}}^{\top}Q\Theta_{0}^{\href{#eq-c1}{\textup{C1}}} + S}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}} \nonumber \\
+        &amp;\quad + \p{q^{\top}\p{\theta_{1}^{\href{#eq-c1}{\textup{C1}}} - \rho \theta_{0}^{\href{#eq-c1}{\textup{C1}}} } + s^{\top}} \p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}} \nonumber \\
+        &amp;  = \quadform{W^{\href{#eq-c1}{\textup{C1}}}}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}}
+        + \p{w^{\href{#eq-c1}{\textup{C1}}}}^{\top}\p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}} \nonumber
+    \end{aligned}\end{split}\]</div>
+<p>where <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c1-mat">(5.29)</a>
+and <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c1">(5.30)</a>
+are used in the last equality. Therefore, using
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-c1">(5.45)</a>
+as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
+<a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
+gives that <a class="reference internal" href="#eq-iteration-independent-lyapunov-condition"><span class="std std-ref">(5.28)</span></a>,
+with <span class="math notranslate nohighlight">\(\textup{cond} = \href{#eq-c1}{\textup{C1}}\)</span>, is a sufficient
+condition for <a class="reference internal" href="#eq-c1"><span class="std std-ref">(C1)</span></a>. Note that</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-obj-c2">
+<span id="eq-iteration-independent-lyapunov-obj-c2"></span><span class="eqno">(5.46)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-obj-c2" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        &amp;\mathcal{V}\p{P,p,0} - \mathcal{V}\p{Q,q,0} \notag \\
+        &amp; = \quadform{P-Q}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h},\hat{\bu}^{\star},y^{\star}}}
+        + \p{p-q}^{\top}\p{\bFcn^{0},\ldots,\bFcn^{h},\bFcn^{\star}} \notag \\
+        &amp; = \quadform{W^{\href{#eq-c2}{\textup{C2}}}}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h},\hat{\bu}^{\star},y^{\star}}}
+        + \p{w^{\href{#eq-c2}{\textup{C2}}}}^{\top}\p{\bFcn^{0},\ldots,\bFcn^{h},\bFcn^{\star}}
+    \end{aligned}\end{split}\]</div>
+<p>where <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c2-mat">(5.31)</a>
+and <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c2">(5.32)</a>
+are used in the last equality. Therefore, using the
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-c2">(5.46)</a>
+as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
+<a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
+gives that <a class="reference internal" href="#eq-iteration-independent-lyapunov-condition"><span class="std std-ref">(5.28)</span></a>,
+with <span class="math notranslate nohighlight">\(\textup{cond} = \href{#eq-c2}{\textup{C2}}\)</span>, is a sufficient
+condition for <a class="reference internal" href="#eq-c2"><span class="std std-ref">(C2)</span></a>. Note that</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-obj-c3">
+<span id="eq-iteration-independent-lyapunov-obj-c3"></span><span class="eqno">(5.47)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-obj-c3" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        &amp; \mathcal{R}\p{T,t,0} - \mathcal{R}\p{S,s,0} \notag \\
+        &amp; = \quadform{T-S}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}}
+        + \p{t-s}^{\top}\p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}} \notag \\
+        &amp; = \quadform{W^{\href{#eq-c3}{\textup{C3}}}}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}}
+        + \p{w^{\href{#eq-c3}{\textup{C3}}}}^{\top} \p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}}
+    \end{aligned}\end{split}\]</div>
+<p>where <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c3-mat">(5.33)</a>
+and <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c3">(5.34)</a>
+are used in the last equality. Therefore, using the
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-c3">(5.47)</a>
+as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
+<a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
+gives that <a class="reference internal" href="#eq-iteration-independent-lyapunov-condition"><span class="std std-ref">(5.28)</span></a>,
+with <span class="math notranslate nohighlight">\(\textup{cond} = \href{#eq-c3}{\textup{C3}}\)</span>, is a sufficient
+condition for <a class="reference internal" href="#eq-c3"><span class="std std-ref">(C3)</span></a>. Note that</p>
+<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-obj-c4">
+<span id="eq-iteration-independent-lyapunov-obj-c4"></span><span class="eqno">(5.48)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-obj-c4" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+        &amp;\mathcal{R}\p{S,s,1} - \mathcal{R}\p{S,s,0} \notag \\
+        &amp;
+        = \quadform{S}{\p{\bx^{1},\bu^{1},\ldots,\bu^{h + \alpha + 2},\hat{\bu}^{\star},y^{\star}}} + s^{\top}\p{\bFcn^{1},\ldots,\bFcn^{h + \alpha + 2},\bFcn^{\star}} \notag \\
+        &amp; \quad -
+        \quadform{S}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 1},\hat{\bu}^{\star},y^{\star}}} - s^{\top} \p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 1},\bFcn^{\star}} \notag \\
+        &amp;  = \quadform{\p{\Theta_{1}^{\href{#eq-c4}{\textup{C4}}}}^{\top}S\Theta_{1}^{\href{#eq-c4}{\textup{C4}}} - \p{\Theta_{0}^{\href{#eq-c4}{\textup{C4}}}}^{\top}S\Theta_{0}^{\href{#eq-c4}{\textup{C4}}}}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 2},\hat{\bu}^{\star},y^{\star}}} \notag \\
+        &amp; \quad + \p{s^{\top}\p{\theta_{1}^{\href{#eq-c4}{\textup{C4}}} - \theta_{0}^{\href{#eq-c4}{\textup{C4}}} } } \p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 2},\bFcn^{\star}} \nonumber \\
+        &amp;  = \quadform{W^{\href{#eq-c4}{\textup{C4}}}}{\p{\bx^{0},\bu^{0},\ldots,\bu^{h + \alpha + 2},\hat{\bu}^{\star},y^{\star}}} +  \p{w^{\href{#eq-c4}{\textup{C4}}}}^{\top} \p{\bFcn^{0},\ldots,\bFcn^{h + \alpha + 2},\bFcn^{\star}}
+    \end{aligned}\end{split}\]</div>
+<p>where <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c4-mat">(5.35)</a>
+and <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c4">(5.36)</a>
+are used in the last equality. Therefore, using the
+<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-c4">(5.48)</a>
+as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
+<a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
+gives that <a class="reference internal" href="#eq-iteration-independent-lyapunov-condition"><span class="std std-ref">(5.28)</span></a>,
+with <span class="math notranslate nohighlight">\(\textup{cond} = \href{#eq-c4}{\textup{C4}}\)</span>, is a sufficient
+condition for <a class="reference internal" href="#eq-c4"><span class="std std-ref">(C4)</span></a>.</p>
+<p>Second, note that the proof is complete if we let the parameters
+<span class="math notranslate nohighlight">\(\p{Q,q,S,s}\)</span> free, as
+in <a class="reference internal" href="#eq-iteration-independent-lyapunov-condition-q-mat"><span class="std std-ref">(5.28f)</span></a>,
+<a class="reference internal" href="#eq-iteration-independent-lyapunov-condition-q"><span class="std std-ref">(5.28g)</span></a>,
+<a class="reference internal" href="#eq-iteration-independent-lyapunov-condition-s-mat"><span class="std std-ref">(5.28h)</span></a>, and
+<a class="reference internal" href="#eq-iteration-independent-lyapunov-condition-s"><span class="std std-ref">(5.28i)</span></a>. <span class="math notranslate nohighlight">\(\square\)</span></p>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../performance_estimation_via_sdps/" class="btn btn-neutral float-left" title="5.1. Performance estimation via SDPs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../iteration_dependent_analyses/" class="btn btn-neutral float-right" title="5.3. Iteration-dependent analyses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

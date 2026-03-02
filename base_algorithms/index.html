@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Base algorithm | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/base_algorithms/" /><script src="../_static/jquery.js?v=5d32c60e"></script><script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../_static/documentation_options.js?v=c8c5a04b"></script><script src="../_static/doctools.js?v=fd6eb6e6"></script><script src="../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Concrete algorithms" href="../concrete_algorithms/" />
+    <link rel="prev" title="Algorithms" href="../algorithms/" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/base_algorithms/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/base_algorithms/"/>
+<meta property="og:url" content="https://autolyap.github.io/base_algorithms/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/base_algorithms/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:42Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:42Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Base algorithm interfaces in AutoLyap for defining iterative optimization and inclusion methods."/>
+<meta name="keywords" content="AutoLyap base algorithms, algorithm interface Python, iterative method abstraction"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="Base algorithm"/>
+<meta property="og:description" content="Base algorithm interfaces in AutoLyap for defining iterative optimization and inclusion methods."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Base algorithm"/>
+<meta name="twitter:description" content="Base algorithm interfaces in AutoLyap for defining iterative optimization and inclusion methods."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Base Algorithms"/>
+<meta property="article:tag" content="AutoLyap base algorithms"/>
+<meta property="article:tag" content="algorithm interface Python"/>
+<meta property="article:tag" content="iterative method abstraction"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/base_algorithms/#webpage",
+  "name": "Base algorithm",
+  "headline": "Base algorithm",
+  "description": "Base algorithm interfaces in AutoLyap for defining iterative optimization and inclusion methods.",
+  "keywords": "AutoLyap base algorithms, algorithm interface Python, iterative method abstraction",
+  "url": "https://autolyap.github.io/base_algorithms/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/base_algorithms/",
+  "dateModified": "2026-03-02T19:05:42Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "API reference",
+      "item": "https://autolyap.github.io/api_reference/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Algorithms",
+      "item": "https://autolyap.github.io/algorithms/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Base algorithm",
+      "item": "https://autolyap.github.io/base_algorithms/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api_reference/">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../problem_class/">Problem classes</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms/">Algorithms</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Base algorithm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autolyap.algorithms.Algorithm"><code class="docutils literal notranslate"><span class="pre">Algorithm</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../concrete_algorithms/">Concrete algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lyapunov_analyses/">Lyapunov analyses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solver_backends/">Solver backends</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../api_reference/">API reference</a></li>
+      <li class="breadcrumb-item"><a href="../algorithms/">Algorithms</a></li>
+    <li class="breadcrumb-item active">Base algorithm</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="base-algorithm">
+<h1>Base algorithm<a class="headerlink" href="#base-algorithm" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.algorithms.Algorithm">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.algorithms.</span></span><span class="sig-name descname"><span class="pre">Algorithm</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">m_bar_is</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">I_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">I_op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/algorithms/algorithm/#Algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.algorithms.Algorithm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../dev/dev_external_reference_targets/#abc.ABC" title="abc.ABC"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<p>Abstract base class (ABC) for algorithms expressed in the state-space
+representation used by AutoLyap.</p>
+<p>See <a class="reference internal" href="../theory/algorithm_representation/"><span class="doc">3. Algorithm representation</span></a>
+for notation and representation conventions.</p>
+<p><strong>Note</strong></p>
+<ul class="simple">
+<li><p>For a given method, the state-space representation is not unique.</p></li>
+<li><p>Concrete subclasses must implement <a class="reference internal" href="#autolyap.algorithms.Algorithm.get_ABCD" title="autolyap.algorithms.Algorithm.get_ABCD"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_ABCD()</span></code></a>; all other methods are implemented by this base class.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.algorithms.Algorithm.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">m_bar_is</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">I_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">I_op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/autolyap/algorithms/algorithm/#Algorithm.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.algorithms.Algorithm.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize an <a class="reference internal" href="#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a> with the
+structural parameters of the representation.</p>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>n</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): the state dimension, i.e., <span class="math notranslate nohighlight">\(\bx^{k} \in \calH^{n}\)</span>.</p></li>
+<li><p><cite>m</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): the number of components <span class="math notranslate nohighlight">\(m\)</span> in the inclusion problem.</p></li>
+<li><p><cite>m_bar_is</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.List" title="typing.List"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]): the list <span class="math notranslate nohighlight">\((\bar{m}_i)_{i=1}^{m}\)</span> of evaluation counts per component,
+with <span class="math notranslate nohighlight">\(\bar{m}_i \in \mathbb{N}\)</span> for each <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p><cite>I_func</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.List" title="typing.List"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]): the index set <span class="math notranslate nohighlight">\(\IndexFunc\)</span> for functional components.</p></li>
+<li><p><cite>I_op</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.List" title="typing.List"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]): the index set <span class="math notranslate nohighlight">\(\IndexOp\)</span> for operator components.</p></li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: if <span class="math notranslate nohighlight">\(n &lt; 1\)</span>, <span class="math notranslate nohighlight">\(m &lt; 1\)</span>, <span class="math notranslate nohighlight">\(m \neq \text{len}(m\_bar\_is)\)</span>,
+if any <span class="math notranslate nohighlight">\(\bar{m}_i \le 0\)</span>,
+<span class="math notranslate nohighlight">\(\IndexFunc\)</span> and <span class="math notranslate nohighlight">\(\IndexOp\)</span> are not disjoint, do not cover
+<span class="math notranslate nohighlight">\(\llbracket 1, m\rrbracket\)</span>, or are not strictly increasing sequences.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.algorithms.Algorithm.get_ABCD">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_ABCD</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/autolyap/algorithms/algorithm/#Algorithm.get_ABCD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.algorithms.Algorithm.get_ABCD" title="Link to this definition"></a></dt>
+<dd><p>See <a class="reference internal" href="../theory/algorithm_representation/"><span class="doc">3. Algorithm representation</span></a> for notation and representation
+conventions.</p>
+<p>Return the system matrices <span class="math notranslate nohighlight">\((A_k, B_k, C_k, D_k)\)</span> at iteration <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>k</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): iteration index <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><p>(<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]): A tuple
+<span class="math notranslate nohighlight">\((A_k, B_k, C_k, D_k)\)</span> of numpy arrays with</p>
+<div class="math notranslate nohighlight">
+\[A_k \in \mathbb{R}^{n \times n}, \quad
+B_k \in \mathbb{R}^{n \times \bar{m}}, \quad
+C_k \in \mathbb{R}^{\bar{m} \times n}, \quad
+D_k \in \mathbb{R}^{\bar{m} \times \bar{m}}.\]</div>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../algorithms/" class="btn btn-neutral float-left" title="Algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../concrete_algorithms/" class="btn btn-neutral float-right" title="Concrete algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

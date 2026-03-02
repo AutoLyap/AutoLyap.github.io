@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Internal problem-class modules | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/dev/dev_internal_problemclass/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Internal utility modules" href="../dev_internal_utils/" />
+    <link rel="prev" title="Internal algorithm modules" href="../dev_internal_algorithms/" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/dev/dev_internal_problemclass/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/dev/dev_internal_problemclass/"/>
+<meta property="og:url" content="https://autolyap.github.io/dev/dev_internal_problemclass/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/dev/dev_internal_problemclass/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:43Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:43Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="This page documents problem-class implementation helpers used by contributors."/>
+<meta name="keywords" content="AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis, AutoLyap Internal problem-class modules, AutoLyap dev dev internal problemclass"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="Internal problem-class modules"/>
+<meta property="og:description" content="This page documents problem-class implementation helpers used by contributors."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Internal problem-class modules"/>
+<meta name="twitter:description" content="This page documents problem-class implementation helpers used by contributors."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Dev"/>
+<meta property="article:tag" content="AutoLyap"/>
+<meta property="article:tag" content="Lyapunov analysis Python"/>
+<meta property="article:tag" content="first-order optimization"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/dev/dev_internal_problemclass/#webpage",
+  "name": "Internal problem-class modules",
+  "headline": "Internal problem-class modules",
+  "description": "This page documents problem-class implementation helpers used by contributors.",
+  "keywords": "AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis, AutoLyap Internal problem-class modules, AutoLyap dev dev internal problemclass",
+  "url": "https://autolyap.github.io/dev/dev_internal_problemclass/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/dev/dev_internal_problemclass/",
+  "dateModified": "2026-03-02T19:05:43Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contributing",
+      "item": "https://autolyap.github.io/contributing/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Developer reference",
+      "item": "https://autolyap.github.io/dev_reference/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Internal problem-class modules",
+      "item": "https://autolyap.github.io/dev/dev_internal_problemclass/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../contributing/">Contributing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/getting_started/">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/development_workflow/">Development workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../contributing/pull_request_process/">Pull request process</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../dev_reference/">Developer reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../dev_reference/#start-here">Start here</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../dev_reference/#documentation-map">Documentation map</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../dev_reference/#public-docs-stable-api">Public docs (stable API)</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../dev_reference/#internal-docs-implementation-details">Internal docs (implementation details)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dev_reference/#architecture-at-a-glance">Architecture at a glance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev_reference/#common-extension-tasks">Common extension tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev_reference/#invariants-and-common-pitfalls">Invariants and common pitfalls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../../contributing/">Contributing</a></li>
+      <li class="breadcrumb-item"><a href="../dev_reference/">Developer reference</a></li>
+    <li class="breadcrumb-item active">Internal problem-class modules</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="internal-problem-class-modules">
+<h1>Internal problem-class modules<a class="headerlink" href="#internal-problem-class-modules" title="Link to this heading"></a></h1>
+<p>This page documents problem-class implementation helpers used by contributors.</p>
+<p>Public condition class docs are in <a class="reference internal" href="../../problem_class/"><span class="doc">Problem classes</span></a>.</p>
+<section id="module-map">
+<h2>Module map<a class="headerlink" href="#module-map" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Module</p></th>
+<th class="head"><p>Responsibility</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-autolyap.problemclass" title="autolyap.problemclass"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.problemclass</span></code></a></p></td>
+<td><p>Package-level exports for the problem-class subsystem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-autolyap.problemclass.indices" title="autolyap.problemclass.indices"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.problemclass.indices</span></code></a></p></td>
+<td><p>Parses and stores interpolation index constraints.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-autolyap.problemclass.base" title="autolyap.problemclass.base"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.problemclass.base</span></code></a></p></td>
+<td><p>Abstract interfaces for operator and function interpolation conditions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-autolyap.problemclass.functions" title="autolyap.problemclass.functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.problemclass.functions</span></code></a></p></td>
+<td><p>Concrete function interpolation conditions and parameter checks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#module-autolyap.problemclass.operators" title="autolyap.problemclass.operators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.problemclass.operators</span></code></a></p></td>
+<td><p>Concrete operator interpolation conditions and parameter checks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#module-autolyap.problemclass.inclusion_problem" title="autolyap.problemclass.inclusion_problem"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.problemclass.inclusion_problem</span></code></a></p></td>
+<td><p>Container that aggregates interpolation conditions into one problem definition.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-autolyap.problemclass">
+<span id="module-docstrings"></span><h2>Module docstrings<a class="headerlink" href="#module-autolyap.problemclass" title="Link to this heading"></a></h2>
+<p id="module-autolyap.problemclass.base">Abstract interpolation-condition interfaces.</p>
+<p id="module-autolyap.problemclass.functions">Concrete function interpolation-condition classes.</p>
+<p id="module-autolyap.problemclass.operators">Concrete operator interpolation-condition classes.</p>
+<p id="module-autolyap.problemclass.inclusion_problem">Inclusion-problem container and validation logic.</p>
+</section>
+<section id="key-internal-inclusion-problem-method">
+<h2>Key internal inclusion-problem method<a class="headerlink" href="#key-internal-inclusion-problem-method" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.problemclass.inclusion_problem.InclusionProblem._get_component_data">
+<span class="sig-prename descclassname"><span class="pre">InclusionProblem.</span></span><span class="sig-name descname"><span class="pre">_get_component_data</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><span class="pre">_InterpolationIndices</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#bool" title="bool"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><span class="pre">_InterpolationIndices</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/inclusion_problem/#InclusionProblem._get_component_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.inclusion_problem.InclusionProblem._get_component_data" title="Link to this definition"></a></dt>
+<dd><p>Return the raw interpolation data for a component.</p>
+<p>Tuple conventions follow the class-level reference in
+<a class="reference internal" href="../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a>.</p>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>index</cite> (<a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): The component index (1-indexed).</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul class="simple">
+<li><p>(<a class="reference internal" href="../dev_external_reference_targets/#typing.List" title="typing.List"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>], <a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev_external_reference_targets/#bool" title="bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>]]]):
+A list of tuples containing the interpolation data. For operator conditions, each tuple is
+<cite>(matrix, interpolation_indices)</cite>; for function conditions, each tuple is
+<cite>(matrix, vector, eq, interpolation_indices)</cite>.</p></li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If the index is not defined.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-autolyap.problemclass.indices">
+<span id="internal-condition-and-index-types"></span><h2>Internal condition and index types<a class="headerlink" href="#module-autolyap.problemclass.indices" title="Link to this heading"></a></h2>
+<p>Interpolation index helpers for problem classes.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.problemclass.indices._InterpolationIndices">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.indices.</span></span><span class="sig-name descname"><span class="pre">_InterpolationIndices</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/problemclass/indices/#_InterpolationIndices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.indices._InterpolationIndices" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wrapper for interpolation indices that enforces allowed values.</p>
+<section id="class-level-reference">
+<h3>Class-level reference<a class="headerlink" href="#class-level-reference" title="Link to this heading"></a></h3>
+<p>This class-level docstring centralizes the allowed symbolic labels used to
+index interpolation pairs in problem classes.</p>
+<p><strong>Allowed values</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r1&lt;r2</span></code>: unordered pairs of distinct interpolation entries <span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(r_2\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r1!=r2</span></code>: ordered pairs of distinct interpolation entries <span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(r_2\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r1</span></code>: single-entry interpolation constraints (index <span class="math notranslate nohighlight">\(r_1\)</span>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r1!=star</span></code>: pairs between any interpolation entry <span class="math notranslate nohighlight">\(r_1\)</span> and the distinguished star entry.</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>value</cite> (<a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>): The interpolation index string.</p></li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If <cite>value</cite> is not in the allowed set.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.problemclass.base._InterpolationCondition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.base.</span></span><span class="sig-name descname"><span class="pre">_InterpolationCondition</span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/base/#_InterpolationCondition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.base._InterpolationCondition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../dev_external_reference_targets/#abc.ABC" title="abc.ABC"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<p>Abstract base class for an interpolation condition.</p>
+<section id="class-level-reference">
+<h3>Class-level reference<a class="headerlink" href="#class-level-reference" title="Link to this heading"></a></h3>
+<p>This class-level docstring centralizes the data contract implemented by
+interpolation-condition subclasses.</p>
+<p>Derived classes must implement <a class="reference internal" href="#autolyap.problemclass.base._InterpolationCondition.get_data" title="autolyap.problemclass.base._InterpolationCondition.get_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_data()</span></code></a>, which returns interpolation data as a list
+of tuples encoding the relevant vectors, matrices, and interpolation indices.
+See <a class="reference internal" href="#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_OperatorInterpolationCondition</span></code></a> and
+<a class="reference internal" href="#autolyap.problemclass.base._FunctionInterpolationCondition" title="autolyap.problemclass.base._FunctionInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_FunctionInterpolationCondition</span></code></a> for
+the detailed notation and the corresponding interpolation constraints.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.problemclass.base._InterpolationCondition.get_data">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><span class="pre">_InterpolationIndices</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#bool" title="bool"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><span class="pre">_InterpolationIndices</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/base/#_InterpolationCondition.get_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.base._InterpolationCondition.get_data" title="Link to this definition"></a></dt>
+<dd><p>Return interpolation data.</p>
+<p>Shared tuple conventions follow the class-level reference in
+<a class="reference internal" href="#autolyap.problemclass.base._InterpolationCondition" title="autolyap.problemclass.base._InterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationCondition</span></code></a>.</p>
+<p><strong>Returns</strong></p>
+<ul class="simple">
+<li><p>(<a class="reference internal" href="../dev_external_reference_targets/#typing.List" title="typing.List"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>], <a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev_external_reference_targets/#bool" title="bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>]]]):
+A list of tuples representing the interpolation data.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.problemclass.base._OperatorInterpolationCondition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.base.</span></span><span class="sig-name descname"><span class="pre">_OperatorInterpolationCondition</span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/base/#_OperatorInterpolationCondition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.base._OperatorInterpolationCondition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autolyap.problemclass.base._InterpolationCondition" title="autolyap.problemclass.base._InterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationCondition</span></code></a></p>
+<p>Base class for operator interpolation conditions.</p>
+<section id="class-level-reference">
+<h3>Class-level reference<a class="headerlink" href="#class-level-reference" title="Link to this heading"></a></h3>
+<p>This class-level docstring centralizes notation and tuple conventions for
+operator interpolation constraints.</p>
+<p>Return a list of tuples of the form:</p>
+<p><cite>(matrix, interpolation_indices)</cite></p>
+<p>where:</p>
+<ul class="simple">
+<li><p><strong>matrix</strong> is a square, symmetric 2D numpy array.</p></li>
+<li><p><strong>interpolation_indices</strong> is an instance of <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>.</p></li>
+</ul>
+<p>The returned <strong>matrix</strong> corresponds to the quadratic term
+<span class="math notranslate nohighlight">\(M_{(i,o)}^{\textup{op}}\)</span>, where <span class="math notranslate nohighlight">\(i \in \IndexOp\)</span> indexes the operator component
+and <span class="math notranslate nohighlight">\(o\)</span> selects one of its interpolation constraints. These enter inequalities of the form</p>
+<div class="math notranslate nohighlight">
+\[\langle z, (M_{(i,o)}^{\textup{op}} \kron \Id) z \rangle \le 0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(z\)</span> stacks the relevant <span class="math notranslate nohighlight">\(y_{i,j}^{k}\)</span> and <span class="math notranslate nohighlight">\(u_{i,j}^{k}\)</span> entries selected
+by the interpolation indices. Concretely, if the indices select pairs
+<span class="math notranslate nohighlight">\((j_1,k_1),\ldots,(j_b,k_b)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[z = (y_{i,j_1}^{k_1},\ldots,y_{i,j_b}^{k_b},u_{i,j_1}^{k_1},\ldots,u_{i,j_b}^{k_b}).\]</div>
+<p>For operator components, <span class="math notranslate nohighlight">\(u_{i,j}^{k} \in G_i(y_{i,j}^{k})\)</span>.
+No linear term appears for operator conditions.</p>
+<p>For any matrix <span class="math notranslate nohighlight">\(M \in \mathbb{R}^{d \times b}\)</span>, the tensor product
+<span class="math notranslate nohighlight">\(M \kron \Id\)</span> denotes the linear map <span class="math notranslate nohighlight">\(\calH^{b} \to \calH^{d}\)</span> defined by</p>
+<div class="math notranslate nohighlight">
+\[(M \kron \Id)z = \Big(\sum_{\ell=1}^{b}[M]_{1,\ell} z_\ell,\ldots,\sum_{\ell=1}^{b}[M]_{d,\ell} z_\ell\Big),\]</div>
+<p>for <span class="math notranslate nohighlight">\(z = (z_1,\ldots,z_b) \in \calH^{b}\)</span>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.problemclass.base._OperatorInterpolationCondition.get_data">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><span class="pre">_InterpolationIndices</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/base/#_OperatorInterpolationCondition.get_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.base._OperatorInterpolationCondition.get_data" title="Link to this definition"></a></dt>
+<dd><p>Return operator interpolation data.</p>
+<p>The tuple format and notation follow the class-level reference in
+<a class="reference internal" href="#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_OperatorInterpolationCondition</span></code></a>.</p>
+<p><strong>Returns</strong></p>
+<ul class="simple">
+<li><p>(<a class="reference internal" href="../dev_external_reference_targets/#typing.List" title="typing.List"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>]]): A list of tuples, each containing a square
+symmetric matrix and an instance of <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.problemclass.base._FunctionInterpolationCondition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.base.</span></span><span class="sig-name descname"><span class="pre">_FunctionInterpolationCondition</span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/base/#_FunctionInterpolationCondition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.base._FunctionInterpolationCondition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autolyap.problemclass.base._InterpolationCondition" title="autolyap.problemclass.base._InterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationCondition</span></code></a></p>
+<p>Base class for function interpolation conditions.</p>
+<section id="class-level-reference">
+<h3>Class-level reference<a class="headerlink" href="#class-level-reference" title="Link to this heading"></a></h3>
+<p>This class-level docstring centralizes notation and tuple conventions for
+function interpolation constraints.</p>
+<p>Return a list of tuples of the form:</p>
+<p><cite>(matrix, vector, eq, interpolation_indices)</cite></p>
+<p>where:</p>
+<ul class="simple">
+<li><p><strong>matrix</strong> is a square, symmetric 2D numpy array.</p></li>
+<li><p><strong>vector</strong> is a 1D numpy array.</p></li>
+<li><p><strong>eq</strong> is a boolean flag (True for equality, False for inequality).</p></li>
+<li><p><strong>interpolation_indices</strong> is an instance of <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>.</p></li>
+<li><p><strong>matrix</strong> has shape <span class="math notranslate nohighlight">\((2b, 2b)\)</span> where <span class="math notranslate nohighlight">\(b\)</span> is the length of <strong>vector</strong>.</p></li>
+</ul>
+<p>The returned <strong>vector</strong> corresponds to the linear term
+<span class="math notranslate nohighlight">\(a_{(i,o)}^{\textup{func-ineq}}\)</span> or <span class="math notranslate nohighlight">\(a_{(i,o)}^{\textup{func-eq}}\)</span>, where
+<span class="math notranslate nohighlight">\(i \in \IndexFunc\)</span> indexes the functional component and <span class="math notranslate nohighlight">\(o\)</span> selects one of its
+interpolation constraints, in function values,
+and the <strong>matrix</strong> corresponds to the quadratic term
+<span class="math notranslate nohighlight">\(M_{(i,o)}^{\textup{func-ineq}}\)</span> or <span class="math notranslate nohighlight">\(M_{(i,o)}^{\textup{func-eq}}\)</span> in constraints of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\big(a_{(i,o)}^{\textup{func-ineq}}\big)^{\top}\begin{bmatrix}
+    F_{i,j_1}^{k_1} \\
+    \vdots \\
+    F_{i,j_b}^{k_b}
+\end{bmatrix}
++ \langle z, (M_{(i,o)}^{\textup{func-ineq}} \kron \Id) z \rangle \le 0,\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\big(a_{(i,o)}^{\textup{func-eq}}\big)^{\top}\begin{bmatrix}
+    F_{i,j_1}^{k_1} \\
+    \vdots \\
+    F_{i,j_b}^{k_b}
+\end{bmatrix}
++ \langle z, (M_{(i,o)}^{\textup{func-eq}} \kron \Id) z \rangle = 0.\end{split}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(z\)</span> stacks the corresponding <span class="math notranslate nohighlight">\(y_{i,j_\ell}^{k_\ell}\)</span> and <span class="math notranslate nohighlight">\(u_{i,j_\ell}^{k_\ell}\)</span>
+terms. Concretely, if the indices select pairs <span class="math notranslate nohighlight">\((j_1,k_1),\ldots,(j_b,k_b)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[z = (y_{i,j_1}^{k_1},\ldots,y_{i,j_b}^{k_b},u_{i,j_1}^{k_1},\ldots,u_{i,j_b}^{k_b}).\]</div>
+<p>For functional components, <span class="math notranslate nohighlight">\(u_{i,j}^{k} \in \partial f_i(y_{i,j}^{k})\)</span>, and
+<span class="math notranslate nohighlight">\(F_{i,j}^{k} = f_i(y_{i,j}^{k})\)</span>. The flag <strong>eq</strong> selects equality vs. inequality.</p>
+<p>For any matrix <span class="math notranslate nohighlight">\(M \in \mathbb{R}^{d \times b}\)</span>, the tensor product
+<span class="math notranslate nohighlight">\(M \kron \Id\)</span> denotes the linear map <span class="math notranslate nohighlight">\(\calH^{b} \to \calH^{d}\)</span> defined by</p>
+<div class="math notranslate nohighlight">
+\[(M \kron \Id)z = \Big(\sum_{\ell=1}^{b}[M]_{1,\ell} z_\ell,\ldots,\sum_{\ell=1}^{b}[M]_{d,\ell} z_\ell\Big),\]</div>
+<p>for <span class="math notranslate nohighlight">\(z = (z_1,\ldots,z_b) \in \calH^{b}\)</span>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.problemclass.base._FunctionInterpolationCondition.get_data">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#bool" title="bool"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><span class="pre">_InterpolationIndices</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/base/#_FunctionInterpolationCondition.get_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.base._FunctionInterpolationCondition.get_data" title="Link to this definition"></a></dt>
+<dd><p>Return function interpolation data.</p>
+<p>The tuple format and notation follow the class-level reference in
+<a class="reference internal" href="#autolyap.problemclass.base._FunctionInterpolationCondition" title="autolyap.problemclass.base._FunctionInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_FunctionInterpolationCondition</span></code></a>.</p>
+<p><strong>Returns</strong></p>
+<ul class="simple">
+<li><p>(<a class="reference internal" href="../dev_external_reference_targets/#typing.List" title="typing.List"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev_external_reference_targets/#bool" title="bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>]]): A list of tuples, each
+containing a square symmetric matrix, a 1D vector, a boolean flag, and an instance of
+<a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.functions.</span></span><span class="sig-name descname"><span class="pre">_ParametrizedFunctionInterpolationCondition</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="reference internal" href="../../_modules/autolyap/problemclass/functions/#_ParametrizedFunctionInterpolationCondition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autolyap.problemclass.base._FunctionInterpolationCondition" title="autolyap.problemclass.base._FunctionInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_FunctionInterpolationCondition</span></code></a></p>
+<p>Base class for function interpolation conditions parameterized by <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(L\)</span>.</p>
+<section id="class-level-reference">
+<h3>Class-level reference<a class="headerlink" href="#class-level-reference" title="Link to this heading"></a></h3>
+<p>This class-level docstring centralizes notation for the shared
+<span class="math notranslate nohighlight">\((\mu, L)\)</span> interpolation family used by its concrete subclasses.</p>
+<p>Provides a helper to compute interpolation data from <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(L\)</span>.
+This base class supports both smooth and nonsmooth conditions by setting <span class="math notranslate nohighlight">\(L\)</span> appropriately.</p>
+<p>This template applies to <span class="math notranslate nohighlight">\(f: \calH \to \mathbb{R} \cup \{\pm\infty\}\)</span> with
+parameters satisfying <span class="math notranslate nohighlight">\(-\infty &lt; \mu &lt; L \le +\infty\)</span> and <span class="math notranslate nohighlight">\(L &gt; 0\)</span>
+(nonsmooth cases are encoded by <span class="math notranslate nohighlight">\(L = +\infty\)</span>).</p>
+<ul>
+<li><p>Interpolation inequality:</p>
+<p>For any <span class="math notranslate nohighlight">\(x_{r_1}, x_{r_2} \in \calH\)</span> with
+<span class="math notranslate nohighlight">\(g_{r_1} \in \partial f(x_{r_1})\)</span>, <span class="math notranslate nohighlight">\(g_{r_2} \in \partial f(x_{r_2})\)</span>,
+and <span class="math notranslate nohighlight">\(F_{r_1} = f(x_{r_1})\)</span>, <span class="math notranslate nohighlight">\(F_{r_2} = f(x_{r_2})\)</span>, the condition enforced is</p>
+<div class="math notranslate nohighlight">
+\[F_{r_1} \ge F_{r_2} + \langle g_{r_2}, x_{r_1} - x_{r_2} \rangle + \frac{\mu}{2}\|x_{r_1} - x_{r_2}\|^2
++ \frac{1}{2(L-\mu)}\|g_{r_1} - g_{r_2} - \mu(x_{r_1} - x_{r_2})\|^2,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\frac{1}{2(L-\mu)}\)</span> is interpreted as <span class="math notranslate nohighlight">\(0\)</span> when <span class="math notranslate nohighlight">\(L = +\infty\)</span>.</p>
+</li>
+<li><p>Matrix/vector form used in <a class="reference internal" href="../../theory/interpolation_conditions/"><span class="doc">Interpolation conditions</span></a>:</p>
+<p>With <span class="math notranslate nohighlight">\(F = (F_{r_1}, F_{r_2})\)</span> and
+<span class="math notranslate nohighlight">\(z = (x_{r_1}, x_{r_2}, g_{r_1}, g_{r_2})\)</span>, the interpolation inequality is encoded as</p>
+<div class="math notranslate nohighlight">
+\[a^\top F + \mathcal{Q}\p{M, z} \le 0, \qquad a = (-1, 1),\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M =
+\begin{cases}
+  \frac{1}{2(L-\mu)}
+  \begin{bmatrix}
+    L\mu &amp; -L\mu &amp; -\mu &amp; L \\
+    -L\mu &amp; L\mu &amp; \mu &amp; -L \\
+    -\mu &amp; \mu &amp; 1 &amp; -1 \\
+    L &amp; -L &amp; -1 &amp; 1
+  \end{bmatrix}, &amp; \text{if } L &lt; +\infty, \\
+  \frac{1}{2}
+  \begin{bmatrix}
+    \mu &amp; -\mu &amp; 0 &amp; 1 \\
+    -\mu &amp; \mu &amp; 0 &amp; -1 \\
+    0 &amp; 0 &amp; 0 &amp; 0 \\
+    1 &amp; -1 &amp; 0 &amp; 0
+  \end{bmatrix}, &amp; \text{if } L = +\infty.
+\end{cases}\end{split}\]</div>
+<p>The returned interpolation indices are <code class="docutils literal notranslate"><span class="pre">r1!=r2</span></code>.
+The <cite>eq</cite> flag returned by <a class="reference internal" href="#autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition.get_data" title="autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition.get_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_data()</span></code></a> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</li>
+</ul>
+<p>Note: Many classes below are specializations obtained by choosing <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(L\)</span>
+(e.g., weakly convex uses <span class="math notranslate nohighlight">\(\mu = -\tilde{\mu}\)</span> with <span class="math notranslate nohighlight">\(L=+\infty\)</span>; smooth uses
+<span class="math notranslate nohighlight">\(\mu = -L\)</span>).</p>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>mu</cite> (<a class="reference internal" href="../dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]): The convexity parameter corresponding to <span class="math notranslate nohighlight">\(\mu\)</span>.
+For strongly convex functions, <span class="math notranslate nohighlight">\(\mu &gt; 0\)</span>; for convex functions, <span class="math notranslate nohighlight">\(\mu = 0\)</span>; for weakly convex
+functions, <span class="math notranslate nohighlight">\(\mu &lt; 0\)</span>.</p></li>
+<li><p><cite>L</cite> (<a class="reference internal" href="../dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]): The smoothness parameter corresponding to <span class="math notranslate nohighlight">\(L\)</span>.
+For nonsmooth functions, <span class="math notranslate nohighlight">\(L\)</span> is set to infinity.</p></li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If <cite>mu</cite> is not a number, if <span class="math notranslate nohighlight">\(L \le 0\)</span> with <span class="math notranslate nohighlight">\(L &lt; +\infty\)</span>,
+or if <span class="math notranslate nohighlight">\(\mu \geq L\)</span>.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev_external_reference_targets/#typing.List" title="typing.List"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev_external_reference_targets/#bool" title="bool"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><span class="pre">_InterpolationIndices</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/functions/#_ParametrizedFunctionInterpolationCondition.get_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition.get_data" title="Link to this definition"></a></dt>
+<dd><p>Return interpolation data for the function condition.</p>
+<p>The tuple format and notation follow the class-level reference in
+<a class="reference internal" href="#autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition" title="autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_ParametrizedFunctionInterpolationCondition</span></code></a>.</p>
+<p><strong>Returns</strong></p>
+<ul class="simple">
+<li><p>(<a class="reference internal" href="../dev_external_reference_targets/#typing.List" title="typing.List"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev_external_reference_targets/#bool" title="bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference internal" href="#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>]]): A list containing one
+tuple with the matrix, vector, eq flag, and interpolation indices.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="internal-parameter-validation-helpers">
+<h2>Internal parameter-validation helpers<a class="headerlink" href="#internal-parameter-validation-helpers" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.problemclass.functions._ensure_positive_finite">
+<span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.functions.</span></span><span class="sig-name descname"><span class="pre">_ensure_positive_finite</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">error_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/functions/#_ensure_positive_finite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.functions._ensure_positive_finite" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>value</cite> as float after enforcing strict positivity and finiteness.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.problemclass.functions._ensure_positive_mu_tilde">
+<span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.functions.</span></span><span class="sig-name descname"><span class="pre">_ensure_positive_mu_tilde</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">mu_tilde</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">context_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/functions/#_ensure_positive_mu_tilde"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.functions._ensure_positive_mu_tilde" title="Link to this definition"></a></dt>
+<dd><p>Validate <span class="math notranslate nohighlight">\(\tilde{\mu} &gt; 0\)</span> and return both <span class="math notranslate nohighlight">\((\tilde{\mu}, -\tilde{\mu})\)</span>.</p>
+<p>Many weakly-convex templates are written with <span class="math notranslate nohighlight">\(\mu=-\tilde{\mu}\)</span>.
+This helper keeps that conversion explicit and centralized.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.problemclass.operators._ensure_positive_finite">
+<span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.operators.</span></span><span class="sig-name descname"><span class="pre">_ensure_positive_finite</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">error_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/operators/#_ensure_positive_finite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.operators._ensure_positive_finite" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>value</cite> as float after enforcing strict positivity and finiteness.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="autolyap.problemclass.operators._ensure_finite">
+<span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.operators.</span></span><span class="sig-name descname"><span class="pre">_ensure_finite</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">error_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../../_modules/autolyap/problemclass/operators/#_ensure_finite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.operators._ensure_finite" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>value</cite> as float after enforcing finiteness.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../dev_internal_algorithms/" class="btn btn-neutral float-left" title="Internal algorithm modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../dev_internal_utils/" class="btn btn-neutral float-right" title="Internal utility modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

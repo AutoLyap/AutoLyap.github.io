@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Pull request process | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/contributing/pull_request_process/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/copybutton.js?v=36830154"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
+  <script defer="defer" src="../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Developer reference" href="../../dev/dev_reference/" />
+    <link rel="prev" title="Development workflow" href="../development_workflow/" />
+ 
+<link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/contributing/pull_request_process/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/contributing/pull_request_process/"/>
+<meta property="og:url" content="https://autolyap.github.io/contributing/pull_request_process/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/contributing/pull_request_process/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:42Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:42Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Open a PR from your fork branch to AutoLyap/AutoLyap:main."/>
+<meta name="keywords" content="AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis, AutoLyap Pull request process, AutoLyap contributing pull request process"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="Pull request process"/>
+<meta property="og:description" content="Open a PR from your fork branch to AutoLyap/AutoLyap:main."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Pull request process"/>
+<meta name="twitter:description" content="Open a PR from your fork branch to AutoLyap/AutoLyap:main."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Contributing"/>
+<meta property="article:tag" content="AutoLyap"/>
+<meta property="article:tag" content="Lyapunov analysis Python"/>
+<meta property="article:tag" content="first-order optimization"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/contributing/pull_request_process/#webpage",
+  "name": "Pull request process",
+  "headline": "Pull request process",
+  "description": "Open a PR from your fork branch to AutoLyap/AutoLyap:main.",
+  "keywords": "AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis, AutoLyap Pull request process, AutoLyap contributing pull request process",
+  "url": "https://autolyap.github.io/contributing/pull_request_process/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/contributing/pull_request_process/",
+  "dateModified": "2026-03-02T19:05:42Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contributing",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Pull request process",
+      "item": "https://autolyap.github.io/contributing/pull_request_process/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Contributing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_workflow/">Development workflow</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pull request process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#open-a-pull-request">Open a pull request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pull-request-checklist">Pull request checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/dev_reference/">Developer reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../">Contributing</a></li>
+    <li class="breadcrumb-item active">Pull request process</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pull-request-process">
+<h1>Pull request process<a class="headerlink" href="#pull-request-process" title="Link to this heading"></a></h1>
+<section id="open-a-pull-request">
+<h2>Open a pull request<a class="headerlink" href="#open-a-pull-request" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Push your branch to your fork:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>&lt;feature-branch&gt;
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Open a PR from your fork branch to <code class="docutils literal notranslate"><span class="pre">AutoLyap/AutoLyap:main</span></code>.</p></li>
+</ol>
+</section>
+<section id="pull-request-checklist">
+<h2>Pull request checklist<a class="headerlink" href="#pull-request-checklist" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>[ ] Code changes are scoped and readable.</p></li>
+<li><p>[ ] CI-equivalent local checks pass.</p></li>
+<li><p>[ ] New behavior is covered by tests when applicable.</p></li>
+<li><p>[ ] Docs are updated when API or behavior changed.</p></li>
+<li><p>[ ] Docs build locally (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-C</span> <span class="pre">docs</span> <span class="pre">dirhtml</span></code>) if docs were changed.</p></li>
+<li><p>[ ] No generated files from <code class="docutils literal notranslate"><span class="pre">docs/build/</span></code> are committed.</p></li>
+<li><p>[ ] PR description states what changed and why.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../development_workflow/" class="btn btn-neutral float-left" title="Development workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../dev/dev_reference/" class="btn btn-neutral float-right" title="Developer reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

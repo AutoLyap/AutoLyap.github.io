@@ -1,0 +1,884 @@
+/* Prevent FOIT without changing typography choices from the RTD theme. */
+@font-face {
+  font-family: "Lato";
+  src: url("css/fonts/lato-normal.woff2") format("woff2"),
+       url("css/fonts/lato-normal.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("css/fonts/lato-bold.woff2") format("woff2"),
+       url("css/fonts/lato-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("css/fonts/lato-bold-italic.woff2") format("woff2"),
+       url("css/fonts/lato-bold-italic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("css/fonts/lato-normal-italic.woff2") format("woff2"),
+       url("css/fonts/lato-normal-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("css/fonts/Roboto-Slab-Regular.woff2") format("woff2"),
+       url("css/fonts/Roboto-Slab-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("css/fonts/Roboto-Slab-Bold.woff2") format("woff2"),
+       url("css/fonts/Roboto-Slab-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Black-and-white professional palette */
+:root {
+  --nord-bg: #ffffff;
+  --nord-surface: #ffffff;
+  --nord-sidebar: #ffffff;
+  --nord-sidebar-strong: #ffffff;
+  --nord-text: #111111;
+  --nord-muted: #666666;
+  --nord-accent: #000000;
+  --nord-accent-soft: #f5f7fa;
+  --nord-border: #e2e6ea;
+  --nord-code-bg: #f7f7f7;
+  --nord-code-text: #111111;
+  --nord-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --link-color: #5fa8e8;
+  --link-hover: #3f8fd3;
+}
+
+body.wy-body-for-nav {
+  background: var(--nord-bg);
+  color: var(--nord-text);
+  font-family: "Lato", "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  line-height: 1.58;
+}
+
+.wy-nav-side {
+  background: var(--nord-sidebar);
+  border-right: 1px solid var(--nord-border);
+}
+
+.wy-side-nav-search {
+  background: var(--nord-sidebar-strong) !important;
+  color: var(--nord-text);
+}
+
+.wy-side-nav-search > a,
+.wy-side-nav-search > a:visited {
+  color: var(--nord-text);
+  font-weight: 600;
+}
+
+.wy-side-nav-search input[type="text"] {
+  border-radius: 4px;
+  border: 1px solid var(--nord-border);
+  background: #ffffff;
+  color: var(--nord-text);
+}
+
+.wy-side-nav-search input[type="text"]::placeholder {
+  color: #777777;
+}
+
+.wy-side-nav-search input[type="text"]:focus {
+  border-color: var(--link-color);
+  box-shadow: 0 0 0 2px rgba(95, 168, 232, 0.2);
+}
+
+.wy-menu-vertical a {
+  color: var(--nord-text);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.wy-menu-vertical a:hover {
+  background: #f7f9fb;
+  color: #0f1f2f;
+}
+
+.wy-menu-vertical li.current > a,
+.wy-menu-vertical li.toctree-l1.current > a {
+  background: var(--nord-accent-soft);
+  color: var(--nord-text);
+  border-left: 2px solid var(--link-color);
+  font-weight: 600;
+}
+
+.wy-nav-content-wrap {
+  background: transparent;
+}
+
+.wy-nav-content {
+  background: var(--nord-surface);
+  border: 1px solid var(--nord-border);
+  border-radius: 2px;
+  box-shadow: var(--nord-shadow);
+}
+
+body.autolyap-full-width .wy-nav-content {
+  max-width: none;
+  margin: 0;
+}
+
+.wy-breadcrumbs,
+.wy-breadcrumbs a {
+  color: var(--nord-muted);
+  font-size: 0.88rem;
+}
+
+.wy-breadcrumbs li.autolyap-breadcrumb-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.wy-breadcrumbs .autolyap-width-toggle {
+  appearance: none;
+  border: 1px solid var(--nord-border);
+  border-radius: 3px;
+  background: #ffffff;
+  color: var(--nord-muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  padding: 0.16rem 0.5rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.wy-breadcrumbs .autolyap-width-toggle:hover {
+  background: #f7f9fb;
+  border-color: #cfd6dd;
+  color: #0f1f2f;
+}
+
+.wy-breadcrumbs .autolyap-width-toggle:focus-visible {
+  outline: 2px solid rgba(95, 168, 232, 0.35);
+  outline-offset: 1px;
+}
+
+/* Keep breadcrumb separators between items, but remove the leading slash. */
+.wy-breadcrumbs .breadcrumb-item:first-child:before {
+  content: none;
+  padding: 0;
+}
+
+.wy-nav-top {
+  background: #ffffff;
+  border-bottom: 1px solid var(--nord-border);
+}
+
+.wy-nav-top a {
+  color: var(--nord-text);
+}
+
+.wy-nav-top i {
+  color: var(--nord-text);
+}
+
+.rst-content {
+  color: var(--nord-text);
+  font-size: 16px;
+}
+
+.rst-content h1,
+.rst-content h2,
+.rst-content h3,
+.rst-content h4,
+.rst-content h5,
+.rst-content h6 {
+  color: #0f1f2f;
+  font-family: "Lato", "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.003em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.rst-content a,
+a.reference {
+  color: var(--link-color);
+  text-decoration-color: rgba(95, 168, 232, 0.55);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.rst-content a:hover,
+a.reference:hover {
+  color: var(--link-hover);
+}
+
+/* Render reST lower-roman lists as (i), (ii), ... to match source notation. */
+.rst-content ol.lowerroman {
+  list-style: none !important;
+  counter-reset: lowerroman-item;
+  margin-left: 1.7rem;
+  padding-left: 0;
+}
+
+.rst-content ol.lowerroman > li {
+  list-style: none !important;
+  counter-increment: lowerroman-item;
+  position: relative;
+}
+
+.rst-content ol.lowerroman > li::marker {
+  content: "";
+}
+
+.rst-content ol.lowerroman > li::before {
+  content: "(" counter(lowerroman-item, lower-roman) ") ";
+  position: absolute;
+  left: -1.7rem;
+}
+
+/* In "Interpolation conditions", render lower-alpha lists as (a), (b), ... */
+.rst-content section#interpolation-conditions ol.loweralpha {
+  list-style: none !important;
+  counter-reset: loweralpha-item;
+  margin-left: 1.7rem;
+  padding-left: 0;
+}
+
+.rst-content section#interpolation-conditions ol.loweralpha > li {
+  list-style: none !important;
+  counter-increment: loweralpha-item;
+  position: relative;
+}
+
+.rst-content section#interpolation-conditions ol.loweralpha > li::marker {
+  content: "";
+}
+
+.rst-content section#interpolation-conditions ol.loweralpha > li::before {
+  content: "(" counter(loweralpha-item, lower-alpha) ") ";
+  position: absolute;
+  left: -1.7rem;
+}
+
+/* Theory landing page: keep numbered titles but remove list bullets. */
+.rst-content section#theory > .toctree-wrapper > ul,
+.rst-content section#theory > .toctree-wrapper > ul ul {
+  list-style: none;
+}
+
+.rst-content section#theory > .toctree-wrapper > ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.rst-content section#theory > .toctree-wrapper > ul ul {
+  margin-left: 0;
+  padding-left: 1.4rem;
+}
+
+.rst-content section#theory > .toctree-wrapper li::marker {
+  content: "";
+}
+
+.rst-content code.literal,
+.rst-content tt.literal {
+  background: var(--nord-code-bg);
+  color: var(--nord-code-text);
+  border: 1px solid var(--nord-border);
+  border-radius: 2px;
+  padding: 0.08em 0.28em;
+  font-size: 0.92em;
+}
+
+.rst-content div[class^="highlight"],
+.rst-content pre.literal-block {
+  background: var(--nord-code-bg);
+  border: 1px solid var(--nord-border);
+  border-radius: 3px;
+}
+
+.copyable-code-block {
+  position: relative;
+}
+
+.copyable-code-block > pre {
+  margin-top: 0;
+  padding-top: 2rem;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  border: 1px solid var(--nord-border);
+  background: #ffffff;
+  color: var(--nord-muted);
+  border-radius: 3px;
+  font-size: 0.72rem;
+  line-height: 1;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+.copy-code-button:hover {
+  color: var(--nord-text);
+  border-color: #c2ccd6;
+}
+
+.copy-code-button:focus-visible {
+  outline: 2px solid rgba(95, 168, 232, 0.45);
+  outline-offset: 1px;
+}
+
+.copy-code-button.copied {
+  color: #2f80be;
+  border-color: #a7cae7;
+}
+
+.rst-content table.docutils,
+.rst-content table.docutils th,
+.rst-content table.docutils td {
+  border-color: var(--nord-border);
+}
+
+.rst-content table.docutils thead th {
+  background: #f7f9fb;
+  color: var(--nord-text);
+  font-weight: 700;
+}
+
+.rst-content table.docutils td,
+.rst-content table.docutils th {
+  padding: 0.48rem 0.6rem;
+}
+
+.rst-content blockquote {
+  border-left: 2px solid #d5dce3;
+  background: #fafbfd;
+  color: #44515e;
+}
+
+.rst-content .admonition,
+.rst-content .note,
+.rst-content .warning,
+.rst-content .tip {
+  border-radius: 3px;
+  border-width: 1px;
+}
+
+/* Render custom theorem-like containers as light-gray callout boxes. */
+.rst-content .assumption.docutils.container,
+.rst-content .definition.docutils.container,
+.rst-content .theorem.docutils.container,
+.rst-content .proof.docutils.container {
+  background: #f7f7f7;
+  border: 1px solid var(--nord-border);
+  border-radius: 3px;
+  padding: 0.75rem 0.9rem;
+  margin: 1rem 0;
+}
+
+.rst-content .assumption.docutils.container > :first-child,
+.rst-content .definition.docutils.container > :first-child,
+.rst-content .theorem.docutils.container > :first-child,
+.rst-content .proof.docutils.container > :first-child {
+  margin-top: 0;
+}
+
+.rst-content .assumption.docutils.container > :last-child,
+.rst-content .definition.docutils.container > :last-child,
+.rst-content .theorem.docutils.container > :last-child,
+.rst-content .proof.docutils.container > :last-child {
+  margin-bottom: 0;
+}
+
+.rst-content .proof.docutils.container .proof-toggle-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.rst-content .proof.docutils.container .proof-toggle-title {
+  margin: 0;
+  font-style: italic;
+}
+
+.rst-content .proof.docutils.container .proof-toggle-button {
+  border: 1px solid var(--nord-border);
+  background: #ffffff;
+  color: var(--nord-muted);
+  border-radius: 3px;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0.3rem 0.55rem;
+  cursor: pointer;
+}
+
+.rst-content .proof.docutils.container .proof-toggle-button:hover {
+  color: var(--nord-text);
+  border-color: #c2ccd6;
+}
+
+.rst-content .proof.docutils.container .proof-toggle-button:focus-visible {
+  outline: 2px solid rgba(95, 168, 232, 0.45);
+  outline-offset: 1px;
+}
+
+.rst-content .proof.docutils.container .proof-content[hidden] {
+  display: none !important;
+}
+
+.rst-content .proof.docutils.container .proof-content {
+  margin-top: 0.6rem;
+}
+
+/* Right-flush end-of-proof square while keeping it in the final paragraph line. */
+.rst-content .proof.docutils.container > p:last-child > .math:last-child,
+.rst-content .proof.docutils.container .proof-content > p:last-child > .math:last-child {
+  float: right;
+  margin-left: 0.35rem;
+}
+
+.rst-content .proof.docutils.container > p:last-child::after,
+.rst-content .proof.docutils.container .proof-content > p:last-child::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* "Notation and preliminaries": number definition boxes as Definition 1.1, 1.2, ... */
+.rst-content section#notation-and-preliminaries {
+  counter-reset: notation-definition;
+}
+
+.rst-content section#notation-and-preliminaries .definition.docutils.container {
+  counter-increment: notation-definition;
+}
+
+.rst-content section#notation-and-preliminaries .definition.docutils.container::before {
+  content: "Definition 1." counter(notation-definition) ".";
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+/* Reduce padding/margins on cross-reference code to keep generic types compact. */
+code.xref.py,
+a code.xref.py {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
+
+code.xref.py .pre {
+  padding: 0;
+  margin: 0;
+}
+
+/* Align bibliography text to one common start column (theme-compatible override). */
+html.writer-html5 .rst-content div.citation-list > div.citation {
+  display: grid;
+  grid-template-columns: 8ch minmax(0, 1fr);
+  column-gap: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+html.writer-html5 .rst-content div.citation-list > div.citation > span.label {
+  grid-column: 1;
+  justify-self: start;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--link-color);
+}
+
+html.writer-html5 .rst-content div.citation-list > div.citation > span.backrefs {
+  display: none;
+}
+
+html.writer-html5 .rst-content div.citation-list > div.citation > p {
+  grid-column: 2;
+  margin: 0;
+}
+
+/* Keep equation numbers on the right side, centered vertically in the block. */
+.rst-content div.math {
+  position: relative;
+  padding-right: 5.5rem;
+}
+
+.rst-content div.math > span.eqno {
+  float: none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+/* C1-C4 use MathJax \tag in an align block; let tag placement use full width. */
+.rst-content #eq-c1 {
+  padding-right: 1.25rem;
+}
+
+/* Center split identity blocks; JS additionally aligns '=' across their lines. */
+.rst-content div.math.eq-align-w,
+.rst-content div.math.eq-align-pep,
+.rst-content div.math.eq-align-dep-w,
+.rst-content div.math.eq-align-dep-theta,
+.rst-content div.math.eq-align-theta,
+.rst-content div.math.eq-align-equals-group {
+  text-align: center;
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+.rst-content div.math.eq-align-w mjx-container[display="true"],
+.rst-content div.math.eq-align-pep mjx-container[display="true"],
+.rst-content div.math.eq-align-dep-w mjx-container[display="true"],
+.rst-content div.math.eq-align-dep-theta mjx-container[display="true"],
+.rst-content div.math.eq-align-theta mjx-container[display="true"],
+.rst-content div.math.eq-align-equals-group mjx-container[display="true"] {
+  display: inline-block;
+  text-align: left !important;
+  margin: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  vertical-align: middle;
+}
+
+/* Match MathJax custom tags (e.g., C1-C4, PEP) to the regular equation-number font. */
+mjx-container[display="true"] mjx-mtd.mjx-label,
+mjx-container[display="true"] mjx-tag,
+mjx-container[display="true"] .mjx-tag {
+  font-family: "Lato", "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+.rst-content #eq-c1 mjx-container[display="true"] mjx-mtd.mjx-label *,
+.rst-content #eq-c1 mjx-container[display="true"] mjx-tag * {
+  font-family: "Lato", "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+.rst-content mjx-tag.plain-math-tag {
+  font-family: "Lato", "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 0.95rem !important;
+  line-height: 1 !important;
+}
+
+.rst-content mjx-tag.plain-math-tag .plain-math-tag-link,
+.rst-content mjx-tag.plain-math-tag .plain-math-tag-link:hover,
+.rst-content mjx-tag.plain-math-tag .plain-math-tag-link:visited {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.rst-content mjx-container .plain-math-inline-link,
+.rst-content mjx-container .plain-math-inline-link:hover,
+.rst-content mjx-container .plain-math-inline-link:visited {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Keep custom MathJax tag links styled like regular equation numbers. */
+.rst-content #eq-c1 mjx-container a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Custom equation tags rendered in the same right-aligned slot as standard numbers. */
+.rst-content #equation-eq-c1 > span.eqno,
+.rst-content #equation-eq-c2 > span.eqno,
+.rst-content #equation-eq-c3 > span.eqno,
+.rst-content #equation-eq-c4 > span.eqno,
+.rst-content #equation-eq-pep > span.eqno,
+.rst-content #equation-eq-dpep > span.eqno {
+  font-size: 0;
+}
+
+.rst-content #equation-eq-c1 > span.eqno::before {
+  content: "(C1)";
+  font-size: 0.95rem;
+}
+
+.rst-content #equation-eq-c2 > span.eqno::before {
+  content: "(C2)";
+  font-size: 0.95rem;
+}
+
+.rst-content #equation-eq-c3 > span.eqno::before {
+  content: "(C3)";
+  font-size: 0.95rem;
+}
+
+.rst-content #equation-eq-c4 > span.eqno::before {
+  content: "(C4)";
+  font-size: 0.95rem;
+}
+
+.rst-content #equation-eq-pep > span.eqno::before {
+  content: "(PEP)";
+  font-size: 0.95rem;
+}
+
+.rst-content #equation-eq-dpep > span.eqno::before {
+  content: "(D-PEP)";
+  font-size: 0.95rem;
+}
+
+.rst-content #equation-eq-c1 > span.eqno > a.headerlink,
+.rst-content #equation-eq-c2 > span.eqno > a.headerlink,
+.rst-content #equation-eq-c3 > span.eqno > a.headerlink,
+.rst-content #equation-eq-c4 > span.eqno > a.headerlink,
+.rst-content #equation-eq-pep > span.eqno > a.headerlink,
+.rst-content #equation-eq-dpep > span.eqno > a.headerlink {
+  display: none;
+}
+
+.wy-side-nav-search .sidebar-version {
+  margin-top: 0.35rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.76rem;
+  color: var(--nord-muted);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+@media (max-width: 768px) {
+  /* Mobile-first content spacing and readability tuning (desktop unchanged). */
+  .wy-nav-content {
+    padding: 1.1rem 0.95rem;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .wy-breadcrumbs {
+    margin-bottom: 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  .rst-content {
+    font-size: 15.5px;
+    line-height: 1.62;
+    overflow-wrap: anywhere;
+  }
+
+  .rst-content h1 {
+    font-size: 1.86rem;
+    line-height: 1.2;
+  }
+
+  .rst-content h2 {
+    font-size: 1.48rem;
+    line-height: 1.25;
+  }
+
+  .rst-content h3 {
+    font-size: 1.22rem;
+    line-height: 1.3;
+  }
+
+  .rst-content p,
+  .rst-content li {
+    line-height: 1.62;
+  }
+
+  .wy-menu-vertical a {
+    padding-top: 0.48rem;
+    padding-bottom: 0.48rem;
+  }
+
+  .rst-content div[class^="highlight"],
+  .rst-content pre.literal-block,
+  .rst-content .wy-table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .copyable-code-block > pre {
+    padding-top: 2.15rem;
+  }
+
+  .copy-code-button {
+    top: 0.35rem;
+    right: 0.35rem;
+    min-height: 28px;
+    min-width: 28px;
+    padding: 0.34rem 0.52rem;
+  }
+
+  .rst-content table.docutils td,
+  .rst-content table.docutils th {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .rst-content .admonition,
+  .rst-content .note,
+  .rst-content .warning,
+  .rst-content .tip {
+    padding: 0.65rem 0.7rem;
+  }
+
+  html.writer-html5 .rst-content div.citation-list > div.citation {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.18rem;
+  }
+
+  html.writer-html5 .rst-content div.citation-list > div.citation > span.label,
+  html.writer-html5 .rst-content div.citation-list > div.citation > p {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .wy-nav-content {
+    padding: 1rem 0.75rem;
+  }
+
+  .rst-content h1 {
+    font-size: 1.66rem;
+  }
+
+  .rst-content h2 {
+    font-size: 1.34rem;
+  }
+
+  .rst-content h3 {
+    font-size: 1.14rem;
+  }
+
+  .copy-code-button {
+    font-size: 0.68rem;
+    padding: 0.32rem 0.48rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .wy-nav-content {
+    padding: 0.9rem 0.62rem;
+  }
+
+  .wy-breadcrumbs {
+    margin-bottom: 0.45rem;
+    font-size: 0.78rem;
+  }
+
+  .rst-content {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .rst-content h1 {
+    font-size: 1.52rem;
+  }
+
+  .rst-content h2 {
+    font-size: 1.24rem;
+  }
+
+  .rst-content h3 {
+    font-size: 1.08rem;
+  }
+
+  .wy-menu-vertical a {
+    font-size: 0.89rem;
+    padding-top: 0.44rem;
+    padding-bottom: 0.44rem;
+  }
+
+  .wy-side-nav-search input[type="text"] {
+    font-size: 16px;
+  }
+
+  .rst-content code.literal,
+  .rst-content tt.literal {
+    font-size: 0.88em;
+    padding: 0.06em 0.22em;
+  }
+
+  .rst-content table.docutils td,
+  .rst-content table.docutils th {
+    padding: 0.34rem 0.42rem;
+  }
+
+  .copyable-code-block > pre {
+    padding-top: 2.05rem;
+  }
+
+  .copy-code-button {
+    top: 0.28rem;
+    right: 0.28rem;
+    min-height: 26px;
+    min-width: 26px;
+    font-size: 0.64rem;
+    padding: 0.28rem 0.42rem;
+  }
+}
+
+@media (max-width: 900px) and (max-height: 560px) and (orientation: landscape) {
+  .wy-nav-top {
+    padding-top: 0.28rem;
+    padding-bottom: 0.28rem;
+  }
+
+  .wy-nav-content {
+    padding: 0.82rem 0.95rem;
+  }
+
+  .wy-side-nav-search {
+    padding-top: 0.45rem;
+    padding-bottom: 0.35rem;
+  }
+
+  .wy-side-nav-search .sidebar-version {
+    margin-bottom: 0.42rem;
+  }
+
+  .wy-menu-vertical a {
+    padding-top: 0.36rem;
+    padding-bottom: 0.36rem;
+  }
+
+  .rst-content h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+
+  .rst-content h2 {
+    font-size: 1.26rem;
+  }
+
+  .rst-content div[class^="highlight"],
+  .rst-content pre.literal-block {
+    max-height: 50vh;
+  }
+}

@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>The Malitsky–Tam forward-reflected-backward method | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/examples/malitsky_tam_frb/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/copybutton.js?v=36830154"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../_static/perf.js?v=c85d9623"></script><script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="The optimized gradient method" href="../optimized_gradient/" />
+    <link rel="prev" title="The information-theoretic exact method" href="../information_theoretic_exact_method/" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/examples/malitsky_tam_frb/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/examples/malitsky_tam_frb/"/>
+<meta property="og:url" content="https://autolyap.github.io/examples/malitsky_tam_frb/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/examples/malitsky_tam_frb/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:43Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:43Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Malitsky--Tam forward-reflected-backward example in AutoLyap with computer-assisted linear-rate certification."/>
+<meta name="keywords" content="Malitsky Tam FRB AutoLyap, forward reflected backward analysis, linear-rate rho certificate"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="The Malitsky–Tam forward-reflected-backward method"/>
+<meta property="og:description" content="Malitsky--Tam forward-reflected-backward example in AutoLyap with computer-assisted linear-rate certification."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="The Malitsky–Tam forward-reflected-backward method"/>
+<meta name="twitter:description" content="Malitsky--Tam forward-reflected-backward example in AutoLyap with computer-assisted linear-rate certification."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Examples"/>
+<meta property="article:tag" content="Malitsky Tam FRB AutoLyap"/>
+<meta property="article:tag" content="forward reflected backward analysis"/>
+<meta property="article:tag" content="linear-rate rho certificate"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/examples/malitsky_tam_frb/#webpage",
+  "name": "The Malitsky\u2013Tam forward-reflected-backward method",
+  "headline": "The Malitsky\u2013Tam forward-reflected-backward method",
+  "description": "Malitsky--Tam forward-reflected-backward example in AutoLyap with computer-assisted linear-rate certification.",
+  "keywords": "Malitsky Tam FRB AutoLyap, forward reflected backward analysis, linear-rate rho certificate",
+  "url": "https://autolyap.github.io/examples/malitsky_tam_frb/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/examples/malitsky_tam_frb/",
+  "dateModified": "2026-03-02T19:05:43Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Examples",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Malitsky\u2013Tam forward-reflected-backward method",
+      "item": "https://autolyap.github.io/examples/malitsky_tam_frb/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/">Theory</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../define_your_own_algorithm/">Define your own algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nesterov_fast_gradient/">Nesterov’s fast gradient method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accelerated_proximal_point/">The accelerated proximal point method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chambolle_pock/">The Chambolle–Pock method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../davis_yin_three_operator/">The Davis–Yin three-operator splitting method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../douglas_rachford/">The Douglas–Rachford method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_method/">The gradient method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nesterov_momentum/">The gradient method with constant Nesterov momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../heavy_ball/">The heavy-ball method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../information_theoretic_exact_method/">The information-theoretic exact method</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The Malitsky–Tam forward-reflected-backward method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#problem-setup">Problem setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-the-problem-in-autolyap-and-search-for-the-smallest-rho">Model the problem in AutoLyap and search for the smallest rho</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-iteration-independent-analysis">Run the iteration-independent analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../optimized_gradient/">The optimized gradient method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proximal_point/">The proximal point method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../">Examples</a></li>
+    <li class="breadcrumb-item active">The Malitsky–Tam forward-reflected-backward method</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-malitsky-tam-forward-reflected-backward-method">
+<h1>The Malitsky–Tam forward-reflected-backward method<a class="headerlink" href="#the-malitsky-tam-forward-reflected-backward-method" title="Link to this heading"></a></h1>
+<section id="problem-setup">
+<h2>Problem setup<a class="headerlink" href="#problem-setup" title="Link to this heading"></a></h2>
+<p>Consider the monotone inclusion</p>
+<div class="math notranslate nohighlight">
+\[\text{find } x \in \calH \text{ such that } 0 \in G_1(x) + G_2(x),\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(G_1 : \calH \to \calH\)</span> is monotone and
+<span class="math notranslate nohighlight">\(L\)</span>-Lipschitz continuous, with <span class="math notranslate nohighlight">\(L&gt;0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(G_2 : \calH \rightrightarrows \calH\)</span> is <span class="math notranslate nohighlight">\(\mu\)</span>-strongly monotone
+and maximally monotone, with <span class="math notranslate nohighlight">\(\mu&gt;0\)</span>.</p></li>
+</ul>
+<p>For an initial pair <span class="math notranslate nohighlight">\((x^{-1},x^0)\in\calH^2\)</span> and step size
+<span class="math notranslate nohighlight">\(\gamma \in \reals_{++}\)</span>, the Malitsky–Tam forward-reflected-backward method
+<span id="id1">[<a class="reference internal" href="#id125" title="Yura Malitsky and Matthew K. Tam. A forward-backward splitting method for monotone inclusions without cocoercivity. SIAM Journal on Optimization, 30(2):1451–1472, January 2020. doi:10.1137/18m1207260.">MT20</a>]</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[(\forall k \in \naturals)\quad
+x^{k+1} = J_{\gamma G_2}\!\left(x^k - 2\gamma G_1(x^k) + \gamma G_1(x^{k-1})\right).\]</div>
+<p>In this example, we fix <span class="math notranslate nohighlight">\(\mu=1\)</span>, <span class="math notranslate nohighlight">\(L=1\)</span>, sweep
+<span class="math notranslate nohighlight">\(\gamma \in (0,1]\)</span>, and search for the smallest contraction factor
+<span class="math notranslate nohighlight">\(\rho\in[0,1)\)</span> provable using AutoLyap such that</p>
+<div class="math notranslate nohighlight">
+\[\|x^k - x^\star\|^2 = O(\rho^k) \quad \textup{ as } \quad k\to\infty,\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[x^\star \in \zer(G_1 + G_2).\]</div>
+</section>
+<section id="model-the-problem-in-autolyap-and-search-for-the-smallest-rho">
+<h2>Model the problem in AutoLyap and search for the smallest rho<a class="headerlink" href="#model-the-problem-in-autolyap-and-search-for-the-smallest-rho" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(G_1\)</span> is modeled as an intersection of
+<a class="reference internal" href="../../operator_classes/#autolyap.problemclass.MaximallyMonotone" title="autolyap.problemclass.MaximallyMonotone"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaximallyMonotone</span></code></a> and
+<a class="reference internal" href="../../operator_classes/#autolyap.problemclass.LipschitzOperator" title="autolyap.problemclass.LipschitzOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LipschitzOperator</span></code></a>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(G_2\)</span> is modeled by
+<a class="reference internal" href="../../operator_classes/#autolyap.problemclass.StronglyMonotone" title="autolyap.problemclass.StronglyMonotone"><code class="xref py py-class docutils literal notranslate"><span class="pre">StronglyMonotone</span></code></a>.</p></li>
+<li><p>The full inclusion is built with
+<a class="reference internal" href="../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a>.</p></li>
+<li><p>The update rule is represented by
+<a class="reference internal" href="../../concrete_algorithms/#autolyap.algorithms.MalitskyTamFRB" title="autolyap.algorithms.MalitskyTamFRB"><code class="xref py py-class docutils literal notranslate"><span class="pre">MalitskyTamFRB</span></code></a>.</p></li>
+<li><p>Distance-to-solution parameters are obtained with
+<a class="reference internal" href="../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.get_parameters_distance_to_solution" title="autolyap.IterationIndependent.LinearConvergence.get_parameters_distance_to_solution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationIndependent.LinearConvergence.get_parameters_distance_to_solution</span></code></a>.</p></li>
+<li><p>The contraction factor is searched with
+<a class="reference internal" href="../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho" title="autolyap.IterationIndependent.LinearConvergence.bisection_search_rho"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationIndependent.LinearConvergence.bisection_search_rho</span></code></a>.</p></li>
+</ul>
+</section>
+<section id="run-the-iteration-independent-analysis">
+<h2>Run the iteration-independent analysis<a class="headerlink" href="#run-the-iteration-independent-analysis" title="Link to this heading"></a></h2>
+<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate"><span class="pre">backend=&quot;mosek_fusion&quot;</span></code>).
+Install the optional MOSEK dependency first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;autolyap[mosek]&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">autolyap</span><span class="w"> </span><span class="kn">import</span> <span class="n">IterationIndependent</span><span class="p">,</span> <span class="n">SolverOptions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">MalitskyTamFRB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">InclusionProblem</span><span class="p">,</span>
+    <span class="n">LipschitzOperator</span><span class="p">,</span>
+    <span class="n">MaximallyMonotone</span><span class="p">,</span>
+    <span class="n">StronglyMonotone</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">InclusionProblem</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="n">MaximallyMonotone</span><span class="p">(),</span> <span class="n">LipschitzOperator</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">)],</span>  <span class="c1"># G1</span>
+        <span class="n">StronglyMonotone</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">),</span>  <span class="c1"># G2</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">algorithm</span> <span class="o">=</span> <span class="n">MalitskyTamFRB</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+<span class="n">solver_options</span> <span class="o">=</span> <span class="n">SolverOptions</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span><span class="p">)</span>
+<span class="c1"># License-free option:</span>
+<span class="c1"># solver_options = SolverOptions(backend=&quot;cvxpy&quot;, cvxpy_solver=&quot;CLARABEL&quot;)</span>
+
+<span class="n">P</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">IterationIndependent</span><span class="o">.</span><span class="n">LinearConvergence</span><span class="o">.</span><span class="n">get_parameters_distance_to_solution</span><span class="p">(</span>
+    <span class="n">algorithm</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">IterationIndependent</span><span class="o">.</span><span class="n">LinearConvergence</span><span class="o">.</span><span class="n">bisection_search_rho</span><span class="p">(</span>
+    <span class="n">problem</span><span class="p">,</span>
+    <span class="n">algorithm</span><span class="p">,</span>
+    <span class="n">P</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">,</span>
+    <span class="n">S_equals_T</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">s_equals_t</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">remove_C3</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">solver_options</span><span class="o">=</span><span class="n">solver_options</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No feasible Lyapunov certificate in the requested rho interval.&quot;</span><span class="p">)</span>
+
+<span class="n">rho_autolyap</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">gamma</span> <span class="o">&lt;</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">L</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Theorem 2.9 rate expression requires 0 &lt; gamma &lt; 1/(2L).&quot;</span><span class="p">)</span>
+
+<span class="n">epsilon</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">L</span><span class="p">,</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">-</span> <span class="mf">0.75</span> <span class="o">*</span> <span class="n">epsilon</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">epsilon</span><span class="p">)</span>
+<span class="n">rho_theory</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">alpha</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (AutoLyap): </span><span class="si">{</span><span class="n">rho_autolyap</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (theory):   </span><span class="si">{</span><span class="n">rho_theory</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>What to inspect in <code class="docutils literal notranslate"><span class="pre">result</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result[&quot;status&quot;]</span></code>: <code class="docutils literal notranslate"><span class="pre">feasible</span></code>, <code class="docutils literal notranslate"><span class="pre">infeasible</span></code>, or <code class="docutils literal notranslate"><span class="pre">not_solved</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">result[&quot;solve_status&quot;]</span></code>: raw backend status.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">result[&quot;rho&quot;]</span></code>: certified contraction factor when feasible.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">result[&quot;certificate&quot;]</span></code>: Lyapunov certificate matrices/scalars.</p></li>
+</ul>
+<p>The computed value <code class="docutils literal notranslate"><span class="pre">rho</span> <span class="pre">(AutoLyap)</span></code> is compared against the rate
+expression from
+<span id="id2">[<a class="reference internal" href="#id125" title="Yura Malitsky and Matthew K. Tam. A forward-backward splitting method for monotone inclusions without cocoercivity. SIAM Journal on Optimization, 30(2):1451–1472, January 2020. doi:10.1137/18m1207260.">MT20</a>, Theorem 2.9]</span>.
+Under the step-size condition <span class="math notranslate nohighlight">\(0&lt;\gamma&lt;1/(2L)\)</span>, define</p>
+<div class="math notranslate nohighlight">
+\[\varepsilon = \min\!\left\{\frac{1}{2}-\gamma L,\;5\mu\gamma\right\},
+\qquad
+\alpha = \min\!\left\{1+4\mu\gamma-\frac{3}{4}\varepsilon,\;1+\frac{1}{2}\varepsilon\right\},\]</div>
+<p>and set</p>
+<div class="math notranslate nohighlight">
+\[\rho_{\mathrm{MT}} = \frac{1}{\alpha}.\]</div>
+<p>Then the theoretical bound is</p>
+<div class="math notranslate nohighlight">
+\[\|x^k - x^\star\|^2 = O(\rho_{\mathrm{MT}}^k) \quad \textup{ as } \quad k\to\infty,\]</div>
+<p>where <span class="math notranslate nohighlight">\(x^\star \in \zer(G_1+G_2)\)</span>.</p>
+<p>Sweeping over 100 values of <span class="math notranslate nohighlight">\(\gamma\)</span> on <span class="math notranslate nohighlight">\((0,1]\)</span> gives the plot
+below, with the Theorem 2.9-derived expression (on
+<span class="math notranslate nohighlight">\(0&lt;\gamma&lt;1/(2L)\)</span>) in black and AutoLyap certificates as blue dots.</p>
+<a class="reference internal image-reference" href="../../_images/malitsky_tam_frb_rho_vs_gamma.svg"><img alt="Malitsky-Tam FRB rho versus gamma with theorem-derived line and AutoLyap points." class="align-center" src="../../_images/malitsky_tam_frb_rho_vs_gamma.svg" style="width: 100%;" />
+</a>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<div class="docutils container" id="id3">
+<div role="list" class="citation-list">
+<div class="citation" id="id125" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MT20<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>Yura Malitsky and Matthew K. Tam. A forward-backward splitting method for monotone inclusions without cocoercivity. <em>SIAM Journal on Optimization</em>, 30(2):1451–1472, January 2020. <a class="reference external" href="https://doi.org/10.1137/18m1207260">doi:10.1137/18m1207260</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../information_theoretic_exact_method/" class="btn btn-neutral float-left" title="The information-theoretic exact method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../optimized_gradient/" class="btn btn-neutral float-right" title="The optimized gradient method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1112 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>5.1. Performance estimation via SDPs | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/theory/performance_estimation_via_sdps/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../_static/proof_toggle.js?v=3eed1268"></script><script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="5.2. Iteration-independent analyses" href="../iteration_independent_analyses/" />
+    <link rel="prev" title="5. Lyapunov analyses" href="../lyapunov_analyses/" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/theory/performance_estimation_via_sdps/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/theory/performance_estimation_via_sdps/"/>
+<meta property="og:url" content="https://autolyap.github.io/theory/performance_estimation_via_sdps/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/theory/performance_estimation_via_sdps/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:44Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:44Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Performance-estimation theory via semidefinite programs in AutoLyap, including Gram-matrix formulations."/>
+<meta name="keywords" content="AutoLyap performance estimation, Gram matrix SDP formulation, worst-case analysis SDP"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="5.1. Performance estimation via SDPs"/>
+<meta property="og:description" content="Performance-estimation theory via semidefinite programs in AutoLyap, including Gram-matrix formulations."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="5.1. Performance estimation via SDPs"/>
+<meta name="twitter:description" content="Performance-estimation theory via semidefinite programs in AutoLyap, including Gram-matrix formulations."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Theory"/>
+<meta property="article:tag" content="AutoLyap performance estimation"/>
+<meta property="article:tag" content="Gram matrix SDP formulation"/>
+<meta property="article:tag" content="worst-case analysis SDP"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/theory/performance_estimation_via_sdps/#webpage",
+  "name": "5.1. Performance estimation via SDPs",
+  "headline": "5.1. Performance estimation via SDPs",
+  "description": "Performance-estimation theory via semidefinite programs in AutoLyap, including Gram-matrix formulations.",
+  "keywords": "AutoLyap performance estimation, Gram matrix SDP formulation, worst-case analysis SDP",
+  "url": "https://autolyap.github.io/theory/performance_estimation_via_sdps/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/theory/performance_estimation_via_sdps/",
+  "dateModified": "2026-03-02T19:05:44Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Theory",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "5. Lyapunov analyses",
+      "item": "https://autolyap.github.io/lyapunov_analyses/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "5.1. Performance estimation via SDPs",
+      "item": "https://autolyap.github.io/theory/performance_estimation_via_sdps/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Theory</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../notation_and_preliminaries/">1. Notation and preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem_class/">2. Problem classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm_representation/">3. Algorithm representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation_conditions/">4. Interpolation conditions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../lyapunov_analyses/">5. Lyapunov analyses</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.1. Performance estimation via SDPs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iteration_independent_analyses/">5.2. Iteration-independent analyses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iteration_dependent_analyses/">5.3. Iteration-dependent analyses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../">Theory</a></li>
+      <li class="breadcrumb-item"><a href="../lyapunov_analyses/"><span class="section-number">5. </span>Lyapunov analyses</a></li>
+    <li class="breadcrumb-item active"><span class="section-number">5.1. </span>Performance estimation via SDPs</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="performance-estimation-via-sdps">
+<h1><span class="section-number">5.1. </span>Performance estimation via SDPs<a class="headerlink" href="#performance-estimation-via-sdps" title="Link to this heading"></a></h1>
+<p>This page introduces a technical SDP primitive associated with the
+algorithm representation in <a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>
+and the inclusion problem in <a class="reference internal" href="../problem_class/#equation-eq-the-problem-inclusion">(2.1)</a>.
+This primitive is used in
+<a class="reference internal" href="../iteration_independent_analyses/"><span class="doc">5.2. Iteration-independent analyses</span></a>
+and <a class="reference internal" href="../iteration_dependent_analyses/"><span class="doc">5.3. Iteration-dependent analyses</span></a>,
+to formulate the search for a Lyapunov analysis as solving an SDP.
+This page can be skipped on a first reading.</p>
+<p>For readers interested in the technical details, we first introduce the
+matrices needed for this SDP primitive. If <span class="math notranslate nohighlight">\(m\geq 2\)</span>, let</p>
+<div class="math notranslate nohighlight" id="equation-eq-sumtozeromat">
+<span id="eq-sumtozeromat"></span><span class="eqno">(5.2)<a class="headerlink" href="#equation-eq-sumtozeromat" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+    \SumToZeroMat =
+    \begin{bmatrix}
+        I_{m-1}\\
+        -\mathbf{1}_{m-1}^{\top}
+    \end{bmatrix}\in\reals^{m\times (m-1)}.\end{aligned}\end{split}\]</div>
+<p>For each</p>
+<div class="math notranslate nohighlight">
+\[\PEPMinIter,\PEPMaxIter\in\llbracket0,K\rrbracket, \qquad
+\PEPMinIter\leq\PEPMaxIter,\]</div>
+<p>we define the the matrices</p>
+<div class="math notranslate nohighlight">
+\[X_{k}^{\PEPMinIter, \PEPMaxIter}\in \reals^{n\times\p{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}}\]</div>
+<p>as</p>
+<div class="math notranslate nohighlight" id="equation-eq-x-mats">
+<span id="eq-x-mats"></span><span class="eqno">(5.3)<a class="headerlink" href="#equation-eq-x-mats" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+    X_{k}^{\PEPMinIter, \PEPMaxIter} =
+    \begin{cases}
+        \begin{bmatrix}
+            I_{n} &amp; 0_{n\times\p{\p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}}
+        \end{bmatrix} &amp; \text{if } k=\PEPMinIter, \\[0.5em]
+        \begin{bmatrix}
+            A_{\PEPMinIter} &amp; B_{\PEPMinIter} &amp; 0_{n\times\p{\p{\PEPMaxIter-\PEPMinIter}\NumEval + m}}
+        \end{bmatrix} &amp; \text{if } k=\PEPMinIter + 1, \\[0.5em]
+        \begin{bmatrix}
+            \p{A_{k-1}\cdots A_{\PEPMinIter}}^{\top} \\
+            \p{A_{k-1}\cdots A_{\PEPMinIter+1}B_{\PEPMinIter}}^{\top} \\
+            \p{A_{k-1}\cdots A_{\PEPMinIter+2}B_{\PEPMinIter+1}}^{\top} \\
+            \vdots \\
+            \p{A_{k-1}A_{k-2}B_{k-3}}^{\top} \\
+            \p{A_{k-1}B_{k-2}}^{\top} \\
+            B_{k-1}^{\top} \\
+            0_{n \times \p{\p{\PEPMaxIter+1-k}\NumEval + m} }^{\top}
+        \end{bmatrix}^{\top}
+        &amp;
+        \begin{aligned}
+            &amp;\text{if } k \in \llbracket\PEPMinIter+2,\PEPMaxIter+1\rrbracket \\
+            &amp;\text{and } \PEPMinIter + 1 \leq \PEPMaxIter,
+        \end{aligned}
+    \end{cases}\end{aligned}\end{split}\]</div>
+<p>the matrices</p>
+<div class="math notranslate nohighlight">
+\[Y_{k}^{\PEPMinIter, \PEPMaxIter} \in \reals^{\NumEval\times\p{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}}\]</div>
+<p>as</p>
+<div class="math notranslate nohighlight" id="equation-eq-y-mats">
+<span id="eq-y-mats"></span><span class="eqno">(5.4)<a class="headerlink" href="#equation-eq-y-mats" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+    Y_{k}^{\PEPMinIter, \PEPMaxIter} =
+    \begin{cases}
+        \begin{bmatrix}
+            C_{\PEPMinIter} &amp; D_{\PEPMinIter} &amp; 0_{\NumEval\times\p{\p{\PEPMaxIter-\PEPMinIter}\NumEval + m}}
+        \end{bmatrix} &amp; \text{if } k=\PEPMinIter, \\[0.5em]
+        \begin{bmatrix}
+            \p{C_{\PEPMinIter+1}A_{\PEPMinIter}}^{\top} \\
+            \p{C_{\PEPMinIter+1}B_{\PEPMinIter}}^{\top} \\
+            D_{\PEPMinIter+1}^{\top} \\
+            0_{\NumEval\times \p{\p{\PEPMaxIter-\PEPMinIter-1}\NumEval + m} }^{\top}
+        \end{bmatrix}^{\top}
+        &amp;
+        \begin{aligned}
+            &amp;\text{if } k=\PEPMinIter + 1 \\
+            &amp;\text{and } \PEPMinIter + 1 \leq \PEPMaxIter,
+        \end{aligned}
+         \\[0.5em]
+        \begin{bmatrix}
+            \p{C_{k}A_{k-1}\cdots A_{\PEPMinIter}}^{\top} \\
+            \p{C_{k}A_{k-1}\cdots A_{\PEPMinIter+1}B_{\PEPMinIter}}^{\top} \\
+            \p{C_{k}A_{k-1}\cdots A_{\PEPMinIter+2}B_{\PEPMinIter+1}}^{\top} \\
+            \vdots \\
+            \p{C_{k}A_{k-1}B_{k-2}}^{\top} \\
+            \p{C_{k}B_{k-1}}^{\top} \\
+            D_{k}^{\top} \\
+            0_{\NumEval\times \p{\p{\PEPMaxIter-k}\NumEval + m} }^{\top}
+        \end{bmatrix}^{\top}
+        &amp;
+        \begin{aligned}
+            &amp; \text{if } k \in \llbracket\PEPMinIter+2,\PEPMaxIter\rrbracket \\
+            &amp;\text{and } \PEPMinIter + 2 \leq \PEPMaxIter,
+        \end{aligned}
+    \end{cases}\end{aligned}\end{split}\]</div>
+<p>the matrix</p>
+<div class="math notranslate nohighlight" id="equation-eq-y-star">
+<span id="eq-y-star"></span><span class="eqno">(5.5)<a class="headerlink" href="#equation-eq-y-star" title="Link to this equation"></a></span>\[\begin{aligned}
+    Y_{\star}^{\PEPMinIter, \PEPMaxIter} &amp; =
+    \underbracket{
+    \begin{bmatrix}
+        0_{m\times\p{n+ \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m - 1 } } &amp; \mathbf{1}_{m}
+    \end{bmatrix}
+    }_{
+    \in \reals^{m\times\p{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}}
+    }, \end{aligned}\]</div>
+<p>the matrices</p>
+<div class="math notranslate nohighlight">
+\[U_{k}^{\PEPMinIter, \PEPMaxIter}\in\reals^{\NumEval\times\p{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}}\]</div>
+<p>as</p>
+<div class="math notranslate nohighlight" id="equation-eq-u-mats">
+<span id="eq-u-mats"></span><span class="eqno">(5.6)<a class="headerlink" href="#equation-eq-u-mats" title="Link to this equation"></a></span>\[\begin{aligned}
+    \p{\forall k \in \llbracket\PEPMinIter,\PEPMaxIter\rrbracket}\quad
+    U_{k}^{\PEPMinIter, \PEPMaxIter} =
+    \begin{bmatrix}
+        0_{\NumEval\times\p{n+\p{k-\PEPMinIter}\NumEval} } &amp; I_{\NumEval} &amp; 0_{\NumEval\times\p{ \p{\PEPMaxIter-k}\NumEval + m } }
+    \end{bmatrix},\end{aligned}\]</div>
+<p>the matrix</p>
+<div class="math notranslate nohighlight" id="equation-eq-u-star">
+<span id="eq-u-star"></span><span class="eqno">(5.7)<a class="headerlink" href="#equation-eq-u-star" title="Link to this equation"></a></span>\[\begin{aligned}
+    U_{\star}^{\PEPMinIter, \PEPMaxIter} &amp; =
+    \underbracket{
+    \begin{bmatrix}
+        0_{m\times\p{n+ \p{\PEPMaxIter-\PEPMinIter+1}\NumEval } } &amp; \SumToZeroMat &amp; 0_{m\times 1 }
+    \end{bmatrix}
+    }_{
+    \in \reals^{m\times\p{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}}
+    }\end{aligned}\]</div>
+<p>with the interpretation that the block column containing
+<span class="math notranslate nohighlight">\(\SumToZeroMat\)</span> is removed from
+<span class="math notranslate nohighlight">\(U_{\star}^{\PEPMinIter, \PEPMaxIter}\)</span> when <span class="math notranslate nohighlight">\(m=1\)</span>, the
+matrices</p>
+<div class="math notranslate nohighlight" id="equation-eq-p-mats">
+<span id="eq-p-mats"></span><span class="eqno">(5.8)<a class="headerlink" href="#equation-eq-p-mats" title="Link to this equation"></a></span>\[\begin{split}\begin{split}
+    \Bigp{
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\llbracket1,m\rrbracket\\
+            \forall j \in\llbracket1,\NumEval_{i}\rrbracket
+        \end{array}
+        }
+    \quad
+    P_{\p{i,j}} &amp;=
+    \underbracket{
+    \begin{bmatrix}
+        0_{1 \times \sum_{r=1}^{i-1}\NumEval_{r}} &amp; \p{e_{j}^{\NumEval_{i}}}^{\top} &amp; 0_{1 \times \sum_{r=i+1}^{m}\NumEval_{r}}
+    \end{bmatrix}
+    }_{
+    \in \reals^{1 \times \NumEval}
+    },
+    \\
+    \p{\forall i \in\llbracket1,m\rrbracket}
+    \quad
+    P_{\p{i,\star}} &amp;= \p{e_{i}^{m}}^{\top} \in \reals^{1 \times m },
+\end{split}\end{split}\]</div>
+<p>and the matrices</p>
+<div class="math notranslate nohighlight">
+\[F_{\p{i,j,k}}^{\PEPMinIter, \PEPMaxIter},F_{\p{i,\star,\star}}^{\PEPMinIter, \PEPMaxIter}\in \reals^{1\times\p{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc}}\]</div>
+<p>as</p>
+<div class="math notranslate nohighlight" id="equation-eq-f-mats">
+<span id="eq-f-mats"></span><span class="eqno">(5.9)<a class="headerlink" href="#equation-eq-f-mats" title="Link to this equation"></a></span>\[\begin{split}\begin{split}
+    \Bigp{
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\llbracket1,m\rrbracket\\
+            \forall j \in\llbracket1,\NumEval_{i}\rrbracket\\
+            \forall k \in \llbracket\PEPMinIter,\PEPMaxIter\rrbracket
+        \end{array}
+        }
+    \quad
+    F_{\p{i,j,k}}^{\PEPMinIter, \PEPMaxIter} &amp; =
+    \begin{bmatrix}
+        0_{1\times\p{\p{k-\PEPMinIter}\NumEvalFunc + \sum_{r=1}^{\kappa\p{i}-1}\NumEval_{\kappa^{-1}\p{r}} }}^{\top} \\[1.5em]
+        e_{j}^{\NumEval_{i} } \\
+        0_{1 \times \p{ \p{\p{\PEPMaxIter-k} }\NumEvalFunc +  \NumFunc + \sum_{r=\kappa\p{i}+1}^{\NumFunc}\NumEval_{\kappa^{-1}\p{r}} }}^{\top}
+    \end{bmatrix}^{\top},
+    \\
+    \p{\forall i \in\llbracket1,m\rrbracket}
+    \quad
+    F_{\p{i,\star,\star}}^{\PEPMinIter, \PEPMaxIter} &amp; =
+    \begin{bmatrix}
+        0_{1\times\p{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc}} &amp; \p{e_{\kappa\p{i} }^{\NumFunc}}^{\top}
+    \end{bmatrix},
+\end{split}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\kappa: \IndexFunc \to \llbracket1,\NumFunc\rrbracket\)</span> is a
+bijective and increasing function (and therefore uniquely specified).</p>
+<p>Next, we present the main object of interest. Let</p>
+<div class="math notranslate nohighlight">
+\[\PEPMinIter,\PEPMaxIter\in\llbracket0,K\rrbracket, \qquad
+\PEPMinIter\leq\PEPMaxIter,\]</div>
+<div class="math notranslate nohighlight">
+\[\PEPObjMat \in \sym^{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}, \qquad
+\PEPObjVec \in \reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc},\]</div>
+<p>and consider the optimization problem</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight" id="equation-eq-pep">
+<span id="eq-pep"></span><span class="eqno">(5.10)<a class="headerlink" href="#equation-eq-pep" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+ \nonumber
+        &amp; \underset{}{\text{maximize}} &amp; &amp;  \quadform{\PEPObjMat}{\p{\bx^{\PEPMinIter},\bu^{\PEPMinIter},\ldots,\bu^{\PEPMaxIter},\hat{\bu}^{\star},y^{\star}}} + \PEPObjVec^{\top}\p{\bFcn^{\PEPMinIter},\ldots,\bFcn^{\PEPMaxIter},\bFcn^{\star}} \\ \nonumber
+        &amp; \text{subject to} &amp; &amp; \textbf{for each}\  k \in\llbracket\PEPMinIter,\PEPMaxIter\rrbracket  \\ \nonumber
+        &amp; &amp; &amp; \quad \bx^{k+1} = \p{A_{k} \kron \Id} \bx^{k} + \p{B_{k} \kron \Id} \bu^{k}, \\ \nonumber
+        &amp; &amp; &amp; \quad \by^{k} =  \p{C_{k} \kron \Id} \bx^{k} + \p{D_{k} \kron \Id} \bu^{k}, \\ \nonumber
+        &amp; &amp; &amp; \quad \p{\bu^{k}_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc}\bm{\partial}\bfcn_{i}\p{\by_{i}^{k}}, \\ \nonumber
+        &amp; &amp; &amp; \quad \p{\bu^{k}_{i}}_{i\in\IndexOp} \in \prod_{i\in\IndexOp}\bm{G}_{i}\p{\by_{i}^{k}}, \\ \nonumber
+        &amp; &amp; &amp; \quad \bFcn^{k} =\p{\bfcn_{i}\p{\by_{i}^{k}} }_{i\in\IndexFunc} \in\reals^{\NumEvalFunc },\\ \nonumber
+        &amp; &amp; &amp; \quad \bu^{k}=\p{\bu^{k}_{1},\ldots,\bu^{k}_{m}}\in\prod_{i=1}^{m}\calH^{\NumEval_i}, \\  \nonumber
+        &amp; &amp; &amp; \quad \by^{k}=\p{\by^{k}_{1},\ldots,\by^{k}_{m}}\in\prod_{i=1}^{m}\calH^{\NumEval_i}, \\ \nonumber
+        &amp; &amp; &amp; \mathbf{end} \\ \nonumber
+        &amp; &amp; &amp; \bu^{\star} = \p{u^{\star}_{1},\ldots,u^{\star}_{m}} \in \calH^{m},\\ \nonumber
+        &amp; &amp; &amp; y^{\star} \in \calH,\\ \nonumber
+        &amp; &amp; &amp; \p{u^{\star}_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc}\partial f_{i}\p{y^{\star}}, \\ \nonumber
+        &amp; &amp; &amp; \p{u^{\star}_{i}}_{i\in\IndexOp} \in \prod_{i\in\IndexOp}G_{i}\p{y^{\star}}, \\ \nonumber
+        &amp; &amp; &amp; \sum_{i=1}^{m} u^{\star}_{i} = 0,\\ \nonumber
+        &amp; &amp; &amp; \hat{\bu}^{\star}=\p{u^{\star}_{1},\ldots,u^{\star}_{m-1}}, \\\nonumber
+        &amp; &amp; &amp; \bFcn^{\star} =\p{\bfcn_{i}\p{y^{\star}}}_{i\in\IndexFunc}\in\reals^{\NumFunc }, \\ \nonumber
+        &amp; &amp; &amp; \p{f_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc} \mathcal{F}_{i}, \\ \nonumber
+        &amp; &amp; &amp; \p{G_i}_{i\in\IndexOp} \in \prod_{i\in\IndexOp} \mathcal{G}_i,
+    \end{aligned}\end{split}\]</div>
+</div>
+<p>where everything except</p>
+<div class="math notranslate nohighlight">
+\[\PEPObjMat, \quad \PEPObjVec, \quad \PEPMinIter, \quad \PEPMaxIter,\]</div>
+<div class="math notranslate nohighlight">
+\[\p{\p{A_{k},B_{k},C_{k},D_{k}}}_{k=\PEPMinIter}^{\PEPMaxIter}, \quad
+\calH, \quad
+\p{\mathcal{F}_{i}}_{i\in\IndexFunc}, \quad
+\p{\mathcal{G}_{i}}_{i\in\IndexOp}\]</div>
+<p>are optimization variables.
+I.e., <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a> asks for the worst-case value of the
+objective or performance measure</p>
+<div class="math notranslate nohighlight">
+\[\quadform{\PEPObjMat}{\p{\bx^{\PEPMinIter},\bu^{\PEPMinIter},\ldots,\bu^{\PEPMaxIter},\hat{\bu}^{\star},y^{\star}}}
++ \PEPObjVec^{\top}\p{\bFcn^{\PEPMinIter},\ldots,\bFcn^{\PEPMaxIter},\bFcn^{\star}}\]</div>
+<p>over all trajectories and problem instances that satisfy the algorithm
+dynamics and the imposed function/operator class assumptions, respectively.</p>
+<p>Note that the last two constraints in <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a> are
+infinite-dimensional. In the theorem below, we use
+<a class="reference internal" href="../interpolation_conditions/#ass-interpolation"><span class="std std-ref">Assumption 4.1 (Interpolation conditions)</span></a> to
+reduce these
+infinite-dimensional constraints to a finite set of quadratic
+constraints.
+In particular, <a class="reference internal" href="#eq-dpep"><span class="std std-ref">(D-PEP)</span></a> in <a class="reference internal" href="#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a> is the SDP primitive discussed above.</p>
+<div class="theorem docutils container">
+<p id="thm-pep-leq-zero"><strong>Theorem 5.1.1 (Performance estimation via SDP).</strong></p>
+<p>Suppose that
+<a class="reference internal" href="../algorithm_representation/#ass-well-posedness"><span class="std std-ref">Assumption 3.1 (Well-posedness)</span></a> and
+<a class="reference internal" href="../interpolation_conditions/#ass-interpolation"><span class="std std-ref">Assumption 4.1 (Interpolation conditions)</span></a>
+hold, let
+<a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a><span class="math notranslate nohighlight">\(^\star\)</span> be the optimal value
+of <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a>, and consider the matrices defined in
+<a class="reference internal" href="#equation-eq-y-mats">(5.4)</a> to <a class="reference internal" href="#equation-eq-f-mats">(5.9)</a>. A
+sufficient condition for <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a><span class="math notranslate nohighlight">\(^\star \leq 0\)</span> is that
+the following system</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight" id="equation-eq-dpep">
+<span id="eq-dpep"></span><span class="eqno">(5.11)<a class="headerlink" href="#equation-eq-dpep" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+ \nonumber
+        &amp;
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}
+        \end{array}
+        \right) \quad \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq}} \geq 0,
+        \\ \nonumber
+        &amp;
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-eq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}
+        \end{array}
+        \right) \quad
+        \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq}} \in \reals,
+        \\ \nonumber
+        &amp;
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}
+        \end{array}
+        \right) \quad
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op}} \geq 0,
+        \\  \nonumber
+        &amp; - W
+        + \sum_{\substack{i\in\IndexFunc \\ o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq}}
+        W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}
+        \\ \nonumber
+        &amp; \quad + \sum_{\substack{i\in\IndexFunc  \\ o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+        \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq}}
+        W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}} \\  \nonumber
+        &amp; \quad + \sum_{\substack{i\in\IndexOp \\ o \in \mathcal{O}^{\textup{op}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op}}
+        W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{op}}
+        \succeq 0, \\  \nonumber
+        &amp;
+        - w
+        + \sum_{\substack{i\in\IndexFunc \\ o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+        \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq}}
+        F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}  \\  \nonumber
+        &amp; \quad + \sum_{\substack{i\in\IndexFunc  \\ o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+        \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq}}
+        F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}
+        = 0,
+    \end{aligned}\end{split}\]</div>
+</div>
+<p>is feasible for the scalars</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+            &amp;\lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq}}, \\
+            &amp;\nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq}}, \\
+            &amp;\lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op}},
+        \end{aligned}\end{split}\]</div>
+</div>
+<p>where</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="eq-align-pep math notranslate nohighlight" id="equation-eq-w-func-ineq">
+<span class="eqno">(5.12)<a class="headerlink" href="#equation-eq-w-func-ineq" title="Link to this equation"></a></span>\[\begin{aligned}
+   W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}
+   &amp;=
+   \underbracket{
+   \p{E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}}^{\top}
+   M_{\p{i,o}}^{\textup{func-ineq}}
+   E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}
+   }_{
+   \in \sym^{ n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m }
+   }
+   ,
+\end{aligned}\]</div>
+<div class="eq-align-pep math notranslate nohighlight" id="equation-eq-w-func-eq">
+<span class="eqno">(5.13)<a class="headerlink" href="#equation-eq-w-func-eq" title="Link to this equation"></a></span>\[\begin{aligned}
+   W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}
+   &amp;=
+   \underbracket{
+   \p{E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}}^{\top}
+   M_{\p{i,o}}^{\textup{func-eq}}
+   E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}
+   }_{
+   \in \sym^{ n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m }
+   }
+   ,
+\end{aligned}\]</div>
+<div class="eq-align-pep math notranslate nohighlight" id="equation-eq-w-op">
+<span class="eqno">(5.14)<a class="headerlink" href="#equation-eq-w-op" title="Link to this equation"></a></span>\[\begin{aligned}
+   W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{op}}
+   &amp;=
+   \underbracket{
+   \p{E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}}^{\top}
+   M_{\p{i,o}}^{\textup{op}}
+   E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}
+   }_{
+   \in \sym^{ n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m }
+   }
+   ,
+\end{aligned}\]</div>
+<div class="eq-align-pep math notranslate nohighlight" id="equation-eq-f-func-ineq">
+<span class="eqno">(5.15)<a class="headerlink" href="#equation-eq-f-func-ineq" title="Link to this equation"></a></span>\[\begin{aligned}
+   F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}
+   &amp;=
+   \underbracket{
+   \begin{bmatrix}
+      \p{F_{\p{i,j_{1},k_{1}}}^{\PEPMinIter, \PEPMaxIter}}^{\top}
+      &amp; \cdots &amp;
+      \p{F_{\p{i,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}}^{\top}
+   \end{bmatrix}
+   a_{\p{i,o}}^{\textup{func-ineq}}
+   }_{
+   \in \reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc}
+   }
+   ,
+\end{aligned}\]</div>
+<div class="eq-align-pep math notranslate nohighlight" id="equation-eq-f-func-eq">
+<span class="eqno">(5.16)<a class="headerlink" href="#equation-eq-f-func-eq" title="Link to this equation"></a></span>\[\begin{aligned}
+   F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}
+   &amp;=
+   \underbracket{
+   \begin{bmatrix}
+      \p{F_{\p{i,j_{1},k_{1}}}^{\PEPMinIter, \PEPMaxIter}}^{\top}
+      &amp; \cdots &amp;
+      \p{F_{\p{i,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}}^{\top}
+   \end{bmatrix}
+   a_{\p{i,o}}^{\textup{func-eq}}
+   }_{
+   \in \reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc}
+   }
+   ,
+\end{aligned}\]</div>
+<div class="eq-align-pep math notranslate nohighlight" id="equation-eq-e">
+<span class="eqno">(5.17)<a class="headerlink" href="#equation-eq-e" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+   E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}
+   &amp;=
+   \underbracket{
+   \begin{bmatrix}
+      P_{\p{i,j_{1}}}Y_{k_{1}}^{\PEPMinIter, \PEPMaxIter} \\
+      \vdots \\
+      P_{\p{i,j_{n_{i,o}}}}Y_{k_{n_{i,o}}}^{\PEPMinIter, \PEPMaxIter} \\
+      P_{\p{i,j_{1}}}U_{k_{1}}^{\PEPMinIter, \PEPMaxIter} \\
+      \vdots \\
+      P_{\p{i,j_{n_{i,o}}}}U_{k_{n_{i,o}}}^{\PEPMinIter, \PEPMaxIter}
+   \end{bmatrix}.
+   }_{
+   \in \reals^{2 n_{i,o} \times \p{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m} }
+   }
+\end{aligned}\end{split}\]</div>
+</div>
+<p>Furthermore, if the interpolation conditions for
+<span class="math notranslate nohighlight">\(\p{\mathcal{F}_{i}}_{i\in\IndexFunc}\)</span> and
+<span class="math notranslate nohighlight">\(\p{\mathcal{G}_{i}}_{i\in\IndexOp}\)</span> are tight,
+<span class="math notranslate nohighlight">\(\dim \calH \geq n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m\)</span>,
+and there exists
+<span class="math notranslate nohighlight">\(G\in\sym_{++}^{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}\)</span>
+and
+<span class="math notranslate nohighlight">\(\bchi\in\reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc}\)</span>
+such that</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        &amp;
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}
+        \end{array}
+        \right) \quad
+        \begin{aligned}
+            &amp; \bm{\chi}^{\top} F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}} \\
+            &amp; + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}G} \leq 0,
+        \end{aligned}
+        \\
+        &amp;
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{func-eq}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}
+        \end{array}
+        \right) \quad
+        \begin{aligned}
+            &amp; \bm{\chi}^{\top} F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}} \\
+            &amp; + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}G} = 0,
+        \end{aligned}
+        \\
+        &amp;
+        \left(
+        \begin{array}{&#64;{}c&#64;{}}
+            \forall i \in\IndexFunc \\
+            \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
+            \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}
+        \end{array}
+        \right) \quad
+        \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{op}}G} \leq 0,
+    \end{aligned}\end{split}\]</div>
+</div>
+<p>then the feasibility of <a class="reference internal" href="#eq-dpep"><span class="std std-ref">(D-PEP)</span></a> is a necessary
+condition for <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a><span class="math notranslate nohighlight">\(^\star\leq 0\)</span>.</p>
+</div>
+<div class="proof docutils container">
+<p><em>Proof.</em> We prove <a class="reference internal" href="#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a> in a
+sequence of steps:</p>
+<p class="rubric" id="formulating-a-primal-semidefinite-program">Formulating a primal semidefinite program.</p>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \bu^{\star} =
+    \begin{cases}
+        0 &amp; \text{if }m=1, \\
+        \p{\SumToZeroMat\kron\Id}\hat{\bu}^{\star} &amp; \text{if }m\geq2,
+    \end{cases}\end{aligned}\end{split}\]</div>
+<p>for <span class="math notranslate nohighlight">\(\hat{\bu}^{\star}\)</span> as defined in
+<a class="reference internal" href="../lyapunov_analyses/#equation-eq-solution">(5.1)</a> and <span class="math notranslate nohighlight">\(N\)</span> given in
+<a class="reference internal" href="#equation-eq-sumtozeromat">(5.2)</a>.
+Moreover, back substitution gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \bx^{\PEPMinIter+1} {}={}&amp; \p{A_{\PEPMinIter} \kron \Id} \bx^{\PEPMinIter} + \p{B_{\PEPMinIter} \kron \Id} \bu^{\PEPMinIter}, \\
+    %\bx^{\PEPMinIter+2} &amp;= \p{A_{\PEPMinIter+1} \kron \Id} \bx^{\PEPMinIter+1} + \p{B_{\PEPMinIter+1} \kron \Id} \bu^{\PEPMinIter+1} \\
+    %            &amp;= \p{A_{\PEPMinIter+1}A_{\PEPMinIter} \kron \Id} \bx^{\PEPMinIter} + \p{A_{\PEPMinIter+1}B_{\PEPMinIter} \kron \Id} \bu^{\PEPMinIter} + \p{B_{\PEPMinIter+1} \kron \Id} \bu^{\PEPMinIter+1} \\
+    %\bx^{\PEPMinIter+3} &amp;= \p{A_{\PEPMinIter+2} \kron \Id} \bx^{\PEPMinIter+2} + \p{B_{\PEPMinIter+2} \kron \Id} \bu^{\PEPMinIter+2} \\
+    %            &amp;= \p{A_{\PEPMinIter+2}A_{\PEPMinIter+1}A_{\PEPMinIter} \kron \Id} \bx^{\PEPMinIter} + \p{A_{\PEPMinIter+2}A_{\PEPMinIter+1}B_{\PEPMinIter} \kron \Id} \bu^{\PEPMinIter} + \p{A_{\PEPMinIter+2}B_{\PEPMinIter+1} \kron \Id} \bu^{\PEPMinIter+1} + \p{B_{\PEPMinIter+2} \kron \Id} \bu^{\PEPMinIter+2} \\
+    \p{\forall k \in \llbracket\PEPMinIter+2,\PEPMaxIter+1\rrbracket} \quad \bx^{k} {}={}&amp; \p{A_{k-1}\cdots A_{\PEPMinIter}\kron \Id} \bx^{\PEPMinIter}  \\
+    &amp;{} + \sum_{i=\PEPMinIter}^ {k-2}\p{A_{k-1}\cdots A_{i+1}B_{i} \kron \Id} \bu^{i} \\
+    &amp;{} + \p{B_{k-1} \kron \Id} \bu^{k-1}.\end{aligned}\end{split}\]</div>
+<p>Thus, the constraints of <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a> can equivalently be
+written as</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    &amp; \bx^{\PEPMinIter} \in \calH^{n}, \\
+    &amp; \by^{\PEPMinIter} = \p{C_{\PEPMinIter} \kron \Id} \bx^{\PEPMinIter} + \p{D_{\PEPMinIter} \kron \Id} \bu^{\PEPMinIter}, \\
+    &amp; \by^{\PEPMinIter+1} = \p{C_{\PEPMinIter+1}A_{\PEPMinIter} \kron \Id} \bx^{\PEPMinIter} + \p{C_{\PEPMinIter+1}B_{\PEPMinIter} \kron \Id} \bu^{\PEPMinIter} + \p{D_{\PEPMinIter+1} \kron \Id} \bu^{\PEPMinIter+1}, \\
+    &amp; \textbf{for each}\  k \in\llbracket\PEPMinIter+2,\PEPMaxIter\rrbracket \\
+    &amp; \quad \by^{k} = \p{C_{k}A_{k-1}\cdots A_{\PEPMinIter}\kron \Id} \bx^{\PEPMinIter} + \sum_{i=\PEPMinIter}^{k-2}\p{C_{k}A_{k-1}\cdots A_{i+1}B_{i} \kron \Id} \bu^{i}  \\
+    &amp; \quad\quad\quad +\p{C_{k}B_{k-1} \kron \Id} \bu^{k-1} + \p{D_{k} \kron \Id} \bu^{k}, \\
+    &amp; \mathbf{end} \\
+    &amp; \textbf{for each}\  k \in\llbracket\PEPMinIter,\PEPMaxIter\rrbracket \\
+    &amp; \quad \bu^{k}=\p{\bu^{k}_{1},\ldots,\bu^{k}_{m}}\in\prod_{i=1}^{m}\calH^{\NumEval_i},\\
+    &amp; \quad \by^{k}=\p{\by^{k}_{1},\ldots,\by^{k}_{m}}\in\prod_{i=1}^{m}\calH^{\NumEval_i},\\
+    &amp; \quad \p{\bu^{k}_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc}\bm{\partial}\bfcn_{i}\p{\by_{i}^{k}},\\
+    &amp; \quad \p{\bu^{k}_{i}}_{i\in\IndexOp} \in \prod_{i\in\IndexOp}\bm{G}_{i}\p{\by_{i}^{k}},\\
+    &amp; \quad \bFcn^{k} =\p{\bfcn_{i}\p{\by_{i}^{k}} }_{i\in\IndexFunc}\in\reals^{\NumEvalFunc },\\
+    &amp; \mathbf{end} \\
+    &amp; \bu^{\star} = \p{u^{\star}_{1},\ldots,u^{\star}_{m}} =
+    \begin{cases}
+        0 &amp; \text{if }m=1, \\
+        \p{\SumToZeroMat\kron\Id}\hat{\bu}^{\star} &amp; \text{if }m\geq2, \text{ where }\hat{\bu}^{\star} \in \calH^{m-1},
+    \end{cases} \\
+    &amp; y^{\star} \in \calH,\\
+    &amp; \p{u^{\star}_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc}\partial f_{i}\p{y^{\star}}, \\
+    &amp; \p{u^{\star}_{i}}_{i\in\IndexOp} \in \prod_{i\in\IndexOp}G_{i}\p{y^{\star}}, \\
+    &amp; \bFcn^{\star} =\p{\bfcn_{i}\p{y^{\star}}}_{i\in\IndexFunc}\in\reals^{\NumFunc },\\
+    &amp; \p{f_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc} \mathcal{F}_{i}, \\
+    &amp; \p{G_i}_{i\in\IndexOp} \in \prod_{i\in\IndexOp} \mathcal{G}_i, \end{aligned}\end{split}\]</div>
+</div>
+<p>or equivalently</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight" id="equation-eq-pep-constraints-1">
+<span id="eq-pep-constraints-1"></span><span class="eqno">(5.18)<a class="headerlink" href="#equation-eq-pep-constraints-1" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+ \nonumber
+        &amp; \textbf{for each}\  i \in\IndexFunc \\ \nonumber
+        &amp; \quad \textbf{for each}\  j \in\llbracket1,\NumEval_{i}\rrbracket \\ \nonumber
+        &amp; \quad \quad \textbf{for each}\  k \in\llbracket\PEPMinIter,\PEPMaxIter\rrbracket \\ \nonumber
+        &amp; \quad \quad \quad \p{P_{\p{i,j}}U_{k}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta \in \partial f_{i}\p{\p{P_{\p{i,j}}Y_{k}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta},\\ \nonumber
+        &amp; \quad \quad \quad F_{\p{i,j,k}}^{\PEPMinIter, \PEPMaxIter} \bm{\chi} = f_{i}\p{\p{P_{\p{i,j}}Y_{k}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta}, \\ \nonumber
+        &amp; \quad \quad \mathbf{end} \\ \nonumber
+        &amp; \quad \mathbf{end} \\ \nonumber
+        &amp; \quad \p{P_{\p{i,\star}}U_{\star}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta \in \partial f_{i}\p{\p{P_{\p{i,\star}}Y_{\star}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta}, \\ \nonumber
+        &amp; \quad F_{\p{i,\star,\star}}^{\PEPMinIter, \PEPMaxIter} \bm{\chi} = f_{i}\p{\p{P_{\p{i,\star}}Y_{\star}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta}, \\ \nonumber
+        &amp; \quad f_{i} \in \mathcal{F}_{i}, \\ \nonumber
+        &amp; \mathbf{end} \\
+        &amp; \textbf{for each}\  i \in\IndexOp \\ \nonumber
+        &amp; \quad  \textbf{for each}\  j \in\llbracket1,\NumEval_{i}\rrbracket \\ \nonumber
+        &amp; \quad \quad \textbf{for each}\  k \in\llbracket\PEPMinIter,\PEPMaxIter\rrbracket \\\nonumber
+        &amp; \quad \quad \quad \p{P_{\p{i,j}}U_{k}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta \in G_{i}\p{\p{P_{\p{i,j}}Y_{k}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta},\\ \nonumber
+        &amp; \quad \quad \mathbf{end} \\ \nonumber
+        &amp; \quad \mathbf{end} \\ \nonumber
+        &amp; \quad \p{P_{\p{i,\star}}U_{\star}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta \in G_{i}\p{\p{P_{\p{i,\star}}Y_{\star}^{\PEPMinIter, \PEPMaxIter} \kron \Id}\bzeta}, \\ \nonumber
+        &amp; \quad G_i \in \mathcal{G}_i, \\ \nonumber
+        &amp; \mathbf{end} \\ \nonumber
+        &amp; \bzeta=\p{\bx^{\PEPMinIter},\bu^{\PEPMinIter},\ldots,\bu^{\PEPMaxIter},\hat{\bu}^{\star},y^{\star}}\in\calH^{n}\times\p{\prod_{i=\PEPMinIter}^{\PEPMaxIter}\calH^{\NumEval}}\times\calH^{m-1}\times\calH, \\ \nonumber
+        &amp; \bm{\chi} = \p{\bFcn^{\PEPMinIter},\ldots,\bFcn^{\PEPMaxIter},\bFcn^{\star}} \in  \reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc},\end{aligned}\end{split}\]</div>
+</div>
+<p>where we have used <a class="reference internal" href="#equation-eq-y-mats">(5.4)</a>,
+<a class="reference internal" href="#equation-eq-y-star">(5.5)</a>, <a class="reference internal" href="#equation-eq-u-mats">(5.6)</a>,
+<a class="reference internal" href="#equation-eq-u-star">(5.7)</a>, <a class="reference internal" href="#equation-eq-p-mats">(5.8)</a>, and
+<a class="reference internal" href="#equation-eq-f-mats">(5.9)</a>. Using
+<a class="reference internal" href="../interpolation_conditions/#ass-interpolation"><span class="std std-ref">Assumption 4.1 (Interpolation conditions)</span></a>,
+we get the following relaxation
+(equivalent representation if the interpolation conditions for
+<span class="math notranslate nohighlight">\(\p{\mathcal{F}_{i}}_{i\in\IndexFunc}\)</span> and
+<span class="math notranslate nohighlight">\(\p{\mathcal{G}_{i}}_{i\in\IndexOp}\)</span> are tight) of
+<a class="reference internal" href="#equation-eq-pep-constraints-1">(5.18)</a>:</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight" id="equation-eq-relaxed-pep-constraints-1">
+<span id="eq-relaxed-pep-constraints-1"></span><span class="eqno">(5.19)<a class="headerlink" href="#equation-eq-relaxed-pep-constraints-1" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+ \nonumber
+    &amp; \textbf{for each}\  i \in\IndexFunc \\ \nonumber
+    &amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \nonumber
+    &amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp; \quad \quad \quad
+    \p{F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}} }^{\top} \bm{\chi}
+    + \quadform{M_{\p{i,o}}^{\textup{func-ineq}}}{\p{E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}\kron\Id}\bzeta} \leq 0,\\ \nonumber
+    &amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp; \quad \mathbf{end} \\ \nonumber
+    &amp; \quad \textbf{for each}\  o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \nonumber
+    &amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp; \quad \quad \quad
+    \p{F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}} }^{\top} \bm{\chi}
+    + \quadform{M_{\p{i,o}}^{\textup{func-eq}}}{\p{E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}\kron\Id}\bzeta} = 0,\\ \nonumber
+    &amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp; \quad \mathbf{end} \\ \nonumber
+    &amp; \mathbf{end} \\ \nonumber
+    &amp; \textbf{for each}\  i \in\IndexOp \\ \nonumber
+    &amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{op}}_{i} \\ \nonumber
+    &amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp; \quad \quad \quad \quadform{M_{\p{i,o}}^{\textup{op}}}{\p{E_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}}}}^{\PEPMinIter, \PEPMaxIter}\kron\Id}\bzeta} \leq 0,\\ \nonumber
+    &amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp; \quad \mathbf{end} \\ \nonumber
+    &amp; \mathbf{end} \\ \nonumber
+    &amp; \bzeta\in\calH^{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}, \\ \nonumber
+    &amp; \bm{\chi} \in  \reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc},\end{aligned}\end{split}\]</div>
+</div>
+<p>where we have used <a class="reference internal" href="#equation-eq-f-func-ineq">(5.15)</a>, <a class="reference internal" href="#equation-eq-f-func-eq">(5.16)</a>, and
+<a class="reference internal" href="#equation-eq-e">(5.17)</a>. If we use <a class="reference internal" href="#equation-eq-w-func-ineq">(5.12)</a>, <a class="reference internal" href="#equation-eq-w-func-eq">(5.13)</a>, and
+<a class="reference internal" href="#equation-eq-w-op">(5.14)</a>, the constraints in <a class="reference internal" href="#equation-eq-relaxed-pep-constraints-1">(5.19)</a>
+can equivalently be written as</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight" id="equation-eq-relaxed-pep-constraints-2">
+<span id="eq-relaxed-pep-constraints-2"></span><span class="eqno">(5.20)<a class="headerlink" href="#equation-eq-relaxed-pep-constraints-2" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+ \nonumber
+    &amp; \textbf{for each}\  i \in\IndexFunc \\ \nonumber
+    &amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \nonumber
+    &amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp; \quad \quad \quad \p{F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}} }^{\top} \bm{\chi}
+    + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}\gramFunc\p{{\bzeta}}} \leq 0,\\ \nonumber
+    &amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp; \quad \mathbf{end} \\ \nonumber
+    &amp; \quad \textbf{for each}\  o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \nonumber
+    &amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp; \quad \quad \quad \p{F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}} }^{\top} \bm{\chi}
+    + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}\gramFunc\p{{\bzeta}}} = 0,\\ \nonumber
+    &amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp; \quad \mathbf{end} \\ \nonumber
+    &amp; \mathbf{end} \\ \nonumber
+    &amp; \textbf{for each}\  i \in\IndexOp \\ \nonumber
+    &amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{op}}_{i} \\ \nonumber
+    &amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp; \quad \quad \quad \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{op}}\gramFunc\p{{\bzeta}}} \leq 0,\\ \nonumber
+    &amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp; \quad \mathbf{end} \\ \nonumber
+    &amp; \mathbf{end} \\ \nonumber
+    &amp; \bzeta\in\calH^{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}, \\ \nonumber
+    &amp; \bm{\chi} \in  \reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc}.\end{aligned}\end{split}\]</div>
+</div>
+<p>Next, we consider the objective function of <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a>.
+It can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \quadform{\PEPObjMat}{\p{\bx^{\PEPMinIter},\bu^{\PEPMinIter},\ldots,\bu^{\PEPMaxIter},\hat{\bu}^{\star},y^{\star}}} + \PEPObjVec^{\top}\p{\bFcn^{\PEPMinIter},\ldots,\bFcn^{\PEPMaxIter},\bFcn^{\star}} = \trace\p{\PEPObjMat\gramFunc\p{{\bzeta}} } + \PEPObjVec^{\top}\bm{\chi}.
+\end{aligned}\]</div>
+<p>If we combine this observation about the objective function
+of <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a> with the (possibly relaxed) constraints
+in <a class="reference internal" href="#equation-eq-relaxed-pep-constraints-2">(5.20)</a>,
+we conclude that a (possibly relaxed) version
+of <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a> can be written as</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight" id="equation-eq-pep-rewritten">
+<span id="eq-pep-rewritten"></span><span class="eqno">(5.21)<a class="headerlink" href="#equation-eq-pep-rewritten" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+ \nonumber
+    &amp; \underset{}{\text{maximize}} &amp; &amp; \trace\p{\PEPObjMat \gramFunc\p{\bzeta}} + \PEPObjVec^{\top}\bm{\chi} \\ \nonumber
+    &amp;\text{subject to}&amp;&amp; \textbf{for each}\  i \in\IndexFunc \\ \nonumber
+    &amp;&amp;&amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \nonumber
+    &amp;&amp;&amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp;&amp;&amp; \quad \quad \quad \p{F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}} }^{\top} \bm{\chi}
+    + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}\gramFunc\p{{\bzeta}}} \leq 0,\\ \nonumber
+    &amp;&amp;&amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp;&amp;&amp; \quad \mathbf{end} \\ \nonumber
+    &amp;&amp;&amp; \quad \textbf{for each}\  o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \nonumber
+    &amp;&amp;&amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp;&amp;&amp; \quad \quad \quad \p{F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}} }^{\top} \bm{\chi}
+    + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}\gramFunc\p{{\bzeta}}} = 0,\\ \nonumber
+    &amp;&amp;&amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp;&amp;&amp; \quad \mathbf{end} \\ \nonumber
+    &amp;&amp;&amp; \mathbf{end} \\ \nonumber
+    &amp;&amp;&amp; \textbf{for each}\  i \in\IndexOp \\ \nonumber
+    &amp;&amp;&amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{op}}_{i} \\ \nonumber
+    &amp;&amp;&amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp;&amp;&amp; \quad \quad \quad \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{op}}\gramFunc\p{{\bzeta}}} \leq 0,\\ \nonumber
+    &amp;&amp;&amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp;&amp;&amp; \quad \mathbf{end} \\ \nonumber
+    &amp;&amp;&amp; \mathbf{end} \\ \nonumber
+    &amp;&amp;&amp; \bzeta\in\calH^{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}, \\ \nonumber
+    &amp;&amp;&amp; \bm{\chi} \in  \reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc}.\end{aligned}\end{split}\]</div>
+</div>
+<p>The problem</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="subequations docutils container">
+<div class="math notranslate nohighlight" id="eq-pep-relaxed-interpolation-func-ineq">
+<span id="eq-pep-relaxed-interpolation-op"></span><span id="eq-pep-relaxed-interpolation-func-eq"></span><span id="eq-pep-relaxed"></span>\begin{align}
+    &amp; \underset{}{\text{maximize}} &amp; &amp; \trace\p{\PEPObjMat G} + \PEPObjVec^{\top}\bm{\chi} \notag \\
+    &amp;\text{subject to}&amp;&amp; \textbf{for each}\  i \in\IndexFunc \notag \\
+    &amp;&amp;&amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{func-ineq}}_{i} \notag \\
+    &amp;&amp;&amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \notag \\
+    &amp;&amp;&amp; \quad \quad \quad \p{F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}} }^{\top} \bm{\chi}
+    + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}G} \leq 0,\tag{5.21a}\\
+    &amp;&amp;&amp; \quad \quad \mathbf{end} \notag \\
+    &amp;&amp;&amp; \quad \mathbf{end} \notag \\
+    &amp;&amp;&amp; \quad \textbf{for each}\  o \in \mathcal{O}^{\textup{func-eq}}_{i} \notag \\
+    &amp;&amp;&amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \notag \\
+    &amp;&amp;&amp; \quad \quad \quad \p{F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}} }^{\top} \bm{\chi}
+    + \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}G} = 0,\tag{5.21b}\\
+    &amp;&amp;&amp; \quad \quad \mathbf{end} \notag \\
+    &amp;&amp;&amp; \quad \mathbf{end} \notag \\
+    &amp;&amp;&amp; \mathbf{end} \notag \\
+    &amp;&amp;&amp; \textbf{for each}\  i \in\IndexOp \notag \\
+    &amp;&amp;&amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{op}}_{i} \notag \\
+    &amp;&amp;&amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \notag \\
+    &amp;&amp;&amp; \quad \quad \quad \trace\p{W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{op}}G} \leq 0,\tag{5.21c}\\
+    &amp;&amp;&amp; \quad \quad \mathbf{end} \notag \\
+    &amp;&amp;&amp; \quad \mathbf{end} \notag \\
+    &amp;&amp;&amp; \mathbf{end} \notag \\
+    &amp;&amp;&amp; G\in\sym^{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}_{+}, \notag \\
+    &amp;&amp;&amp; \bm{\chi} \in  \reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc}. \notag
+\end{align}</div></div>
+</div>
+<p>is a relaxation of <a class="reference internal" href="#equation-eq-pep-rewritten">(5.21)</a>, and
+therefore, has optimal value greater or equal
+to the optimal value of <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a>.</p>
+<p>We will make use of the following fact: If <span class="math notranslate nohighlight">\(\dim\calH\geq k\)</span>,
+then <span class="math notranslate nohighlight">\(G\in\sym_+^k\)</span> if and only if there exists
+<span class="math notranslate nohighlight">\(\bz\in\calH^k\)</span> such that <span class="math notranslate nohighlight">\(G=\gramFunc\p{\bz}\)</span>.
+As shown in <span id="id1">[<a class="reference internal" href="#id175" title="Ernest K. Ryu, Adrien B. Taylor, Carolina Bergeling, and Pontus Giselsson. Operator splitting performance estimation: Tight contraction factors and optimal parameter selection. SIAM Journal on Optimization, 30(3):2251–2271, January 2020. doi:10.1137/19m1304854.">RTBG20</a>, Lemma 3.1]</span>,
+the result for the case <span class="math notranslate nohighlight">\(k=4\)</span> is based on the
+Cholesky decomposition of positive semidefinite matrices. The general
+case is a straightforward extension. This fact implies that if
+<span class="math notranslate nohighlight">\(\dim \calH \geq n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m\)</span>,
+then <a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a> has optimal value equal
+to <a class="reference internal" href="#equation-eq-pep-rewritten">(5.21)</a>. Note
+that <a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a> is a convex semidefinite
+program.</p>
+<p class="rubric" id="dual-problem">Dual problem.</p>
+<p>For
+<a class="reference internal" href="#eq-pep-relaxed-interpolation-func-ineq"><span class="std std-ref">(5.21a)</span></a>,
+<a class="reference internal" href="#eq-pep-relaxed-interpolation-func-eq"><span class="std std-ref">(5.21b)</span></a>, and
+<a class="reference internal" href="#eq-pep-relaxed-interpolation-op"><span class="std std-ref">(5.21c)</span></a>,
+we introduce corresponding dual variables</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    &amp;\lambda^{\textup{func-ineq}}_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}} \geq 0, \\
+    &amp;\nu^{\textup{func-eq}}_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}} \in \reals, \\
+    &amp; \lambda^{\textup{op}}_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}} \geq 0,\end{aligned}\end{split}\]</div>
+<p>respectively. With this, the objective function of the Lagrange dual
+problem of <a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a> becomes</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    &amp; \sup_{ G\in\sym^{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}_{+}  }
+    \trace
+    \left(\vphantom{\sum_{\substack{i\in\IndexOp \\  o \in \mathcal{O}^{\textup{op}}_{i}}}}\right.
+    \left(\vphantom{\sum_{\substack{i\in\IndexOp \\  o \in \mathcal{O}^{\textup{op}}_{i}}}}\right.
+    W
+    \\ %%%%%
+    &amp; \quad\quad\quad - \sum_{\substack{i\in\IndexFunc \\  o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} } }
+    \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq}}
+    W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}
+    \\ %%%%%
+    &amp; \quad\quad\quad - \sum_{\substack{i\in\IndexFunc \\  o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}  }}
+    \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq}}
+    W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}
+    \\ %%%%%
+    &amp; \quad\quad\quad- \sum_{\substack{i\in\IndexOp \\  o \in \mathcal{O}^{\textup{op}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+    \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op}}
+    W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{op}}
+    \left.\vphantom{\sum_{\substack{i\in\IndexOp \\  o \in \mathcal{O}^{\textup{op}}_{i}}}}\right)
+    G
+    \left.\vphantom{\sum_{\substack{i\in\IndexOp \\  o \in \mathcal{O}^{\textup{op}}_{i}}}}\right)
+    \\ %%%%%
+    &amp; + \sup_{ \bm{\chi} \in  \reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc} }
+    \left(\vphantom{\sum_{\substack{i\in\IndexOp \\  o \in \mathcal{O}^{\textup{op}}_{i}}}}\right.
+    w
+    \\ %%%%%
+    &amp; \quad\quad\quad - \sum_{\substack{i\in\IndexFunc \\  o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+    \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq}}
+    F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}
+    \\ %%%%%
+    &amp; \quad\quad\quad - \sum_{\substack{i\in\IndexFunc \\  o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}  }}
+    \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq}}
+    F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}
+    \left.\vphantom{\sum_{\substack{i\in\IndexOp \\  o \in \mathcal{O}^{\textup{op}}_{i}}}}\right)^{\top}\bm{\chi}.\end{aligned}\end{split}\]</div>
+</div>
+<p>Since the dual problem is a minimization problem over the dual
+variables, we conclude that it can be written as</p>
+<div class="allowdisplaybreaks docutils container">
+<div class="math notranslate nohighlight" id="equation-eq-pep-relaxed-dual">
+<span id="eq-pep-relaxed-dual"></span><span class="eqno">(5.23)<a class="headerlink" href="#equation-eq-pep-relaxed-dual" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+ \nonumber
+    &amp; \underset{}{\text{minimize}} &amp; &amp; 0 \\ \nonumber
+    &amp; \text{subject to} &amp; &amp; \textbf{for each}\  i \in\IndexFunc \\ \nonumber
+    &amp; &amp; &amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \nonumber
+    &amp; &amp; &amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp; &amp; &amp; \quad \quad \quad  \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq}} \geq 0, \\ \nonumber
+    &amp; &amp; &amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp; &amp; &amp; \quad \mathbf{end} \\ \nonumber
+    &amp; &amp; &amp; \quad \textbf{for each}\  o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \nonumber
+    &amp; &amp; &amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp; &amp; &amp; \quad \quad \quad \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq}} \in \reals, \\ \nonumber
+    &amp; &amp; &amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp; &amp; &amp; \quad \mathbf{end} \\ \nonumber
+    &amp; &amp; &amp; \mathbf{end} \\ \nonumber
+    &amp; &amp; &amp; \textbf{for each}\  i \in\IndexOp  \\ \nonumber
+    &amp; &amp; &amp; \quad  \textbf{for each}\  o \in \mathcal{O}^{\textup{op}}_{i} \\ \nonumber
+    &amp; &amp; &amp; \quad \quad \textbf{for each}\  \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} \\ \nonumber
+    &amp; &amp; &amp; \quad \quad \quad \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op}} \geq 0,\\ \nonumber
+    &amp; &amp; &amp; \quad \quad \mathbf{end} \\ \nonumber
+    &amp; &amp; &amp; \quad \mathbf{end} \\
+    &amp; &amp; &amp; \mathbf{end} \\ \nonumber
+    &amp; &amp; &amp; - W
+    + \sum_{\substack{i\in\IndexFunc \\ o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+    \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq}}
+    W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}
+    \\ \nonumber
+    &amp; &amp; &amp; \quad + \sum_{\substack{i\in\IndexFunc  \\ o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+    \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq}}
+    W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}} \\ \nonumber
+    &amp; &amp; &amp; \quad + \sum_{\substack{i\in\IndexOp \\ o \in \mathcal{O}^{\textup{op}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+    \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{op}}
+    W_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{op}}
+    \succeq 0, \\ \nonumber
+    &amp; &amp; &amp;
+    - w
+    + \sum_{\substack{i\in\IndexFunc \\ o \in \mathcal{O}^{\textup{func-ineq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+    \lambda_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-ineq}}
+    F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-ineq}}  \\ \nonumber
+    &amp; &amp; &amp; \quad + \sum_{\substack{i\in\IndexFunc  \\ o \in \mathcal{O}^{\textup{func-eq}}_{i} \\ \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter} }}
+    \nu_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\textup{func-eq}}
+    F_{\p{i,j_{1},k_{1},\ldots,j_{n_{i,o}},k_{n_{i,o}},o}}^{\PEPMinIter,\,\PEPMaxIter,\,\textup{func-eq}}
+    = 0.\end{aligned}\end{split}\]</div>
+</div>
+<p>which is a feasibility problem.
+Since <a class="reference internal" href="#equation-eq-pep-relaxed-dual">(5.23)</a> is the dual
+of <a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a>, we conclude that if
+<a class="reference internal" href="#equation-eq-pep-relaxed-dual">(5.23)</a> is feasible,
+then <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a><span class="math notranslate nohighlight">\(^\star\leq 0\)</span>.</p>
+<p>Next, suppose that the primal
+problem <a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a> has a Slater point,
+i.e., there exists
+<span class="math notranslate nohighlight">\(G\in\sym_{++}^{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}\)</span>
+and
+<span class="math notranslate nohighlight">\(\bchi\in\reals^{\p{\PEPMaxIter-\PEPMinIter+1}\NumEvalFunc + \NumFunc}\)</span>
+such that
+<a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a>
+holds. Then there is no duality gap, i.e., strong duality holds
+between the primal problem <a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a> and
+the dual problem <a class="reference internal" href="#equation-eq-pep-relaxed-dual">(5.23)</a>.</p>
+<p>This concludes the proof. <span class="math notranslate nohighlight">\(\square\)</span></p>
+</div>
+<p class="rubric">References</p>
+<div class="docutils container" id="id2">
+<div role="list" class="citation-list">
+<div class="citation" id="id175" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">RTBG20</a><span class="fn-bracket">]</span></span>
+<p>Ernest K. Ryu, Adrien B. Taylor, Carolina Bergeling, and Pontus Giselsson. Operator splitting performance estimation: Tight contraction factors and optimal parameter selection. <em>SIAM Journal on Optimization</em>, 30(3):2251–2271, January 2020. <a class="reference external" href="https://doi.org/10.1137/19m1304854">doi:10.1137/19m1304854</a>.</p>
+</div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../lyapunov_analyses/" class="btn btn-neutral float-left" title="5. Lyapunov analyses" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../iteration_independent_analyses/" class="btn btn-neutral float-right" title="5.2. Iteration-independent analyses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

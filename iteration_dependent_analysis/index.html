@@ -1,0 +1,930 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Iteration-dependent analysis | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/iteration_dependent_analysis/" /><script src="../_static/jquery.js?v=5d32c60e"></script><script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../_static/documentation_options.js?v=c8c5a04b"></script><script src="../_static/doctools.js?v=fd6eb6e6"></script><script src="../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../_static/copybutton.js?v=36830154"></script><script defer="defer" src="../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Solver backends" href="../solver_backends/" />
+    <link rel="prev" title="Iteration-independent analysis" href="../iteration_independent_analysis/" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/iteration_dependent_analysis/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/iteration_dependent_analysis/"/>
+<meta property="og:url" content="https://autolyap.github.io/iteration_dependent_analysis/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/iteration_dependent_analysis/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:44Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:44Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Iteration-dependent Lyapunov analysis tools in AutoLyap for finite-horizon and chained-inequality certification."/>
+<meta name="keywords" content="iteration-dependent Lyapunov analysis, finite-horizon convergence, AutoLyap iteration dependent"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="Iteration-dependent analysis"/>
+<meta property="og:description" content="Iteration-dependent Lyapunov analysis tools in AutoLyap for finite-horizon and chained-inequality certification."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Iteration-dependent analysis"/>
+<meta name="twitter:description" content="Iteration-dependent Lyapunov analysis tools in AutoLyap for finite-horizon and chained-inequality certification."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Iteration Dependent Analysis"/>
+<meta property="article:tag" content="iteration-dependent Lyapunov analysis"/>
+<meta property="article:tag" content="finite-horizon convergence"/>
+<meta property="article:tag" content="AutoLyap iteration dependent"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/iteration_dependent_analysis/#webpage",
+  "name": "Iteration-dependent analysis",
+  "headline": "Iteration-dependent analysis",
+  "description": "Iteration-dependent Lyapunov analysis tools in AutoLyap for finite-horizon and chained-inequality certification.",
+  "keywords": "iteration-dependent Lyapunov analysis, finite-horizon convergence, AutoLyap iteration dependent",
+  "url": "https://autolyap.github.io/iteration_dependent_analysis/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/iteration_dependent_analysis/",
+  "dateModified": "2026-03-02T19:05:44Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "API reference",
+      "item": "https://autolyap.github.io/api_reference/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Lyapunov analyses",
+      "item": "https://autolyap.github.io/lyapunov_analyses/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Iteration-dependent analysis",
+      "item": "https://autolyap.github.io/iteration_dependent_analysis/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api_reference/">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../problem_class/">Problem classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../lyapunov_analyses/">Lyapunov analyses</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../iteration_independent_analysis/">Iteration-independent analysis</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Iteration-dependent analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autolyap.IterationDependent"><code class="docutils literal notranslate"><span class="pre">IterationDependent</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../solver_backends/">Solver backends</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../api_reference/">API reference</a></li>
+      <li class="breadcrumb-item"><a href="../lyapunov_analyses/">Lyapunov analyses</a></li>
+    <li class="breadcrumb-item active">Iteration-dependent analysis</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="iteration-dependent-analysis">
+<h1>Iteration-dependent analysis<a class="headerlink" href="#iteration-dependent-analysis" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="autolyap.IterationDependent">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.</span></span><span class="sig-name descname"><span class="pre">IterationDependent</span></span><a class="reference internal" href="../_modules/autolyap/iteration_dependent/#IterationDependent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.IterationDependent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Iteration-dependent Lyapunov analysis utilities.</p>
+<p>For the mathematical formulation, notation, and convergence statements,
+see <a class="reference internal" href="../theory/iteration_dependent_analyses/"><span class="doc">Iteration-dependent analyses</span></a>.</p>
+<p>This class provides the corresponding computational interface, with
+<a class="reference internal" href="#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_lyapunov()</span></code></a> as the main entry point.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.IterationDependent.get_parameters_distance_to_solution">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_parameters_distance_to_solution</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><span class="pre">Algorithm</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">j</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/autolyap/iteration_dependent/#IterationDependent.get_parameters_distance_to_solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.IterationDependent.get_parameters_distance_to_solution" title="Link to this definition"></a></dt>
+<dd><p>Compute Lyapunov parameters for the distance-to-solution metric at iteration <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>For the matrix constructions used in this method, see
+<a class="reference internal" href="../theory/performance_estimation_via_sdps/"><span class="doc">Performance estimation via SDPs</span></a>.
+For the role of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>, see
+<a class="reference internal" href="../theory/iteration_dependent_analyses/"><span class="doc">Iteration-dependent analyses</span></a>.</p>
+<p><strong>Resulting lower bounds</strong></p>
+<p>With this choice of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{V}(Q_k,q_k,k) = \|y_{i,j}^{k} - y^{\star}\|^{2}.\]</div>
+<p><strong>Matrix construction</strong></p>
+<p>The matrix <span class="math notranslate nohighlight">\(Q_k\)</span> is constructed as</p>
+<div class="math notranslate nohighlight">
+\[Q_k
+=
+\left(P_{(i,j)}Y_k^{k,k} - P_{(i,\star)}Y_\star^{k,k}\right)^\top
+\left(P_{(i,j)}Y_k^{k,k} - P_{(i,\star)}Y_\star^{k,k}\right),\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y_k^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ys" title="autolyap.algorithms.algorithm.Algorithm._get_Ys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ys()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y_\star^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ys" title="autolyap.algorithms.algorithm.Algorithm._get_Ys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ys()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{(i,j)}\)</span> and <span class="math notranslate nohighlight">\(P_{(i,\star)}\)</span> are projection matrices retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ps" title="autolyap.algorithms.algorithm.Algorithm._get_Ps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ps()</span></code></a>.</p></li>
+</ul>
+<p>The remaining vector is set to zero:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\NumFunc &gt; 0\)</span>, then <span class="math notranslate nohighlight">\(q_k = 0\)</span>.</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>algo</cite> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a>]): Algorithm instance providing <cite>m</cite>, <cite>m_bar_is</cite>,
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ys" title="autolyap.algorithms.algorithm.Algorithm._get_Ys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ys()</span></code></a>, and
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ps" title="autolyap.algorithms.algorithm.Algorithm._get_Ps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ps()</span></code></a>.</p></li>
+<li><p><cite>k</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Nonnegative iteration index <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+<li><p><cite>i</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Component index, with
+<span class="math notranslate nohighlight">\(i \in \llbracket 1, m\rrbracket\)</span>.</p></li>
+<li><p><cite>j</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Evaluation index for component <cite>i</cite>, with
+<span class="math notranslate nohighlight">\(j \in \llbracket 1, \NumEval_i\rrbracket\)</span>.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><p>(<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]]):
+If <cite>algo.m_func == 0</cite>, returns <span class="math notranslate nohighlight">\(Q_k\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[Q_k \in \sym^{n + \NumEval + m}.\]</div>
+<p>Otherwise, returns <span class="math notranslate nohighlight">\((Q_k, q_k)\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Q_k &amp;\in \sym^{n + \NumEval + m},\\
+q_k &amp;\in \mathbb{R}^{\NumEvalFunc + \NumFunc}.
+\end{aligned}\end{split}\]</div>
+</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If an input is invalid or a required matrix is missing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.IterationDependent.get_parameters_fixed_point_residual">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_parameters_fixed_point_residual</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><span class="pre">Algorithm</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/autolyap/iteration_dependent/#IterationDependent.get_parameters_fixed_point_residual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.IterationDependent.get_parameters_fixed_point_residual" title="Link to this definition"></a></dt>
+<dd><p>Compute Lyapunov parameters for the fixed-point residual at iteration <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>For the matrix constructions used in this method, see
+<a class="reference internal" href="../theory/performance_estimation_via_sdps/"><span class="doc">Performance estimation via SDPs</span></a>.
+For the role of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>, see
+<a class="reference internal" href="../theory/iteration_dependent_analyses/"><span class="doc">Iteration-dependent analyses</span></a>.</p>
+<p><strong>Resulting lower bounds</strong></p>
+<p>With this choice of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{V}(Q_k,q_k,k) = \|\bx^{k+1} - \bx^{k}\|^{2}.\]</div>
+<p><strong>Matrix construction</strong></p>
+<p>The matrix <span class="math notranslate nohighlight">\(Q_k\)</span> is constructed as</p>
+<div class="math notranslate nohighlight">
+\[Q_k
+=
+\left(X_{k+1}^{k,k} - X_k^{k,k}\right)^\top
+\left(X_{k+1}^{k,k} - X_k^{k,k}\right),\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_k^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Xs" title="autolyap.algorithms.algorithm.Algorithm._get_Xs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Xs()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_{k+1}^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Xs" title="autolyap.algorithms.algorithm.Algorithm._get_Xs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Xs()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+</ul>
+<p>The remaining vector is set to zero:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\NumFunc &gt; 0\)</span>, then <span class="math notranslate nohighlight">\(q_k = 0\)</span>.</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>algo</cite> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a>]): Algorithm instance providing dimensions and
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Xs" title="autolyap.algorithms.algorithm.Algorithm._get_Xs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Xs()</span></code></a>.</p></li>
+<li><p><cite>k</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Nonnegative iteration index <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><p>(<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]]):
+If <cite>algo.m_func == 0</cite>, returns <span class="math notranslate nohighlight">\(Q_k\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[Q_k \in \sym^{n + \NumEval + m}.\]</div>
+<p>Otherwise, returns <span class="math notranslate nohighlight">\((Q_k, q_k)\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Q_k &amp;\in \sym^{n + \NumEval + m},\\
+q_k &amp;\in \mathbb{R}^{\NumEvalFunc + \NumFunc}.
+\end{aligned}\end{split}\]</div>
+</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If an input is invalid or required <span class="math notranslate nohighlight">\(X\)</span> matrices are missing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.IterationDependent.get_parameters_function_value_suboptimality">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_parameters_function_value_suboptimality</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><span class="pre">Algorithm</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">j</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/autolyap/iteration_dependent/#IterationDependent.get_parameters_function_value_suboptimality"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.IterationDependent.get_parameters_function_value_suboptimality" title="Link to this definition"></a></dt>
+<dd><p>Compute Lyapunov parameters for function-value suboptimality at iteration <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>For the matrix constructions used in this method, see
+<a class="reference internal" href="../theory/performance_estimation_via_sdps/"><span class="doc">Performance estimation via SDPs</span></a>.
+For the role of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>, see
+<a class="reference internal" href="../theory/iteration_dependent_analyses/"><span class="doc">Iteration-dependent analyses</span></a>.</p>
+<p><strong>Resulting lower bounds</strong></p>
+<p>With this choice of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{V}(Q_k,q_k,k) = f_{1}(y_{1,j}^{k}) - f_{1}(y^{\star}).\]</div>
+<p><strong>Matrix construction</strong></p>
+<p>This method applies only when <span class="math notranslate nohighlight">\(m = \NumFunc = 1\)</span>.</p>
+<p>The vector <span class="math notranslate nohighlight">\(q_k\)</span> is constructed as</p>
+<div class="math notranslate nohighlight">
+\[q_k = \left(F_{(1,j,k)}^{k,k} - F_{(1,\star,\star)}^{k,k}\right)^\top,\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_{(1,j,k)}^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Fs" title="autolyap.algorithms.algorithm.Algorithm._get_Fs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Fs()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{(1,\star,\star)}^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Fs" title="autolyap.algorithms.algorithm.Algorithm._get_Fs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Fs()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+</ul>
+<p>The remaining matrix is set to zero:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q_k = 0\)</span>.</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>algo</cite> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a>]): Algorithm instance with <cite>m = m_func = 1</cite>,
+<cite>m_bar_is</cite>, and <a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Fs" title="autolyap.algorithms.algorithm.Algorithm._get_Fs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Fs()</span></code></a>.</p></li>
+<li><p><cite>k</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Nonnegative iteration index <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+<li><p><cite>j</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Evaluation index for component 1, with
+<span class="math notranslate nohighlight">\(j \in \llbracket 1, \NumEval_1\rrbracket\)</span>.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><p>(<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]):
+A tuple <span class="math notranslate nohighlight">\((Q_k, q_k)\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Q_k &amp;\in \sym^{n + \NumEval + m},\\
+q_k &amp;\in \mathbb{R}^{\NumEvalFunc + \NumFunc}.
+\end{aligned}\end{split}\]</div>
+</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If an input is invalid, required <span class="math notranslate nohighlight">\(F\)</span> matrices are missing,
+or <span class="math notranslate nohighlight">\(m \ne 1\)</span> / <span class="math notranslate nohighlight">\(\NumFunc \ne 1\)</span>.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.IterationDependent.get_parameters_optimality_measure">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_parameters_optimality_measure</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><span class="pre">Algorithm</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/autolyap/iteration_dependent/#IterationDependent.get_parameters_optimality_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.IterationDependent.get_parameters_optimality_measure" title="Link to this definition"></a></dt>
+<dd><p>Compute Lyapunov parameters for the optimality measure at iteration <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>For the matrix constructions used in this method, see
+<a class="reference internal" href="../theory/performance_estimation_via_sdps/"><span class="doc">Performance estimation via SDPs</span></a>.
+For the role of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>, see
+<a class="reference internal" href="../theory/iteration_dependent_analyses/"><span class="doc">Iteration-dependent analyses</span></a>.</p>
+<p><strong>Resulting lower bounds</strong></p>
+<p>With this choice of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{V}(Q_k,q_k,k)
+=
+\begin{cases}
+    \|u_{1,1}^{k}\|^{2}, &amp; \text{if } m = 1, \\[0.5em]
+    \left\|\sum_{i=1}^{m} u_{i,1}^{k}\right\|^{2}
+    + \sum_{i=2}^{m} \|y_{1,1}^{k} - y_{i,1}^{k}\|^{2},
+    &amp; \text{if } m &gt; 1.
+\end{cases}\end{split}\]</div>
+<p><strong>Matrix construction</strong></p>
+<p>The matrix <span class="math notranslate nohighlight">\(Q_k\)</span> is constructed as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Q_k
+=
+\begin{cases}
+    \left(P_{(1,1)}U_k^{k,k}\right)^\top \left(P_{(1,1)}U_k^{k,k}\right), &amp; \text{if } m = 1, \\[1em]
+    \left(\sum_{i=1}^{m} P_{(i,1)}U_k^{k,k}\right)^\top
+    \left(\sum_{i=1}^{m} P_{(i,1)}U_k^{k,k}\right)
+    + \sum_{i=2}^{m}
+    \left(\left(P_{(1,1)} - P_{(i,1)}\right)Y_k^{k,k}\right)^\top
+    \left(\left(P_{(1,1)} - P_{(i,1)}\right)Y_k^{k,k}\right),
+    &amp; \text{if } m &gt; 1,
+\end{cases}\end{split}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(U_k^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Us" title="autolyap.algorithms.algorithm.Algorithm._get_Us"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Us()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y_k^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ys" title="autolyap.algorithms.algorithm.Algorithm._get_Ys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ys()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{(i,1)}\)</span> are projection matrices retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ps" title="autolyap.algorithms.algorithm.Algorithm._get_Ps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ps()</span></code></a>.</p></li>
+</ul>
+<p>The remaining vector is set to zero:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\NumFunc &gt; 0\)</span>, then <span class="math notranslate nohighlight">\(q_k = 0\)</span>.</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>algo</cite> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a>]): Algorithm instance providing <cite>m</cite>, <cite>m_bar</cite>, <cite>m_bar_is</cite>,
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Us" title="autolyap.algorithms.algorithm.Algorithm._get_Us"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Us()</span></code></a>,
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ys" title="autolyap.algorithms.algorithm.Algorithm._get_Ys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ys()</span></code></a>, and
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ps" title="autolyap.algorithms.algorithm.Algorithm._get_Ps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ps()</span></code></a>.</p></li>
+<li><p><cite>k</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Nonnegative iteration index <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><p>(<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]]):
+If <cite>algo.m_func == 0</cite>, returns <span class="math notranslate nohighlight">\(Q_k\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[Q_k \in \sym^{n + \NumEval + m}.\]</div>
+<p>Otherwise, returns <span class="math notranslate nohighlight">\((Q_k, q_k)\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Q_k &amp;\in \sym^{n + \NumEval + m},\\
+q_k &amp;\in \mathbb{R}^{\NumEvalFunc + \NumFunc}.
+\end{aligned}\end{split}\]</div>
+</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If an input is invalid or required matrices are missing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_parameters_state_component_cross_iteration_difference</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><span class="pre">Algorithm</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">ell</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">ell_prime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/autolyap/iteration_dependent/#IterationDependent.get_parameters_state_component_cross_iteration_difference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference" title="Link to this definition"></a></dt>
+<dd><p>Compute Lyapunov parameters for a cross-iteration state-component difference metric at iteration <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>For the matrix constructions used in this method, see
+<a class="reference internal" href="../theory/performance_estimation_via_sdps/"><span class="doc">Performance estimation via SDPs</span></a>.
+For the role of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>, see
+<a class="reference internal" href="../theory/iteration_dependent_analyses/"><span class="doc">Iteration-dependent analyses</span></a>.</p>
+<p><strong>Resulting lower bounds</strong></p>
+<p>With this choice of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{V}(Q_k,q_k,k) = \|x_{\ell}^{k+1} - x_{\ell^{\prime}}^{k}\|^{2}.\]</div>
+<p><strong>Matrix construction</strong></p>
+<p>The matrix <span class="math notranslate nohighlight">\(Q_k\)</span> is constructed as</p>
+<div class="math notranslate nohighlight">
+\[Q_k
+=
+\left(e_\ell^\top X_{k+1}^{k,k} - e_{\ell^{\prime}}^\top X_k^{k,k}\right)^\top
+\left(e_\ell^\top X_{k+1}^{k,k} - e_{\ell^{\prime}}^\top X_k^{k,k}\right),\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_k^{k,k}\)</span> and <span class="math notranslate nohighlight">\(X_{k+1}^{k,k}\)</span> are retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Xs" title="autolyap.algorithms.algorithm.Algorithm._get_Xs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Xs()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e_\ell, e_{\ell^\prime} \in \mathbb{R}^{n}\)</span> are standard basis vectors.</p></li>
+</ul>
+<p>The remaining vector is set to zero:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\NumFunc &gt; 0\)</span>, then <span class="math notranslate nohighlight">\(q_k = 0\)</span>.</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>algo</cite> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a>]): Algorithm instance providing dimensions and
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Xs" title="autolyap.algorithms.algorithm.Algorithm._get_Xs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Xs()</span></code></a>.</p></li>
+<li><p><cite>k</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Nonnegative iteration index <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+<li><p><cite>ell</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): State coordinate index at iteration <span class="math notranslate nohighlight">\(k+1\)</span>, with
+<span class="math notranslate nohighlight">\(\ell \in \llbracket 1, n\rrbracket\)</span>.</p></li>
+<li><p><cite>ell_prime</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): State coordinate index at iteration <span class="math notranslate nohighlight">\(k\)</span>, with
+<span class="math notranslate nohighlight">\(\ell^\prime \in \llbracket 1, n\rrbracket\)</span>.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><p>(<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]]):
+If <cite>algo.m_func == 0</cite>, returns <span class="math notranslate nohighlight">\(Q_k\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[Q_k \in \sym^{n + \NumEval + m}.\]</div>
+<p>Otherwise, returns <span class="math notranslate nohighlight">\((Q_k, q_k)\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Q_k &amp;\in \sym^{n + \NumEval + m},\\
+q_k &amp;\in \mathbb{R}^{\NumEvalFunc + \NumFunc}.
+\end{aligned}\end{split}\]</div>
+</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If an input is invalid or a required matrix is missing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.IterationDependent.get_parameters_state_component_difference">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_parameters_state_component_difference</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><span class="pre">Algorithm</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">ell</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">ell_prime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/autolyap/iteration_dependent/#IterationDependent.get_parameters_state_component_difference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.IterationDependent.get_parameters_state_component_difference" title="Link to this definition"></a></dt>
+<dd><p>Compute Lyapunov parameters for a same-iteration state-component difference metric at iteration <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>For the matrix constructions used in this method, see
+<a class="reference internal" href="../theory/performance_estimation_via_sdps/"><span class="doc">Performance estimation via SDPs</span></a>.
+For the role of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>, see
+<a class="reference internal" href="../theory/iteration_dependent_analyses/"><span class="doc">Iteration-dependent analyses</span></a>.</p>
+<p><strong>Resulting lower bounds</strong></p>
+<p>With this choice of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{V}(Q_k,q_k,k) = \|x_{\ell}^{k} - x_{\ell^{\prime}}^{k}\|^{2}.\]</div>
+<p><strong>Matrix construction</strong></p>
+<p>The matrix <span class="math notranslate nohighlight">\(Q_k\)</span> is constructed as</p>
+<div class="math notranslate nohighlight">
+\[Q_k
+=
+\left(e_\ell^\top X_k^{k,k} - e_{\ell^{\prime}}^\top X_k^{k,k}\right)^\top
+\left(e_\ell^\top X_k^{k,k} - e_{\ell^{\prime}}^\top X_k^{k,k}\right),\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_k^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Xs" title="autolyap.algorithms.algorithm.Algorithm._get_Xs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Xs()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e_\ell, e_{\ell^\prime} \in \mathbb{R}^{n}\)</span> are standard basis vectors.</p></li>
+</ul>
+<p>The remaining vector is set to zero:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\NumFunc &gt; 0\)</span>, then <span class="math notranslate nohighlight">\(q_k = 0\)</span>.</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>algo</cite> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a>]): Algorithm instance providing dimensions and
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Xs" title="autolyap.algorithms.algorithm.Algorithm._get_Xs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Xs()</span></code></a>.</p></li>
+<li><p><cite>k</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Nonnegative iteration index <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+<li><p><cite>ell</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): State coordinate index at iteration <span class="math notranslate nohighlight">\(k\)</span>, with
+<span class="math notranslate nohighlight">\(\ell \in \llbracket 1, n\rrbracket\)</span>.</p></li>
+<li><p><cite>ell_prime</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): State coordinate index at iteration <span class="math notranslate nohighlight">\(k\)</span>, with
+<span class="math notranslate nohighlight">\(\ell^\prime \in \llbracket 1, n\rrbracket\)</span>.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><p>(<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]]):
+If <cite>algo.m_func == 0</cite>, returns <span class="math notranslate nohighlight">\(Q_k\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[Q_k \in \sym^{n + \NumEval + m}.\]</div>
+<p>Otherwise, returns <span class="math notranslate nohighlight">\((Q_k, q_k)\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Q_k &amp;\in \sym^{n + \NumEval + m},\\
+q_k &amp;\in \mathbb{R}^{\NumEvalFunc + \NumFunc}.
+\end{aligned}\end{split}\]</div>
+</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If an input is invalid or a required matrix is missing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.IterationDependent.get_parameters_state_component_distance_to_solution">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_parameters_state_component_distance_to_solution</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><span class="pre">Algorithm</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">ell</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/autolyap/iteration_dependent/#IterationDependent.get_parameters_state_component_distance_to_solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.IterationDependent.get_parameters_state_component_distance_to_solution" title="Link to this definition"></a></dt>
+<dd><p>Compute Lyapunov parameters for a state-component distance-to-solution metric at iteration <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>For the matrix constructions used in this method, see
+<a class="reference internal" href="../theory/performance_estimation_via_sdps/"><span class="doc">Performance estimation via SDPs</span></a>.
+For the role of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>, see
+<a class="reference internal" href="../theory/iteration_dependent_analyses/"><span class="doc">Iteration-dependent analyses</span></a>.</p>
+<p><strong>Resulting lower bounds</strong></p>
+<p>With this choice of <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{V}(Q_k,q_k,k) = \|x_{\ell}^{k} - y^{\star}\|^{2}.\]</div>
+<p><strong>Matrix construction</strong></p>
+<p>The matrix <span class="math notranslate nohighlight">\(Q_k\)</span> is constructed as</p>
+<div class="math notranslate nohighlight">
+\[Q_k
+=
+\left(e_\ell^\top X_k^{k,k} - P_{(1,\star)}Y_\star^{k,k}\right)^\top
+\left(e_\ell^\top X_k^{k,k} - P_{(1,\star)}Y_\star^{k,k}\right),\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_k^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Xs" title="autolyap.algorithms.algorithm.Algorithm._get_Xs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Xs()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y_\star^{k,k}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ys" title="autolyap.algorithms.algorithm.Algorithm._get_Ys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ys()</span></code></a>, using <cite>k_min = k</cite> and <cite>k_max = k</cite>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{(1,\star)}\)</span> is retrieved via
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ps" title="autolyap.algorithms.algorithm.Algorithm._get_Ps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ps()</span></code></a>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e_\ell \in \mathbb{R}^{n}\)</span> is the <cite>ell</cite>-th standard basis vector.</p></li>
+</ul>
+<p>The remaining vector is set to zero:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\NumFunc &gt; 0\)</span>, then <span class="math notranslate nohighlight">\(q_k = 0\)</span>.</p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>algo</cite> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a>]): Algorithm instance providing dimensions and
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Xs" title="autolyap.algorithms.algorithm.Algorithm._get_Xs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Xs()</span></code></a>,
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ys" title="autolyap.algorithms.algorithm.Algorithm._get_Ys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ys()</span></code></a>, and
+<a class="reference internal" href="../dev/dev_internal_algorithms/#autolyap.algorithms.algorithm.Algorithm._get_Ps" title="autolyap.algorithms.algorithm.Algorithm._get_Ps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_Ps()</span></code></a>.</p></li>
+<li><p><cite>k</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Nonnegative iteration index <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+<li><p><cite>ell</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): State coordinate index, with
+<span class="math notranslate nohighlight">\(\ell \in \llbracket 1, n\rrbracket\)</span>.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><p>(<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Tuple" title="typing.Tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]]):
+If <cite>algo.m_func == 0</cite>, returns <span class="math notranslate nohighlight">\(Q_k\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[Q_k \in \sym^{n + \NumEval + m}.\]</div>
+<p>Otherwise, returns <span class="math notranslate nohighlight">\((Q_k, q_k)\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Q_k &amp;\in \sym^{n + \NumEval + m},\\
+q_k &amp;\in \mathbb{R}^{\NumEvalFunc + \NumFunc}.
+\end{aligned}\end{split}\]</div>
+</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If an input is invalid or a required matrix is missing.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autolyap.IterationDependent.search_lyapunov">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">search_lyapunov</span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><span class="n"><span class="pre">prob</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.inclusion_problem.InclusionProblem"><span class="pre">InclusionProblem</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><span class="pre">Algorithm</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">Q_0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">Q_K</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">q_0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">q_K</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><span class="pre">ndarray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">solver_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../solver_backends/#autolyap.SolverOptions" title="autolyap.solver_options.SolverOptions"><span class="pre">SolverOptions</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Any" title="typing.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/autolyap/iteration_dependent/#IterationDependent.search_lyapunov"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.IterationDependent.search_lyapunov" title="Link to this definition"></a></dt>
+<dd><p>Search for an iteration-dependent Lyapunov certificate via an SDP.</p>
+<p>Given an inclusion problem, an algorithm, and user-specified targets
+<span class="math notranslate nohighlight">\((Q_0,q_0,Q_K,q_K,K)\)</span>, this method formulates and solves a
+semidefinite feasibility problem for certificate variables
+<span class="math notranslate nohighlight">\((\{Q_k,q_k\}_{k=1}^{K-1}, c_K)\)</span>.</p>
+<p><strong>Connection to theory</strong></p>
+<p>For the formal statement of the chained quadratic Lyapunov inequality
+and the role of <span class="math notranslate nohighlight">\((Q_0,q_0,Q_K,q_K,K)\)</span>, see
+<a class="reference internal" href="../theory/iteration_dependent_analyses/"><span class="doc">Iteration-dependent analyses</span></a>.</p>
+<p><strong>User-specified targets</strong></p>
+<p>The tuple <span class="math notranslate nohighlight">\((Q_0,q_0,Q_K,q_K)\)</span> fixes the endpoint Lyapunov values
+<span class="math notranslate nohighlight">\(\mathcal{V}(Q_0,q_0,0)\)</span> and <span class="math notranslate nohighlight">\(\mathcal{V}(Q_K,q_K,K)\)</span>.
+These endpoint parameters are fixed inputs to the SDP
+(not optimization variables).</p>
+<p>Built-in constructors for choosing endpoint parameters are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#autolyap.IterationDependent.get_parameters_distance_to_solution" title="autolyap.IterationDependent.get_parameters_distance_to_solution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_parameters_distance_to_solution()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.IterationDependent.get_parameters_state_component_distance_to_solution" title="autolyap.IterationDependent.get_parameters_state_component_distance_to_solution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_parameters_state_component_distance_to_solution()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.IterationDependent.get_parameters_state_component_difference" title="autolyap.IterationDependent.get_parameters_state_component_difference"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_parameters_state_component_difference()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference" title="autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_parameters_state_component_cross_iteration_difference()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.IterationDependent.get_parameters_function_value_suboptimality" title="autolyap.IterationDependent.get_parameters_function_value_suboptimality"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_parameters_function_value_suboptimality()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.IterationDependent.get_parameters_fixed_point_residual" title="autolyap.IterationDependent.get_parameters_fixed_point_residual"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_parameters_fixed_point_residual()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.IterationDependent.get_parameters_optimality_measure" title="autolyap.IterationDependent.get_parameters_optimality_measure"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_parameters_optimality_measure()</span></code></a></p></li>
+</ul>
+<p>The SDP then searches for intermediate <span class="math notranslate nohighlight">\((Q_k,q_k)\)</span> for
+<span class="math notranslate nohighlight">\(k \in \llbracket 1, K-1\rrbracket\)</span> and the minimum feasible
+<span class="math notranslate nohighlight">\(c_K \ge 0\)</span> so that the chained inequalities hold.
+When <span class="math notranslate nohighlight">\(\NumFunc = 0\)</span>, the vectors <span class="math notranslate nohighlight">\(q_k\)</span>
+(and inputs <cite>q_0</cite>, <cite>q_K</cite>) are omitted.</p>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><cite>prob</cite> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a>]): An
+<a class="reference internal" href="../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a>
+instance containing interpolation conditions.</p></li>
+<li><p><cite>algo</cite> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a>]): An
+<a class="reference internal" href="../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a> instance providing
+dimensions and matrix helpers.</p></li>
+<li><p><cite>K</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): A positive integer corresponding to <span class="math notranslate nohighlight">\(K\)</span> defining the iteration budget.</p></li>
+<li><p><cite>Q_0</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>): A symmetric matrix corresponding to
+<span class="math notranslate nohighlight">\(Q_0 \in \sym^{n + \NumEval + m}\)</span>.</p></li>
+<li><p><cite>Q_K</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>): A symmetric matrix corresponding to
+<span class="math notranslate nohighlight">\(Q_K \in \sym^{n + \NumEval + m}\)</span>.</p></li>
+<li><p><cite>q_0</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Optional" title="typing.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]): A vector corresponding to
+<span class="math notranslate nohighlight">\(q_0 \in \mathbb{R}^{\NumEvalFunc + \NumFunc}\)</span> for functional components
+(required if <span class="math notranslate nohighlight">\(\NumFunc &gt; 0\)</span>; otherwise <cite>None</cite>).</p></li>
+<li><p><cite>q_K</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Optional" title="typing.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>]): A vector corresponding to
+<span class="math notranslate nohighlight">\(q_K \in \mathbb{R}^{\NumEvalFunc + \NumFunc}\)</span> for functional components
+(required if <span class="math notranslate nohighlight">\(\NumFunc &gt; 0\)</span>; otherwise <cite>None</cite>).</p></li>
+<li><p><cite>solver_options</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Optional" title="typing.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="../solver_backends/#autolyap.SolverOptions" title="autolyap.solver_options.SolverOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverOptions</span></code></a>]):
+Optional backend and parameter settings. Defaults to
+<cite>SolverOptions(backend=”mosek_fusion”)</cite>.</p></li>
+<li><p><cite>verbosity</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>): Nonnegative output level. Defaults to <cite>1</cite>.
+Set <cite>0</cite> to disable user-facing diagnostics, <cite>1</cite> for concise summaries,
+and <cite>2</cite> for per-iteration detail.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Any" title="typing.Any"><code class="xref py py-class docutils literal notranslate"><span class="pre">Any</span></code></a>]): Result mapping
+with keys <cite>status</cite>, <cite>solve_status</cite>, <cite>c_K</cite>, and <cite>certificate</cite>.</p>
+<ul class="simple">
+<li><p><cite>status</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>): One of <cite>“feasible”</cite>, <cite>“infeasible”</cite>, or
+<cite>“not_solved”</cite>.</p></li>
+<li><p><cite>solve_status</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Optional" title="typing.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]): Raw backend
+solve status (<cite>None</cite> when unavailable).</p></li>
+<li><p><cite>c_K</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Optional" title="typing.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]): Optimal objective value when
+<cite>status == “feasible”</cite>; otherwise <cite>None</cite>. This is the horizon-dependent scalar.</p></li>
+<li><p><cite>certificate</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Optional" title="typing.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Any" title="typing.Any"><code class="xref py py-class docutils literal notranslate"><span class="pre">Any</span></code></a>]]):
+<cite>None</cite> unless <cite>status == “feasible”</cite>.</p></li>
+</ul>
+<p>When <cite>status == “feasible”</cite>, <cite>certificate</cite> has:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  &quot;Q_sequence&quot;: List[np.ndarray],   # length K+1, Q_sequence[k] = Q_k
+  &quot;q_sequence&quot;: List[np.ndarray] | None,  # None when m_func == 0
+  &quot;multipliers&quot;: {
+    &quot;operator_lambda&quot;: List[record],
+    &quot;function_lambda&quot;: List[record],
+    &quot;function_nu&quot;: List[record]
+  }
+}
+</pre></div>
+</div>
+<p>Each multiplier list entry is a <cite>record</cite> with:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>record = {
+  &quot;iteration&quot;: int,
+  &quot;component&quot;: int,
+  &quot;interpolation_index&quot;: int,
+  &quot;pairs&quot;: List[{&quot;j&quot;: int | &quot;star&quot;, &quot;k&quot;: int | &quot;star&quot;}],
+  &quot;value&quot;: float
+}
+</pre></div>
+</div>
+<p>Field meanings and ranges:</p>
+<ul>
+<li><p><cite>iteration</cite> corresponds to <span class="math notranslate nohighlight">\(k\)</span> and satisfies
+<span class="math notranslate nohighlight">\(k \in \llbracket 0, K-1 \rrbracket\)</span>.</p></li>
+<li><p><cite>component</cite> corresponds to <span class="math notranslate nohighlight">\(i\)</span> and satisfies
+<span class="math notranslate nohighlight">\(i \in \llbracket 1, m \rrbracket\)</span>.</p></li>
+<li><p><cite>interpolation_index</cite> corresponds to <span class="math notranslate nohighlight">\(o\)</span>, where
+<span class="math notranslate nohighlight">\(o\)</span> is the zero-based index from
+<span class="math notranslate nohighlight">\(\text{enumerate}(\text{prob.get_component_data}(i))\)</span>, so
+<span class="math notranslate nohighlight">\(o \in \llbracket 0, \text{len}(\text{prob.get_component_data}(i)) - 1 \rrbracket\)</span>.</p></li>
+<li><p><cite>pairs</cite> is the concrete interpolation-pair list used by that multiplier.
+Its length is determined by
+<a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.indices._InterpolationIndices" title="autolyap.problemclass.indices._InterpolationIndices"><code class="xref py py-class docutils literal notranslate"><span class="pre">_InterpolationIndices</span></code></a>:
+1 for <cite>“r1”</cite> and 2 for <cite>“r1&lt;r2”</cite>, <cite>“r1!=r2”</cite>, <cite>“r1!=star”</cite>.
+Typical examples are
+<cite>[{“j”: 2, “k”: 5}]</cite> and
+<cite>[{“j”: 1, “k”: 5}, {“j”: “star”, “k”: “star”}]</cite>.</p>
+<p>Pair entries satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+j &amp;\in \llbracket 1, \bar m_i \rrbracket \cup \{\star\}, \\
+k_{\text{pair}} &amp;\in \{k, k+1\} \cup \{\star\},
+\end{aligned}\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(j=\star \Leftrightarrow k_{\text{pair}}=\star\)</span>.</p>
+</li>
+<li><p><cite>value</cite> is the scalar multiplier for that record.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Raises</strong></p>
+<ul class="simple">
+<li><p><cite>ValueError</cite>: If input dimensions or other conditions are violated.</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../iteration_independent_analysis/" class="btn btn-neutral float-left" title="Iteration-independent analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../solver_backends/" class="btn btn-neutral float-right" title="Solver backends" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

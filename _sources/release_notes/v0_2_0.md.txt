@@ -1,0 +1,72 @@
+# v0.2.0
+
+AutoLyap 0.2.0 focuses on clearer Lyapunov APIs, broader solver choices, and
+much stronger user documentation.
+Status: Unpublished.
+
+## Highlights
+
+- Added top-level {py:class}`SolverOptions <autolyap.SolverOptions>` for
+  explicit backend configuration in analysis calls.
+- Added first-class CVXPY backend support and solver profiles
+  (`CLARABEL`, `SCS`, `MOSEK`, `SDPA`, `SDPA` multiprecision, `COPT`) alongside
+  MOSEK Fusion.
+- Updated Lyapunov APIs to return structured result dictionaries with
+  certificates (`status`, `solve_status`, `rho`/`c_K`, `certificate`).
+- Added `verbosity` controls (default `verbosity=1`) and concise runtime
+  diagnostics for certificate checks.
+- Expanded docs with a full {doc}`../quick_start`, a dedicated
+  {doc}`../theory` section, and many new worked examples (proximal/gradient,
+  heavy-ball/Nesterov, Douglas-Rachford, Chambolle-Pock, Davis-Yin, Malitsky-Tam
+  FRB, APP, and ITEM).
+- Added project citation metadata (`CITATION.cff`) and richer reference wiring.
+
+## Breaking changes
+
+- Interpolation index tokens were renamed:
+  - `i<j` -> `r1<r2`
+  - `i!=j` -> `r1!=r2`
+  - `i` -> `r1`
+  - `i!=star` -> `r1!=star`
+- Lyapunov entry points were renamed:
+  - `IterationIndependent.verify_iteration_independent_Lyapunov` ->
+    `IterationIndependent.search_lyapunov`
+  - `IterationDependent.verify_iteration_dependent_Lyapunov` ->
+    `IterationDependent.search_lyapunov`
+- Deprecated Lyapunov alias methods were removed:
+  - `IterationIndependent.verify_iteration_independent_Lyapunov`
+  - `IterationDependent.verify_iteration_dependent_Lyapunov`
+- Lyapunov API return types changed from scalars/booleans to result
+  dictionaries:
+  - {py:meth}`autolyap.IterationIndependent.search_lyapunov`
+    now returns `{"status", "solve_status", "rho", "certificate"}`.
+  - {py:meth}`autolyap.IterationIndependent.LinearConvergence.bisection_search_rho`
+    now returns `{"status", "solve_status", "rho", "certificate"}`.
+  - {py:meth}`autolyap.IterationDependent.search_lyapunov`
+    now returns `{"status", "solve_status", "c_K", "certificate"}`.
+- Legacy `success` booleans were removed. Use `status == "feasible"` to
+  detect certified success.
+- Result-status semantics are now explicit:
+  - `status="feasible"` when a certificate is returned.
+  - `status="infeasible"` for genuine infeasibility.
+  - `status="not_solved"` for solver/interface errors or indeterminate
+    backend statuses (with details in `solve_status`).
+- Removed `autolyap.algorithms.deterministic_proxskip` (`ProxSkip`).
+
+## Migration from 0.1.0
+
+1. Replace old interpolation keys with the new `r1*` forms.
+2. Rename deprecated Lyapunov entry points to `search_lyapunov`.
+3. Update result handling to dictionary outputs; treat only
+   `status == "feasible"` as certified success.
+4. Configure solver backend/solver explicitly with
+   {py:class}`SolverOptions <autolyap.SolverOptions>` when needed.
+5. If you imported `ProxSkip`, remove or replace that dependency.
+
+## See also
+
+- {doc}`../quick_start`
+- {doc}`../examples`
+- {doc}`../api_reference`
+- {doc}`../solver_backends`
+- [Full changelog](https://github.com/AutoLyap/AutoLyap/blob/main/CHANGELOG.md)

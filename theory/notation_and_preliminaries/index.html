@@ -1,0 +1,557 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>1. Notation and preliminaries | AutoLyap</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://autolyap.github.io/theory/notation_and_preliminaries/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=c8c5a04b"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer="defer" src="../../_static/js/theme.js"></script>
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="Search within AutoLyap 0.2.0 documentation"
+        href="../../_static/opensearch.xml"/>
+
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="2. Problem classes" href="../problem_class/" />
+    <link rel="prev" title="Theory" href="../" />
+ 
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/theory/notation_and_preliminaries/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/theory/notation_and_preliminaries/"/>
+<meta property="og:url" content="https://autolyap.github.io/theory/notation_and_preliminaries/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/theory/notation_and_preliminaries/"/>
+<meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta property="og:image:alt" content="AutoLyap logo"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="512"/>
+<meta property="og:image:height" content="512"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
+<meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="article:modified_time" content="2026-03-02T19:05:44Z"/>
+<meta property="og:updated_time" content="2026-03-02T19:05:44Z"/>
+<meta name="author" content="Manu Upadhyaya"/>
+<meta name="description" content="Notation and preliminaries for AutoLyap theory, including set-valued operator conventions and subdifferential notation."/>
+<meta name="keywords" content="AutoLyap notation and preliminaries, set-valued operator notation, subdifferential conventions"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AutoLyap"/>
+<meta property="og:title" content="1. Notation and preliminaries"/>
+<meta property="og:description" content="Notation and preliminaries for AutoLyap theory, including set-valued operator conventions and subdifferential notation."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="1. Notation and preliminaries"/>
+<meta name="twitter:description" content="Notation and preliminaries for AutoLyap theory, including set-valued operator conventions and subdifferential notation."/>
+<meta property="article:author" content="Manu Upadhyaya"/>
+<meta property="article:section" content="Theory"/>
+<meta property="article:tag" content="AutoLyap notation and preliminaries"/>
+<meta property="article:tag" content="set-valued operator notation"/>
+<meta property="article:tag" content="subdifferential conventions"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://autolyap.github.io/#website",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://autolyap.github.io/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://autolyap.github.io/theory/notation_and_preliminaries/#webpage",
+  "name": "1. Notation and preliminaries",
+  "headline": "1. Notation and preliminaries",
+  "description": "Notation and preliminaries for AutoLyap theory, including set-valued operator conventions and subdifferential notation.",
+  "keywords": "AutoLyap notation and preliminaries, set-valued operator notation, subdifferential conventions",
+  "url": "https://autolyap.github.io/theory/notation_and_preliminaries/",
+  "inLanguage": "en-US",
+  "mainEntityOfPage": "https://autolyap.github.io/theory/notation_and_preliminaries/",
+  "dateModified": "2026-03-02T19:05:44Z",
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://autolyap.github.io/#website",
+    "name": "AutoLyap"
+  },
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "name": "AutoLyap",
+    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+    "programmingLanguage": "Python",
+    "license": "https://spdx.org/licenses/MIT.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://autolyap.github.io/#organization",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://autolyap.github.io/_static/favicon-master.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Theory",
+      "item": "https://autolyap.github.io/"
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "1. Notation and preliminaries",
+      "item": "https://autolyap.github.io/theory/notation_and_preliminaries/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/AutoLyap/AutoLyap#source",
+  "name": "AutoLyap",
+  "url": "https://autolyap.github.io/",
+  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "programmingLanguage": "Python",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "version": "0.2.0"
+}
+</script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+<a href="../../">
+  AutoLyap
+</a>
+<div class="sidebar-version">v0.2.0</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">Theory</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Notation and preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem_class/">2. Problem classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm_representation/">3. Algorithm representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation_conditions/">4. Interpolation conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lyapunov_analyses/">5. Lyapunov analyses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">AutoLyap</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li class="breadcrumb-item"><a href="../">Theory</a></li>
+    <li class="breadcrumb-item active"><span class="section-number">1. </span>Notation and preliminaries</li>
+
+  <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
+    <button
+      id="autolyap-width-toggle"
+      class="autolyap-width-toggle"
+      type="button"
+      aria-pressed="false"
+      title="Expand content to fill the window width"
+    >
+      Full width
+    </button>
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="notation-and-preliminaries">
+<h1><span class="section-number">1. </span>Notation and preliminaries<a class="headerlink" href="#notation-and-preliminaries" title="Link to this heading"></a></h1>
+<p>Let <span class="math notranslate nohighlight">\(\naturals\)</span> denote the set of nonnegative integers,
+<span class="math notranslate nohighlight">\(\mathbb{N}\)</span> the set of positive integers, and <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>
+the set of integers. For
+<span class="math notranslate nohighlight">\(n,m \in \mathbb{Z}\cup\set{\pm\infty}\)</span>, we define</p>
+<div class="math notranslate nohighlight">
+\[\llbracket n,m \rrbracket = \set{l \in \mathbb{Z} \xmiddle\vert n \leq l \leq m}.\]</div>
+<p>We use <span class="math notranslate nohighlight">\(\reals\)</span>, <span class="math notranslate nohighlight">\(\reals_+\)</span>, and <span class="math notranslate nohighlight">\(\reals_{++}\)</span> for
+the real, nonnegative real, and positive real numbers, respectively. We
+write <span class="math notranslate nohighlight">\(\reals^n\)</span> for the set of all <span class="math notranslate nohighlight">\(n\)</span>-tuples in
+<span class="math notranslate nohighlight">\(\reals\)</span>, <span class="math notranslate nohighlight">\(\reals^{m\times n}\)</span> for real-valued matrices of
+size <span class="math notranslate nohighlight">\(m\times n\)</span>, and <span class="math notranslate nohighlight">\([M]_{i,j}\)</span> for the <span class="math notranslate nohighlight">\((i,j)\)</span>-th
+element of <span class="math notranslate nohighlight">\(M\in\reals^{m\times n}\)</span>. We denote by
+<span class="math notranslate nohighlight">\(\sym^{n}\)</span> the set of symmetric real-valued matrices of size
+<span class="math notranslate nohighlight">\(n\times n\)</span>, and by <span class="math notranslate nohighlight">\(\sym_+^n\subseteq \sym^{n}\)</span> the set of
+positive semidefinite ones.</p>
+<p>The matrix <span class="math notranslate nohighlight">\(0_{n\times m} \in \reals^{n\times m}\)</span> is the
+<span class="math notranslate nohighlight">\(n\times m\)</span> all-zero matrix, <span class="math notranslate nohighlight">\(I_{n} \in \reals^{n\times n}\)</span>
+is the identity matrix, <span class="math notranslate nohighlight">\(e^n_{i}\in \reals^{n}\)</span> is the
+<span class="math notranslate nohighlight">\(i\)</span>th standard basis vector in <span class="math notranslate nohighlight">\(\reals^{n}\)</span>, and
+<span class="math notranslate nohighlight">\(\mathbf{1}_{n}\in \reals^{n}\)</span> is the all-ones vector. All
+vectors in <span class="math notranslate nohighlight">\(\reals^n\)</span> are column vectors by convention.</p>
+<p>Throughout this documentation, <span class="math notranslate nohighlight">\((\calH,\inner{\cdot}{\cdot})\)</span> will denote
+a real Hilbert space. All norms <span class="math notranslate nohighlight">\(\norm{\cdot}\)</span> are canonical norms
+where the inner product will be clear from the context. We denote the
+identity mapping <span class="math notranslate nohighlight">\(x \mapsto x\)</span> on <span class="math notranslate nohighlight">\(\calH\)</span> by <span class="math notranslate nohighlight">\(\Id\)</span>.</p>
+<div class="definition docutils container">
+<p id="def-func-defs">Let
+<span class="math notranslate nohighlight">\(f\colon \calH \to \reals \cup \{\pm\infty\}\)</span>,
+<span class="math notranslate nohighlight">\(L\in\reals_{+}\)</span> and
+<span class="math notranslate nohighlight">\(\mu,\widetilde{\mu},\mu_{\textup{gd}}\in\reals_{++}\)</span>. The
+function <span class="math notranslate nohighlight">\(f\)</span> is said to be</p>
+<ol class="lowerroman">
+<li><p><em>proper</em> if <span class="math notranslate nohighlight">\(-\infty \notin f\p{\calH}\)</span> and
+<span class="math notranslate nohighlight">\(\dom f \neq \emptyset\)</span>, where</p>
+<div class="math notranslate nohighlight">
+\[\dom f = \{x\in\calH \mid f(x) &lt; + \infty\}\]</div>
+<p>is called the <em>effective domain</em> of <span class="math notranslate nohighlight">\(f,\)</span></p>
+</li>
+<li><p><em>lower semicontinuous</em> if</p>
+<div class="math notranslate nohighlight">
+\[\liminf_{y\to x} f\p{y} \geq f\p{x}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x\in\calH\)</span>,</p>
+</li>
+<li><p><em>convex</em> if</p>
+<div class="math notranslate nohighlight">
+\[f\p{\p{1 - \lambda} x + \lambda y} \leq \p{1 - \lambda} f\p{x} + \lambda f\p{y}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x, y \in \calH\)</span> and
+<span class="math notranslate nohighlight">\(0 \leq \lambda \leq 1\)</span>,</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\mu\)</span>-strongly convex if <span class="math notranslate nohighlight">\(f\)</span> is proper and
+<span class="math notranslate nohighlight">\(f-(\mu/2)\norm{\cdot}^{2}\)</span> is convex,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\widetilde{\mu}\)</span>-weakly convex if
+<span class="math notranslate nohighlight">\(f+(\widetilde{\mu}/2)\norm{\cdot}^{2}\)</span> is convex,</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span>-smooth if <span class="math notranslate nohighlight">\(f\)</span> is Fréchet differentiable and
+the gradient <span class="math notranslate nohighlight">\(\nabla f:\calH \to \calH\)</span> is
+<span class="math notranslate nohighlight">\(L\)</span>-Lipschitz continuous, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\norm{\nabla f(x) - \nabla f(y)} \leq L \norm{x - y}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x,y\in\calH\)</span>, and</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\mu_{\textup{gd}}\)</span>-gradient dominated if <span class="math notranslate nohighlight">\(f\)</span> is
+Fréchet differentiable and</p>
+<div class="math notranslate nohighlight" id="equation-eq-pl">
+<span id="eq-pl"></span><span class="eqno">(1.1)<a class="headerlink" href="#equation-eq-pl" title="Link to this equation"></a></span>\[\begin{aligned}
+            f\p{x} - \inf_{y\in\calH}f\p{y} \leq \frac{1}{2\mu_{\textup{gd}}}\norm{\nabla f(x)}^2
+        \end{aligned}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x \in \calH\)</span>. Inequality <a class="reference internal" href="#equation-eq-pl">(1.1)</a>
+is sometimes called the <em>Polyak–Łojasiewicz</em> inequality or
+simply the <em>Łojasiewicz</em> inequality.</p>
+</li>
+</ol>
+</div>
+<div class="definition docutils container">
+<p id="def-calf">Let <span class="math notranslate nohighlight">\(-\infty &lt; \mu \leq L \leq +\infty\)</span> such that
+<span class="math notranslate nohighlight">\(L\geq 0\)</span>. We let <span class="math notranslate nohighlight">\(\mathcal{F}_{\mu,L}\p{\mathcal{H}}\)</span>
+denote the class of all proper and lower semicontinuous functions
+<span class="math notranslate nohighlight">\(f:\calH\rightarrow\reals\cup\{\pm\infty\}\)</span> such that</p>
+<ol class="lowerroman simple">
+<li><p><span class="math notranslate nohighlight">\((L/2)\norm{\cdot}^{2} - f\)</span> is convex and <span class="math notranslate nohighlight">\(f\)</span> is
+Fréchet differentiable if <span class="math notranslate nohighlight">\(L &lt; +\infty\)</span>, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(f-(\mu/2)\norm{\cdot}^{2}\)</span> is convex.</p></li>
+</ol>
+</div>
+<p>For example, <span class="math notranslate nohighlight">\(\mathcal{F}_{-L,L}\p{\mathcal{H}}\)</span> is equal to the
+class of <span class="math notranslate nohighlight">\(L\)</span>-smooth functions with domain <span class="math notranslate nohighlight">\(\calH\)</span>.</p>
+<p>The <em>Fréchet subdifferential</em> of a function
+<span class="math notranslate nohighlight">\(f\colon \calH \to \reals \cup \{\pm\infty\}\)</span> is the set-valued
+operator <span class="math notranslate nohighlight">\(\partial f:\calH \rightrightarrows \calH\)</span> given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \partial f \p{x} =
+    \begin{cases}
+        \Bigset{u\in\calH \xmiddle| \displaystyle{\liminf_{y\rightarrow x}} \frac{f\p{y}-f\p{x} - \inner{u}{y-x} }{\norm{y-x}}\geq 0 } &amp; \text{if } \abs{f(x)} &lt; + \infty, \\
+        \emptyset &amp; \text{otherwise}
+    \end{cases}\end{aligned}\end{split}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x\in\calH\)</span>.</p>
+<ol class="lowerroman">
+<li><p>If <span class="math notranslate nohighlight">\(f\)</span> is Fréchet differentiable at a point
+<span class="math notranslate nohighlight">\(x\in\calH\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\partial f \p{x} = \set{\nabla f(x)}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x\in\calH\)</span>.</p>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(f\)</span> is proper and convex, the Fréchet subdifferential
+becomes the <em>convex subdifferential</em>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\partial f \p{x} = \set{u \in \calH \xmiddle\vert \forall y \in \calH,\, f(y) \geq f(x) + \inner{u}{y-x} }\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x \in \calH\)</span>.</p>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(f\)</span> is proper and <span class="math notranslate nohighlight">\(\widetilde{\mu}\)</span>-weakly convex
+for some <span class="math notranslate nohighlight">\(\widetilde{\mu}\in\reals_{++}\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\partial f(x) = \partial \p{f + (\widetilde{\mu}/2)\norm{\cdot}^{2}}\p{x} - \widetilde{\mu} x\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x\in\mathcal{H}\)</span>,
+where <span class="math notranslate nohighlight">\(\partial \p{f + (\widetilde{\mu}/2)\norm{\cdot}^{2}}\)</span>
+reduces to the convex subdifferential.</p>
+</li>
+</ol>
+<div class="definition docutils container">
+<p id="def-prox">Suppose that
+<span class="math notranslate nohighlight">\(f\in\mathcal{F}_{0,\infty}\p{\mathcal{H}}\)</span> and
+<span class="math notranslate nohighlight">\(\gamma\in\reals_{++}\)</span>. Then the <em>proximal operator</em> of
+<span class="math notranslate nohighlight">\(f\)</span> with <em>step size</em> <span class="math notranslate nohighlight">\(\gamma\)</span>, denoted
+<span class="math notranslate nohighlight">\(\prox_{\gamma f} : \calH \to \calH\)</span>, is defined as the
+single-valued operator given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+        \prox_{\gamma f}(x) = \argmin_{z\in\calH}\Bigp{f(z) + \frac{1}{2\gamma}\norm{x-z}^2}
+    \end{aligned}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x\in\calH\)</span>.</p>
+</div>
+<p>Suppose that <span class="math notranslate nohighlight">\(f\in\mathcal{F}_{0,\infty}\p{\mathcal{H}}\)</span> and
+<span class="math notranslate nohighlight">\(\gamma\in\reals_{++}\)</span>. If <span class="math notranslate nohighlight">\(x,p\in\calH\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[p = \prox_{\gamma f}(x) \Leftrightarrow \gamma^{-1}\p{x-p} \in \partial f (p).\]</div>
+<p>Moreover, the <em>conjugate</em> of <span class="math notranslate nohighlight">\(f\)</span>, denoted
+<span class="math notranslate nohighlight">\(f^{*}:\calH\to \reals \cup \{+\infty\}\)</span>, is the proper, lower
+semicontinuous and convex function given by</p>
+<div class="math notranslate nohighlight">
+\[f^{*}(u) = \sup_{x\in\calH}\p{\inner{u}{x} - f(x)}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(u\in\calH\)</span>. If <span class="math notranslate nohighlight">\(x,u\in\calH\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[u \in \partial f(x) \Leftrightarrow x \in \partial f^{*}(u).\]</div>
+<p>Let <span class="math notranslate nohighlight">\(G:\calH\rightrightarrows\calH\)</span> be a set-valued operator. The
+set of <em>zeros</em> of <span class="math notranslate nohighlight">\(G\)</span> is denoted by</p>
+<div class="math notranslate nohighlight">
+\[\zer G =\set{x\in\calH \xmiddle| 0 \in G\p{x} }\]</div>
+<p>and the <em>graph</em> of <span class="math notranslate nohighlight">\(G\)</span> is denoted by</p>
+<div class="math notranslate nohighlight">
+\[\gra G = \set{(x,y)\in\calH\times\calH \xmiddle| y\in G(x)}.\]</div>
+<div class="definition docutils container">
+<p id="def-set-op">Let <span class="math notranslate nohighlight">\(G:\calH\rightrightarrows\calH\)</span> and
+<span class="math notranslate nohighlight">\(\mu \in\reals_{++}\)</span>. The operator <span class="math notranslate nohighlight">\(G\)</span> is said to be</p>
+<ol class="lowerroman">
+<li><p><em>monotone</em> if</p>
+<div class="math notranslate nohighlight">
+\[\inner{u - v}{x-y}\geq 0\]</div>
+<p>for each <span class="math notranslate nohighlight">\((x,u),(y,v)\in\gra G\)</span>,</p>
+</li>
+<li><p><em>maximally monotone</em> if <span class="math notranslate nohighlight">\(G\)</span> is monotone and there does
+not exist a monotone operator
+<span class="math notranslate nohighlight">\(H:\calH\rightrightarrows\calH\)</span> such that
+<span class="math notranslate nohighlight">\(\gra G \subsetneq \gra H\)</span>, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu\)</span>-<em>strongly monotone</em> if</p>
+<div class="math notranslate nohighlight">
+\[\inner{u - v}{x-y}\geq \mu \norm{x-y}^{2}\]</div>
+<p>for each <span class="math notranslate nohighlight">\((x,u),(y,v)\in\gra G\)</span>.</p>
+</li>
+</ol>
+</div>
+<p>The <em>inverse</em> of a set-valued operator
+<span class="math notranslate nohighlight">\(G:\calH\rightrightarrows\calH\)</span>, denoted by
+<span class="math notranslate nohighlight">\(G^{-1}:\calH\rightrightarrows\calH\)</span>, is defined through its graph</p>
+<div class="math notranslate nohighlight">
+\[\gra G^{-1} = \set{(y,x)\in\calH\times\calH \xmiddle| \p{x, y} \in \gra G}.\]</div>
+<div class="definition docutils container">
+<p id="def-resolvent">Suppose that <span class="math notranslate nohighlight">\(G:\calH \rightrightarrows\calH\)</span>
+is maximally monotone and <span class="math notranslate nohighlight">\(\gamma \in \reals_{++}\)</span>. The
+<em>resolvent</em> of <span class="math notranslate nohighlight">\(G\)</span> with <em>step size</em> <span class="math notranslate nohighlight">\(\gamma\)</span>, denoted
+<span class="math notranslate nohighlight">\(J_{\gamma G}:\calH \to \calH\)</span>, is defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+        \p{\Id + \gamma G}^{-1}\p{x} = \set{J_{\gamma G} \p{x}}
+    \end{aligned}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x\in \calH\)</span>, since <span class="math notranslate nohighlight">\(\p{\Id + \gamma G}^{-1}\)</span> is
+singleton-valued in this case.</p>
+</div>
+<div class="definition docutils container">
+<p id="def-single-op">Let <span class="math notranslate nohighlight">\(G:\calH \to \calH\)</span>,
+<span class="math notranslate nohighlight">\(L\in\reals_{+}\)</span>, and <span class="math notranslate nohighlight">\(\beta\in\reals_{++}\)</span>. The operator
+<span class="math notranslate nohighlight">\(G\)</span> is said to be</p>
+<ol class="lowerroman">
+<li><p><span class="math notranslate nohighlight">\(L\)</span>-<em>Lipschitz continuous</em> if</p>
+<div class="math notranslate nohighlight">
+\[\norm{G\p{x} - G\p{y} } \leq L \norm{x-y}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x,y\in \calH\)</span>, and</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span>-<em>cocoercive</em> if</p>
+<div class="math notranslate nohighlight">
+\[\inner{G\p{x} - G\p{y} }{x-y} \geq \beta \norm{G\p{x} - G\p{y}}^{2}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x,y\in \calH\)</span>.</p>
+</li>
+</ol>
+</div>
+<p>We introduce the following conventions that enable us to treat
+single-valued and singleton-valued operators interchangeably.</p>
+<ol class="lowerroman">
+<li><p>For notational convenience (at the expense of a slight abuse of
+notation), we will sometimes identify the operator</p>
+<div class="math notranslate nohighlight">
+\[G:\calH\to\calH\]</div>
+<p>with the set-valued mapping</p>
+<div class="math notranslate nohighlight">
+\[\calH \ni x \mapsto \set{G\p{x}} \subseteq\calH,\]</div>
+<p>which will be clear from context. For example, if
+<span class="math notranslate nohighlight">\(x,y \in \calH\)</span>, the inclusion/equality pair</p>
+<div class="math notranslate nohighlight">
+\[y\in G\p{x}
+\quad\Longleftrightarrow\quad
+y = G\p{x}\]</div>
+<p>is used interchangeably.</p>
+</li>
+<li><p>Similarly, if</p>
+<div class="math notranslate nohighlight">
+\[G:\calH\rightrightarrows \calH,
+\qquad
+T: \calH \to \calH,
+\qquad
+G\p{x} = \set{T\p{x}}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(x\in\calH\)</span>, i.e., <span class="math notranslate nohighlight">\(G\)</span> is a singleton-valued
+operator, we will sometimes identify <span class="math notranslate nohighlight">\(G\)</span> with the
+corresponding single-valued operator <span class="math notranslate nohighlight">\(T\)</span>.</p>
+</li>
+</ol>
+<p>Given any positive integer <span class="math notranslate nohighlight">\(n\)</span>, we let the inner-product
+<span class="math notranslate nohighlight">\(\inner{\cdot}{\cdot}\)</span> on <span class="math notranslate nohighlight">\(\calH^{n}\)</span> be given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \inner{\bz^{1}}{\bz^{2}}=\sum_{j=1}^{n}\inner{z^{1}_{j}}{z^{2}_{j}}    \end{aligned}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(\bz^{i}=\p{z^{i}_{1},\ldots,z^{i}_{n}}\in\calH^{n}\)</span> and
+<span class="math notranslate nohighlight">\(i\in\llbracket 1,2\rrbracket\)</span>. If
+<span class="math notranslate nohighlight">\(M\in \reals^{m\times n}\)</span>, we define the tensor product
+<span class="math notranslate nohighlight">\(M\kron \Id\)</span> to be the mapping
+<span class="math notranslate nohighlight">\((M\kron \Id):\calH^{n}\rightarrow\calH^{m}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+  (M\kron\Id)\bz = \Bigp{\sum_{j=1}^n[M]_{1,j}z_{j},\ldots,\sum_{j=1}^n[M]_{m,j}z_{j}}
+\end{aligned}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(\bz=\p{z_{1},\ldots,z_{n}}\in\calH^n\)</span>. The adjoint and
+composition formulas are</p>
+<div class="math notranslate nohighlight">
+\[(M\kron\Id)^*=M^{\top}\kron\Id,
+\qquad
+(M\kron\Id)\circ(N\kron\Id)=(MN)\kron\Id\]</div>
+<p>for each <span class="math notranslate nohighlight">\(N\in\reals^{n\times l}\)</span>.</p>
+<p>If we let <span class="math notranslate nohighlight">\(M_{1}\in\reals^{m\times n_{1}}\)</span> and
+<span class="math notranslate nohighlight">\(M_{2}\in\reals^{m\times n_{2}}\)</span>, the relations above imply that</p>
+<div class="math notranslate nohighlight">
+\[\inner{(M_1\kron\Id)\bz^{1}}{(M_2\kron\Id)\bz^{2}}
+=
+\inner{\bz^{1}}{\p{\p{M_1^{\top}M_2}\kron\Id}\bz^{2}}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(\bz^{1}\in\calH^{n_1}\)</span> and <span class="math notranslate nohighlight">\(\bz^{2}\in\calH^{n_2}\)</span>.
+We define the mapping <span class="math notranslate nohighlight">\(\mathcal{Q}:\sym^{n}\times \calH^{n}
+\rightarrow \reals\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[\quadform{M}{\bz}=\inner{\bz}{(M\kron\Id)\bz}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(M\in\sym^{n}\)</span> and <span class="math notranslate nohighlight">\(\bz\in\calH^{n}\)</span>. Note that, if
+<span class="math notranslate nohighlight">\(M\in\sym^{n}\)</span>, <span class="math notranslate nohighlight">\(N\in\reals^{n\times m}\)</span> and
+<span class="math notranslate nohighlight">\(\bz\in\calH^{m}\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\quadform{M}{(N\kron\Id)\bz}=\quadform{N^{\top}MN}{\bz}.\]</div>
+<p>We define the <em>Gramian function</em>
+<span class="math notranslate nohighlight">\(\gramFunc:\mathcal{H}^n \to \sym^{n}_{+}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[[\gramFunc\p{\bz}]_{i,j} = \inner{z_{i}}{z_{j}}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(\bz=\p{z_1,\ldots,z_n} \in \mathcal{H}^{n}\)</span>. If
+<span class="math notranslate nohighlight">\(M\in\sym^{n}\)</span> and <span class="math notranslate nohighlight">\(\bz \in\mathcal{H}^{n}\)</span>, it holds that</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{Q}\p{M,\bz} = \trace\p{M \gramFunc\p{\bz}}.\]</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../problem_class/" class="btn btn-neutral float-right" title="2. Problem classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p>
+    &#169; Copyright 2026,
+    <a href="https://manuupadhyaya.github.io/">Manu Upadhyaya</a>.</p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
