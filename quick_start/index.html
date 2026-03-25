@@ -43,8 +43,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-25T11:51:52Z"/>
-<meta property="og:updated_time" content="2026-03-25T11:51:52Z"/>
+<meta property="article:modified_time" content="2026-03-25T14:23:31Z"/>
+<meta property="og:updated_time" content="2026-03-25T14:23:31Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
 <meta name="description" content="Quick start guide for AutoLyap with iteration-independent and iteration-dependent Lyapunov analysis workflows."/>
 <meta name="keywords" content="AutoLyap quick start, iteration-independent Lyapunov analysis, iteration-dependent Lyapunov analysis, bisection search rho"/>
@@ -91,7 +91,7 @@
   "url": "https://autolyap.github.io/quick_start/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/quick_start/",
-  "dateModified": "2026-03-25T11:51:52Z",
+  "dateModified": "2026-03-25T14:23:31Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -365,9 +365,9 @@ x^{k+1} = x^k - \gamma \nabla f(x^k).\]</div>
 <span class="n">rho</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">]</span>
 <span class="n">certificate</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;certificate&quot;</span><span class="p">]</span>
 
-<span class="n">rho_theory</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">L</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">rho_theory_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">L</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (AutoLyap): </span><span class="si">{</span><span class="n">rho</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (theory):   </span><span class="si">{</span><span class="n">rho_theory</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (theory):   </span><span class="si">{</span><span class="n">rho_theory_value</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The computed value <code class="docutils literal notranslate"><span class="pre">rho</span> <span class="pre">(AutoLyap)</span></code> matches (up to solver numerical
@@ -491,10 +491,10 @@ as blue dots.</p>
 <span class="n">q_sequence</span> <span class="o">=</span> <span class="n">certificate</span><span class="p">[</span><span class="s2">&quot;q_sequence&quot;</span><span class="p">]</span>  <span class="c1"># [q_0, q_1, ..., q_K] or None</span>
 
 <span class="n">theta_K</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">compute_theta</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
-<span class="n">c_K_theory</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">theta_K</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">c_K_theory_value</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">theta_K</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c_K (AutoLyap): </span><span class="si">{</span><span class="n">c_K</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c_K (theory):   </span><span class="si">{</span><span class="n">c_K_theory</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c_K (theory):   </span><span class="si">{</span><span class="n">c_K_theory_value</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The computed value <code class="docutils literal notranslate"><span class="pre">c_K</span> <span class="pre">(AutoLyap)</span></code> matches (up to solver numerical
