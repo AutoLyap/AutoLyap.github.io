@@ -2,379 +2,385 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://autolyap.github.io/algorithms/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/api_reference/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/base_algorithms/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/concrete_algorithms/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/contributing/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/contributing/development_workflow/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/contributing/getting_started/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/contributing/pull_request_process/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/dev/dev_external_reference_targets/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/dev/dev_internal_algorithms/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/dev/dev_internal_core/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/dev/dev_internal_problemclass/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/dev/dev_internal_utils/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/dev/dev_reference/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/accelerated_proximal_point/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/chambolle_pock/convex_fixed_point_residual/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/chambolle_pock/index/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/chambolle_pock/smooth_strongly_convex/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/davis_yin_three_operator/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/define_your_own_algorithm/index/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/define_your_own_algorithm/proximal_gradient_method/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/douglas_rachford/cocoercive_plus_strongly_monotone/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/douglas_rachford/index/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/douglas_rachford/maximally_monotone_lipschitz_plus_strongly_monotone/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/douglas_rachford/maximally_monotone_plus_strongly_monotone_cocoercive/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/douglas_rachford/maximally_monotone_plus_strongly_monotone_lipschitz/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/douglas_rachford/smooth_strongly_convex_plus_convex/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/gradient_method/index/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/gradient_method/smooth_strongly_convex/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/heavy_ball/gradient_dominated_smooth/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/heavy_ball/index/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/heavy_ball/smooth_convex/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/information_theoretic_exact_method/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/malitsky_tam_frb/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/nesterov_fast_gradient/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/nesterov_momentum/gradient_dominated_smooth/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/nesterov_momentum/index/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/nesterov_momentum/smooth_convex/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/optimized_gradient/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/proximal_point/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/examples/scripts/README/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/function_classes/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/iteration_dependent_analysis/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/iteration_independent_analysis/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/lyapunov_analyses/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/operator_classes/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/problem_class/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/quick_start/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/release_notes/v0_2_0/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://autolyap.github.io/release_notes/v0_2_1/</loc>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/solver_backends/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/theory/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/theory/algorithm_representation/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/theory/interpolation_conditions/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/theory/iteration_dependent_analyses/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/theory/iteration_independent_analyses/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/theory/lyapunov_analyses/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/theory/notation_and_preliminaries/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/theory/performance_estimation_via_sdps/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/theory/problem_class/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://autolyap.github.io/whats_new/</loc>
-    <lastmod>2026-03-25T16:58:46Z</lastmod>
+    <lastmod>2026-03-27T16:07:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

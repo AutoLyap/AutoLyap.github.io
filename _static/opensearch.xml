@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
   <ShortName>AutoLyap</ShortName>
-  <Description>Search AutoLyap 0.2.0 documentation</Description>
+  <Description>Search AutoLyap 0.2.1 documentation</Description>
   <InputEncoding>utf-8</InputEncoding>
   <Url type="text/html" method="get"
        template="https://autolyap.github.io/../search/?q={searchTerms}"/>
-  <LongName>AutoLyap 0.2.0 documentation</LongName>
+  <LongName>AutoLyap 0.2.1 documentation</LongName>
   <Image height="16" width="16" type="image/x-icon">https://autolyap.github.io/../_static/favicon.ico</Image>
   
 </OpenSearchDescription>

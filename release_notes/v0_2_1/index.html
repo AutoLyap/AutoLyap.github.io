@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>The Chambolle–Pock method | AutoLyap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>v0.2.1 | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-    <link rel="canonical" href="https://autolyap.github.io/examples/chambolle_pock/index/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=da039c51"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/badge_links.js?v=475dcde8"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
+    <link rel="canonical" href="https://autolyap.github.io/release_notes/v0_2_1/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=da039c51"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/badge_links.js?v=475dcde8"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
   <script defer="defer" src="../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -20,17 +20,17 @@
 
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="The Chambolle–Pock method: Convex" href="convex_fixed_point_residual/" />
-    <link rel="prev" title="The accelerated proximal point method" href="../accelerated_proximal_point/" />
+    <link rel="next" title="v0.2.0" href="../v0_2_0/" />
+    <link rel="prev" title="What’s new" href="../../whats_new/" />
  
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
-<link rel="alternate" hreflang="en" href="https://autolyap.github.io/examples/chambolle_pock/index/"/>
-<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/examples/chambolle_pock/index/"/>
-<meta property="og:url" content="https://autolyap.github.io/examples/chambolle_pock/index/"/>
-<meta name="twitter:url" content="https://autolyap.github.io/examples/chambolle_pock/index/"/>
+<link rel="alternate" hreflang="en" href="https://autolyap.github.io/release_notes/v0_2_1/"/>
+<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/release_notes/v0_2_1/"/>
+<meta property="og:url" content="https://autolyap.github.io/release_notes/v0_2_1/"/>
+<meta name="twitter:url" content="https://autolyap.github.io/release_notes/v0_2_1/"/>
 <meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
@@ -41,25 +41,25 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-27T16:07:18Z"/>
-<meta property="og:updated_time" content="2026-03-27T16:07:18Z"/>
+<meta property="article:modified_time" content="2026-03-27T16:07:19Z"/>
+<meta property="og:updated_time" content="2026-03-27T16:07:19Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
-<meta name="description" content="Chambolle--Pock examples in AutoLyap for Lyapunov-based analysis under multiple problem settings."/>
-<meta name="keywords" content="Chambolle Pock AutoLyap, Chambolle Pock Lyapunov analysis, fixed-point residual and linear-rate examples"/>
+<meta name="description" content="AutoLyap v0.2.1 release notes covering notebooks and documentation consistency updates."/>
+<meta name="keywords" content="AutoLyap v0.2.1, AutoLyap patch release, AutoLyap release notes"/>
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
 <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="AutoLyap"/>
-<meta property="og:title" content="The Chambolle–Pock method"/>
-<meta property="og:description" content="Chambolle--Pock examples in AutoLyap for Lyapunov-based analysis under multiple problem settings."/>
+<meta property="og:title" content="v0.2.1"/>
+<meta property="og:description" content="AutoLyap v0.2.1 release notes covering notebooks and documentation consistency updates."/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="The Chambolle–Pock method"/>
-<meta name="twitter:description" content="Chambolle--Pock examples in AutoLyap for Lyapunov-based analysis under multiple problem settings."/>
+<meta name="twitter:title" content="v0.2.1"/>
+<meta name="twitter:description" content="AutoLyap v0.2.1 release notes covering notebooks and documentation consistency updates."/>
 <meta property="article:author" content="Manu Upadhyaya"/>
-<meta property="article:section" content="Examples"/>
-<meta property="article:tag" content="Chambolle Pock AutoLyap"/>
-<meta property="article:tag" content="Chambolle Pock Lyapunov analysis"/>
-<meta property="article:tag" content="fixed-point residual and linear-rate examples"/>
+<meta property="article:section" content="Release Notes"/>
+<meta property="article:tag" content="AutoLyap v0.2.1"/>
+<meta property="article:tag" content="AutoLyap patch release"/>
+<meta property="article:tag" content="AutoLyap release notes"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -81,15 +81,15 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://autolyap.github.io/examples/chambolle_pock/index/#webpage",
-  "name": "The Chambolle\u2013Pock method",
-  "headline": "The Chambolle\u2013Pock method",
-  "description": "Chambolle--Pock examples in AutoLyap for Lyapunov-based analysis under multiple problem settings.",
-  "keywords": "Chambolle Pock AutoLyap, Chambolle Pock Lyapunov analysis, fixed-point residual and linear-rate examples",
-  "url": "https://autolyap.github.io/examples/chambolle_pock/index/",
+  "@id": "https://autolyap.github.io/release_notes/v0_2_1/#webpage",
+  "name": "v0.2.1",
+  "headline": "v0.2.1",
+  "description": "AutoLyap v0.2.1 release notes covering notebooks and documentation consistency updates.",
+  "keywords": "AutoLyap v0.2.1, AutoLyap patch release, AutoLyap release notes",
+  "url": "https://autolyap.github.io/release_notes/v0_2_1/",
   "inLanguage": "en-US",
-  "mainEntityOfPage": "https://autolyap.github.io/examples/chambolle_pock/index/",
-  "dateModified": "2026-03-27T16:07:18Z",
+  "mainEntityOfPage": "https://autolyap.github.io/release_notes/v0_2_1/",
+  "dateModified": "2026-03-27T16:07:19Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -141,14 +141,14 @@
     ,{
       "@type": "ListItem",
       "position": 2,
-      "name": "Examples",
-      "item": "https://autolyap.github.io/"
+      "name": "What\u2019s new",
+      "item": "https://autolyap.github.io/whats_new/"
     }
     ,{
       "@type": "ListItem",
       "position": 3,
-      "name": "The Chambolle\u2013Pock method",
-      "item": "https://autolyap.github.io/examples/chambolle_pock/index/"
+      "name": "v0.2.1",
+      "item": "https://autolyap.github.io/release_notes/v0_2_1/"
     }
   ]
 }
@@ -191,29 +191,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../">Home</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quick_start/">Quick start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../theory/">Theory</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../">Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../define_your_own_algorithm/">Define your own algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../nesterov_fast_gradient/">Nesterov’s fast gradient method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../accelerated_proximal_point/">The accelerated proximal point method</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">The Chambolle–Pock method</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="convex_fixed_point_residual/">Convex</a></li>
-<li class="toctree-l3"><a class="reference internal" href="smooth_strongly_convex/">Smooth and strongly convex</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../davis_yin_three_operator/">The Davis–Yin three-operator splitting method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../douglas_rachford/">The Douglas–Rachford method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../gradient_method/">The gradient method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../nesterov_momentum/">The gradient method with constant Nesterov momentum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../heavy_ball/">The heavy-ball method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../information_theoretic_exact_method/">The information-theoretic exact method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../malitsky_tam_frb/">The Malitsky–Tam forward-reflected-backward method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../optimized_gradient/">The optimized gradient method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../proximal_point/">The proximal point method</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_reference/">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../whats_new/">What’s new</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../whats_new/">What’s new</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">v0.2.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#highlights">Highlights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../v0_2_0/">v0.2.0</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -229,8 +217,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li class="breadcrumb-item"><a href="../">Examples</a></li>
-    <li class="breadcrumb-item active">The Chambolle–Pock method</li>
+      <li class="breadcrumb-item"><a href="../../whats_new/">What’s new</a></li>
+    <li class="breadcrumb-item active">v0.2.1</li>
 
   <li class="wy-breadcrumbs-aside autolyap-breadcrumb-tools">
     <button
@@ -250,24 +238,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="the-chambolle-pock-method">
-<h1>The Chambolle–Pock method<a class="headerlink" href="#the-chambolle-pock-method" title="Link to this heading"></a></h1>
-<p>This section collects Chambolle–Pock examples under different problem
-settings.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="convex_fixed_point_residual/">Convex</a></li>
-<li class="toctree-l1"><a class="reference internal" href="smooth_strongly_convex/">Smooth and strongly convex</a></li>
+  <section id="v0-2-1">
+<h1>v0.2.1<a class="headerlink" href="#v0-2-1" title="Link to this heading"></a></h1>
+<p>AutoLyap 0.2.1 focuses on new example notebooks and documentation polish on
+top of 0.2.0.
+Status: Published on 2026-03-27.</p>
+<section id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">quick_start_colab.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">gradient_method.ipynb</span></code> walkthrough
+notebooks.</p></li>
+<li><p>Refreshed quick-start examples and Colab content for a smoother getting
+started experience.</p></li>
+<li><p>Cleaned up badge links and quick-start documentation navigation.</p></li>
+<li><p>Normalized asymptotic notation and cleaned up small documentation
+inconsistencies across quick-start, theory, and example pages.</p></li>
 </ul>
-</div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../accelerated_proximal_point/" class="btn btn-neutral float-left" title="The accelerated proximal point method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="convex_fixed_point_residual/" class="btn btn-neutral float-right" title="The Chambolle–Pock method: Convex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../whats_new/" class="btn btn-neutral float-left" title="What’s new" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../v0_2_0/" class="btn btn-neutral float-right" title="v0.2.0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
