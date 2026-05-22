@@ -43,8 +43,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-27T17:50:05Z"/>
-<meta property="og:updated_time" content="2026-03-27T17:50:05Z"/>
+<meta property="article:modified_time" content="2026-05-22T12:43:46Z"/>
+<meta property="og:updated_time" content="2026-05-22T12:43:46Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
 <meta name="description" content="Iteration-dependent theory in AutoLyap for finite-horizon guarantees and chained Lyapunov inequalities."/>
 <meta name="keywords" content="AutoLyap iteration-dependent theory, finite-horizon guarantees, chained Lyapunov inequalities"/>
@@ -91,7 +91,7 @@
   "url": "https://autolyap.github.io/theory/iteration_dependent_analyses/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/theory/iteration_dependent_analyses/",
-  "dateModified": "2026-03-27T17:50:05Z",
+  "dateModified": "2026-05-22T12:43:46Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -379,7 +379,7 @@ matrices <a class="reference internal" href="../performance_estimation_via_sdps/
 <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-f-func-ineq">(5.15)</a>, and <a class="reference internal" href="../performance_estimation_via_sdps/#equation-eq-f-func-eq">(5.16)</a>,</p>
 <div class="subequations docutils container">
 <div class="math notranslate nohighlight" id="eq-iteration-dependent-lyapunov-condition-func-ineq">
-<span id="eq-iteration-dependent-lyapunov-condition-a-k"></span><span id="eq-iteration-dependent-lyapunov-condition-q"></span><span id="eq-iteration-dependent-lyapunov-condition-q-mat"></span><span id="eq-iteration-dependent-lyapunov-condition-zero"></span><span id="eq-iteration-dependent-lyapunov-condition-psd"></span><span id="eq-iteration-dependent-lyapunov-condition-op"></span><span id="eq-iteration-dependent-lyapunov-condition-func-eq"></span><span id="eq-iteration-dependent-lyapunov-condition"></span>\begin{align}
+<span id="eq-iteration-dependent-lyapunov-condition-c-k"></span><span id="eq-iteration-dependent-lyapunov-condition-q"></span><span id="eq-iteration-dependent-lyapunov-condition-q-mat"></span><span id="eq-iteration-dependent-lyapunov-condition-zero"></span><span id="eq-iteration-dependent-lyapunov-condition-psd"></span><span id="eq-iteration-dependent-lyapunov-condition-op"></span><span id="eq-iteration-dependent-lyapunov-condition-func-eq"></span><span id="eq-iteration-dependent-lyapunov-condition"></span>\begin{align}
             &amp;\textbf{for each}\ k \in \llbracket 0, K-1 \rrbracket \notag \\
             &amp;\quad
             \left(
@@ -401,7 +401,7 @@ matrices <a class="reference internal" href="../performance_estimation_via_sdps/
             &amp;\quad
             \left(
             \begin{array}{&#64;{}c&#64;{}}
-                \forall i \in\IndexFunc \\
+                \forall i \in\IndexOp \\
                 \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
                 \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1}
             \end{array}
@@ -558,7 +558,7 @@ the scalar <span class="math notranslate nohighlight">\(c_K\)</span>, where we h
         &amp; \quad
         \left(
         \begin{array}{&#64;{}c&#64;{}}
-            \forall i \in\IndexFunc \\
+            \forall i \in\IndexOp \\
             \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
             \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{k,k+1}
         \end{array}
@@ -579,8 +579,7 @@ also a necessary condition.</p>
         \p{\bx^{k+1},\bu^{k+1},\hat{\bu}^{\star},y^{\star}} &amp;= \p{ \Theta_{1}^{\p{k}} \kron \Id }\p{\bx^{k},\bu^{k},\bu^{k+1},\hat{\bu}^{\star},y^{\star}}, \\
         \p{\bFcn^{k+1},\bFcn^{\star}} &amp;= \theta_{1}\p{\bFcn^{k},\bFcn^{k+1},\bFcn^{\star}},
     \end{aligned}\end{split}\]</div>
-<p>where we have used
-in <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-theta0-mat">(5.56)</a>,
+<p>where we have used <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-theta0-mat">(5.56)</a>,
 <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-theta0-vec">(5.57)</a>,
 <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-theta1-mat">(5.58)</a>, and
 <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-theta1-vec">(5.59)</a>, respectively.</p>
@@ -589,8 +588,8 @@ in <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov
 consider <span class="math notranslate nohighlight">\(\p{\mathcal{V}\p{Q_k,q_k,k}}_{k=0}^{K}\)</span> in
 <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-chain-v">(5.49)</a>.
 Note that</p>
-<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-obj-0">
-<span id="eq-iteration-independent-lyapunov-obj-0"></span><span class="eqno">(5.60)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-obj-0" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-obj-0">
+<span id="eq-iteration-dependent-lyapunov-obj-0"></span><span class="eqno">(5.60)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-obj-0" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
         &amp;\mathcal{V}\p{Q_1,q_1,1} - c_K\mathcal{V}\p{Q_0,q_0,0} \notag\\
         &amp; = \quadform{\p{\Theta_{1}^{\p{0}}}^{\top}Q_{1}\Theta_{1}^{\p{0}}  - c_K\Theta_{0}^{\top}Q_{0}\Theta_{0}}{\p{\bx^{0},\bu^{0},\bu^{1},\hat{\bu}^{\star},y^{\star}}}  \notag \\
         &amp; \quad + \p{q_{1}^{\top}\theta_{1} - c_K q_{0}^{\top}\theta_{0} } \p{\bFcn^{0},\bFcn^{1},\bFcn^{\star}} \notag \\
@@ -598,16 +597,16 @@ Note that</p>
     \end{aligned}\end{split}\]</div>
 <p>where <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-w-0-mat">(5.52)</a>
 and <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-w-0-vec">(5.53)</a>
-is used in the last equality. Therefore, using the
-<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-0">(5.60)</a>
+are used in the last equality. Therefore, using
+<a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-obj-0">(5.60)</a>
 as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
 <a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
 gives that <a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition"><span class="std std-ref">(5.51)</span></a>,
 with <span class="math notranslate nohighlight">\(k=0\)</span>, is a sufficient condition for the inequality
 <span class="math notranslate nohighlight">\(\mathcal{V}\p{Q_1,q_1,1} \leq c_K\mathcal{V}\p{Q_0,q_0,0}\)</span>.</p>
 <p>For <span class="math notranslate nohighlight">\(k\in \llbracket1,K-1\rrbracket\)</span>, note that</p>
-<div class="math notranslate nohighlight" id="equation-eq-iteration-independent-lyapunov-obj-k">
-<span id="eq-iteration-independent-lyapunov-obj-k"></span><span class="eqno">(5.61)<a class="headerlink" href="#equation-eq-iteration-independent-lyapunov-obj-k" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-obj-k">
+<span id="eq-iteration-dependent-lyapunov-obj-k"></span><span class="eqno">(5.61)<a class="headerlink" href="#equation-eq-iteration-dependent-lyapunov-obj-k" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
         &amp;\mathcal{V}\p{Q_{k+1},q_{k+1},k+1} - \mathcal{V}\p{Q_k,q_k,k} \notag \\
         &amp; =\quadform{Q_{k+1}}{\p{\bx^{k+1},\bu^{k+1},\hat{\bu}^{\star},y^{\star}}}  + q_{k+1}^{\top}\p{\bFcn^{k+1},\bFcn^{\star}} \notag\\
         &amp;\quad -\quadform{Q_{k}}{\p{\bx^{k},\bu^{k},\hat{\bu}^{\star},y^{\star}}}  - q_{k}^{\top} \p{\bFcn^{k},\bFcn^{\star}} \notag \\
@@ -617,8 +616,8 @@ with <span class="math notranslate nohighlight">\(k=0\)</span>, is a sufficient 
     \end{aligned}\end{split}\]</div>
 <p>where <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-w-k-mat">(5.54)</a>
 and <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-w-k-vec">(5.55)</a>
-is used in the last equality. Therefore, using the
-<a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-k">(5.61)</a>
+are used in the last equality. Therefore, using
+<a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-obj-k">(5.61)</a>
 as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
 <a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
 gives that <a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition"><span class="std std-ref">(5.51)</span></a>,
@@ -628,7 +627,7 @@ for the inequality <span class="math notranslate nohighlight">\(\mathcal{V}\p{Q_
 <span class="math notranslate nohighlight">\(\p{\p{Q_{k},q_{k}}}_{k=1}^{K-1}\)</span> and <span class="math notranslate nohighlight">\(c_K\)</span> free, as
 in <a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition-q-mat"><span class="std std-ref">(5.51f)</span></a>,
 <a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition-q"><span class="std std-ref">(5.51g)</span></a>, and
-<a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition-a-k"><span class="std std-ref">(5.51h)</span></a>. <span class="math notranslate nohighlight">\(\square\)</span></p>
+<a class="reference internal" href="#eq-iteration-dependent-lyapunov-condition-c-k"><span class="std std-ref">(5.51h)</span></a>. <span class="math notranslate nohighlight">\(\square\)</span></p>
 </div>
 <p class="rubric">References</p>
 <div class="docutils container" id="id3">

@@ -43,8 +43,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-27T17:50:04Z"/>
-<meta property="og:updated_time" content="2026-03-27T17:50:04Z"/>
+<meta property="article:modified_time" content="2026-05-22T12:43:45Z"/>
+<meta property="og:updated_time" content="2026-05-22T12:43:45Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
 <meta name="description" content="Nesterov fast-gradient example in AutoLyap with iteration-dependent finite-horizon function-value bounds."/>
 <meta name="keywords" content="Nesterov fast gradient AutoLyap, finite-horizon function-value bound, iteration-dependent c_K analysis"/>
@@ -91,7 +91,7 @@
   "url": "https://autolyap.github.io/examples/nesterov_fast_gradient/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/examples/nesterov_fast_gradient/",
-  "dateModified": "2026-03-27T17:50:04Z",
+  "dateModified": "2026-05-22T12:43:45Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -275,7 +275,7 @@ x^{k+1} &amp;= y^k - \gamma \nabla f(y^k),\\
 <p>For <span class="math notranslate nohighlight">\(\gamma = 1/L\)</span>, the classical bound in <span id="id1">[<a class="reference internal" href="#id145" title="Yurii Nesterov. A method for solving the convex programming problem with convergence rate o(1/k^2). Doklady Akademii Nauk SSSR, 269(3):543–547, 1983.">Nes83</a>]</span> is</p>
 <div class="math notranslate nohighlight">
 \[f(x^K)-f(x^\star)\le\frac{L}{2\lambda_K^2}\|x^0-x^\star\|^2
-\le\frac{2L}{(K+2)^2}\|x^0-x^\star\|^2.\]</div>
+\le\frac{2L}{(K+2)^2}\|x^0-x^\star\|^2,\]</div>
 <p>where <span class="math notranslate nohighlight">\(x^\star \in \Argmin_{x \in \calH} f(x)\)</span>.</p>
 <p>In this example, we compute the smallest AutoLyap certificate constant
 <span class="math notranslate nohighlight">\(c_K\)</span> such that</p>
@@ -302,7 +302,7 @@ Install the optional MOSEK dependency first:</p>
 <span class="c1"># Nesterov fast gradient method</span>
 <span class="n">nfgm</span> <span class="o">=</span> <span class="n">NesterovFastGradientMethod</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
 
-<span class="c1"># Use j=2 to target f(x^k)-f(x^\star) (j=1 corresponds to y^k).</span>
+<span class="c1"># Use j=2 to select x^k; j=1 corresponds to y^k.</span>
 <span class="n">Q_0_nf</span><span class="p">,</span> <span class="n">q_0_nf</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">get_parameters_distance_to_solution</span><span class="p">(</span>
     <span class="n">nfgm</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>

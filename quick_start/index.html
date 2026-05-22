@@ -43,8 +43,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-27T17:50:05Z"/>
-<meta property="og:updated_time" content="2026-03-27T17:50:05Z"/>
+<meta property="article:modified_time" content="2026-05-22T12:43:46Z"/>
+<meta property="og:updated_time" content="2026-05-22T12:43:46Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
 <meta name="description" content="Quick start guide for AutoLyap with iteration-independent and iteration-dependent Lyapunov analysis workflows."/>
 <meta name="keywords" content="AutoLyap quick start, iteration-independent Lyapunov analysis, iteration-dependent Lyapunov analysis, bisection search rho"/>
@@ -91,7 +91,7 @@
   "url": "https://autolyap.github.io/quick_start/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/quick_start/",
-  "dateModified": "2026-03-27T17:50:05Z",
+  "dateModified": "2026-05-22T12:43:46Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -364,7 +364,7 @@ x^{k+1} = x^k - \gamma \nabla f(x^k).\]</div>
 <span class="n">rho</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">]</span>
 <span class="n">certificate</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;certificate&quot;</span><span class="p">]</span>
 
-<span class="n">rho_theory_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">L</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">rho_theory_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">L</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">mu</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (AutoLyap): </span><span class="si">{</span><span class="n">rho</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (theory):   </span><span class="si">{</span><span class="n">rho_theory_value</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -380,9 +380,9 @@ tolerances) the theoretical rate expression for gradient methods; see
 <div class="math notranslate nohighlight">
 \[\|x^k - x^\star\| \in \mathcal{O}\!\left(\max\{|1-\gamma L|,\;|1-\gamma\mu|\}^k\right)
 \quad \textup{ as } \quad k\to\infty.\]</div>
-<p>Sweeping over 100 values of <span class="math notranslate nohighlight">\(\gamma\)</span> on <span class="math notranslate nohighlight">\(0 &lt; \gamma \le 2/L\)</span> gives
-the plot below, with the theoretical rate in black and AutoLyap certificates
-as blue dots.</p>
+<p>Sweeping over 100 values of <span class="math notranslate nohighlight">\(\gamma\)</span> up to <span class="math notranslate nohighlight">\(2/L\)</span> gives the plot
+below, with the endpoint included as the limiting <span class="math notranslate nohighlight">\(\rho=1\)</span> reference,
+the theoretical rate in black, and AutoLyap certificates as blue dots.</p>
 <a class="reference internal image-reference" href="../_images/gradient_method_rho_vs_gamma.svg"><img alt="Gradient-method rho versus gamma with theoretical line and AutoLyap points." class="align-center" src="../_images/gradient_method_rho_vs_gamma.svg" style="width: 100%;" />
 </a>
 </section>

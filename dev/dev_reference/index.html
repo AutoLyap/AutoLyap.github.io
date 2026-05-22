@@ -41,8 +41,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-27T17:50:04Z"/>
-<meta property="og:updated_time" content="2026-03-27T17:50:04Z"/>
+<meta property="article:modified_time" content="2026-05-22T12:43:44Z"/>
+<meta property="og:updated_time" content="2026-05-22T12:43:44Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
 <meta name="description" content="Use this page as a guide to AutoLyap internals. It is intended for contributors implementing or refactoring core behavior."/>
 <meta name="keywords" content="AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis, AutoLyap Developer reference, AutoLyap dev dev reference"/>
@@ -89,7 +89,7 @@
   "url": "https://autolyap.github.io/dev/dev_reference/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/dev/dev_reference/",
-  "dateModified": "2026-03-27T17:50:04Z",
+  "dateModified": "2026-05-22T12:43:44Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -330,7 +330,7 @@ It is intended for contributors implementing or refactoring core behavior.</p>
 <td><p>Interpolation conditions, index semantics, and component validation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Algorithm lifting</p></td>
-<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.algorithms</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">autolyap.algorithms</span></code></p></td>
 <td><p>Conversion of updates into lifted matrix objects (<code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">U</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span></code>, <code class="docutils literal notranslate"><span class="pre">F</span></code>, <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">W</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p>Analysis assembly</p></td>
@@ -360,7 +360,7 @@ It is intended for contributors implementing or refactoring core behavior.</p>
 <tbody>
 <tr class="row-even"><td><p>Add a new algorithm</p></td>
 <td><p><a class="reference internal" href="../../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">autolyap.algorithms.algorithm.Algorithm</span></code></a></p></td>
-<td><p>Implement required matrix/projection accessors consistently.</p></td>
+<td><p>Implement <code class="docutils literal notranslate"><span class="pre">get_ABCD</span></code> consistently; the base class derives lifted matrix/projection accessors.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Add a new interpolation condition</p></td>
 <td><p><a class="reference internal" href="../dev_internal_problemclass/#autolyap.problemclass.base._InterpolationCondition.get_data" title="autolyap.problemclass.base._InterpolationCondition.get_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">autolyap.problemclass.base._InterpolationCondition.get_data()</span></code></a></p></td>

@@ -43,8 +43,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-27T17:50:04Z"/>
-<meta property="og:updated_time" content="2026-03-27T17:50:04Z"/>
+<meta property="article:modified_time" content="2026-05-22T12:43:45Z"/>
+<meta property="og:updated_time" content="2026-05-22T12:43:45Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
 <meta name="description" content="Proximal gradient example in AutoLyap with SDP-based Lyapunov verification."/>
 <meta name="keywords" content="proximal gradient Lyapunov analysis, AutoLyap proximal gradient, SDP convergence analysis"/>
@@ -91,7 +91,7 @@
   "url": "https://autolyap.github.io/examples/define_your_own_algorithm/proximal_gradient_method/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/examples/define_your_own_algorithm/proximal_gradient_method/",
-  "dateModified": "2026-03-27T17:50:04Z",
+  "dateModified": "2026-05-22T12:43:45Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -277,7 +277,7 @@ then analyze its convergence with AutoLyap.</p>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> is <span class="math notranslate nohighlight">\(L\)</span>-smooth and <span class="math notranslate nohighlight">\(\mu\)</span>-strongly convex with
 <span class="math notranslate nohighlight">\(0&lt;\mu&lt;L\)</span>, and <span class="math notranslate nohighlight">\(g\)</span> is proper, lower semicontinuous, and convex.</p>
 <p>For an initial point <span class="math notranslate nohighlight">\(x^0 \in \calH\)</span> and step size
-<span class="math notranslate nohighlight">\(\gamma \in \reals_{++}\)</span> with <span class="math notranslate nohighlight">\(0 &lt; \gamma \le 2/L\)</span>, the proximal
+<span class="math notranslate nohighlight">\(\gamma \in \reals_{++}\)</span> with <span class="math notranslate nohighlight">\(0 &lt; \gamma &lt; 2/L\)</span>, the proximal
 gradient method is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-proximal-gradient-update">
 <span class="eqno">(1)<a class="headerlink" href="#equation-eq-proximal-gradient-update" title="Link to this equation"></a></span>\[(\forall k \in \naturals)\quad
@@ -308,7 +308,7 @@ AutoLyap:</p>
 <li><p><span class="math notranslate nohighlight">\(f_2 = g\)</span>, where</p>
 <div class="math notranslate nohighlight">
 \[g:\calH \to \mathbb{R}\cup\{+\infty\}\]</div>
-<p>is proper, lower semicontinuous, convex, and</p>
+<p>is proper, lower semicontinuous, and convex, with subdifferential</p>
 <div class="math notranslate nohighlight">
 \[\partial g:\calH \rightrightarrows \calH.\]</div>
 </li>
@@ -408,9 +408,9 @@ Install the optional MOSEK dependency first:</p>
         <span class="p">)</span>
 
     <span class="n">gamma_max</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">gamma</span> <span class="o">&lt;=</span> <span class="n">gamma_max</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">gamma</span> <span class="o">&lt;</span> <span class="n">gamma_max</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid parameters: require 0 &lt; gamma &lt;= 2/L. Got gamma=</span><span class="si">{</span><span class="n">gamma</span><span class="si">}</span><span class="s2">, 2/L=</span><span class="si">{</span><span class="n">gamma_max</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Invalid parameters: require 0 &lt; gamma &lt; 2/L. Got gamma=</span><span class="si">{</span><span class="n">gamma</span><span class="si">}</span><span class="s2">, 2/L=</span><span class="si">{</span><span class="n">gamma_max</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
 
@@ -466,7 +466,7 @@ Theorem 2.1, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\|x^k - x^\star\| \in \mathcal{O}\!\left(\max\{|1-\gamma L|,\;|1-\gamma\mu|\}^k\right)
 \quad \textup{ as } \quad k\to\infty.\]</div>
-<p>Sweeping over 100 values of <span class="math notranslate nohighlight">\(\gamma\)</span> on <span class="math notranslate nohighlight">\(0 &lt; \gamma \le 2/L\)</span> gives
+<p>Sweeping over 100 values of <span class="math notranslate nohighlight">\(\gamma\)</span> on <span class="math notranslate nohighlight">\(0 &lt; \gamma &lt; 2/L\)</span> gives
 the plot below, with the theoretical rate in black and AutoLyap certificates
 as blue dots.</p>
 <a class="reference internal image-reference" href="../../../_images/proximal_gradient_rho_vs_gamma.svg"><img alt="Proximal-gradient rho versus gamma with theoretical line and AutoLyap points." class="align-center" src="../../../_images/proximal_gradient_rho_vs_gamma.svg" style="width: 100%;" />

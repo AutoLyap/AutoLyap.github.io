@@ -43,8 +43,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-27T17:50:04Z"/>
-<meta property="og:updated_time" content="2026-03-27T17:50:04Z"/>
+<meta property="article:modified_time" content="2026-05-22T12:43:45Z"/>
+<meta property="og:updated_time" content="2026-05-22T12:43:45Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
 <meta name="description" content="Constant Nesterov momentum smooth-convex example in AutoLyap with certified sublinear function-value convergence."/>
 <meta name="keywords" content="constant Nesterov momentum smooth convex, AutoLyap Nesterov momentum, sublinear convergence certificate"/>
@@ -91,7 +91,7 @@
   "url": "https://autolyap.github.io/examples/nesterov_momentum/smooth_convex/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/examples/nesterov_momentum/smooth_convex/",
-  "dateModified": "2026-03-27T17:50:04Z",
+  "dateModified": "2026-05-22T12:43:45Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -275,7 +275,7 @@
 <p>where <span class="math notranslate nohighlight">\(f : \calH \to \reals\)</span> is convex and <span class="math notranslate nohighlight">\(L\)</span>-smooth with
 <span class="math notranslate nohighlight">\(L&gt;0\)</span>.</p>
 <p>For initial points <span class="math notranslate nohighlight">\(x^{-1}, x^0 \in \calH\)</span>, momentum
-<span class="math notranslate nohighlight">\(\delta \in \reals\)</span>, and step size <span class="math notranslate nohighlight">\(\gamma \in \reals_{++}\)</span>, the gradient method with constant Nesterov-momentum is</p>
+<span class="math notranslate nohighlight">\(\delta \in \reals\)</span>, and step size <span class="math notranslate nohighlight">\(\gamma \in \reals_{++}\)</span>, the gradient method with constant Nesterov momentum is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}(\forall k \in \naturals)\quad
 \left[
@@ -287,8 +287,8 @@ x^{k+1} &amp;= y^k - \gamma \nabla f(y^k).
 <p>In this example, we search for a feasible Lyapunov certificate with
 <span class="math notranslate nohighlight">\(\rho=1\)</span> and condition (C4) enabled such that</p>
 <div class="math notranslate nohighlight">
-\[f(x^k) - f(x^\star) \in o\!\left(\frac{1}{k}\right) \quad \textup{ as } \quad k\to\infty,\]</div>
-<p>where <span class="math notranslate nohighlight">\(x^\star \in \Argmin_{x \in \calH} f(x)\)</span>.</p>
+\[f(y^k) - f(y^\star) \in o\!\left(\frac{1}{k}\right) \quad \textup{ as } \quad k\to\infty,\]</div>
+<p>where <span class="math notranslate nohighlight">\(y^\star \in \Argmin_{x \in \calH} f(x)\)</span>.</p>
 </section>
 <section id="model-the-problem-in-autolyap-and-certify-sublinear-convergence">
 <h2>Model the problem in AutoLyap and certify sublinear convergence<a class="headerlink" href="#model-the-problem-in-autolyap-and-certify-sublinear-convergence" title="Link to this heading"></a></h2>
@@ -369,12 +369,12 @@ Install the optional MOSEK dependency first:</p>
 </ul>
 <p>When the certificate is feasible, the certified function-value convergence is</p>
 <div class="math notranslate nohighlight">
-\[f(x^k) - f(x^\star) \in o\!\left(\frac{1}{k}\right)
+\[f(y^k) - f(y^\star) \in o\!\left(\frac{1}{k}\right)
 \quad \textup{ as } \quad k\to\infty,\]</div>
-<p>where <span class="math notranslate nohighlight">\(x^\star \in \Argmin_{x \in \calH} f(x)\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(y^\star \in \Argmin_{x \in \calH} f(x)\)</span>.</p>
 <p>Equivalently,</p>
 <div class="math notranslate nohighlight">
-\[\lim_{k \to \infty} k\bigl(f(x^k)-f(x^\star)\bigr)=0.\]</div>
+\[\lim_{k \to \infty} k\bigl(f(y^k)-f(y^\star)\bigr)=0.\]</div>
 <p>Sweeping over multiple values of <span class="math notranslate nohighlight">\(\gamma \in (0,4)\)</span> and
 <span class="math notranslate nohighlight">\(\delta \in (-1,1)\)</span> with <span class="math notranslate nohighlight">\(L=1\)</span> gives the plot below, where each
 blue dot denotes a parameter pair with a feasible certificate.</p>

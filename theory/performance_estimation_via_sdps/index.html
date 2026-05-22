@@ -43,8 +43,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-27T17:50:05Z"/>
-<meta property="og:updated_time" content="2026-03-27T17:50:05Z"/>
+<meta property="article:modified_time" content="2026-05-22T12:43:46Z"/>
+<meta property="og:updated_time" content="2026-05-22T12:43:46Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
 <meta name="description" content="Performance-estimation theory via semidefinite programs in AutoLyap, including Gram-matrix formulations."/>
 <meta name="keywords" content="AutoLyap performance estimation, Gram matrix SDP formulation, worst-case analysis SDP"/>
@@ -91,7 +91,7 @@
   "url": "https://autolyap.github.io/theory/performance_estimation_via_sdps/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/theory/performance_estimation_via_sdps/",
-  "dateModified": "2026-03-27T17:50:05Z",
+  "dateModified": "2026-05-22T12:43:46Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -259,8 +259,8 @@ algorithm representation in <a class="reference internal" href="../algorithm_rep
 and the inclusion problem in <a class="reference internal" href="../problem_class/#equation-eq-the-problem-inclusion">(2.1)</a>.
 This primitive is used in
 <a class="reference internal" href="../iteration_independent_analyses/"><span class="doc">5.2. Iteration-independent analyses</span></a>
-and <a class="reference internal" href="../iteration_dependent_analyses/"><span class="doc">5.3. Iteration-dependent analyses</span></a>,
-to formulate the search for a Lyapunov analysis as solving an SDP.
+and <a class="reference internal" href="../iteration_dependent_analyses/"><span class="doc">5.3. Iteration-dependent analyses</span></a>
+to formulate the search for a Lyapunov analysis as an SDP.
 This page can be skipped on a first reading.</p>
 <p>For readers interested in the technical details, we first introduce the
 matrices needed for this SDP primitive. If <span class="math notranslate nohighlight">\(m\geq 2\)</span>, let</p>
@@ -275,7 +275,7 @@ matrices needed for this SDP primitive. If <span class="math notranslate nohighl
 <div class="math notranslate nohighlight">
 \[\PEPMinIter,\PEPMaxIter\in\llbracket0,K\rrbracket, \qquad
 \PEPMinIter\leq\PEPMaxIter,\]</div>
-<p>we define the the matrices</p>
+<p>we define the matrices</p>
 <div class="math notranslate nohighlight">
 \[X_{k}^{\PEPMinIter, \PEPMaxIter}\in \reals^{n\times\p{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}}\]</div>
 <p>as</p>
@@ -411,7 +411,7 @@ matrices</p>
 <span id="eq-f-mats"></span><span class="eqno">(5.9)<a class="headerlink" href="#equation-eq-f-mats" title="Link to this equation"></a></span>\[\begin{split}\begin{split}
     \Bigp{
         \begin{array}{&#64;{}c&#64;{}}
-            \forall i \in\llbracket1,m\rrbracket\\
+            \forall i \in\IndexFunc\\
             \forall j \in\llbracket1,\NumEval_{i}\rrbracket\\
             \forall k \in \llbracket\PEPMinIter,\PEPMaxIter\rrbracket
         \end{array}
@@ -424,7 +424,7 @@ matrices</p>
         0_{1 \times \p{ \p{\p{\PEPMaxIter-k} }\NumEvalFunc +  \NumFunc + \sum_{r=\kappa\p{i}+1}^{\NumFunc}\NumEval_{\kappa^{-1}\p{r}} }}^{\top}
     \end{bmatrix}^{\top},
     \\
-    \p{\forall i \in\llbracket1,m\rrbracket}
+    \p{\forall i \in\IndexFunc}
     \quad
     F_{\p{i,\star,\star}}^{\PEPMinIter, \PEPMaxIter} &amp; =
     \begin{bmatrix}
@@ -461,12 +461,12 @@ bijective and increasing function (and therefore uniquely specified).</p>
         &amp; &amp; &amp; \p{u^{\star}_{i}}_{i\in\IndexOp} \in \prod_{i\in\IndexOp}G_{i}\p{y^{\star}}, \\ \nonumber
         &amp; &amp; &amp; \sum_{i=1}^{m} u^{\star}_{i} = 0,\\ \nonumber
         &amp; &amp; &amp; \hat{\bu}^{\star}=\p{u^{\star}_{1},\ldots,u^{\star}_{m-1}}, \\\nonumber
-        &amp; &amp; &amp; \bFcn^{\star} =\p{\bfcn_{i}\p{y^{\star}}}_{i\in\IndexFunc}\in\reals^{\NumFunc }, \\ \nonumber
+        &amp; &amp; &amp; \bFcn^{\star} =\p{f_{i}\p{y^{\star}}}_{i\in\IndexFunc}\in\reals^{\NumFunc }, \\ \nonumber
         &amp; &amp; &amp; \p{f_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc} \mathcal{F}_{i}, \\ \nonumber
         &amp; &amp; &amp; \p{G_i}_{i\in\IndexOp} \in \prod_{i\in\IndexOp} \mathcal{G}_i,
     \end{aligned}\end{split}\]</div>
 </div>
-<p>where everything except</p>
+<p>where all quantities except</p>
 <div class="math notranslate nohighlight">
 \[\PEPObjMat, \quad \PEPObjVec, \quad \PEPMinIter, \quad \PEPMaxIter,\]</div>
 <div class="math notranslate nohighlight">
@@ -526,7 +526,7 @@ the following system</p>
         &amp;
         \left(
         \begin{array}{&#64;{}c&#64;{}}
-            \forall i \in\IndexFunc \\
+            \forall i \in\IndexOp \\
             \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
             \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}
         \end{array}
@@ -650,7 +650,7 @@ the following system</p>
       P_{\p{i,j_{1}}}U_{k_{1}}^{\PEPMinIter, \PEPMaxIter} \\
       \vdots \\
       P_{\p{i,j_{n_{i,o}}}}U_{k_{n_{i,o}}}^{\PEPMinIter, \PEPMaxIter}
-   \end{bmatrix}.
+   \end{bmatrix}
    }_{
    \in \reals^{2 n_{i,o} \times \p{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m} }
    }
@@ -697,7 +697,7 @@ such that</p>
         &amp;
         \left(
         \begin{array}{&#64;{}c&#64;{}}
-            \forall i \in\IndexFunc \\
+            \forall i \in\IndexOp \\
             \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
             \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{\PEPMinIter,\PEPMaxIter}
         \end{array}
@@ -721,7 +721,7 @@ sequence of steps:</p>
         \p{\SumToZeroMat\kron\Id}\hat{\bu}^{\star} &amp; \text{if }m\geq2,
     \end{cases}\end{aligned}\end{split}\]</div>
 <p>for <span class="math notranslate nohighlight">\(\hat{\bu}^{\star}\)</span> as defined in
-<a class="reference internal" href="../lyapunov_analyses/#equation-eq-solution">(5.1)</a> and <span class="math notranslate nohighlight">\(N\)</span> given in
+<a class="reference internal" href="../lyapunov_analyses/#equation-eq-solution">(5.1)</a> and <span class="math notranslate nohighlight">\(\SumToZeroMat\)</span> given in
 <a class="reference internal" href="#equation-eq-sumtozeromat">(5.2)</a>.
 Moreover, back substitution gives</p>
 <div class="math notranslate nohighlight">
@@ -732,7 +732,7 @@ Moreover, back substitution gives</p>
     %\bx^{\PEPMinIter+3} &amp;= \p{A_{\PEPMinIter+2} \kron \Id} \bx^{\PEPMinIter+2} + \p{B_{\PEPMinIter+2} \kron \Id} \bu^{\PEPMinIter+2} \\
     %            &amp;= \p{A_{\PEPMinIter+2}A_{\PEPMinIter+1}A_{\PEPMinIter} \kron \Id} \bx^{\PEPMinIter} + \p{A_{\PEPMinIter+2}A_{\PEPMinIter+1}B_{\PEPMinIter} \kron \Id} \bu^{\PEPMinIter} + \p{A_{\PEPMinIter+2}B_{\PEPMinIter+1} \kron \Id} \bu^{\PEPMinIter+1} + \p{B_{\PEPMinIter+2} \kron \Id} \bu^{\PEPMinIter+2} \\
     \p{\forall k \in \llbracket\PEPMinIter+2,\PEPMaxIter+1\rrbracket} \quad \bx^{k} {}={}&amp; \p{A_{k-1}\cdots A_{\PEPMinIter}\kron \Id} \bx^{\PEPMinIter}  \\
-    &amp;{} + \sum_{i=\PEPMinIter}^ {k-2}\p{A_{k-1}\cdots A_{i+1}B_{i} \kron \Id} \bu^{i} \\
+    &amp;{} + \sum_{i=\PEPMinIter}^{k-2}\p{A_{k-1}\cdots A_{i+1}B_{i} \kron \Id} \bu^{i} \\
     &amp;{} + \p{B_{k-1} \kron \Id} \bu^{k-1}.\end{aligned}\end{split}\]</div>
 <p>Thus, the constraints of <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a> can equivalently be
 written as</p>
@@ -761,7 +761,7 @@ written as</p>
     &amp; y^{\star} \in \calH,\\
     &amp; \p{u^{\star}_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc}\partial f_{i}\p{y^{\star}}, \\
     &amp; \p{u^{\star}_{i}}_{i\in\IndexOp} \in \prod_{i\in\IndexOp}G_{i}\p{y^{\star}}, \\
-    &amp; \bFcn^{\star} =\p{\bfcn_{i}\p{y^{\star}}}_{i\in\IndexFunc}\in\reals^{\NumFunc },\\
+    &amp; \bFcn^{\star} =\p{f_{i}\p{y^{\star}}}_{i\in\IndexFunc}\in\reals^{\NumFunc },\\
     &amp; \p{f_{i}}_{i\in\IndexFunc} \in \prod_{i\in\IndexFunc} \mathcal{F}_{i}, \\
     &amp; \p{G_i}_{i\in\IndexOp} \in \prod_{i\in\IndexOp} \mathcal{G}_i, \end{aligned}\end{split}\]</div>
 </div>
@@ -799,7 +799,7 @@ written as</p>
 <a class="reference internal" href="#equation-eq-f-mats">(5.9)</a>. Using
 <a class="reference internal" href="../interpolation_conditions/#ass-interpolation"><span class="std std-ref">Assumption 4.1 (Interpolation conditions)</span></a>,
 we get the following relaxation
-(equivalent representation if the interpolation conditions for
+(an equivalent representation if the interpolation conditions for
 <span class="math notranslate nohighlight">\(\p{\mathcal{F}_{i}}_{i\in\IndexFunc}\)</span> and
 <span class="math notranslate nohighlight">\(\p{\mathcal{G}_{i}}_{i\in\IndexOp}\)</span> are tight) of
 <a class="reference internal" href="#equation-eq-pep-constraints-1">(5.18)</a>:</p>
@@ -937,7 +937,7 @@ of <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)<
 \end{align}</div></div>
 </div>
 <p>is a relaxation of <a class="reference internal" href="#equation-eq-pep-rewritten">(5.21)</a>, and
-therefore, has optimal value greater or equal
+therefore has optimal value greater than or equal
 to the optimal value of <a class="reference internal" href="#eq-pep"><span class="std std-ref">(PEP)</span></a>.</p>
 <p>We will make use of the following fact: If <span class="math notranslate nohighlight">\(\dim\calH\geq k\)</span>,
 then <span class="math notranslate nohighlight">\(G\in\sym_+^k\)</span> if and only if there exists
@@ -947,8 +947,8 @@ the result for the case <span class="math notranslate nohighlight">\(k=4\)</span
 Cholesky decomposition of positive semidefinite matrices. The general
 case is a straightforward extension. This fact implies that if
 <span class="math notranslate nohighlight">\(\dim \calH \geq n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m\)</span>,
-then <a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a> has optimal value equal
-to <a class="reference internal" href="#equation-eq-pep-rewritten">(5.21)</a>. Note
+then <a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a> has optimal value equal to that of
+<a class="reference internal" href="#equation-eq-pep-rewritten">(5.21)</a>. Note
 that <a class="reference internal" href="#eq-pep-relaxed"><span class="std std-ref">(5.21)</span></a> is a convex semidefinite
 program.</p>
 <p class="rubric" id="dual-problem">Dual problem.</p>

@@ -43,8 +43,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-03-27T17:50:05Z"/>
-<meta property="og:updated_time" content="2026-03-27T17:50:05Z"/>
+<meta property="article:modified_time" content="2026-05-22T12:43:46Z"/>
+<meta property="og:updated_time" content="2026-05-22T12:43:46Z"/>
 <meta name="author" content="Manu Upadhyaya"/>
 <meta name="description" content="Iteration-independent theory in AutoLyap for certifying asymptotic linear and sublinear convergence rates."/>
 <meta name="keywords" content="AutoLyap iteration-independent theory, asymptotic convergence certification, linear and sublinear rates"/>
@@ -91,7 +91,7 @@
   "url": "https://autolyap.github.io/theory/iteration_independent_analyses/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/theory/iteration_independent_analyses/",
-  "dateModified": "2026-03-27T17:50:05Z",
+  "dateModified": "2026-05-22T12:43:46Z",
   "publisher": { "@id": "https://autolyap.github.io/#organization" },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -361,11 +361,11 @@ In particular, we obtain:</p>
 \[(\mathcal{R}\p{T,t,k})_{k\in\naturals}\]</div>
 <p>is summable, converges to zero, and, e.g.,</p>
 <div class="math notranslate nohighlight">
-\[\min_{i\in \llbracket 0,k \rrbracket } \mathcal{R}\p{T,t,i} \in \mathcal{O}\p{1/k} \quad \textup{ as } \quad  k\to\infty.\]</div>
+\[\min_{i\in \llbracket 0,k \rrbracket } \mathcal{R}\p{T,t,i} \in \mathcal{O}\p{1/k} \quad \textup{ as } \quad k\to\infty.\]</div>
 <p>If the optional requirement <a class="reference internal" href="#eq-c4"><span class="std std-ref">(C4)</span></a> holds, we obtain the
 stronger last-iterate convergence result</p>
 <div class="math notranslate nohighlight">
-\[\mathcal{R}\p{T,t,k} \in o\p{1/k} \quad \textup{ as } \quad  k\to\infty.\]</div>
+\[\mathcal{R}\p{T,t,k} \in o\p{1/k} \quad \textup{ as } \quad k\to\infty.\]</div>
 </li>
 </ul>
 <p>The user-chosen <span class="math notranslate nohighlight">\(\p{P,p,T,t}\)</span> fixes the particular Lyapunov and
@@ -468,7 +468,7 @@ matrices <a class="reference internal" href="../performance_estimation_via_sdps/
         &amp;\qquad
         \left(
         \begin{array}{&#64;{}c&#64;{}}
-            \forall i \in\IndexFunc \\
+            \forall i \in\IndexOp \\
             \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
             \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}}
         \end{array}
@@ -697,7 +697,7 @@ matrices <a class="reference internal" href="../performance_estimation_via_sdps/
         &amp; \quad
         \left(
         \begin{array}{&#64;{}c&#64;{}}
-            \forall i \in\IndexFunc \\
+            \forall i \in\IndexOp \\
             \forall o \in \mathcal{O}^{\textup{op}}_{i} \\
             \forall \p{ \p{j_{1},k_{1}}, \ldots, \p{j_{n_{i,o}},k_{n_{i,o}} }}\in\mathcal{J}_{i,o}^{0,\PEPMaxIter_{\textup{cond}}}
         \end{array}
@@ -767,7 +767,7 @@ condition for <a class="reference internal" href="#eq-c1"><span class="std std-r
     \end{aligned}\end{split}\]</div>
 <p>where <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c2-mat">(5.31)</a>
 and <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c2">(5.32)</a>
-are used in the last equality. Therefore, using the
+are used in the last equality. Therefore, using
 <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-c2">(5.46)</a>
 as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
 <a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
@@ -784,7 +784,7 @@ condition for <a class="reference internal" href="#eq-c2"><span class="std std-r
     \end{aligned}\end{split}\]</div>
 <p>where <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c3-mat">(5.33)</a>
 and <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c3">(5.34)</a>
-are used in the last equality. Therefore, using the
+are used in the last equality. Therefore, using
 <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-c3">(5.47)</a>
 as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
 <a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
@@ -804,7 +804,7 @@ condition for <a class="reference internal" href="#eq-c3"><span class="std std-r
     \end{aligned}\end{split}\]</div>
 <p>where <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c4-mat">(5.35)</a>
 and <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-w-c4">(5.36)</a>
-are used in the last equality. Therefore, using the
+are used in the last equality. Therefore, using
 <a class="reference internal" href="#equation-eq-iteration-independent-lyapunov-obj-c4">(5.48)</a>
 as the objective function in <a class="reference internal" href="../performance_estimation_via_sdps/#eq-pep"><span class="std std-ref">(PEP)</span></a>,
 <a class="reference internal" href="../performance_estimation_via_sdps/#thm-pep-leq-zero"><span class="std std-ref">Theorem 5.1.1 (Performance estimation via SDP)</span></a>
