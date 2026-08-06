@@ -7,11 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.algorithms.heavy_ball</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=90d358c5" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=facf6d1f" />
 
   
-    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
-    <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/" /><script src="../../../../_static/jquery.js?v=5d32c60e"></script><script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../../../_static/documentation_options.js?v=da039c51"></script><script src="../../../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../../../_static/badge_links.js?v=475dcde8"></script><script defer="defer" src="../../../../_static/content_width_toggle.js?v=eb58c7cb"></script>
+    <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/" />
+    <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script defer="defer" src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script defer="defer" src="../../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script defer="defer" src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="../../../../_static/copybutton.js?v=36830154"></script>
+    <script defer="defer" src="../../../../_static/content_width_toggle.js?v=eb58c7cb"></script>
   <script defer="defer" src="../../../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -20,14 +26,17 @@
     <link rel="index" title="Index" href="../../../../genindex/" />
     <link rel="search" title="Search" href="../../../../search/" />
  
+<link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../../_static/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../../../../_static/apple-touch-icon.png"/>
-<link rel="alternate" hreflang="en" href="https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/"/>
-<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/"/>
 <meta property="og:url" content="https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/"/>
 <meta name="twitter:url" content="https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/"/>
+<link rel="license" href="https://spdx.org/licenses/GPL-3.0-only.html"/>
+<link rel="author" href="https://autolyap.github.io/"/>
 <meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
@@ -38,129 +47,46 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-05-25T14:40:13Z"/>
-<meta property="og:updated_time" content="2026-05-25T14:40:13Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="autolyap.algorithms.heavy_ball."/>
-<meta name="keywords" content="AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis, AutoLyap autolyap.algorithms.heavy_ball, AutoLyap modules autolyap algorithms heavy ball"/>
 <meta name="robots" content="noindex,follow"/>
-<meta name="googlebot" content="noindex,follow"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="AutoLyap"/>
 <meta property="og:title" content="autolyap.algorithms.heavy_ball"/>
 <meta property="og:description" content="autolyap.algorithms.heavy_ball."/>
-<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="autolyap.algorithms.heavy_ball"/>
 <meta name="twitter:description" content="autolyap.algorithms.heavy_ball."/>
-<meta property="article:author" content="AutoLyap contributors"/>
+<meta property="article:author" content="https://autolyap.github.io/"/>
 <meta property="article:section" content=" Modules"/>
+<meta property="article:tag" content="AutoLyap autolyap.algorithms.heavy_ball"/>
+<meta property="article:tag" content="AutoLyap modules autolyap algorithms heavy ball"/>
 <meta property="article:tag" content="AutoLyap"/>
-<meta property="article:tag" content="Lyapunov analysis Python"/>
-<meta property="article:tag" content="first-order optimization"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://autolyap.github.io/#website",
-  "name": "AutoLyap",
-  "url": "https://autolyap.github.io/",
-  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
-  "inLanguage": "en-US",
-  "publisher": { "@id": "https://autolyap.github.io/#organization" },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://autolyap.github.io/search/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
+  "@type": "TechArticle",
   "@id": "https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/#webpage",
   "name": "autolyap.algorithms.heavy_ball",
   "headline": "autolyap.algorithms.heavy_ball",
   "description": "autolyap.algorithms.heavy_ball.",
-  "keywords": "AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis, AutoLyap autolyap.algorithms.heavy_ball, AutoLyap modules autolyap algorithms heavy ball",
+  "keywords": "AutoLyap autolyap.algorithms.heavy_ball, AutoLyap modules autolyap algorithms heavy ball, AutoLyap, Lyapunov analysis Python, first-order optimization, semidefinite programming, convergence analysis",
   "url": "https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/",
-  "dateModified": "2026-05-25T14:40:13Z",
-  "publisher": { "@id": "https://autolyap.github.io/#organization" },
-  "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": "https://autolyap.github.io/_static/favicon-master.png",
-    "width": 512,
-    "height": 512
-  },
+  "isAccessibleForFree": true,
+  "license": "https://spdx.org/licenses/GPL-3.0-only.html",
   "isPartOf": {
     "@type": "WebSite",
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": {
-    "@type": "SoftwareSourceCode",
-    "name": "AutoLyap",
-    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
-    "programmingLanguage": "Python",
-    "license": "https://spdx.org/licenses/GPL-3.0-only.html"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://autolyap.github.io/#organization",
-  "name": "AutoLyap",
-  "url": "https://autolyap.github.io/",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://autolyap.github.io/_static/favicon-master.png",
-    "width": 512,
-    "height": 512
-  },
-  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://autolyap.github.io/"
-    }
-    ,{
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Module code",
-      "item": "https://autolyap.github.io/"
-    }
-    ,{
-      "@type": "ListItem",
-      "position": 3,
-      "name": "autolyap.algorithms.heavy_ball",
-      "item": "https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareSourceCode",
-  "@id": "https://github.com/AutoLyap/AutoLyap#source",
-  "name": "AutoLyap",
-  "url": "https://autolyap.github.io/",
-  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
-  "programmingLanguage": "Python",
-  "license": "https://spdx.org/licenses/GPL-3.0-only.html",
-  "version": "0.2.1"
+  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  ,"author": { "@id": "https://autolyap.github.io/#organization" }
+  ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
+  ,"learningResourceType": "technical documentation"
+  ,"educationalLevel": "Intermediate"
+  ,"proficiencyLevel": "Intermediate"
 }
 </script>
 
@@ -392,11 +318,7 @@
       </div>
     </section>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+  <script>document.addEventListener("DOMContentLoaded",function(){SphinxRtdTheme.Navigation.enable(true);},{once:true});</script> 
 
 </body>
 </html>

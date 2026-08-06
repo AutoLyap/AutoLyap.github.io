@@ -3,16 +3,22 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>AutoLyap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>AutoLyap: Automated Lyapunov Analysis for Optimization</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=90d358c5" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=facf6d1f" />
 
   
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="canonical" href="https://autolyap.github.io/" /><script src="_static/jquery.js?v=5d32c60e"></script><script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="_static/documentation_options.js?v=da039c51"></script><script src="_static/doctools.js?v=fd6eb6e6"></script><script src="_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="_static/badge_links.js?v=475dcde8"></script><script defer="defer" src="_static/copybutton.js?v=36830154"></script><script defer="defer" src="_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="_static/perf.js?v=c85d9623"></script>
+    <link rel="canonical" href="https://autolyap.github.io/" />
+    <script defer="defer" src="_static/jquery.js?v=5d32c60e"></script>
+    <script defer="defer" src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script defer="defer" src="_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script defer="defer" src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="_static/copybutton.js?v=36830154"></script>
+    <script defer="defer" src="_static/content_width_toggle.js?v=eb58c7cb"></script>
   <script defer="defer" src="_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -22,14 +28,17 @@
     <link rel="search" title="Search" href="search/" />
     <link rel="next" title="Quick start" href="quick_start/" />
  
+<link rel="preload" href="_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="_static/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon.png"/>
-<link rel="alternate" hreflang="en" href="https://autolyap.github.io/"/>
-<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/"/>
 <meta property="og:url" content="https://autolyap.github.io/"/>
 <meta name="twitter:url" content="https://autolyap.github.io/"/>
+<link rel="license" href="https://spdx.org/licenses/GPL-3.0-only.html"/>
+<link rel="author" href="https://autolyap.github.io/"/>
 <meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
@@ -40,19 +49,16 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-05-25T14:40:13Z"/>
-<meta property="og:updated_time" content="2026-05-25T14:40:13Z"/>
+<meta property="og:updated_time" content="2026-05-25T14:36:54Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods."/>
-<meta name="keywords" content="AutoLyap, Lyapunov analysis Python, first-order optimization convergence analysis, semidefinite programming for optimization"/>
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
-<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="AutoLyap"/>
-<meta property="og:title" content="AutoLyap"/>
+<meta property="og:title" content="AutoLyap: Automated Lyapunov Analysis for Optimization"/>
 <meta property="og:description" content="AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods."/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="AutoLyap"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AutoLyap: Automated Lyapunov Analysis for Optimization"/>
 <meta name="twitter:description" content="AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods."/>
 <script type="application/ld+json">
 {
@@ -60,15 +66,11 @@
   "@type": "WebSite",
   "@id": "https://autolyap.github.io/#website",
   "name": "AutoLyap",
+  "alternateName": "AutoLyap documentation",
   "url": "https://autolyap.github.io/",
   "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
-  "inLanguage": "en-US",
-  "publisher": { "@id": "https://autolyap.github.io/#organization" },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://autolyap.github.io/search/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+  "inLanguage": "en-US"
+  ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
 }
 </script>
 <script type="application/ld+json">
@@ -76,33 +78,26 @@
   "@context": "https://schema.org",
   "@type": "WebPage",
   "@id": "https://autolyap.github.io/#webpage",
-  "name": "AutoLyap",
-  "headline": "AutoLyap",
+  "name": "AutoLyap: Automated Lyapunov Analysis for Optimization",
+  "headline": "AutoLyap: Automated Lyapunov Analysis for Optimization",
   "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
   "keywords": "AutoLyap, Lyapunov analysis Python, first-order optimization convergence analysis, semidefinite programming for optimization",
   "url": "https://autolyap.github.io/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/",
-  "dateModified": "2026-05-25T14:40:13Z",
-  "publisher": { "@id": "https://autolyap.github.io/#organization" },
-  "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": "https://autolyap.github.io/_static/favicon-master.png",
-    "width": 512,
-    "height": 512
-  },
+  "isAccessibleForFree": true,
+  "license": "https://spdx.org/licenses/GPL-3.0-only.html",
   "isPartOf": {
     "@type": "WebSite",
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": {
-    "@type": "SoftwareSourceCode",
-    "name": "AutoLyap",
-    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
-    "programmingLanguage": "Python",
-    "license": "https://spdx.org/licenses/GPL-3.0-only.html"
-  }
+  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  ,"datePublished": "2026-03-02T18:04:37Z"
+  ,"dateModified": "2026-05-25T14:36:54Z"
+  ,"author": { "@id": "https://autolyap.github.io/#organization" }
+  ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
+  ,"wordCount": 307
 }
 </script>
 <script type="application/ld+json">
@@ -118,7 +113,7 @@
     "width": 512,
     "height": 512
   },
-  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+  "sameAs": ["https://github.com/AutoLyap", "https://pypi.org/project/autolyap/"]
 }
 </script>
 <script type="application/ld+json">
@@ -129,9 +124,23 @@
   "name": "AutoLyap",
   "url": "https://autolyap.github.io/",
   "codeRepository": "https://github.com/AutoLyap/AutoLyap",
+  "downloadUrl": "https://pypi.org/project/autolyap/",
   "programmingLanguage": "Python",
+  "runtimePlatform": "Python 3.9 or later",
   "license": "https://spdx.org/licenses/GPL-3.0-only.html",
-  "version": "0.2.1"
+  "version": "0.2.1",
+  "isAccessibleForFree": true,
+  "author": [{"@type": "Person", "name": "Manu Upadhyaya"}, {"@type": "Person", "name": "Shuvomoy Das Gupta"}, {"@type": "Person", "name": "Adrien B. Taylor"}, {"@type": "Person", "name": "Sebastian Banert"}, {"@type": "Person", "name": "Pontus Giselsson"}],
+  "publisher": { "@id": "https://autolyap.github.io/#organization" },
+  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://pypi.org/project/autolyap/"],
+  "citation": {
+    "@type": "ScholarlyArticle",
+    "name": "The AutoLyap software suite for computer-assisted Lyapunov analyses of first-order methods",
+    "identifier": "https://doi.org/10.48550/arXiv.2506.24076",
+    "url": "https://doi.org/10.48550/arXiv.2506.24076",
+    "datePublished": "2026",
+    "author": [{"@type": "Person", "name": "Manu Upadhyaya"}, {"@type": "Person", "name": "Shuvomoy Das Gupta"}, {"@type": "Person", "name": "Adrien B. Taylor"}, {"@type": "Person", "name": "Sebastian Banert"}, {"@type": "Person", "name": "Pontus Giselsson"}]
+  }
 }
 </script>
 
@@ -204,10 +213,10 @@
 <section id="autolyap">
 <h1>AutoLyap<a class="headerlink" href="#autolyap" title="Link to this heading"></a></h1>
 <p>A Python package for automated Lyapunov-based convergence analyses of first-order optimization and inclusion methods.</p>
-<p><a class="reference external" href="https://pypi.org/project/autolyap/"><img alt="PyPI version" src="https://img.shields.io/pypi/v/autolyap?style=flat&amp;logo=pypi&amp;logoColor=white&amp;label=PyPI&amp;labelColor=111111&amp;color=5fa8e8" /></a>
-<a class="reference external" href="https://pepy.tech/projects/autolyap"><img alt="PyPI downloads" src="https://img.shields.io/pepy/dt/autolyap?style=flat&amp;label=downloads&amp;labelColor=111111&amp;color=5fa8e8" /></a>
-<a class="reference external" href="https://github.com/AutoLyap/AutoLyap/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/AutoLyap/AutoLyap?style=flat&amp;logo=github&amp;logoColor=white&amp;label=stars&amp;labelColor=111111&amp;color=5fa8e8" /></a>
-<a class="reference external" href="https://arxiv.org/abs/2506.24076"><img alt="Paper" src="https://img.shields.io/badge/paper-arXiv%3A2506.24076-5fa8e8?style=flat&amp;logo=arxiv&amp;logoColor=white&amp;labelColor=111111" /></a></p>
+<p><a class="reference external" href="https://pypi.org/project/autolyap/" target="_blank" rel="noopener noreferrer"><img alt="PyPI version" src="https://img.shields.io/pypi/v/autolyap?style=flat&amp;logo=pypi&amp;logoColor=white&amp;label=PyPI&amp;labelColor=111111&amp;color=5fa8e8" width="97" height="20" decoding="async" loading="eager" fetchpriority="high" /></a>
+<a class="reference external" href="https://pepy.tech/projects/autolyap" target="_blank" rel="noopener noreferrer"><img alt="PyPI downloads" src="https://img.shields.io/pepy/dt/autolyap?style=flat&amp;label=downloads&amp;labelColor=111111&amp;color=5fa8e8" width="104" height="20" decoding="async" loading="eager" /></a>
+<a class="reference external" href="https://github.com/AutoLyap/AutoLyap/stargazers" target="_blank" rel="noopener noreferrer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/AutoLyap/AutoLyap?style=flat&amp;logo=github&amp;logoColor=white&amp;label=stars&amp;labelColor=111111&amp;color=5fa8e8" width="77" height="20" decoding="async" loading="eager" /></a>
+<a class="reference external" href="https://arxiv.org/abs/2506.24076" target="_blank" rel="noopener noreferrer"><img alt="Paper" src="https://img.shields.io/badge/paper-arXiv%3A2506.24076-5fa8e8?style=flat&amp;logo=arxiv&amp;logoColor=white&amp;labelColor=111111" width="169" height="20" decoding="async" loading="eager" /></a></p>
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
@@ -290,11 +299,7 @@ solvers.</p>
       </div>
     </section>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+  <script>document.addEventListener("DOMContentLoaded",function(){SphinxRtdTheme.Navigation.enable(true);},{once:true});</script> 
 
 </body>
 </html>

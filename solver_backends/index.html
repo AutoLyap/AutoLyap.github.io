@@ -3,16 +3,22 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Solver backends | AutoLyap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>MOSEK Fusion and CVXPY Solver Backends | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=90d358c5" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=facf6d1f" />
 
   
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="canonical" href="https://autolyap.github.io/solver_backends/" /><script src="../_static/jquery.js?v=5d32c60e"></script><script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../_static/documentation_options.js?v=da039c51"></script><script src="../_static/doctools.js?v=fd6eb6e6"></script><script src="../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../_static/badge_links.js?v=475dcde8"></script><script defer="defer" src="../_static/copybutton.js?v=36830154"></script><script defer="defer" src="../_static/content_width_toggle.js?v=eb58c7cb"></script>
+    <link rel="canonical" href="https://autolyap.github.io/solver_backends/" />
+    <script defer="defer" src="../_static/jquery.js?v=5d32c60e"></script>
+    <script defer="defer" src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script defer="defer" src="../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script defer="defer" src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="../_static/copybutton.js?v=36830154"></script>
+    <script defer="defer" src="../_static/content_width_toggle.js?v=eb58c7cb"></script>
   <script defer="defer" src="../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -23,14 +29,17 @@
     <link rel="next" title="Contributing" href="../contributing/" />
     <link rel="prev" title="Iteration-dependent analysis" href="../iteration_dependent_analysis/" />
  
+<link rel="preload" href="../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../_static/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../_static/apple-touch-icon.png"/>
-<link rel="alternate" hreflang="en" href="https://autolyap.github.io/solver_backends/"/>
-<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/solver_backends/"/>
 <meta property="og:url" content="https://autolyap.github.io/solver_backends/"/>
 <meta name="twitter:url" content="https://autolyap.github.io/solver_backends/"/>
+<link rel="license" href="https://spdx.org/licenses/GPL-3.0-only.html"/>
+<link rel="author" href="https://autolyap.github.io/"/>
 <meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
@@ -41,21 +50,20 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-05-25T14:40:13Z"/>
-<meta property="og:updated_time" content="2026-05-25T14:40:13Z"/>
+<meta property="og:updated_time" content="2026-05-25T14:36:54Z"/>
+<meta property="article:modified_time" content="2026-05-25T14:36:54Z"/>
+<meta property="article:published_time" content="2026-03-02T18:04:37Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="Solver backend options in AutoLyap, including MOSEK Fusion and CVXPY-based workflows."/>
-<meta name="keywords" content="AutoLyap solver backends, MOSEK Fusion CVXPY, SDP solver configuration"/>
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
-<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="AutoLyap"/>
-<meta property="og:title" content="Solver backends"/>
+<meta property="og:title" content="MOSEK Fusion and CVXPY Solver Backends | AutoLyap"/>
 <meta property="og:description" content="Solver backend options in AutoLyap, including MOSEK Fusion and CVXPY-based workflows."/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Solver backends"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MOSEK Fusion and CVXPY Solver Backends | AutoLyap"/>
 <meta name="twitter:description" content="Solver backend options in AutoLyap, including MOSEK Fusion and CVXPY-based workflows."/>
-<meta property="article:author" content="AutoLyap contributors"/>
+<meta property="article:author" content="https://autolyap.github.io/"/>
 <meta property="article:section" content="Solver Backends"/>
 <meta property="article:tag" content="AutoLyap solver backends"/>
 <meta property="article:tag" content="MOSEK Fusion CVXPY"/>
@@ -63,107 +71,59 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://autolyap.github.io/#website",
-  "name": "AutoLyap",
-  "url": "https://autolyap.github.io/",
-  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
-  "inLanguage": "en-US",
-  "publisher": { "@id": "https://autolyap.github.io/#organization" },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://autolyap.github.io/search/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
+  "@type": "APIReference",
   "@id": "https://autolyap.github.io/solver_backends/#webpage",
-  "name": "Solver backends",
-  "headline": "Solver backends",
+  "name": "MOSEK Fusion and CVXPY Solver Backends | AutoLyap",
+  "headline": "MOSEK Fusion and CVXPY Solver Backends | AutoLyap",
   "description": "Solver backend options in AutoLyap, including MOSEK Fusion and CVXPY-based workflows.",
   "keywords": "AutoLyap solver backends, MOSEK Fusion CVXPY, SDP solver configuration",
   "url": "https://autolyap.github.io/solver_backends/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/solver_backends/",
-  "dateModified": "2026-05-25T14:40:13Z",
-  "publisher": { "@id": "https://autolyap.github.io/#organization" },
-  "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": "https://autolyap.github.io/_static/favicon-master.png",
-    "width": 512,
-    "height": 512
-  },
+  "isAccessibleForFree": true,
+  "license": "https://spdx.org/licenses/GPL-3.0-only.html",
   "isPartOf": {
     "@type": "WebSite",
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": {
-    "@type": "SoftwareSourceCode",
-    "name": "AutoLyap",
-    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
-    "programmingLanguage": "Python",
-    "license": "https://spdx.org/licenses/GPL-3.0-only.html"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://autolyap.github.io/#organization",
-  "name": "AutoLyap",
-  "url": "https://autolyap.github.io/",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://autolyap.github.io/_static/favicon-master.png",
-    "width": 512,
-    "height": 512
-  },
-  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  ,"datePublished": "2026-03-02T18:04:37Z"
+  ,"dateModified": "2026-05-25T14:36:54Z"
+  ,"author": { "@id": "https://autolyap.github.io/#organization" }
+  ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
+  ,"wordCount": 437
+  ,"learningResourceType": "API reference"
+  ,"educationalLevel": "Intermediate"
+  ,"proficiencyLevel": "Intermediate"
+  ,"breadcrumb": { "@id": "https://autolyap.github.io/solver_backends/#breadcrumb" }
 }
 </script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
+  "@id": "https://autolyap.github.io/solver_backends/#breadcrumb",
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
       "item": "https://autolyap.github.io/"
-    }
-    ,{
+    },
+    {
       "@type": "ListItem",
       "position": 2,
       "name": "API reference",
       "item": "https://autolyap.github.io/api_reference/"
-    }
-    ,{
+    },
+    {
       "@type": "ListItem",
       "position": 3,
       "name": "Solver backends",
       "item": "https://autolyap.github.io/solver_backends/"
     }
   ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareSourceCode",
-  "@id": "https://github.com/AutoLyap/AutoLyap#source",
-  "name": "AutoLyap",
-  "url": "https://autolyap.github.io/",
-  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
-  "programmingLanguage": "Python",
-  "license": "https://spdx.org/licenses/GPL-3.0-only.html",
-  "version": "0.2.1"
 }
 </script>
 
@@ -424,11 +384,7 @@ Used only when <code class="docutils literal notranslate"><span class="pre">back
       </div>
     </section>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+  <script>document.addEventListener("DOMContentLoaded",function(){SphinxRtdTheme.Navigation.enable(true);},{once:true});</script> 
 
 </body>
 </html>

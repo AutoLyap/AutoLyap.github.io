@@ -3,16 +3,22 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>3. Algorithm representation | AutoLyap</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=90d358c5" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
 
   
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-    <link rel="canonical" href="https://autolyap.github.io/theory/algorithm_representation/" /><script src="../../_static/jquery.js?v=5d32c60e"></script><script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script><script src="../../_static/documentation_options.js?v=da039c51"></script><script src="../../_static/doctools.js?v=fd6eb6e6"></script><script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script><script defer="defer" src="../../_static/badge_links.js?v=475dcde8"></script><script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script><script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script><script>window.MathJax = {"loader": {"load": ["[tex]/html"]}, "tex": {"packages": {"[+]": ["html"]}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script><script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://autolyap.github.io/theory/algorithm_representation/" />
+    <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
+    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
   <script defer="defer" src="../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -23,16 +29,19 @@
     <link rel="next" title="4. Interpolation conditions" href="../interpolation_conditions/" />
     <link rel="prev" title="2. Problem classes" href="../problem_class/" />
  
+<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
-<link rel="alternate" hreflang="en" href="https://autolyap.github.io/theory/algorithm_representation/"/>
-<link rel="alternate" hreflang="x-default" href="https://autolyap.github.io/theory/algorithm_representation/"/>
 <meta property="og:url" content="https://autolyap.github.io/theory/algorithm_representation/"/>
 <meta name="twitter:url" content="https://autolyap.github.io/theory/algorithm_representation/"/>
+<link rel="license" href="https://spdx.org/licenses/GPL-3.0-only.html"/>
+<link rel="author" href="https://autolyap.github.io/"/>
 <meta property="og:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:url" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta property="og:image:secure_url" content="https://autolyap.github.io/_static/favicon-master.png"/>
@@ -43,21 +52,20 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="article:modified_time" content="2026-05-25T14:40:13Z"/>
-<meta property="og:updated_time" content="2026-05-25T14:40:13Z"/>
+<meta property="og:updated_time" content="2026-05-25T14:36:54Z"/>
+<meta property="article:modified_time" content="2026-05-25T14:36:54Z"/>
+<meta property="article:published_time" content="2026-03-02T18:04:37Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="Algorithm-representation theory in AutoLyap, including lifted states and linear recursion modeling."/>
-<meta name="keywords" content="AutoLyap algorithm representation, lifted state recursion, first-order method modeling"/>
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
-<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="AutoLyap"/>
 <meta property="og:title" content="3. Algorithm representation"/>
 <meta property="og:description" content="Algorithm-representation theory in AutoLyap, including lifted states and linear recursion modeling."/>
-<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="3. Algorithm representation"/>
 <meta name="twitter:description" content="Algorithm-representation theory in AutoLyap, including lifted states and linear recursion modeling."/>
-<meta property="article:author" content="AutoLyap contributors"/>
+<meta property="article:author" content="https://autolyap.github.io/"/>
 <meta property="article:section" content="Theory"/>
 <meta property="article:tag" content="AutoLyap algorithm representation"/>
 <meta property="article:tag" content="lifted state recursion"/>
@@ -65,24 +73,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://autolyap.github.io/#website",
-  "name": "AutoLyap",
-  "url": "https://autolyap.github.io/",
-  "description": "AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.",
-  "inLanguage": "en-US",
-  "publisher": { "@id": "https://autolyap.github.io/#organization" },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://autolyap.github.io/search/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
+  "@type": "TechArticle",
   "@id": "https://autolyap.github.io/theory/algorithm_representation/#webpage",
   "name": "3. Algorithm representation",
   "headline": "3. Algorithm representation",
@@ -91,81 +82,50 @@
   "url": "https://autolyap.github.io/theory/algorithm_representation/",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://autolyap.github.io/theory/algorithm_representation/",
-  "dateModified": "2026-05-25T14:40:13Z",
-  "publisher": { "@id": "https://autolyap.github.io/#organization" },
-  "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": "https://autolyap.github.io/_static/favicon-master.png",
-    "width": 512,
-    "height": 512
-  },
+  "isAccessibleForFree": true,
+  "license": "https://spdx.org/licenses/GPL-3.0-only.html",
   "isPartOf": {
     "@type": "WebSite",
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": {
-    "@type": "SoftwareSourceCode",
-    "name": "AutoLyap",
-    "codeRepository": "https://github.com/AutoLyap/AutoLyap",
-    "programmingLanguage": "Python",
-    "license": "https://spdx.org/licenses/GPL-3.0-only.html"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://autolyap.github.io/#organization",
-  "name": "AutoLyap",
-  "url": "https://autolyap.github.io/",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://autolyap.github.io/_static/favicon-master.png",
-    "width": 512,
-    "height": 512
-  },
-  "sameAs": ["https://github.com/AutoLyap/AutoLyap", "https://manuupadhyaya.github.io/"]
+  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  ,"datePublished": "2026-03-02T18:04:37Z"
+  ,"dateModified": "2026-05-25T14:36:54Z"
+  ,"author": { "@id": "https://autolyap.github.io/#organization" }
+  ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
+  ,"wordCount": 784
+  ,"learningResourceType": "technical reference"
+  ,"educationalLevel": "Advanced"
+  ,"proficiencyLevel": "Expert"
+  ,"breadcrumb": { "@id": "https://autolyap.github.io/theory/algorithm_representation/#breadcrumb" }
 }
 </script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
+  "@id": "https://autolyap.github.io/theory/algorithm_representation/#breadcrumb",
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
       "item": "https://autolyap.github.io/"
-    }
-    ,{
+    },
+    {
       "@type": "ListItem",
       "position": 2,
       "name": "Theory",
-      "item": "https://autolyap.github.io/"
-    }
-    ,{
+      "item": "https://autolyap.github.io/theory/"
+    },
+    {
       "@type": "ListItem",
       "position": 3,
       "name": "3. Algorithm representation",
       "item": "https://autolyap.github.io/theory/algorithm_representation/"
     }
   ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareSourceCode",
-  "@id": "https://github.com/AutoLyap/AutoLyap#source",
-  "name": "AutoLyap",
-  "url": "https://autolyap.github.io/",
-  "codeRepository": "https://github.com/AutoLyap/AutoLyap",
-  "programmingLanguage": "Python",
-  "license": "https://spdx.org/licenses/GPL-3.0-only.html",
-  "version": "0.2.1"
 }
 </script>
 
@@ -391,11 +351,7 @@ method</span></a>.</p></li>
       </div>
     </section>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+  <script>document.addEventListener("DOMContentLoaded",function(){SphinxRtdTheme.Navigation.enable(true);},{once:true});</script> 
 
 </body>
 </html>
