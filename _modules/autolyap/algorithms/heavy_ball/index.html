@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.algorithms.heavy_ball</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/algorithms/heavy_ball/" />
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../../_static/copybutton.js?v=36830154"></script>
@@ -26,9 +28,6 @@
     <link rel="index" title="Index" href="../../../../genindex/" />
     <link rel="search" title="Search" href="../../../../search/" />
  
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../../_static/favicon.png"/>
@@ -155,17 +154,17 @@
            <div itemprop="articleBody">
              
   <h1>Source code for autolyap.algorithms.heavy_ball</h1><div class="highlight"><pre>
-<span></span><span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
+<span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.algorithm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Algorithm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> Tuple
+<span class="kn">from</span> <span class="nn">.algorithm</span> <span class="kn">import</span> Algorithm
 
 <div class="viewcode-block" id="HeavyBallMethod">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.HeavyBallMethod">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">HeavyBallMethod</span><span class="p">(</span><span class="n">Algorithm</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">HeavyBallMethod</span>(Algorithm):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Heavy-ball method :cite:`Polyak1964HeavyBall`.</span>
 
 <span class="sd">    See :doc:`3. Algorithm representation &lt;/theory/algorithm_representation&gt;`</span>
@@ -230,8 +229,8 @@
 <span class="sd">    .. math::</span>
 <span class="sd">        I_{\text{func}} = \{1\},\quad I_{\text{op}} = \varnothing.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, gamma: <span class="nb">float</span>, delta: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the heavy-ball method.</span>
 
 <span class="sd">        Structural inputs passed to :class:`~autolyap.algorithms.Algorithm` are</span>
@@ -240,14 +239,14 @@
 <span class="sd">            n = 2,\quad m = 1,\quad (\bar m_i)_{i=1}^{m} = (1),\quad \bar m = 1,\quad</span>
 <span class="sd">            I_{\mathrm{func}} = \{1\},\quad I_{\mathrm{op}} = \varnothing.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">=</span> <span class="n">delta</span>
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(<span class="mi">2</span>, <span class="mi">1</span>, [<span class="mi">1</span>], [<span class="mi">1</span>], [])
+        <span class="bp">self</span><span class="o">.</span>gamma <span class="o">=</span> gamma
+        <span class="bp">self</span><span class="o">.</span>delta <span class="o">=</span> delta
     
 <div class="viewcode-block" id="HeavyBallMethod.set_gamma">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.HeavyBallMethod.set_gamma">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_gamma</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">set_gamma</span>(<span class="bp">self</span>, gamma: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the step-size parameter :math:`\gamma`.</span>
 
 <span class="sd">        Shared notation follows the class-level reference in</span>
@@ -261,14 +260,14 @@
 
 <span class="sd">        - `ValueError`: If `gamma` is not a finite real number or if :math:`\gamma \le 0`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">gamma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_positive_finite_real</span><span class="p">(</span><span class="n">gamma</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_dynamic_parameter</span><span class="p">(</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span></div>
+        gamma <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_positive_finite_real(gamma, <span class="s2">&quot;gamma&quot;</span>)
+        <span class="bp">self</span><span class="o">.</span>_set_dynamic_parameter(<span class="s2">&quot;gamma&quot;</span>, gamma)</div>
 
 
 <div class="viewcode-block" id="HeavyBallMethod.set_delta">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.HeavyBallMethod.set_delta">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">set_delta</span>(<span class="bp">self</span>, delta: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the momentum parameter :math:`\delta`.</span>
 
 <span class="sd">        Shared notation follows the class-level reference in</span>
@@ -282,18 +281,18 @@
 
 <span class="sd">        - `ValueError`: If `delta` is not a finite real number.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_finite_real</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="s2">&quot;delta&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_dynamic_parameter</span><span class="p">(</span><span class="s2">&quot;delta&quot;</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span></div>
+        delta <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_finite_real(delta, <span class="s2">&quot;delta&quot;</span>)
+        <span class="bp">self</span><span class="o">.</span>_set_dynamic_parameter(<span class="s2">&quot;delta&quot;</span>, delta)</div>
 
     
 <div class="viewcode-block" id="HeavyBallMethod.get_ABCD">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.HeavyBallMethod.get_ABCD">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_ABCD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span> 
-        <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">],[</span><span class="mi">0</span><span class="p">]])</span>
-        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
-        <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">]])</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">get_ABCD</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray]:
+        A <span class="o">=</span> np<span class="o">.</span>array([[<span class="mi">1</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span>delta, <span class="o">-</span><span class="bp">self</span><span class="o">.</span>delta], [<span class="mi">1</span>, <span class="mi">0</span>]]) 
+        B <span class="o">=</span> np<span class="o">.</span>array([[<span class="o">-</span><span class="bp">self</span><span class="o">.</span>gamma],[<span class="mi">0</span>]])
+        C <span class="o">=</span> np<span class="o">.</span>array([[<span class="mi">1</span>, <span class="mi">0</span>]])
+        D <span class="o">=</span> np<span class="o">.</span>array([[<span class="mi">0</span>]])
+        <span class="k">return</span> (A, B, C, D)</div>
 </div>
 
 </pre></div>

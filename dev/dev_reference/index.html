@@ -7,13 +7,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>AutoLyap Developer API and Internals Reference</title>
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/dev/dev_reference/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
@@ -27,9 +29,6 @@
     <link rel="next" title="Internal analysis and solver modules" href="../dev_internal_core/" />
     <link rel="prev" title="Pull request process" href="../../contributing/pull_request_process/" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -250,7 +249,7 @@ It is intended for contributors implementing or refactoring core behavior.</p>
 <tr class="row-even"><td><p>Work on SDP assembly and solver option normalization</p></td>
 <td><p><a class="reference internal" href="../dev_internal_core/"><span class="doc">Internal analysis and solver modules</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p>Modify the internal <code class="docutils literal notranslate"><span class="pre">Algorithm</span></code> contract or matrix/projection accessors</p></td>
+<tr class="row-odd"><td><p>Modify the internal <code class="docutils literal notranslate">Algorithm</code> contract or matrix/projection accessors</p></td>
 <td><p><a class="reference internal" href="../dev_internal_algorithms/"><span class="doc">Internal algorithm modules</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p>Change interpolation-condition internals, indices, or inclusion-problem assembly</p></td>
@@ -276,23 +275,23 @@ It is intended for contributors implementing or refactoring core behavior.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Problem definitions</p></td>
-<td><p><a class="reference internal" href="../dev_internal_problemclass/#module-autolyap.problemclass" title="autolyap.problemclass"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.problemclass</span></code></a></p></td>
+<td><p><a class="reference internal" href="../dev_internal_problemclass/#module-autolyap.problemclass" title="autolyap.problemclass"><code class="xref py py-mod docutils literal notranslate">autolyap.problemclass</code></a></p></td>
 <td><p>Interpolation conditions, index semantics, and component validation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Algorithm lifting</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">autolyap.algorithms</span></code></p></td>
-<td><p>Conversion of updates into lifted matrix objects (<code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">U</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span></code>, <code class="docutils literal notranslate"><span class="pre">F</span></code>, <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">W</span></code>).</p></td>
+<td><p><code class="docutils literal notranslate">autolyap.algorithms</code></p></td>
+<td><p>Conversion of updates into lifted matrix objects (<code class="docutils literal notranslate">X</code>, <code class="docutils literal notranslate">Y</code>, <code class="docutils literal notranslate">U</code>, <code class="docutils literal notranslate">P</code>, <code class="docutils literal notranslate">F</code>, <code class="docutils literal notranslate">E</code>, <code class="docutils literal notranslate">W</code>).</p></td>
 </tr>
 <tr class="row-even"><td><p>Analysis assembly</p></td>
-<td><p><a class="reference internal" href="../dev_internal_core/#module-autolyap.iteration_independent" title="autolyap.iteration_independent"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.iteration_independent</span></code></a>, <a class="reference internal" href="../dev_internal_core/#module-autolyap.iteration_dependent" title="autolyap.iteration_dependent"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.iteration_dependent</span></code></a></p></td>
+<td><p><a class="reference internal" href="../dev_internal_core/#module-autolyap.iteration_independent" title="autolyap.iteration_independent"><code class="xref py py-mod docutils literal notranslate">autolyap.iteration_independent</code></a>, <a class="reference internal" href="../dev_internal_core/#module-autolyap.iteration_dependent" title="autolyap.iteration_dependent"><code class="xref py py-mod docutils literal notranslate">autolyap.iteration_dependent</code></a></p></td>
 <td><p>Construction and solving of SDP certificates from problem and algorithm structure.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Backend normalization</p></td>
-<td><p><a class="reference internal" href="../dev_internal_core/#module-autolyap.solver_options" title="autolyap.solver_options"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.solver_options</span></code></a></p></td>
+<td><p><a class="reference internal" href="../dev_internal_core/#module-autolyap.solver_options" title="autolyap.solver_options"><code class="xref py py-mod docutils literal notranslate">autolyap.solver_options</code></a></p></td>
 <td><p>One-pass normalization of solver options before backend-specific calls.</p></td>
 </tr>
 <tr class="row-even"><td><p>Shared utilities</p></td>
-<td><p><a class="reference internal" href="../dev_internal_utils/#module-autolyap.utils" title="autolyap.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.utils</span></code></a></p></td>
+<td><p><a class="reference internal" href="../dev_internal_utils/#module-autolyap.utils" title="autolyap.utils"><code class="xref py py-mod docutils literal notranslate">autolyap.utils</code></a></p></td>
 <td><p>Validation helpers, matrix helpers, and backend protocol types.</p></td>
 </tr>
 </tbody>
@@ -309,19 +308,19 @@ It is intended for contributors implementing or refactoring core behavior.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Add a new algorithm</p></td>
-<td><p><a class="reference internal" href="../../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">autolyap.algorithms.algorithm.Algorithm</span></code></a></p></td>
-<td><p>Implement <code class="docutils literal notranslate"><span class="pre">get_ABCD</span></code> consistently; the base class derives lifted matrix/projection accessors.</p></td>
+<td><p><a class="reference internal" href="../../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.algorithm.Algorithm"><code class="xref py py-class docutils literal notranslate">autolyap.algorithms.algorithm.Algorithm</code></a></p></td>
+<td><p>Implement <code class="docutils literal notranslate">get_ABCD</code> consistently; the base class derives lifted matrix/projection accessors.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Add a new interpolation condition</p></td>
-<td><p><a class="reference internal" href="../dev_internal_problemclass/#autolyap.problemclass.base._InterpolationCondition.get_data" title="autolyap.problemclass.base._InterpolationCondition.get_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">autolyap.problemclass.base._InterpolationCondition.get_data()</span></code></a></p></td>
-<td><p>Follow the existing <a class="reference internal" href="../dev_internal_problemclass/#module-autolyap.problemclass" title="autolyap.problemclass"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.problemclass</span></code></a> condition hierarchy.</p></td>
+<td><p><a class="reference internal" href="../dev_internal_problemclass/#autolyap.problemclass.base._InterpolationCondition.get_data" title="autolyap.problemclass.base._InterpolationCondition.get_data"><code class="xref py py-meth docutils literal notranslate">autolyap.problemclass.base._InterpolationCondition.get_data()</code></a></p></td>
+<td><p>Follow the existing <a class="reference internal" href="../dev_internal_problemclass/#module-autolyap.problemclass" title="autolyap.problemclass"><code class="xref py py-mod docutils literal notranslate">autolyap.problemclass</code></a> condition hierarchy.</p></td>
 </tr>
 <tr class="row-even"><td><p>Add or modify analysis workflows</p></td>
-<td><p><a class="reference internal" href="../dev_internal_core/#module-autolyap.iteration_independent" title="autolyap.iteration_independent"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.iteration_independent</span></code></a>, <a class="reference internal" href="../dev_internal_core/#module-autolyap.iteration_dependent" title="autolyap.iteration_dependent"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.iteration_dependent</span></code></a></p></td>
+<td><p><a class="reference internal" href="../dev_internal_core/#module-autolyap.iteration_independent" title="autolyap.iteration_independent"><code class="xref py py-mod docutils literal notranslate">autolyap.iteration_independent</code></a>, <a class="reference internal" href="../dev_internal_core/#module-autolyap.iteration_dependent" title="autolyap.iteration_dependent"><code class="xref py py-mod docutils literal notranslate">autolyap.iteration_dependent</code></a></p></td>
 <td><p>Preserve solver-backend parity across supported backends.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Add validation or backend typing logic</p></td>
-<td><p><a class="reference internal" href="../dev_internal_utils/#module-autolyap.utils.validation" title="autolyap.utils.validation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.utils.validation</span></code></a>, <a class="reference internal" href="../dev_internal_utils/#module-autolyap.utils.backend_types" title="autolyap.utils.backend_types"><code class="xref py py-mod docutils literal notranslate"><span class="pre">autolyap.utils.backend_types</span></code></a></p></td>
+<td><p><a class="reference internal" href="../dev_internal_utils/#module-autolyap.utils.validation" title="autolyap.utils.validation"><code class="xref py py-mod docutils literal notranslate">autolyap.utils.validation</code></a>, <a class="reference internal" href="../dev_internal_utils/#module-autolyap.utils.backend_types" title="autolyap.utils.backend_types"><code class="xref py py-mod docutils literal notranslate">autolyap.utils.backend_types</code></a></p></td>
 <td><p>Keep shared checks centralized; avoid per-module duplication.</p></td>
 </tr>
 </tbody>
@@ -331,8 +330,8 @@ It is intended for contributors implementing or refactoring core behavior.</p>
 <h2>Invariants and common pitfalls<a class="headerlink" href="#invariants-and-common-pitfalls" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Interpolation indices exposed to users are 1-based and strictly validated.</p></li>
-<li><p>Keep matrix dimensions aligned across <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span></code>, and interpolation blocks; shape drift usually appears as SDP assembly failures.</p></li>
-<li><p>Normalize solver options exactly once via <a class="reference internal" href="../dev_internal_core/#autolyap.solver_options._normalize_solver_options" title="autolyap.solver_options._normalize_solver_options"><code class="xref py py-func docutils literal notranslate"><span class="pre">autolyap.solver_options._normalize_solver_options()</span></code></a> before backend-specific solve calls.</p></li>
+<li><p>Keep matrix dimensions aligned across <code class="docutils literal notranslate">Y</code>, <code class="docutils literal notranslate">P</code>, and interpolation blocks; shape drift usually appears as SDP assembly failures.</p></li>
+<li><p>Normalize solver options exactly once via <a class="reference internal" href="../dev_internal_core/#autolyap.solver_options._normalize_solver_options" title="autolyap.solver_options._normalize_solver_options"><code class="xref py py-func docutils literal notranslate">autolyap.solver_options._normalize_solver_options()</code></a> before backend-specific solve calls.</p></li>
 <li><p>Keep numeric checks in shared validation helpers instead of duplicating them inside algorithm or condition modules.</p></li>
 </ul>
 </section>

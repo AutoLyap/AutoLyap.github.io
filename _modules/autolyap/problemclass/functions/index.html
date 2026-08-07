@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.problemclass.functions</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/problemclass/functions/" />
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../../_static/copybutton.js?v=36830154"></script>
@@ -26,9 +28,6 @@
     <link rel="index" title="Index" href="../../../../genindex/" />
     <link rel="search" title="Search" href="../../../../search/" />
  
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../../_static/favicon.png"/>
@@ -155,54 +154,54 @@
            <div itemprop="articleBody">
              
   <h1>Source code for autolyap.problemclass.functions</h1><div class="highlight"><pre>
-<span></span><span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
+<span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
 <span class="sd">&quot;&quot;&quot;Concrete function interpolation-condition classes.&quot;&quot;&quot;</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> List, Union, Tuple
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">_FunctionInterpolationCondition</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass.indices</span><span class="w"> </span><span class="kn">import</span> <span class="n">_InterpolationIndices</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.utils.validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">ensure_real_number</span>
+<span class="kn">from</span> <span class="nn">autolyap.problemclass.base</span> <span class="kn">import</span> _FunctionInterpolationCondition
+<span class="kn">from</span> <span class="nn">autolyap.problemclass.indices</span> <span class="kn">import</span> _InterpolationIndices
+<span class="kn">from</span> <span class="nn">autolyap.utils.validation</span> <span class="kn">import</span> ensure_real_number
 
-<span class="n">INF</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+INF <span class="o">=</span> <span class="nb">float</span>(<span class="s2">&quot;inf&quot;</span>)
 
 
 <div class="viewcode-block" id="_ensure_positive_finite">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.functions._ensure_positive_finite">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_ensure_positive_finite</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return `value` as float after enforcing strict positivity and finiteness.&quot;&quot;&quot;</span>
-    <span class="n">numeric_value</span> <span class="o">=</span> <span class="n">ensure_real_number</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">numeric_value</span><span class="p">)</span> <span class="ow">or</span> <span class="n">numeric_value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">numeric_value</span></div>
+<span class="k">def</span> <span class="nf">_ensure_positive_finite</span>(value: Union[<span class="nb">int</span>, <span class="nb">float</span>], parameter_name: <span class="nb">str</span>, error_message: <span class="nb">str</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return `value` as float after enforcing strict positivity and finiteness.&quot;&quot;&quot;</span>
+    numeric_value <span class="o">=</span> ensure_real_number(value, parameter_name)
+    <span class="k">if</span> <span class="ow">not</span> np<span class="o">.</span>isfinite(numeric_value) <span class="ow">or</span> numeric_value <span class="o">&lt;=</span> <span class="mi">0</span>:
+        <span class="k">raise</span> <span class="ne">ValueError</span>(error_message)
+    <span class="k">return</span> numeric_value</div>
 
 
 
 <div class="viewcode-block" id="_ensure_positive_mu_tilde">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.functions._ensure_positive_mu_tilde">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_ensure_positive_mu_tilde</span><span class="p">(</span><span class="n">mu_tilde</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">context_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">_ensure_positive_mu_tilde</span>(mu_tilde: Union[<span class="nb">int</span>, <span class="nb">float</span>], context_name: <span class="nb">str</span>) <span class="o">-&gt;</span> Tuple[<span class="nb">float</span>, <span class="nb">float</span>]:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Validate :math:`\tilde{\mu} &gt; 0` and return both :math:`(\tilde{\mu}, -\tilde{\mu})`.</span>
 
 <span class="sd">    Many weakly-convex templates are written with :math:`\mu=-\tilde{\mu}`.</span>
 <span class="sd">    This helper keeps that conversion explicit and centralized.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">validated</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span>
-        <span class="n">mu_tilde</span><span class="p">,</span>
-        <span class="s2">&quot;Parameter mu_tilde&quot;</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">&quot;For </span><span class="si">{</span><span class="n">context_name</span><span class="si">}</span><span class="s2">, mu_tilde must be &gt; 0 and finite.&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">validated</span><span class="p">,</span> <span class="o">-</span><span class="n">validated</span></div>
+    validated <span class="o">=</span> _ensure_positive_finite(
+        mu_tilde,
+        <span class="s2">&quot;Parameter mu_tilde&quot;</span>,
+        <span class="sa">f</span><span class="s2">&quot;For </span><span class="si">{</span>context_name<span class="si">}</span><span class="s2">, mu_tilde must be &gt; 0 and finite.&quot;</span>,
+    )
+    <span class="k">return</span> validated, <span class="o">-</span>validated</div>
 
 
 
 <div class="viewcode-block" id="_ParametrizedFunctionInterpolationCondition">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">_ParametrizedFunctionInterpolationCondition</span><span class="p">(</span><span class="n">_FunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">_ParametrizedFunctionInterpolationCondition</span>(_FunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for function interpolation conditions parameterized by :math:`\mu` and :math:`L`.</span>
 
 <span class="sd">    Class-level reference</span>
@@ -279,33 +278,33 @@
 <span class="sd">    - `ValueError`: If `mu` is not a number, if :math:`L \le 0` with :math:`L &lt; +\infty`,</span>
 <span class="sd">      or if :math:`\mu \geq L`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">L</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mu</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_mu_L</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="n">L</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_interpolation_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_interpolation_data</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu: Union[<span class="nb">int</span>, <span class="nb">float</span>], L: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        mu, L <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_mu_L(mu, L)
+        <span class="bp">self</span><span class="o">.</span>mu <span class="o">=</span> mu
+        <span class="bp">self</span><span class="o">.</span>L <span class="o">=</span> L
+        <span class="bp">self</span><span class="o">.</span>_interpolation_data <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_compute_interpolation_data(mu, L)
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_mu_L</span><span class="p">(</span><span class="n">mu</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">L</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_validate_mu_L</span>(mu: Union[<span class="nb">int</span>, <span class="nb">float</span>], L: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> Tuple[<span class="nb">float</span>, <span class="nb">float</span>]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate interpolation parameters and return normalized ``(mu, L)``.</span>
 
 <span class="sd">        Enforces the admissible region ``-inf &lt; mu &lt; L &lt;= +inf`` with the</span>
 <span class="sd">        additional requirement that finite ``L`` values are strictly positive.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">mu</span> <span class="o">=</span> <span class="n">ensure_real_number</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="s2">&quot;Parameter mu&quot;</span><span class="p">)</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="n">ensure_real_number</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="s2">&quot;Parameter L&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">L</span> <span class="o">!=</span> <span class="n">INF</span> <span class="ow">and</span> <span class="n">L</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Parameter L must be positive or +inf.&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">mu</span> <span class="o">==</span> <span class="o">-</span><span class="n">INF</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ParametrizedFunctionInterpolationCondition: mu cannot be -inf.&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">mu</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ParametrizedFunctionInterpolationCondition requires that -inf &lt; mu &lt; L &lt;= +inf.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">mu</span><span class="p">,</span> <span class="n">L</span>
+        mu <span class="o">=</span> ensure_real_number(mu, <span class="s2">&quot;Parameter mu&quot;</span>)
+        L <span class="o">=</span> ensure_real_number(L, <span class="s2">&quot;Parameter L&quot;</span>)
+        <span class="k">if</span> L <span class="o">!=</span> INF <span class="ow">and</span> L <span class="o">&lt;=</span> <span class="mi">0</span>:
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;Parameter L must be positive or +inf.&quot;</span>)
+        <span class="k">if</span> mu <span class="o">==</span> <span class="o">-</span>INF:
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;ParametrizedFunctionInterpolationCondition: mu cannot be -inf.&quot;</span>)
+        <span class="k">if</span> <span class="ow">not</span> (mu <span class="o">&lt;</span> L):
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;ParametrizedFunctionInterpolationCondition requires that -inf &lt; mu &lt; L &lt;= +inf.&quot;</span>)
+        <span class="k">return</span> mu, L
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_interpolation_data</span><span class="p">(</span><span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_compute_interpolation_data</span>(mu: <span class="nb">float</span>, L: <span class="nb">float</span>) <span class="o">-&gt;</span> Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, <span class="nb">bool</span>, _InterpolationIndices]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the interpolation data based on mu and L.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -325,29 +324,29 @@
 <span class="sd">          matrix, vector, eq flag, and interpolation indices.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">L</span> <span class="o">==</span> <span class="n">INF</span><span class="p">:</span>
-            <span class="n">matrix</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-                <span class="p">[</span><span class="n">mu</span><span class="p">,</span> <span class="o">-</span><span class="n">mu</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-                <span class="p">[</span><span class="o">-</span><span class="n">mu</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-                <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-            <span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">matrix</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-                <span class="p">[</span><span class="n">L</span> <span class="o">*</span> <span class="n">mu</span><span class="p">,</span> <span class="o">-</span><span class="n">L</span> <span class="o">*</span> <span class="n">mu</span><span class="p">,</span> <span class="o">-</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="p">],</span>
-                <span class="p">[</span><span class="o">-</span><span class="n">L</span> <span class="o">*</span> <span class="n">mu</span><span class="p">,</span> <span class="n">L</span> <span class="o">*</span> <span class="n">mu</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="o">-</span><span class="n">L</span><span class="p">],</span>
-                <span class="p">[</span><span class="o">-</span><span class="n">mu</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-                <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-            <span class="p">])</span>
-        <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-        <span class="n">eq</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">interp_idx</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1!=r2&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">vector</span><span class="p">,</span> <span class="n">eq</span><span class="p">,</span> <span class="n">interp_idx</span>
+        <span class="k">if</span> L <span class="o">==</span> INF:
+            matrix <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
+                [mu, <span class="o">-</span>mu, <span class="mi">0</span>, <span class="mi">1</span>],
+                [<span class="o">-</span>mu, mu, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>],
+                [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>],
+                [<span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">0</span>, <span class="mi">0</span>]
+            ])
+        <span class="k">else</span>:
+            matrix <span class="o">=</span> (<span class="mi">1</span> <span class="o">/</span> (<span class="mi">2</span> <span class="o">*</span> (L <span class="o">-</span> mu))) <span class="o">*</span> np<span class="o">.</span>array([
+                [L <span class="o">*</span> mu, <span class="o">-</span>L <span class="o">*</span> mu, <span class="o">-</span>mu, L],
+                [<span class="o">-</span>L <span class="o">*</span> mu, L <span class="o">*</span> mu, mu, <span class="o">-</span>L],
+                [<span class="o">-</span>mu, mu, <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
+                [L, <span class="o">-</span>L, <span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>]
+            ])
+        vector <span class="o">=</span> np<span class="o">.</span>array([<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>])
+        eq <span class="o">=</span> <span class="kc">False</span>
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1!=r2&quot;</span>)
+        <span class="k">return</span> matrix, vector, eq, interp_idx
 
 <div class="viewcode-block" id="_ParametrizedFunctionInterpolationCondition.get_data">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.functions._ParametrizedFunctionInterpolationCondition.get_data">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, <span class="nb">bool</span>, _InterpolationIndices]]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data for the function condition.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -359,14 +358,14 @@
 <span class="sd">          tuple with the matrix, vector, eq flag, and interpolation indices.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_interpolation_data</span><span class="p">]</span></div>
+        <span class="k">return</span> [<span class="bp">self</span><span class="o">.</span>_interpolation_data]</div>
 </div>
 
 
 <div class="viewcode-block" id="Convex">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.Convex">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Convex</span><span class="p">(</span><span class="n">_ParametrizedFunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">Convex</span>(_ParametrizedFunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for proper, lower semicontinuous, and convex functions.</span>
 
 <span class="sd">    Let :math:`f: \calH \to \mathbb{R} \cup \{\pm\infty\}` be proper, lower semicontinuous, and convex.</span>
@@ -405,14 +404,14 @@
 <span class="sd">    - :cite:`taylor2016smoothstronglyconvex{Theorem 4}`.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">INF</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(mu<span class="o">=</span><span class="mf">0.0</span>, L<span class="o">=</span>INF)</div>
 
 
 <div class="viewcode-block" id="StronglyConvex">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.StronglyConvex">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">StronglyConvex</span><span class="p">(</span><span class="n">_ParametrizedFunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">StronglyConvex</span>(_ParametrizedFunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for proper, lower semicontinuous, and strongly convex functions.</span>
 
 <span class="sd">    Let :math:`\mu \in \mathbb{R}_{++}` and</span>
@@ -461,15 +460,15 @@
 
 <span class="sd">    - :cite:`taylor2016smoothstronglyconvex{Theorem 4}`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mu</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="s2">&quot;Parameter mu&quot;</span><span class="p">,</span> <span class="s2">&quot;For StronglyConvex, mu must be &gt; 0 and finite.&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">INF</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        mu <span class="o">=</span> _ensure_positive_finite(mu, <span class="s2">&quot;Parameter mu&quot;</span>, <span class="s2">&quot;For StronglyConvex, mu must be &gt; 0 and finite.&quot;</span>)
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(mu<span class="o">=</span>mu, L<span class="o">=</span>INF)</div>
 
 
 <div class="viewcode-block" id="WeaklyConvex">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.WeaklyConvex">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">WeaklyConvex</span><span class="p">(</span><span class="n">_ParametrizedFunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">WeaklyConvex</span>(_ParametrizedFunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for proper, lower semicontinuous, and weakly convex functions.</span>
 
 <span class="sd">    Let :math:`\tilde{\mu} \in \mathbb{R}_{++}` and</span>
@@ -518,16 +517,16 @@
 
 <span class="sd">    - :cite:`rotaru2022tightconvergencerates{Theorem 3.1}`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu_tilde</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mu_tilde</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="n">_ensure_positive_mu_tilde</span><span class="p">(</span><span class="n">mu_tilde</span><span class="p">,</span> <span class="s2">&quot;WeaklyConvex&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">INF</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mu_tilde</span> <span class="o">=</span> <span class="n">mu_tilde</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu_tilde: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        mu_tilde, mu <span class="o">=</span> _ensure_positive_mu_tilde(mu_tilde, <span class="s2">&quot;WeaklyConvex&quot;</span>)
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(mu<span class="o">=</span>mu, L<span class="o">=</span>INF)
+        <span class="bp">self</span><span class="o">.</span>mu_tilde <span class="o">=</span> mu_tilde</div>
 
 
 <div class="viewcode-block" id="Smooth">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.Smooth">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Smooth</span><span class="p">(</span><span class="n">_ParametrizedFunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">Smooth</span>(_ParametrizedFunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for smooth functions.</span>
 
 <span class="sd">    Let :math:`L \in \mathbb{R}_{++}` and</span>
@@ -578,15 +577,15 @@
 
 <span class="sd">    - :cite:`taylor2017exactworstcase{Theorem 3.10}`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="s2">&quot;Parameter L&quot;</span><span class="p">,</span> <span class="s2">&quot;For Smooth, L must be &gt; 0 and finite.&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mu</span><span class="o">=-</span><span class="n">L</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, L: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        L <span class="o">=</span> _ensure_positive_finite(L, <span class="s2">&quot;Parameter L&quot;</span>, <span class="s2">&quot;For Smooth, L must be &gt; 0 and finite.&quot;</span>)
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(mu<span class="o">=-</span>L, L<span class="o">=</span>L)</div>
 
 
 <div class="viewcode-block" id="SmoothConvex">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.SmoothConvex">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">SmoothConvex</span><span class="p">(</span><span class="n">_ParametrizedFunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">SmoothConvex</span>(_ParametrizedFunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for smooth and convex functions.</span>
 
 <span class="sd">    Let :math:`L \in \mathbb{R}_{++}` and</span>
@@ -636,15 +635,15 @@
 
 <span class="sd">    - :cite:`taylor2016smoothstronglyconvex{Theorem 4}`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="s2">&quot;Parameter L&quot;</span><span class="p">,</span> <span class="s2">&quot;For SmoothConvex, L must be &gt; 0 and finite.&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, L: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        L <span class="o">=</span> _ensure_positive_finite(L, <span class="s2">&quot;Parameter L&quot;</span>, <span class="s2">&quot;For SmoothConvex, L must be &gt; 0 and finite.&quot;</span>)
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(mu<span class="o">=</span><span class="mf">0.0</span>, L<span class="o">=</span>L)</div>
 
 
 <div class="viewcode-block" id="SmoothStronglyConvex">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.SmoothStronglyConvex">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">SmoothStronglyConvex</span><span class="p">(</span><span class="n">_ParametrizedFunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">SmoothStronglyConvex</span>(_ParametrizedFunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for smooth and strongly convex functions.</span>
 
 <span class="sd">    Let :math:`0 &lt; \mu &lt; L` and</span>
@@ -696,26 +695,26 @@
 
 <span class="sd">    - :cite:`taylor2016smoothstronglyconvex{Theorem 4}`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">L</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mu</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span>
-            <span class="n">mu</span><span class="p">,</span>
-            <span class="s2">&quot;Parameter mu&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;For SmoothStronglyConvex, mu must be &gt; 0 and finite.&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span>
-            <span class="n">L</span><span class="p">,</span>
-            <span class="s2">&quot;Parameter L&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;For SmoothStronglyConvex, L must be &gt; 0 and finite.&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">mu</span> <span class="o">&gt;=</span> <span class="n">L</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;For SmoothStronglyConvex, mu must be less than L.&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu: Union[<span class="nb">int</span>, <span class="nb">float</span>], L: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        mu <span class="o">=</span> _ensure_positive_finite(
+            mu,
+            <span class="s2">&quot;Parameter mu&quot;</span>,
+            <span class="s2">&quot;For SmoothStronglyConvex, mu must be &gt; 0 and finite.&quot;</span>,
+        )
+        L <span class="o">=</span> _ensure_positive_finite(
+            L,
+            <span class="s2">&quot;Parameter L&quot;</span>,
+            <span class="s2">&quot;For SmoothStronglyConvex, L must be &gt; 0 and finite.&quot;</span>,
+        )
+        <span class="k">if</span> mu <span class="o">&gt;=</span> L:
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;For SmoothStronglyConvex, mu must be less than L.&quot;</span>)
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(mu<span class="o">=</span>mu, L<span class="o">=</span>L)</div>
 
 
 <div class="viewcode-block" id="SmoothWeaklyConvex">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.SmoothWeaklyConvex">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">SmoothWeaklyConvex</span><span class="p">(</span><span class="n">_ParametrizedFunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">SmoothWeaklyConvex</span>(_ParametrizedFunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for smooth and weakly convex functions.</span>
 
 <span class="sd">    Let :math:`\tilde{\mu} \in \mathbb{R}_{++}` and :math:`L \in \mathbb{R}_{++}`, with</span>
@@ -767,21 +766,21 @@
 
 <span class="sd">    - :cite:`rotaru2022tightconvergencerates{Theorem 3.1}`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu_tilde</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">L</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mu_tilde</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="n">_ensure_positive_mu_tilde</span><span class="p">(</span><span class="n">mu_tilde</span><span class="p">,</span> <span class="s2">&quot;SmoothWeaklyConvex&quot;</span><span class="p">)</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span>
-            <span class="n">L</span><span class="p">,</span>
-            <span class="s2">&quot;Parameter L&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;For SmoothWeaklyConvex, L must be &gt; 0 and finite.&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mu_tilde</span> <span class="o">=</span> <span class="n">mu_tilde</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu_tilde: Union[<span class="nb">int</span>, <span class="nb">float</span>], L: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        mu_tilde, mu <span class="o">=</span> _ensure_positive_mu_tilde(mu_tilde, <span class="s2">&quot;SmoothWeaklyConvex&quot;</span>)
+        L <span class="o">=</span> _ensure_positive_finite(
+            L,
+            <span class="s2">&quot;Parameter L&quot;</span>,
+            <span class="s2">&quot;For SmoothWeaklyConvex, L must be &gt; 0 and finite.&quot;</span>,
+        )
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(mu<span class="o">=</span>mu, L<span class="o">=</span>L)
+        <span class="bp">self</span><span class="o">.</span>mu_tilde <span class="o">=</span> mu_tilde</div>
 
 
 <div class="viewcode-block" id="IndicatorFunctionOfClosedConvexSet">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.IndicatorFunctionOfClosedConvexSet">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">IndicatorFunctionOfClosedConvexSet</span><span class="p">(</span><span class="n">_FunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">IndicatorFunctionOfClosedConvexSet</span>(_FunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for indicator functions of nonempty, closed, and convex sets.</span>
 
 <span class="sd">    Let :math:`C \subseteq \calH` be nonempty, closed, and convex, and define</span>
@@ -858,8 +857,8 @@
 <span class="sd">    - :cite:`taylor2017exactworstcase{Theorem 3.6}`.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, <span class="nb">bool</span>, _InterpolationIndices]]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data for the indicator function.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -871,27 +870,27 @@
 <span class="sd">          tuples with the interpolation data.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">interp_idx_ineq</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1!=r2&quot;</span><span class="p">)</span>
-        <span class="n">matrix_ineq</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="p">])</span>
-        <span class="n">vector_ineq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-        <span class="n">interp_idx_eq</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1&quot;</span><span class="p">)</span>
-        <span class="n">matrix_eq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
-        <span class="n">vector_eq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="p">(</span><span class="n">matrix_ineq</span><span class="p">,</span> <span class="n">vector_ineq</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">interp_idx_ineq</span><span class="p">),</span>
-            <span class="p">(</span><span class="n">matrix_eq</span><span class="p">,</span> <span class="n">vector_eq</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">interp_idx_eq</span><span class="p">)</span>
-        <span class="p">]</span></div>
+        interp_idx_ineq <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1!=r2&quot;</span>)
+        matrix_ineq <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">1</span>],
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>],
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>],
+            [<span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">0</span>, <span class="mi">0</span>]
+        ])
+        vector_ineq <span class="o">=</span> np<span class="o">.</span>array([<span class="mi">0</span>, <span class="mi">0</span>])
+        interp_idx_eq <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&quot;</span>)
+        matrix_eq <span class="o">=</span> np<span class="o">.</span>array([[<span class="mi">0</span>, <span class="mi">0</span>], [<span class="mi">0</span>, <span class="mi">0</span>]])
+        vector_eq <span class="o">=</span> np<span class="o">.</span>array([<span class="mi">1</span>])
+        <span class="k">return</span> [
+            (matrix_ineq, vector_ineq, <span class="kc">False</span>, interp_idx_ineq),
+            (matrix_eq, vector_eq, <span class="kc">True</span>, interp_idx_eq)
+        ]</div>
 
 
 <div class="viewcode-block" id="SupportFunctionOfClosedConvexSet">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.SupportFunctionOfClosedConvexSet">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">SupportFunctionOfClosedConvexSet</span><span class="p">(</span><span class="n">_FunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">SupportFunctionOfClosedConvexSet</span>(_FunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for support functions of nonempty, closed, and convex sets.</span>
 
 <span class="sd">    Let :math:`C \subseteq \calH` be nonempty, closed, and convex, and define</span>
@@ -949,8 +948,8 @@
 <span class="sd">    - :cite:`taylor2017exactworstcase{Corollary 3.7}`.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, <span class="nb">bool</span>, _InterpolationIndices]]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data for the support function.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -962,27 +961,27 @@
 <span class="sd">          tuples with the interpolation data.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">interp_idx_ineq</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1!=r2&quot;</span><span class="p">)</span>
-        <span class="n">matrix_ineq</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="p">])</span>
-        <span class="n">vector_ineq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-        <span class="n">interp_idx_eq</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1&quot;</span><span class="p">)</span>
-        <span class="n">matrix_eq</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
-        <span class="n">vector_eq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="p">(</span><span class="n">matrix_ineq</span><span class="p">,</span> <span class="n">vector_ineq</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">interp_idx_ineq</span><span class="p">),</span>
-            <span class="p">(</span><span class="n">matrix_eq</span><span class="p">,</span> <span class="n">vector_eq</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">interp_idx_eq</span><span class="p">)</span>
-        <span class="p">]</span></div>
+        interp_idx_ineq <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1!=r2&quot;</span>)
+        matrix_ineq <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>],
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
+            [<span class="mi">0</span>, <span class="mi">1</span>, <span class="mi">0</span>, <span class="mi">0</span>],
+            [<span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">0</span>, <span class="mi">0</span>]
+        ])
+        vector_ineq <span class="o">=</span> np<span class="o">.</span>array([<span class="mi">0</span>, <span class="mi">0</span>])
+        interp_idx_eq <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&quot;</span>)
+        matrix_eq <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([[<span class="mi">0</span>, <span class="mi">1</span>], [<span class="mi">1</span>, <span class="mi">0</span>]])
+        vector_eq <span class="o">=</span> np<span class="o">.</span>array([<span class="o">-</span><span class="mi">1</span>])
+        <span class="k">return</span> [
+            (matrix_ineq, vector_ineq, <span class="kc">False</span>, interp_idx_ineq),
+            (matrix_eq, vector_eq, <span class="kc">True</span>, interp_idx_eq)
+        ]</div>
 
 
 <div class="viewcode-block" id="GradientDominated">
 <a class="viewcode-back" href="../../../../function_classes/#autolyap.problemclass.functions.GradientDominated">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">GradientDominated</span><span class="p">(</span><span class="n">_FunctionInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">GradientDominated</span>(_FunctionInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function interpolation condition for gradient-dominated functions.</span>
 
 <span class="sd">    Let :math:`\mu_{\textup{gd}} \in \mathbb{R}_{++}` and</span>
@@ -1048,16 +1047,16 @@
 <span class="sd">      :math:`m_{\textup{op}} = 0`. This single component may still</span>
 <span class="sd">      contain a list of function conditions (an intersection).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu_gd</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mu_gd</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span>
-            <span class="n">mu_gd</span><span class="p">,</span>
-            <span class="s2">&quot;Gradient-dominated parameter&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Gradient-dominated parameter (mu_gd) must be greater than 0 and finite.&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mu_gd</span> <span class="o">=</span> <span class="n">mu_gd</span>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu_gd: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        mu_gd <span class="o">=</span> _ensure_positive_finite(
+            mu_gd,
+            <span class="s2">&quot;Gradient-dominated parameter&quot;</span>,
+            <span class="s2">&quot;Gradient-dominated parameter (mu_gd) must be greater than 0 and finite.&quot;</span>,
+        )
+        <span class="bp">self</span><span class="o">.</span>mu_gd <span class="o">=</span> mu_gd
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, <span class="nb">bool</span>, _InterpolationIndices]]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data for gradient-dominated functions.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -1069,19 +1068,19 @@
 <span class="sd">          tuples with the interpolation data.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">a1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-        <span class="n">M1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        a1 <span class="o">=</span> np<span class="o">.</span>array([<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>])
+        M1 <span class="o">=</span> np<span class="o">.</span>zeros((<span class="mi">4</span>, <span class="mi">4</span>))
         
-        <span class="n">a2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">M2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-        <span class="n">M2</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_gd</span><span class="p">)</span>
+        a2 <span class="o">=</span> np<span class="o">.</span>array([<span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>])
+        M2 <span class="o">=</span> np<span class="o">.</span>zeros((<span class="mi">4</span>, <span class="mi">4</span>))
+        M2[<span class="mi">2</span>, <span class="mi">2</span>] <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">/</span> (<span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>mu_gd)
         
-        <span class="n">interp_idx</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1!=star&quot;</span><span class="p">)</span>
-        <span class="n">eq_flag</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="p">(</span><span class="n">M1</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">eq_flag</span><span class="p">,</span> <span class="n">interp_idx</span><span class="p">),</span>
-            <span class="p">(</span><span class="n">M2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">eq_flag</span><span class="p">,</span> <span class="n">interp_idx</span><span class="p">)</span>
-        <span class="p">]</span></div>
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1!=star&quot;</span>)
+        eq_flag <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> [
+            (M1, a1, eq_flag, interp_idx),
+            (M2, a2, eq_flag, interp_idx)
+        ]</div>
 
 </pre></div>
 

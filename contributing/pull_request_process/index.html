@@ -8,13 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>AutoLyap Pull Request Process</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/contributing/pull_request_process/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/copybutton.js?v=36830154"></script>
@@ -29,9 +31,6 @@
     <link rel="next" title="Developer reference" href="../../dev/dev_reference/" />
     <link rel="prev" title="Development workflow" href="../development_workflow/" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -210,11 +209,11 @@
 <ol class="arabic simple">
 <li><p>Push your branch to your fork:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>&lt;feature-branch&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre>git push -u origin &lt;feature-branch&gt;
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Open a PR from your fork branch to <code class="docutils literal notranslate"><span class="pre">AutoLyap/AutoLyap:main</span></code>.</p></li>
+<li><p>Open a PR from your fork branch to <code class="docutils literal notranslate">AutoLyap/AutoLyap:main</code>.</p></li>
 </ol>
 </section>
 <section id="pull-request-checklist">
@@ -224,8 +223,8 @@
 <li><p>[ ] CI-equivalent local checks pass.</p></li>
 <li><p>[ ] New behavior is covered by tests when applicable.</p></li>
 <li><p>[ ] Docs are updated when API or behavior changed.</p></li>
-<li><p>[ ] Docs build locally (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-C</span> <span class="pre">docs</span> <span class="pre">dirhtml</span></code>) if docs were changed.</p></li>
-<li><p>[ ] No generated files from <code class="docutils literal notranslate"><span class="pre">docs/build/</span></code> are committed.</p></li>
+<li><p>[ ] Docs build locally (<code class="docutils literal notranslate">make -C docs dirhtml</code>) if docs were changed.</p></li>
+<li><p>[ ] No generated files from <code class="docutils literal notranslate">docs/build/</code> are committed.</p></li>
 <li><p>[ ] PR description states what changed and why.</p></li>
 </ul>
 </section>

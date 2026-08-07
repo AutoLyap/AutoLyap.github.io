@@ -7,18 +7,22 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Monotone Operator Classes | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/operator_classes/" />
+  <link rel="preload" href="../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../_static/content_width_toggle.js?v=eb58c7cb"></script>
-    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"loader":{"load":["ui/lazy"]},"options":{"lazyMargin":"200px","lazyAlwaysTypeset":[".math.math-initial"]},"tex":{"packages":{"[+]":[]},"macros":{"calH":"\\mathcal{H}","p":["\\mathord{( #1 )}",1]}}}</script>
+    <script crossorigin="anonymous" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
   <script defer="defer" src="../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -29,11 +33,6 @@
     <link rel="next" title="Algorithms" href="../algorithms/" />
     <link rel="prev" title="Function classes" href="../function_classes/" />
  
-<link rel="preload" href="../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../_static/favicon.png"/>
@@ -162,14 +161,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api_reference/">API reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../problem_class/">Problem classes</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../problem_class/#autolyap.problemclass.InclusionProblem"><code class="docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../problem_class/#autolyap.problemclass.InclusionProblem"><code class="docutils literal notranslate">InclusionProblem</code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../function_classes/">Function classes</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Operator classes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.MaximallyMonotone"><code class="docutils literal notranslate"><span class="pre">MaximallyMonotone</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.StronglyMonotone"><code class="docutils literal notranslate"><span class="pre">StronglyMonotone</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.LipschitzOperator"><code class="docutils literal notranslate"><span class="pre">LipschitzOperator</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.Cocoercive"><code class="docutils literal notranslate"><span class="pre">Cocoercive</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.WeakMintyVariationalInequality"><code class="docutils literal notranslate"><span class="pre">WeakMintyVariationalInequality</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.MaximallyMonotone"><code class="docutils literal notranslate">MaximallyMonotone</code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.StronglyMonotone"><code class="docutils literal notranslate">StronglyMonotone</code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.LipschitzOperator"><code class="docutils literal notranslate">LipschitzOperator</code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.Cocoercive"><code class="docutils literal notranslate">Cocoercive</code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autolyap.problemclass.WeakMintyVariationalInequality"><code class="docutils literal notranslate">WeakMintyVariationalInequality</code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -224,28 +223,28 @@
 <section id="operator-classes">
 <h1>Operator classes<a class="headerlink" href="#operator-classes" title="Link to this heading"></a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="#autolyap.problemclass.MaximallyMonotone" title="autolyap.problemclass.MaximallyMonotone"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaximallyMonotone</span></code></a></p></li>
-<li><p><a class="reference internal" href="#autolyap.problemclass.StronglyMonotone" title="autolyap.problemclass.StronglyMonotone"><code class="xref py py-class docutils literal notranslate"><span class="pre">StronglyMonotone</span></code></a></p></li>
-<li><p><a class="reference internal" href="#autolyap.problemclass.LipschitzOperator" title="autolyap.problemclass.LipschitzOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LipschitzOperator</span></code></a></p></li>
-<li><p><a class="reference internal" href="#autolyap.problemclass.Cocoercive" title="autolyap.problemclass.Cocoercive"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cocoercive</span></code></a></p></li>
-<li><p><a class="reference internal" href="#autolyap.problemclass.WeakMintyVariationalInequality" title="autolyap.problemclass.WeakMintyVariationalInequality"><code class="xref py py-class docutils literal notranslate"><span class="pre">WeakMintyVariationalInequality</span></code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.problemclass.MaximallyMonotone" title="autolyap.problemclass.MaximallyMonotone"><code class="xref py py-class docutils literal notranslate">MaximallyMonotone</code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.problemclass.StronglyMonotone" title="autolyap.problemclass.StronglyMonotone"><code class="xref py py-class docutils literal notranslate">StronglyMonotone</code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.problemclass.LipschitzOperator" title="autolyap.problemclass.LipschitzOperator"><code class="xref py py-class docutils literal notranslate">LipschitzOperator</code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.problemclass.Cocoercive" title="autolyap.problemclass.Cocoercive"><code class="xref py py-class docutils literal notranslate">Cocoercive</code></a></p></li>
+<li><p><a class="reference internal" href="#autolyap.problemclass.WeakMintyVariationalInequality" title="autolyap.problemclass.WeakMintyVariationalInequality"><code class="xref py py-class docutils literal notranslate">WeakMintyVariationalInequality</code></a></p></li>
 </ul>
 <dl class="py class">
 <dt class="sig sig-object py" id="autolyap.problemclass.MaximallyMonotone">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.</span></span><span class="sig-name descname"><span class="pre">MaximallyMonotone</span></span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#MaximallyMonotone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.MaximallyMonotone" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_OperatorInterpolationCondition</span></code></a></p>
+<span class="property"><span class="k">class</span> </span><span class="sig-prename descclassname">autolyap.problemclass.</span><span class="sig-name descname">MaximallyMonotone</span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#MaximallyMonotone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autolyap.problemclass.MaximallyMonotone" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate">_OperatorInterpolationCondition</code></a></p>
 <p>Operator interpolation condition for maximally monotone operators.</p>
-<p>Let <span class="math notranslate nohighlight">\(G: \calH \rightrightarrows \calH\)</span> be maximally monotone.</p>
+<p>Let <span class="math notranslate nohighlight math-initial">\(G: \calH \rightrightarrows \calH\)</span> be maximally monotone.</p>
 <ul>
 <li><p>Interpolation inequality:</p>
-<p>For any <span class="math notranslate nohighlight">\((x_{r_1},u_{r_1}),(x_{r_2},u_{r_2}) \in \operatorname{gra} G\)</span>,</p>
+<p>For any <span class="math notranslate nohighlight math-initial">\((x_{r_1},u_{r_1}),(x_{r_2},u_{r_2}) \in \operatorname{gra} G\)</span>,</p>
 </li>
 </ul>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[\langle u_{r_1} - u_{r_2}, x_{r_1} - x_{r_2} \rangle \ge 0.\]</div>
 <ul>
 <li><p>Matrix/vector form used in <a class="reference internal" href="../theory/interpolation_conditions/"><span class="doc">Interpolation conditions</span></a>:</p>
-<p>With an interpolation vector <span class="math notranslate nohighlight">\(z\)</span> built from the stacked
+<p>With an interpolation vector <span class="math notranslate nohighlight math-initial">\(z\)</span> built from the stacked
 variables in the inequality above, the same condition is encoded as</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{Q}\p{M, z} \le 0,\]</div>
@@ -269,14 +268,15 @@ variables in the inequality above, the same condition is encoded as</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="autolyap.problemclass.StronglyMonotone">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.</span></span><span class="sig-name descname"><span class="pre">StronglyMonotone</span></span><span class="sig-paren">(</span>
+<span class="property"><span class="k">class</span> </span><span class="sig-prename descclassname">autolyap.problemclass.</span><span class="sig-name descname">StronglyMonotone</span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+<dt class="autolyap-sr-only">Parameters</dt>
+<dd><em class="sig-param">mu: <a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int">int</a> | float</em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#StronglyMonotone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.StronglyMonotone" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_OperatorInterpolationCondition</span></code></a></p>
+<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#StronglyMonotone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autolyap.problemclass.StronglyMonotone" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate">_OperatorInterpolationCondition</code></a></p>
 <p>Operator interpolation condition for strongly and maximally monotone operators.</p>
 <p>Let <span class="math notranslate nohighlight">\(\mu \in \mathbb{R}_{++}\)</span> and
 <span class="math notranslate nohighlight">\(G: \calH \rightrightarrows \calH\)</span> be <span class="math notranslate nohighlight">\(\mu\)</span>-strongly monotone.</p>
@@ -304,7 +304,7 @@ variables in the inequality above, the same condition is encoded as</p>
 </ul>
 <p><strong>Parameters</strong></p>
 <ul class="simple">
-<li><p><cite>mu</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]): The strong monotonicity parameter corresponding
+<li><p><cite>mu</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate">Union</code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate">int</code></a>, <code class="xref py py-class docutils literal notranslate">float</code>]): The strong monotonicity parameter corresponding
 to <span class="math notranslate nohighlight">\(\mu\)</span> (must be <span class="math notranslate nohighlight">\(&gt; 0\)</span> and finite).</p></li>
 </ul>
 <p><strong>Raises</strong></p>
@@ -319,14 +319,15 @@ to <span class="math notranslate nohighlight">\(\mu\)</span> (must be <span clas
 
 <dl class="py class">
 <dt class="sig sig-object py" id="autolyap.problemclass.LipschitzOperator">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.</span></span><span class="sig-name descname"><span class="pre">LipschitzOperator</span></span><span class="sig-paren">(</span>
+<span class="property"><span class="k">class</span> </span><span class="sig-prename descclassname">autolyap.problemclass.</span><span class="sig-name descname">LipschitzOperator</span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">L</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+<dt class="autolyap-sr-only">Parameters</dt>
+<dd><em class="sig-param">L: <a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int">int</a> | float</em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#LipschitzOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.LipschitzOperator" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_OperatorInterpolationCondition</span></code></a></p>
+<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#LipschitzOperator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autolyap.problemclass.LipschitzOperator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate">_OperatorInterpolationCondition</code></a></p>
 <p>Operator interpolation condition for Lipschitz operators.</p>
 <p>Let <span class="math notranslate nohighlight">\(L \in \mathbb{R}_{++}\)</span> and
 <span class="math notranslate nohighlight">\(G: \calH \to \calH\)</span> be <span class="math notranslate nohighlight">\(L\)</span>-Lipschitz continuous.</p>
@@ -355,7 +356,7 @@ variables in the inequality above, the same condition is encoded as</p>
 </ul>
 <p><strong>Parameters</strong></p>
 <ul class="simple">
-<li><p><cite>L</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]): The Lipschitz parameter corresponding to
+<li><p><cite>L</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate">Union</code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate">int</code></a>, <code class="xref py py-class docutils literal notranslate">float</code>]): The Lipschitz parameter corresponding to
 <span class="math notranslate nohighlight">\(L\)</span> (must be <span class="math notranslate nohighlight">\(&gt; 0\)</span> and finite).</p></li>
 </ul>
 <p><strong>Raises</strong></p>
@@ -373,14 +374,15 @@ variables in the inequality above, the same condition is encoded as</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="autolyap.problemclass.Cocoercive">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.</span></span><span class="sig-name descname"><span class="pre">Cocoercive</span></span><span class="sig-paren">(</span>
+<span class="property"><span class="k">class</span> </span><span class="sig-prename descclassname">autolyap.problemclass.</span><span class="sig-name descname">Cocoercive</span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+<dt class="autolyap-sr-only">Parameters</dt>
+<dd><em class="sig-param">beta: <a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int">int</a> | float</em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#Cocoercive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.Cocoercive" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_OperatorInterpolationCondition</span></code></a></p>
+<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#Cocoercive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autolyap.problemclass.Cocoercive" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate">_OperatorInterpolationCondition</code></a></p>
 <p>Operator interpolation condition for cocoercive operators.</p>
 <p>Let <span class="math notranslate nohighlight">\(\beta \in \mathbb{R}_{++}\)</span> and
 <span class="math notranslate nohighlight">\(G: \calH \to \calH\)</span> be <span class="math notranslate nohighlight">\(\beta\)</span>-cocoercive.</p>
@@ -409,7 +411,7 @@ variables in the inequality above, the same condition is encoded as</p>
 </ul>
 <p><strong>Parameters</strong></p>
 <ul class="simple">
-<li><p><cite>beta</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]): The cocoercivity parameter corresponding
+<li><p><cite>beta</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate">Union</code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate">int</code></a>, <code class="xref py py-class docutils literal notranslate">float</code>]): The cocoercivity parameter corresponding
 to <span class="math notranslate nohighlight">\(\beta\)</span> (must be <span class="math notranslate nohighlight">\(&gt; 0\)</span> and finite).</p></li>
 </ul>
 <p><strong>Raises</strong></p>
@@ -424,14 +426,15 @@ to <span class="math notranslate nohighlight">\(\beta\)</span> (must be <span cl
 
 <dl class="py class">
 <dt class="sig sig-object py" id="autolyap.problemclass.WeakMintyVariationalInequality">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.problemclass.</span></span><span class="sig-name descname"><span class="pre">WeakMintyVariationalInequality</span></span><span class="sig-paren">(</span>
+<span class="property"><span class="k">class</span> </span><span class="sig-prename descclassname">autolyap.problemclass.</span><span class="sig-name descname">WeakMintyVariationalInequality</span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">rho_minty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>,</dd>
+<dt class="autolyap-sr-only">Parameters</dt>
+<dd><em class="sig-param">rho_minty: <a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int">int</a> | float</em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#WeakMintyVariationalInequality"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.problemclass.WeakMintyVariationalInequality" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">_OperatorInterpolationCondition</span></code></a></p>
+<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/problemclass/operators/#WeakMintyVariationalInequality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autolyap.problemclass.WeakMintyVariationalInequality" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition" title="autolyap.problemclass.base._OperatorInterpolationCondition"><code class="xref py py-class docutils literal notranslate">_OperatorInterpolationCondition</code></a></p>
 <p>Operator interpolation condition for operators that fulfill the weak Minty variational inequality.</p>
 <p>Let <span class="math notranslate nohighlight">\(\rho_{\textup{minty}} \in \mathbb{R}\)</span> and
 <span class="math notranslate nohighlight">\(G: \calH \rightrightarrows \calH\)</span> satisfy a weak Minty variational inequality.</p>
@@ -460,7 +463,7 @@ variables in the inequality above, the same condition is encoded as</p>
 </ul>
 <p><strong>Parameters</strong></p>
 <ul class="simple">
-<li><p><cite>rho_minty</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]): The weak MVI parameter corresponding to
+<li><p><cite>rho_minty</cite> (<a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Union" title="typing.Union"><code class="xref py py-class docutils literal notranslate">Union</code></a>[<a class="reference internal" href="../dev/dev_external_reference_targets/#int" title="int"><code class="xref py py-class docutils literal notranslate">int</code></a>, <code class="xref py py-class docutils literal notranslate">float</code>]): The weak MVI parameter corresponding to
 <span class="math notranslate nohighlight">\(\rho_{\textup{minty}}\)</span> (must be finite).</p></li>
 </ul>
 <p><strong>Raises</strong></p>
@@ -469,7 +472,7 @@ variables in the inequality above, the same condition is encoded as</p>
 </ul>
 <p><strong>Note</strong></p>
 <ul class="simple">
-<li><p>When used inside <a class="reference internal" href="../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a>,
+<li><p>When used inside <a class="reference internal" href="../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate">InclusionProblem</code></a>,
 the problem must have exactly one component. In the notation of
 <a class="reference internal" href="../theory/algorithm_representation/"><span class="doc">3. Algorithm representation</span></a>,
 <span class="math notranslate nohighlight">\(m = 1\)</span>, <span class="math notranslate nohighlight">\(m_{\textup{op}} = 1\)</span>, and
@@ -482,24 +485,24 @@ contain a list of operator conditions (an intersection).</p></li>
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
 <div class="docutils container" id="id1">
 <div role="list" class="citation-list">
-<div class="citation" id="id21" role="doc-biblioentry">
+<div class="citation" id="id21" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">BC17</a><span class="fn-bracket">]</span></span>
 <p>Heinz H. Bauschke and Patrick L. Combettes. <em>Convex Analysis and Monotone Operator Theory in Hilbert Spaces</em>. Springer International Publishing, 2017. ISBN 9783319483115. <a class="reference external" href="https://doi.org/10.1007/978-3-319-48311-5">doi:10.1007/978-3-319-48311-5</a>.</p>
 </div>
-<div class="citation" id="id110" role="doc-biblioentry">
+<div class="citation" id="id110" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Kir34</a><span class="fn-bracket">]</span></span>
 <p>M. Kirszbraun. Über die zusammenziehende und Lipschitzsche transformationen. <em>Fundamenta Mathematicae</em>, 22(1):77–108, 1934.</p>
 </div>
-<div class="citation" id="id174" role="doc-biblioentry">
+<div class="citation" id="id174" role="listitem">
 <span class="label"><span class="fn-bracket">[</span>RTBG20<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id1">2</a>)</span>
 <p>Ernest K. Ryu, Adrien B. Taylor, Carolina Bergeling, and Pontus Giselsson. Operator splitting performance estimation: Tight contraction factors and optimal parameter selection. <em>SIAM Journal on Optimization</em>, 30(3):2251–2271, January 2020. <a class="reference external" href="https://doi.org/10.1137/19m1304854">doi:10.1137/19m1304854</a>.</p>
 </div>
-<div class="citation" id="id205" role="doc-biblioentry">
+<div class="citation" id="id205" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">Val43</a><span class="fn-bracket">]</span></span>
 <p>F. A. Valentine. On the extension of a vector function so as to preserve a Lipschitz condition. <em>Bulletin of the American Mathematical Society</em>, 49(2):100–108, 1943.</p>
 </div>
-<div class="citation" id="id206" role="doc-biblioentry">
+<div class="citation" id="id206" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">Val45</a><span class="fn-bracket">]</span></span>
 <p>F. A. Valentine. A Lipschitz condition preserving extension for a vector function. <em>American Journal of Mathematics</em>, 67(1):83–93, January 1945. <a class="reference external" href="https://doi.org/10.2307/2371917">doi:10.2307/2371917</a>.</p>
 </div>

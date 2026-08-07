@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.utils.backend_types</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/utils/backend_types/" />
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../../_static/copybutton.js?v=36830154"></script>
@@ -26,9 +28,6 @@
     <link rel="index" title="Index" href="../../../../genindex/" />
     <link rel="search" title="Search" href="../../../../search/" />
  
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../../_static/favicon.png"/>
@@ -155,180 +154,180 @@
            <div itemprop="articleBody">
              
   <h1>Source code for autolyap.utils.backend_types</h1><div class="highlight"><pre>
-<span></span><span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
+<span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
 <span class="sd">&quot;&quot;&quot;Shared structural typing protocols for optional solver backends.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">SupportsFloat</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> Any, Protocol, Sequence, SupportsFloat, Union
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">NumericScalar</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">]</span>
+NumericScalar <span class="o">=</span> Union[<span class="nb">int</span>, <span class="nb">float</span>, np<span class="o">.</span>floating]
 
 
 <div class="viewcode-block" id="SupportsStringConversion">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.SupportsStringConversion">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">SupportsStringConversion</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Protocol for values normalized through ``str(value)``.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">SupportsStringConversion</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Protocol for values normalized through ``str(value)``.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__str__</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> <span class="nb">str</span>:
         <span class="o">...</span></div>
 
 
 
 <div class="viewcode-block" id="SupportsScalarProduct">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.SupportsScalarProduct">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">SupportsScalarProduct</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Protocol for scalar-like symbols participating in backend products.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">SupportsScalarProduct</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Protocol for scalar-like symbols participating in backend products.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__mul__</span>(<span class="bp">self</span>, other: Any) <span class="o">-&gt;</span> Any:
         <span class="o">...</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__rmul__</span>(<span class="bp">self</span>, other: Any) <span class="o">-&gt;</span> Any:
         <span class="o">...</span></div>
 
 
 
-<span class="n">RhoTerm</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">NumericScalar</span><span class="p">,</span> <span class="n">SupportsScalarProduct</span><span class="p">]</span>
+RhoTerm <span class="o">=</span> Union[NumericScalar, SupportsScalarProduct]
 
 
 <div class="viewcode-block" id="CvxpyStatusModuleProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.CvxpyStatusModuleProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">CvxpyStatusModuleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Subset of CVXPY status constants used by AutoLyap.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">CvxpyStatusModuleProtocol</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Subset of CVXPY status constants used by AutoLyap.&quot;&quot;&quot;</span>
 
-    <span class="n">OPTIMAL</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">OPTIMAL_INACCURATE</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">INFEASIBLE</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">INFEASIBLE_INACCURATE</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">UNBOUNDED</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">UNBOUNDED_INACCURATE</span><span class="p">:</span> <span class="nb">str</span></div>
+    OPTIMAL: <span class="nb">str</span>
+    OPTIMAL_INACCURATE: <span class="nb">str</span>
+    INFEASIBLE: <span class="nb">str</span>
+    INFEASIBLE_INACCURATE: <span class="nb">str</span>
+    UNBOUNDED: <span class="nb">str</span>
+    UNBOUNDED_INACCURATE: <span class="nb">str</span></div>
 
 
 
 <div class="viewcode-block" id="CvxpyModuleProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.CvxpyModuleProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">CvxpyModuleProtocol</span><span class="p">(</span><span class="n">CvxpyStatusModuleProtocol</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Subset of the CVXPY module API used by AutoLyap.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">CvxpyModuleProtocol</span>(CvxpyStatusModuleProtocol, Protocol):
+    <span class="sd">&quot;&quot;&quot;Subset of the CVXPY module API used by AutoLyap.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">Variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">Variable</span>(<span class="bp">self</span>, <span class="o">*</span>args: Any, <span class="o">**</span>kwargs: Any) <span class="o">-&gt;</span> Any:
         <span class="o">...</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">Problem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">Problem</span>(<span class="bp">self</span>, <span class="o">*</span>args: Any, <span class="o">**</span>kwargs: Any) <span class="o">-&gt;</span> Any:
         <span class="o">...</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">Minimize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">Minimize</span>(<span class="bp">self</span>, expr: Any) <span class="o">-&gt;</span> Any:
         <span class="o">...</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">Parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">Parameter</span>(<span class="bp">self</span>, <span class="o">*</span>args: Any, <span class="o">**</span>kwargs: Any) <span class="o">-&gt;</span> Any:
         <span class="o">...</span></div>
 
 
 
 <div class="viewcode-block" id="MosekModelProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.MosekModelProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">MosekModelProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Protocol for MOSEK Fusion model parameter forwarding.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">MosekModelProtocol</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Protocol for MOSEK Fusion model parameter forwarding.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">setSolverParam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">setSolverParam</span>(<span class="bp">self</span>, name: <span class="nb">str</span>, value: Any) <span class="o">-&gt;</span> <span class="kc">None</span>:
         <span class="o">...</span></div>
 
 
 
 <div class="viewcode-block" id="MosekLevelHandleProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.MosekLevelHandleProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">MosekLevelHandleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Protocol for solved MOSEK handles exposing ``level()``.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">MosekLevelHandleProtocol</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Protocol for solved MOSEK handles exposing ``level()``.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">level</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> Any:
         <span class="o">...</span></div>
 
 
 
 <div class="viewcode-block" id="CvxpyValueHandleProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.CvxpyValueHandleProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">CvxpyValueHandleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Protocol for solved CVXPY handles exposing ``value``.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">CvxpyValueHandleProtocol</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Protocol for solved CVXPY handles exposing ``value``.&quot;&quot;&quot;</span>
 
-    <span class="n">value</span><span class="p">:</span> <span class="n">Any</span></div>
+    value: Any</div>
 
 
 
-<span class="n">ScalarVariableHandle</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">MosekLevelHandleProtocol</span><span class="p">,</span> <span class="n">CvxpyValueHandleProtocol</span><span class="p">]</span>
+ScalarVariableHandle <span class="o">=</span> Union[MosekLevelHandleProtocol, CvxpyValueHandleProtocol]
 
 
 <div class="viewcode-block" id="MosekExprProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.MosekExprProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">MosekExprProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Subset of ``mosek.fusion.Expr`` used in helper builders.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">MosekExprProtocol</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Subset of ``mosek.fusion.Expr`` used in helper builders.&quot;&quot;&quot;</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">lhs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">rhs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">add</span>(lhs: Any, rhs: Any) <span class="o">-&gt;</span> Any:
         <span class="o">...</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="n">lhs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">rhs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">sub</span>(lhs: Any, rhs: Any) <span class="o">-&gt;</span> Any:
         <span class="o">...</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">hstack</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">hstack</span>(args: Sequence[Any]) <span class="o">-&gt;</span> Any:
         <span class="o">...</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">vstack</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">vstack</span>(args: Sequence[Any]) <span class="o">-&gt;</span> Any:
         <span class="o">...</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">mul</span><span class="p">(</span><span class="n">lhs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">rhs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">mul</span>(lhs: Any, rhs: Any) <span class="o">-&gt;</span> Any:
         <span class="o">...</span></div>
 
 
 
 <div class="viewcode-block" id="MosekUpperTriangleVectorProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.MosekUpperTriangleVectorProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">MosekUpperTriangleVectorProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Protocol for MOSEK upper-triangle vector handles.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">MosekUpperTriangleVectorProtocol</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Protocol for MOSEK upper-triangle vector handles.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">index</span>(<span class="bp">self</span>, idx: <span class="nb">int</span>) <span class="o">-&gt;</span> Any:
         <span class="o">...</span></div>
 
 
 
 <div class="viewcode-block" id="MosekUpperTriangleSolutionHandleProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.MosekUpperTriangleSolutionHandleProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">MosekUpperTriangleSolutionHandleProtocol</span><span class="p">(</span>
-    <span class="n">MosekUpperTriangleVectorProtocol</span><span class="p">,</span>
-    <span class="n">MosekLevelHandleProtocol</span><span class="p">,</span>
-    <span class="n">Protocol</span><span class="p">,</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Protocol for MOSEK upper-triangle handles reused after solve.&quot;&quot;&quot;</span></div>
+<span class="k">class</span> <span class="nc">MosekUpperTriangleSolutionHandleProtocol</span>(
+    MosekUpperTriangleVectorProtocol,
+    MosekLevelHandleProtocol,
+    Protocol,
+):
+    <span class="sd">&quot;&quot;&quot;Protocol for MOSEK upper-triangle handles reused after solve.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="UpperTriangleValuesProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.UpperTriangleValuesProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">UpperTriangleValuesProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Finite indexable container of numeric upper-triangle entries.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">UpperTriangleValuesProtocol</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Finite indexable container of numeric upper-triangle entries.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__len__</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> <span class="nb">int</span>:
         <span class="o">...</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SupportsFloat</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span>(<span class="bp">self</span>, index: <span class="nb">int</span>) <span class="o">-&gt;</span> SupportsFloat:
         <span class="o">...</span></div>
 
 
 
 <div class="viewcode-block" id="MosekFusionModuleProtocol">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.backend_types.MosekFusionModuleProtocol">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">MosekFusionModuleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Subset of MOSEK Fusion module attributes used by AutoLyap.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">MosekFusionModuleProtocol</span>(Protocol):
+    <span class="sd">&quot;&quot;&quot;Subset of MOSEK Fusion module attributes used by AutoLyap.&quot;&quot;&quot;</span>
 
-    <span class="n">Expr</span><span class="p">:</span> <span class="n">MosekExprProtocol</span>
-    <span class="n">Domain</span><span class="p">:</span> <span class="n">Any</span>
-    <span class="n">ObjectiveSense</span><span class="p">:</span> <span class="n">Any</span>
-    <span class="n">OptimizeError</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="ne">Exception</span><span class="p">]</span>
-    <span class="n">Model</span><span class="p">:</span> <span class="n">Any</span></div>
+    Expr: MosekExprProtocol
+    Domain: Any
+    ObjectiveSense: Any
+    OptimizeError: <span class="nb">type</span>[<span class="ne">Exception</span>]
+    Model: Any</div>
 
 </pre></div>
 

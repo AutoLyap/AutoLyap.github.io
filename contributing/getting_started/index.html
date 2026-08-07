@@ -8,13 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Get Started Contributing to AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/contributing/getting_started/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/copybutton.js?v=36830154"></script>
@@ -29,9 +31,6 @@
     <link rel="next" title="Development workflow" href="../development_workflow/" />
     <link rel="prev" title="Contributing" href="../" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -236,37 +235,37 @@
 <section id="set-up-your-fork-workspace">
 <h2>Set up your fork workspace<a class="headerlink" href="#set-up-your-fork-workspace" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>Fork <code class="docutils literal notranslate"><span class="pre">AutoLyap/AutoLyap</span></code> on GitHub.</p></li>
+<li><p>Fork <code class="docutils literal notranslate">AutoLyap/AutoLyap</code> on GitHub.</p></li>
 <li><p>Clone your fork and add the upstream remote:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;your-github-username&gt;/AutoLyap.git
-<span class="nb">cd</span><span class="w"> </span>AutoLyap
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/AutoLyap/AutoLyap.git
-git<span class="w"> </span>fetch<span class="w"> </span>upstream
+<div class="highlight-bash notranslate"><div class="highlight"><pre>git clone https://github.com/&lt;your-github-username&gt;/AutoLyap.git
+<span class="nb">cd</span> AutoLyap
+git remote add upstream https://github.com/AutoLyap/AutoLyap.git
+git fetch upstream
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Create a feature branch from <code class="docutils literal notranslate"><span class="pre">upstream/main</span></code>:</p></li>
+<li><p>Create a feature branch from <code class="docutils literal notranslate">upstream/main</code>:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>&lt;feature-branch&gt;<span class="w"> </span>upstream/main
+<div class="highlight-bash notranslate"><div class="highlight"><pre>git switch -c &lt;feature-branch&gt; upstream/main
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li><p>Install in editable mode with test dependencies:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[test]&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>python -m pip install -e <span class="s1">&#39;.[test]&#39;</span>
 </pre></div>
 </div>
 <p>If you need to run MOSEK-backed tests or examples, also install:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[mosek]&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>python -m pip install -e <span class="s1">&#39;.[mosek]&#39;</span>
 </pre></div>
 </div>
 <p>If you need to run SDPA-backed tests or examples, also install:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[sdpa]&#39;</span>
-python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[sdpa_multiprecision]&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>python -m pip install -e <span class="s1">&#39;.[sdpa]&#39;</span>
+python -m pip install -e <span class="s1">&#39;.[sdpa_multiprecision]&#39;</span>
 </pre></div>
 </div>
-<p>AutoLyap requires Python <code class="docutils literal notranslate"><span class="pre">&gt;=3.9</span></code>.</p>
+<p>AutoLyap requires Python <code class="docutils literal notranslate">&gt;=3.9</code>.</p>
 </section>
 </section>
 

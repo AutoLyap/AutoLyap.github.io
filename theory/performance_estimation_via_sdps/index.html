@@ -7,20 +7,24 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>5.1. Performance estimation via SDPs | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/theory/performance_estimation_via_sdps/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
     <script defer="defer" src="../../_static/proof_toggle.js?v=3eed1268"></script>
-    <script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script>
-    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="../../_static/math_tag_links.js?v=aa1c2d68"></script>
+    <script>window.MathJax = {"loader":{"load":["ui/lazy"]},"options":{"lazyMargin":"200px","lazyAlwaysTypeset":[".math.math-initial"]},"tex":{"packages":{"[+]":[]},"macros":{"reals":"\\mathbb{R}","sym":"\\mathbb{S}","calH":"\\mathcal{H}","trace":"\\mathrm{trace}","kron":"\\otimes","Id":"\\operatorname*{Id}","quadform":["\\mathcal{Q}\\p{#1,#2}",2],"bx":"\\mathbf{x}","bu":"\\mathbf{u}","by":"\\mathbf{y}","bz":"\\mathbf{z}","bfcn":"\\mathbf{f}","bFcn":"\\mathbf{F}","bzeta":"\\boldsymbol{\\zeta}","bchi":"\\boldsymbol{\\chi}","gramFunc":"\\mathtt{G}","SumToZeroMat":"N","PEPObjMat":"W","PEPObjVec":"w","PEPMaxIter":"\\bar{k}","PEPMinIter":"\\underline{k}","IndexOp":"\\mathcal{I}_{\\textup{op}}","IndexFunc":"\\mathcal{I}_{\\textup{func}}","NumFunc":"m_{\\textup{func}}","NumEval":"\\bar{m}","NumEvalFunc":"\\bar{m}_{\\textup{func}}","p":["\\mathord{( #1 )}",1],"Bigp":["\\mathord{\\left( #1 \\right)}",1],"bm":["\\boldsymbol{#1}",1],"llbracket":"\\lbrack\\!\\lbrack","rrbracket":"\\rbrack\\!\\rbrack","underbracket":["\\underbrace{#1}",1]}}}</script>
+    <script crossorigin="anonymous" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
   <script defer="defer" src="../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -31,11 +35,6 @@
     <link rel="next" title="5.2. Iteration-independent analyses" href="../iteration_independent_analyses/" />
     <link rel="prev" title="5. Lyapunov analyses" href="../lyapunov_analyses/" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -225,8 +224,8 @@ and <a class="reference internal" href="../iteration_dependent_analyses/"><span 
 to formulate the search for a Lyapunov analysis as an SDP.
 This page can be skipped on a first reading.</p>
 <p>For readers interested in the technical details, we first introduce the
-matrices needed for this SDP primitive. If <span class="math notranslate nohighlight">\(m\geq 2\)</span>, let</p>
-<div class="math notranslate nohighlight" id="equation-eq-sumtozeromat">
+matrices needed for this SDP primitive. If <span class="math notranslate nohighlight math-initial">\(m\geq 2\)</span>, let</p>
+<div class="math notranslate nohighlight math-initial" id="equation-eq-sumtozeromat">
 <span id="eq-sumtozeromat"></span><span class="eqno">(5.2)<a class="headerlink" href="#equation-eq-sumtozeromat" title="Link to this equation"></a></span>\[\begin{split}\begin{aligned}
     \SumToZeroMat =
     \begin{bmatrix}
@@ -234,11 +233,11 @@ matrices needed for this SDP primitive. If <span class="math notranslate nohighl
         -\mathbf{1}_{m-1}^{\top}
     \end{bmatrix}\in\reals^{m\times (m-1)}.\end{aligned}\end{split}\]</div>
 <p>For each</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[\PEPMinIter,\PEPMaxIter\in\llbracket0,K\rrbracket, \qquad
 \PEPMinIter\leq\PEPMaxIter,\]</div>
 <p>we define the matrices</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[X_{k}^{\PEPMinIter, \PEPMaxIter}\in \reals^{n\times\p{n + \p{\PEPMaxIter-\PEPMinIter+1}\NumEval + m}}\]</div>
 <p>as</p>
 <div class="math notranslate nohighlight" id="equation-eq-x-mats">
@@ -1032,7 +1031,7 @@ the dual problem <a class="reference internal" href="#equation-eq-pep-relaxed-du
 <p class="rubric">References</p>
 <div class="docutils container" id="id2">
 <div role="list" class="citation-list">
-<div class="citation" id="id175" role="doc-biblioentry">
+<div class="citation" id="id175" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">RTBG20</a><span class="fn-bracket">]</span></span>
 <p>Ernest K. Ryu, Adrien B. Taylor, Carolina Bergeling, and Pontus Giselsson. Operator splitting performance estimation: Tight contraction factors and optimal parameter selection. <em>SIAM Journal on Optimization</em>, 30(3):2251–2271, January 2020. <a class="reference external" href="https://doi.org/10.1137/19m1304854">doi:10.1137/19m1304854</a>.</p>
 </div>

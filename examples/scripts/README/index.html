@@ -8,13 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>AutoLyap Example Asset Scripts</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/examples/scripts/README/" />
+  <link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../_static/copybutton.js?v=36830154"></script>
@@ -27,9 +29,6 @@
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
  
-<link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../_static/favicon.png"/>
@@ -165,10 +164,10 @@
 <section id="example-asset-scripts">
 <h1>Example Asset Scripts<a class="headerlink" href="#example-asset-scripts" title="Link to this heading"></a></h1>
 <p>This directory contains developer scripts that generate documentation assets
-(CSV tables in <code class="docutils literal notranslate"><span class="pre">docs/source/data/</span></code> and SVG files in <code class="docutils literal notranslate"><span class="pre">docs/source/_static/</span></code>).</p>
+(CSV tables in <code class="docutils literal notranslate">docs/source/data/</code> and SVG files in <code class="docutils literal notranslate">docs/source/_static/</code>).</p>
 <section id="layout">
 <h2>Layout<a class="headerlink" href="#layout" title="Link to this heading"></a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>docs/source/examples/scripts/
+<div class="highlight-text notranslate"><div class="highlight"><pre>docs/source/examples/scripts/
   shared/
     plotting_utils.py
   gradient_method/
@@ -187,9 +186,9 @@
   douglas_rachford/
 </pre></div>
 </div>
-<p>Each method folder contains one or more <code class="docutils literal notranslate"><span class="pre">generate_*_assets.py</span></code> entry points.
-Run scripts from repository root; each script defaults to <code class="docutils literal notranslate"><span class="pre">--output-dir</span> <span class="pre">docs/source</span></code>.
-Most sweep generators support <code class="docutils literal notranslate"><span class="pre">--reuse-data</span></code> for SVG-only refresh.</p>
+<p>Each method folder contains one or more <code class="docutils literal notranslate">generate_*_assets.py</code> entry points.
+Run scripts from repository root; each script defaults to <code class="docutils literal notranslate">--output-dir docs/source</code>.
+Most sweep generators support <code class="docutils literal notranslate">--reuse-data</code> for SVG-only refresh.</p>
 </section>
 </section>
 

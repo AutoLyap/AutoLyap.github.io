@@ -8,13 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>AutoLyap: Automated Lyapunov Analysis for Optimization</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/" />
+  <link rel="preload" href="_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="_static/copybutton.js?v=36830154"></script>
@@ -28,9 +30,6 @@
     <link rel="search" title="Search" href="search/" />
     <link rel="next" title="Quick start" href="quick_start/" />
  
-<link rel="preload" href="_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="_static/favicon.png"/>
@@ -213,10 +212,10 @@
 <section id="autolyap">
 <h1>AutoLyap<a class="headerlink" href="#autolyap" title="Link to this heading"></a></h1>
 <p>A Python package for automated Lyapunov-based convergence analyses of first-order optimization and inclusion methods.</p>
-<p><a class="reference external" href="https://pypi.org/project/autolyap/" target="_blank" rel="noopener noreferrer"><img alt="PyPI version" src="https://img.shields.io/pypi/v/autolyap?style=flat&amp;logo=pypi&amp;logoColor=white&amp;label=PyPI&amp;labelColor=111111&amp;color=5fa8e8" width="97" height="20" decoding="async" loading="eager" fetchpriority="high" /></a>
-<a class="reference external" href="https://pepy.tech/projects/autolyap" target="_blank" rel="noopener noreferrer"><img alt="PyPI downloads" src="https://img.shields.io/pepy/dt/autolyap?style=flat&amp;label=downloads&amp;labelColor=111111&amp;color=5fa8e8" width="104" height="20" decoding="async" loading="eager" /></a>
-<a class="reference external" href="https://github.com/AutoLyap/AutoLyap/stargazers" target="_blank" rel="noopener noreferrer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/AutoLyap/AutoLyap?style=flat&amp;logo=github&amp;logoColor=white&amp;label=stars&amp;labelColor=111111&amp;color=5fa8e8" width="77" height="20" decoding="async" loading="eager" /></a>
-<a class="reference external" href="https://arxiv.org/abs/2506.24076" target="_blank" rel="noopener noreferrer"><img alt="Paper" src="https://img.shields.io/badge/paper-arXiv%3A2506.24076-5fa8e8?style=flat&amp;logo=arxiv&amp;logoColor=white&amp;labelColor=111111" width="169" height="20" decoding="async" loading="eager" /></a></p>
+<p><a class="reference external" href="https://pypi.org/project/autolyap/" target="_blank" rel="noopener noreferrer"><img alt="PyPI version" src="https://img.shields.io/pypi/v/autolyap?style=flat&amp;logo=pypi&amp;logoColor=white&amp;label=PyPI&amp;labelColor=111111&amp;color=5fa8e8" width="97" height="20" decoding="async" loading="eager" fetchpriority="low" /></a>
+<a class="reference external" href="https://pepy.tech/projects/autolyap" target="_blank" rel="noopener noreferrer"><img alt="PyPI downloads" src="https://img.shields.io/pepy/dt/autolyap?style=flat&amp;label=downloads&amp;labelColor=111111&amp;color=5fa8e8" width="104" height="20" decoding="async" loading="eager" fetchpriority="low" /></a>
+<a class="reference external" href="https://github.com/AutoLyap/AutoLyap/stargazers" target="_blank" rel="noopener noreferrer"><img alt="GitHub stars" src="https://img.shields.io/github/stars/AutoLyap/AutoLyap?style=flat&amp;logo=github&amp;logoColor=white&amp;label=stars&amp;labelColor=111111&amp;color=5fa8e8" width="77" height="20" decoding="async" loading="eager" fetchpriority="low" /></a>
+<a class="reference external" href="https://arxiv.org/abs/2506.24076" target="_blank" rel="noopener noreferrer"><img alt="Paper" src="https://img.shields.io/badge/paper-arXiv%3A2506.24076-5fa8e8?style=flat&amp;logo=arxiv&amp;logoColor=white&amp;labelColor=111111" width="169" height="20" decoding="async" loading="eager" fetchpriority="low" /></a></p>
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
@@ -239,19 +238,19 @@ solvers.</p>
 <h2>Cite this project<a class="headerlink" href="#cite-this-project" title="Link to this heading"></a></h2>
 <p>If AutoLyap contributes to your research or software, please cite
 <span id="id1">[<a class="reference internal" href="#id203" title="Manu Upadhyaya, Shuvomoy Das Gupta, Adrien B. Taylor, Sebastian Banert, and Pontus Giselsson. The AutoLyap software suite for computer-assisted Lyapunov analyses of first-order methods. 2026. arXiv:2506.24076.">UDGT+26</a>]</span>.</p>
-<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@misc</span><span class="p">{</span><span class="nl">upadhyaya2026autolyap</span><span class="p">,</span>
-<span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Upadhyaya, Manu and Das Gupta, Shuvomoy and Taylor, Adrien B. and Banert, Sebastian and Giselsson, Pontus}</span><span class="p">,</span>
-<span class="w">  </span><span class="na">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{The {AutoLyap} software suite for computer-assisted {L}yapunov analyses of first-order methods}</span><span class="p">,</span>
-<span class="w">  </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
-<span class="w">  </span><span class="na">archivePrefix</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{arXiv}</span><span class="p">,</span>
-<span class="w">  </span><span class="na">eprint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2506.24076}</span><span class="p">,</span>
-<span class="w">  </span><span class="na">primaryClass</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{math.OC}</span><span class="p">,</span>
-<span class="p">}</span>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span class="nc">@misc</span>{<span class="nl">upadhyaya2026autolyap</span>,
+  <span class="na">author</span> = <span class="s">{Upadhyaya, Manu and Das Gupta, Shuvomoy and Taylor, Adrien B. and Banert, Sebastian and Giselsson, Pontus}</span>,
+  <span class="na">title</span> = <span class="s">{The {AutoLyap} software suite for computer-assisted {L}yapunov analyses of first-order methods}</span>,
+  <span class="na">year</span> = <span class="s">{2026}</span>,
+  <span class="na">archivePrefix</span> = <span class="s">{arXiv}</span>,
+  <span class="na">eprint</span> = <span class="s">{2506.24076}</span>,
+  <span class="na">primaryClass</span> = <span class="s">{math.OC}</span>,
+}
 </pre></div>
 </div>
 <div class="docutils container" id="id2">
 <div role="list" class="citation-list">
-<div class="citation" id="id203" role="doc-biblioentry">
+<div class="citation" id="id203" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">UDGT+26</a><span class="fn-bracket">]</span></span>
 <p>Manu Upadhyaya, Shuvomoy Das Gupta, Adrien B. Taylor, Sebastian Banert, and Pontus Giselsson. The AutoLyap software suite for computer-assisted Lyapunov analyses of first-order methods. 2026. <a class="reference external" href="https://arxiv.org/abs/2506.24076">arXiv:2506.24076</a>.</p>
 </div>

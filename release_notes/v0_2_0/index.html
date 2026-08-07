@@ -7,13 +7,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>v0.2.0 | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/release_notes/v0_2_0/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
@@ -26,9 +28,6 @@
     <link rel="search" title="Search" href="../../search/" />
     <link rel="prev" title="v0.2.1" href="../v0_2_1/" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -208,20 +207,20 @@ Status: Published on 2026-03-02.</p>
 <section id="highlights">
 <h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Added top-level <a class="reference internal" href="../../solver_backends/#autolyap.SolverOptions" title="autolyap.SolverOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverOptions</span></code></a> for
+<li><p>Added top-level <a class="reference internal" href="../../solver_backends/#autolyap.SolverOptions" title="autolyap.SolverOptions"><code class="xref py py-class docutils literal notranslate">SolverOptions</code></a> for
 explicit backend configuration in analysis calls.</p></li>
 <li><p>Added first-class CVXPY backend support and solver profiles
-(<code class="docutils literal notranslate"><span class="pre">CLARABEL</span></code>, <code class="docutils literal notranslate"><span class="pre">SCS</span></code>, <code class="docutils literal notranslate"><span class="pre">MOSEK</span></code>, <code class="docutils literal notranslate"><span class="pre">SDPA</span></code>, <code class="docutils literal notranslate"><span class="pre">SDPA</span></code> multiprecision, <code class="docutils literal notranslate"><span class="pre">COPT</span></code>) alongside
+(<code class="docutils literal notranslate">CLARABEL</code>, <code class="docutils literal notranslate">SCS</code>, <code class="docutils literal notranslate">MOSEK</code>, <code class="docutils literal notranslate">SDPA</code>, <code class="docutils literal notranslate">SDPA</code> multiprecision, <code class="docutils literal notranslate">COPT</code>) alongside
 MOSEK Fusion.</p></li>
 <li><p>Updated Lyapunov APIs to return structured result dictionaries with
-certificates (<code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">solve_status</span></code>, <code class="docutils literal notranslate"><span class="pre">rho</span></code>/<code class="docutils literal notranslate"><span class="pre">c_K</span></code>, <code class="docutils literal notranslate"><span class="pre">certificate</span></code>).</p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">verbosity</span></code> controls (default <code class="docutils literal notranslate"><span class="pre">verbosity=1</span></code>) and concise runtime
+certificates (<code class="docutils literal notranslate">status</code>, <code class="docutils literal notranslate">solve_status</code>, <code class="docutils literal notranslate">rho</code>/<code class="docutils literal notranslate">c_K</code>, <code class="docutils literal notranslate">certificate</code>).</p></li>
+<li><p>Added <code class="docutils literal notranslate">verbosity</code> controls (default <code class="docutils literal notranslate">verbosity=1</code>) and concise runtime
 diagnostics for certificate checks.</p></li>
 <li><p>Expanded docs with a full <a class="reference internal" href="../../quick_start/"><span class="doc">Quick start</span></a>, a dedicated
 <a class="reference internal" href="../../theory/"><span class="doc">Theory</span></a> section, and many new worked examples (proximal/gradient,
 heavy-ball/Nesterov, Douglas-Rachford, Chambolle-Pock, Davis-Yin, Malitsky-Tam
 FRB, APP, and ITEM).</p></li>
-<li><p>Added project citation metadata (<code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code>) and richer reference wiring.</p></li>
+<li><p>Added project citation metadata (<code class="docutils literal notranslate">CITATION.cff</code>) and richer reference wiring.</p></li>
 </ul>
 </section>
 <section id="breaking-changes">
@@ -229,60 +228,60 @@ FRB, APP, and ITEM).</p></li>
 <ul class="simple">
 <li><p>Interpolation index tokens were renamed:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">i&lt;j</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">r1&lt;r2</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">i!=j</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">r1!=r2</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">r1</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">i!=star</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">r1!=star</span></code></p></li>
+<li><p><code class="docutils literal notranslate">i&lt;j</code> -&gt; <code class="docutils literal notranslate">r1&lt;r2</code></p></li>
+<li><p><code class="docutils literal notranslate">i!=j</code> -&gt; <code class="docutils literal notranslate">r1!=r2</code></p></li>
+<li><p><code class="docutils literal notranslate">i</code> -&gt; <code class="docutils literal notranslate">r1</code></p></li>
+<li><p><code class="docutils literal notranslate">i!=star</code> -&gt; <code class="docutils literal notranslate">r1!=star</code></p></li>
 </ul>
 </li>
 <li><p>Lyapunov entry points were renamed:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">IterationIndependent.verify_iteration_independent_Lyapunov</span></code> -&gt;
-<code class="docutils literal notranslate"><span class="pre">IterationIndependent.search_lyapunov</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">IterationDependent.verify_iteration_dependent_Lyapunov</span></code> -&gt;
-<code class="docutils literal notranslate"><span class="pre">IterationDependent.search_lyapunov</span></code></p></li>
+<li><p><code class="docutils literal notranslate">IterationIndependent.verify_iteration_independent_Lyapunov</code> -&gt;
+<code class="docutils literal notranslate">IterationIndependent.search_lyapunov</code></p></li>
+<li><p><code class="docutils literal notranslate">IterationDependent.verify_iteration_dependent_Lyapunov</code> -&gt;
+<code class="docutils literal notranslate">IterationDependent.search_lyapunov</code></p></li>
 </ul>
 </li>
 <li><p>Deprecated Lyapunov alias methods were removed:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">IterationIndependent.verify_iteration_independent_Lyapunov</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">IterationDependent.verify_iteration_dependent_Lyapunov</span></code></p></li>
+<li><p><code class="docutils literal notranslate">IterationIndependent.verify_iteration_independent_Lyapunov</code></p></li>
+<li><p><code class="docutils literal notranslate">IterationDependent.verify_iteration_dependent_Lyapunov</code></p></li>
 </ul>
 </li>
 <li><p>Lyapunov API return types changed from scalars/booleans to result
 dictionaries:</p>
 <ul>
-<li><p><a class="reference internal" href="../../iteration_independent_analysis/#autolyap.IterationIndependent.search_lyapunov" title="autolyap.IterationIndependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">autolyap.IterationIndependent.search_lyapunov()</span></code></a>
-now returns <code class="docutils literal notranslate"><span class="pre">{&quot;status&quot;,</span> <span class="pre">&quot;solve_status&quot;,</span> <span class="pre">&quot;rho&quot;,</span> <span class="pre">&quot;certificate&quot;}</span></code>.</p></li>
-<li><p><a class="reference internal" href="../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho" title="autolyap.IterationIndependent.LinearConvergence.bisection_search_rho"><code class="xref py py-meth docutils literal notranslate"><span class="pre">autolyap.IterationIndependent.LinearConvergence.bisection_search_rho()</span></code></a>
-now returns <code class="docutils literal notranslate"><span class="pre">{&quot;status&quot;,</span> <span class="pre">&quot;solve_status&quot;,</span> <span class="pre">&quot;rho&quot;,</span> <span class="pre">&quot;certificate&quot;}</span></code>.</p></li>
-<li><p><a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">autolyap.IterationDependent.search_lyapunov()</span></code></a>
-now returns <code class="docutils literal notranslate"><span class="pre">{&quot;status&quot;,</span> <span class="pre">&quot;solve_status&quot;,</span> <span class="pre">&quot;c_K&quot;,</span> <span class="pre">&quot;certificate&quot;}</span></code>.</p></li>
+<li><p><a class="reference internal" href="../../iteration_independent_analysis/#autolyap.IterationIndependent.search_lyapunov" title="autolyap.IterationIndependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate">autolyap.IterationIndependent.search_lyapunov()</code></a>
+now returns <code class="docutils literal notranslate">{&quot;status&quot;, &quot;solve_status&quot;, &quot;rho&quot;, &quot;certificate&quot;}</code>.</p></li>
+<li><p><a class="reference internal" href="../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho" title="autolyap.IterationIndependent.LinearConvergence.bisection_search_rho"><code class="xref py py-meth docutils literal notranslate">autolyap.IterationIndependent.LinearConvergence.bisection_search_rho()</code></a>
+now returns <code class="docutils literal notranslate">{&quot;status&quot;, &quot;solve_status&quot;, &quot;rho&quot;, &quot;certificate&quot;}</code>.</p></li>
+<li><p><a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate">autolyap.IterationDependent.search_lyapunov()</code></a>
+now returns <code class="docutils literal notranslate">{&quot;status&quot;, &quot;solve_status&quot;, &quot;c_K&quot;, &quot;certificate&quot;}</code>.</p></li>
 </ul>
 </li>
-<li><p>Legacy <code class="docutils literal notranslate"><span class="pre">success</span></code> booleans were removed. Use <code class="docutils literal notranslate"><span class="pre">status</span> <span class="pre">==</span> <span class="pre">&quot;feasible&quot;</span></code> to
+<li><p>Legacy <code class="docutils literal notranslate">success</code> booleans were removed. Use <code class="docutils literal notranslate">status == &quot;feasible&quot;</code> to
 detect certified success.</p></li>
 <li><p>Result-status semantics are now explicit:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">status=&quot;feasible&quot;</span></code> when a certificate is returned.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">status=&quot;infeasible&quot;</span></code> for genuine infeasibility.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">status=&quot;not_solved&quot;</span></code> for solver/interface errors or indeterminate
-backend statuses (with details in <code class="docutils literal notranslate"><span class="pre">solve_status</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate">status=&quot;feasible&quot;</code> when a certificate is returned.</p></li>
+<li><p><code class="docutils literal notranslate">status=&quot;infeasible&quot;</code> for genuine infeasibility.</p></li>
+<li><p><code class="docutils literal notranslate">status=&quot;not_solved&quot;</code> for solver/interface errors or indeterminate
+backend statuses (with details in <code class="docutils literal notranslate">solve_status</code>).</p></li>
 </ul>
 </li>
-<li><p>Removed <code class="docutils literal notranslate"><span class="pre">autolyap.algorithms.deterministic_proxskip</span></code> (<code class="docutils literal notranslate"><span class="pre">ProxSkip</span></code>).</p></li>
+<li><p>Removed <code class="docutils literal notranslate">autolyap.algorithms.deterministic_proxskip</code> (<code class="docutils literal notranslate">ProxSkip</code>).</p></li>
 </ul>
 </section>
 <section id="migration-from-0-1-0">
 <h2>Migration from 0.1.0<a class="headerlink" href="#migration-from-0-1-0" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>Replace old interpolation keys with the new <code class="docutils literal notranslate"><span class="pre">r1*</span></code> forms.</p></li>
-<li><p>Rename deprecated Lyapunov entry points to <code class="docutils literal notranslate"><span class="pre">search_lyapunov</span></code>.</p></li>
+<li><p>Replace old interpolation keys with the new <code class="docutils literal notranslate">r1*</code> forms.</p></li>
+<li><p>Rename deprecated Lyapunov entry points to <code class="docutils literal notranslate">search_lyapunov</code>.</p></li>
 <li><p>Update result handling to dictionary outputs; treat only
-<code class="docutils literal notranslate"><span class="pre">status</span> <span class="pre">==</span> <span class="pre">&quot;feasible&quot;</span></code> as certified success.</p></li>
+<code class="docutils literal notranslate">status == &quot;feasible&quot;</code> as certified success.</p></li>
 <li><p>Configure solver backend/solver explicitly with
-<a class="reference internal" href="../../solver_backends/#autolyap.SolverOptions" title="autolyap.SolverOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverOptions</span></code></a> when needed.</p></li>
-<li><p>If you imported <code class="docutils literal notranslate"><span class="pre">ProxSkip</span></code>, remove or replace that dependency.</p></li>
+<a class="reference internal" href="../../solver_backends/#autolyap.SolverOptions" title="autolyap.SolverOptions"><code class="xref py py-class docutils literal notranslate">SolverOptions</code></a> when needed.</p></li>
+<li><p>If you imported <code class="docutils literal notranslate">ProxSkip</code>, remove or replace that dependency.</p></li>
 </ol>
 </section>
 <section id="see-also">

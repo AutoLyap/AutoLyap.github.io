@@ -8,19 +8,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Nesterov’s fast gradient method | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/examples/nesterov_fast_gradient/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/copybutton.js?v=36830154"></script>
     <script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
-    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"loader":{"load":["ui/lazy"]},"options":{"lazyMargin":"200px","lazyAlwaysTypeset":[".math.math-initial"]},"tex":{"packages":{"[+]":[]},"macros":{"reals":"\\mathbb{R}","naturals":"\\mathbb{N}_{0}","calH":"\\mathcal{H}","Argmin":"\\operatorname*{Argmin}","llbracket":"\\lbrack\\!\\lbrack","rrbracket":"\\rbrack\\!\\rbrack"}}}</script>
+    <script crossorigin="anonymous" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
   <script defer="defer" src="../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -31,11 +35,6 @@
     <link rel="next" title="The accelerated proximal point method" href="../accelerated_proximal_point/" />
     <link rel="prev" title="The proximal gradient method" href="../define_your_own_algorithm/proximal_gradient_method/" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -222,9 +221,9 @@
 <h1>Nesterov’s fast gradient method<a class="headerlink" href="#nesterov-s-fast-gradient-method" title="Link to this heading"></a></h1>
 <section id="problem-setup">
 <h2>Problem setup<a class="headerlink" href="#problem-setup" title="Link to this heading"></a></h2>
-<p>Consider minimizing a convex and <span class="math notranslate nohighlight">\(L\)</span>-smooth function
-<span class="math notranslate nohighlight">\(f : \calH \to \reals\)</span>, with <span class="math notranslate nohighlight">\(L &gt; 0\)</span>.</p>
-<p>For initial points <span class="math notranslate nohighlight">\(x^{-1},x^0 \in \calH\)</span>, step size
+<p>Consider minimizing a convex and <span class="math notranslate nohighlight math-initial">\(L\)</span>-smooth function
+<span class="math notranslate nohighlight math-initial">\(f : \calH \to \reals\)</span>, with <span class="math notranslate nohighlight math-initial">\(L &gt; 0\)</span>.</p>
+<p>For initial points <span class="math notranslate nohighlight math-initial">\(x^{-1},x^0 \in \calH\)</span>, step size
 <span class="math notranslate nohighlight">\(\gamma \in \reals_{++}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_0 = 1\)</span>, Nesterov’s fast
 gradient method is</p>
 <div class="math notranslate nohighlight">
@@ -249,59 +248,59 @@ x^{k+1} &amp;= y^k - \gamma \nabla f(y^k),\\
 </section>
 <section id="run-the-iteration-dependent-analysis">
 <h2>Run the iteration-dependent analysis<a class="headerlink" href="#run-the-iteration-dependent-analysis" title="Link to this heading"></a></h2>
-<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate"><span class="pre">backend=&quot;mosek_fusion&quot;</span></code>).
+<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate">backend=&quot;mosek_fusion&quot;</code>).
 Install the optional MOSEK dependency first:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;autolyap[mosek]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">&quot;autolyap[mosek]&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">autolyap</span><span class="w"> </span><span class="kn">import</span> <span class="n">IterationDependent</span><span class="p">,</span> <span class="n">SolverOptions</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">NesterovFastGradientMethod</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">InclusionProblem</span><span class="p">,</span> <span class="n">SmoothConvex</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">autolyap</span> <span class="kn">import</span> IterationDependent, SolverOptions
+<span class="kn">from</span> <span class="nn">autolyap.algorithms</span> <span class="kn">import</span> NesterovFastGradientMethod
+<span class="kn">from</span> <span class="nn">autolyap.problemclass</span> <span class="kn">import</span> InclusionProblem, SmoothConvex
 
-<span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>
+L <span class="o">=</span> <span class="mf">1.0</span>
+K <span class="o">=</span> <span class="mi">10</span>
 
-<span class="n">problem</span> <span class="o">=</span> <span class="n">InclusionProblem</span><span class="p">([</span><span class="n">SmoothConvex</span><span class="p">(</span><span class="n">L</span><span class="p">)])</span>
-<span class="n">solver_options</span> <span class="o">=</span> <span class="n">SolverOptions</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span><span class="p">)</span>
+problem <span class="o">=</span> InclusionProblem([SmoothConvex(L)])
+solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>)
 
 <span class="c1"># Nesterov fast gradient method</span>
-<span class="n">nfgm</span> <span class="o">=</span> <span class="n">NesterovFastGradientMethod</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+nfgm <span class="o">=</span> NesterovFastGradientMethod(gamma<span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> L)
 
 <span class="c1"># Use j=2 to select x^k; j=1 corresponds to y^k.</span>
-<span class="n">Q_0_nf</span><span class="p">,</span> <span class="n">q_0_nf</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">get_parameters_distance_to_solution</span><span class="p">(</span>
-    <span class="n">nfgm</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">2</span>
-<span class="p">)</span>
-<span class="n">Q_K_nf</span><span class="p">,</span> <span class="n">q_K_nf</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">get_parameters_function_value_suboptimality</span><span class="p">(</span>
-    <span class="n">nfgm</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">2</span>
-<span class="p">)</span>
+Q_0_nf, q_0_nf <span class="o">=</span> IterationDependent<span class="o">.</span>get_parameters_distance_to_solution(
+    nfgm, <span class="mi">0</span>, i<span class="o">=</span><span class="mi">1</span>, j<span class="o">=</span><span class="mi">2</span>
+)
+Q_K_nf, q_K_nf <span class="o">=</span> IterationDependent<span class="o">.</span>get_parameters_function_value_suboptimality(
+    nfgm, K, j<span class="o">=</span><span class="mi">2</span>
+)
 
-<span class="n">result_nf</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">search_lyapunov</span><span class="p">(</span>
-    <span class="n">problem</span><span class="p">,</span>
-    <span class="n">nfgm</span><span class="p">,</span>
-    <span class="n">K</span><span class="p">,</span>
-    <span class="n">Q_0_nf</span><span class="p">,</span>
-    <span class="n">Q_K_nf</span><span class="p">,</span>
-    <span class="n">q_0</span><span class="o">=</span><span class="n">q_0_nf</span><span class="p">,</span>
-    <span class="n">q_K</span><span class="o">=</span><span class="n">q_K_nf</span><span class="p">,</span>
-    <span class="n">solver_options</span><span class="o">=</span><span class="n">solver_options</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">if</span> <span class="n">result_nf</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No feasible chained Lyapunov certificate for Nesterov FGM.&quot;</span><span class="p">)</span>
+result_nf <span class="o">=</span> IterationDependent<span class="o">.</span>search_lyapunov(
+    problem,
+    nfgm,
+    K,
+    Q_0_nf,
+    Q_K_nf,
+    q_0<span class="o">=</span>q_0_nf,
+    q_K<span class="o">=</span>q_K_nf,
+    solver_options<span class="o">=</span>solver_options,
+)
+<span class="k">if</span> result_nf[<span class="s2">&quot;status&quot;</span>] <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span>:
+    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">&quot;No feasible chained Lyapunov certificate for Nesterov FGM.&quot;</span>)
 
-<span class="k">def</span><span class="w"> </span><span class="nf">lambda_k</span><span class="p">(</span><span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="n">lam</span> <span class="o">=</span> <span class="mf">1.0</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
-        <span class="n">lam</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">lam</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">lam</span>
+<span class="k">def</span> <span class="nf">lambda_k</span>(k: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
+    lam <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">for</span> _ <span class="ow">in</span> <span class="nb">range</span>(k):
+        lam <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> (<span class="mf">1.0</span> <span class="o">+</span> (<span class="mf">1.0</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> lam <span class="o">*</span> lam) <span class="o">**</span> <span class="mf">0.5</span>)
+    <span class="k">return</span> lam
 
-<span class="n">lam_K</span> <span class="o">=</span> <span class="n">lambda_k</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
-<span class="n">c_K_nf</span> <span class="o">=</span> <span class="n">result_nf</span><span class="p">[</span><span class="s2">&quot;c_K&quot;</span><span class="p">]</span>
-<span class="n">c_K_nesterov</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">lam_K</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">c_K_nesterov_simple</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">((</span><span class="n">K</span> <span class="o">+</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+lam_K <span class="o">=</span> lambda_k(K)
+c_K_nf <span class="o">=</span> result_nf[<span class="s2">&quot;c_K&quot;</span>]
+c_K_nesterov <span class="o">=</span> L <span class="o">/</span> (<span class="mf">2.0</span> <span class="o">*</span> lam_K<span class="o">**</span><span class="mi">2</span>)
+c_K_nesterov_simple <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> L <span class="o">/</span> ((K <span class="o">+</span> <span class="mf">2.0</span>) <span class="o">**</span> <span class="mi">2</span>)
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nesterov FGM c_K (AutoLyap):            </span><span class="si">{</span><span class="n">c_K_nf</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nesterov FGM c_K (L/(2*lambda_K^2)):    </span><span class="si">{</span><span class="n">c_K_nesterov</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nesterov FGM c_K (2L/(K+2)^2):          </span><span class="si">{</span><span class="n">c_K_nesterov_simple</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;Nesterov FGM c_K (AutoLyap):            </span><span class="si">{</span>c_K_nf<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;Nesterov FGM c_K (L/(2*lambda_K^2)):    </span><span class="si">{</span>c_K_nesterov<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;Nesterov FGM c_K (2L/(K+2)^2):          </span><span class="si">{</span>c_K_nesterov_simple<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span>)
 </pre></div>
 </div>
 <p>Sweeping over <span class="math notranslate nohighlight">\(K \in \llbracket 1, 100\rrbracket\)</span> gives the log-log plot
@@ -314,7 +313,7 @@ dots.</p>
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
 <div class="docutils container" id="id2">
 <div role="list" class="citation-list">
-<div class="citation" id="id145" role="doc-biblioentry">
+<div class="citation" id="id145" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Nes83</a><span class="fn-bracket">]</span></span>
 <p>Yurii Nesterov. A method for solving the convex programming problem with convergence rate o(1/k^2). <em>Doklady Akademii Nauk SSSR</em>, 269(3):543–547, 1983.</p>
 </div>

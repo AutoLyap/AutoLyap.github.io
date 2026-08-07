@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.algorithms.information_theoretic_exact_method</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/algorithms/information_theoretic_exact_method/" />
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../../_static/copybutton.js?v=36830154"></script>
@@ -26,9 +28,6 @@
     <link rel="index" title="Index" href="../../../../genindex/" />
     <link rel="search" title="Search" href="../../../../search/" />
  
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../../_static/favicon.png"/>
@@ -155,18 +154,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for autolyap.algorithms.information_theoretic_exact_method</h1><div class="highlight"><pre>
-<span></span><span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
+<span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.algorithm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Algorithm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> Tuple
+<span class="kn">from</span> <span class="nn">.algorithm</span> <span class="kn">import</span> Algorithm
 
 <div class="viewcode-block" id="ITEM">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">ITEM</span><span class="p">(</span><span class="n">Algorithm</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">ITEM</span>(Algorithm):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Information-theoretic exact method (ITEM) :cite:`taylor2023optimalgradientmethod`.</span>
 
 <span class="sd">    See :doc:`3. Algorithm representation &lt;/theory/algorithm_representation&gt;`</span>
@@ -246,8 +245,8 @@
 <span class="sd">    .. math::</span>
 <span class="sd">        I_{\text{func}} = \{1\},\quad I_{\text{op}} = \varnothing.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu: <span class="nb">float</span>, L: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize ITEM.</span>
 
 <span class="sd">        Structural inputs passed to :class:`~autolyap.algorithms.Algorithm` are</span>
@@ -256,19 +255,19 @@
 <span class="sd">            n = 2,\quad m = 1,\quad (\bar m_i)_{i=1}^{m} = (1),\quad \bar m = 1,\quad</span>
 <span class="sd">            I_{\mathrm{func}} = \{1\},\quad I_{\mathrm{op}} = \varnothing.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_L</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_mu</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(<span class="mi">2</span>, <span class="mi">1</span>, [<span class="mi">1</span>], [<span class="mi">1</span>], [])
+        <span class="bp">self</span><span class="o">.</span>set_L(L)
+        <span class="bp">self</span><span class="o">.</span>set_mu(mu)
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_mu_lt_L</span><span class="p">(</span><span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">mu</span> <span class="o">&gt;=</span> <span class="n">L</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Require mu &lt; L. Got mu=</span><span class="si">{</span><span class="n">mu</span><span class="si">}</span><span class="s2">, L=</span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_validate_mu_lt_L</span>(mu: <span class="nb">float</span>, L: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        <span class="k">if</span> mu <span class="o">&gt;=</span> L:
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;Require mu &lt; L. Got mu=</span><span class="si">{</span>mu<span class="si">}</span><span class="s2">, L=</span><span class="si">{</span>L<span class="si">}</span><span class="s2">.&quot;</span>)
     
 <div class="viewcode-block" id="ITEM.set_L">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM.set_L">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_L</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">set_L</span>(<span class="bp">self</span>, L: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the smoothness parameter :math:`L`.</span>
 
 <span class="sd">        Shared notation follows the class-level reference in</span>
@@ -283,16 +282,16 @@
 <span class="sd">        - `ValueError`: If `L` is not a finite real number, if :math:`L \le 0`,</span>
 <span class="sd">          or if :math:`\mu \ge L`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_positive_finite_real</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_validate_mu_lt_L</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_dynamic_parameter</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span></div>
+        L <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_positive_finite_real(L, <span class="s2">&quot;L&quot;</span>)
+        <span class="k">if</span> <span class="nb">hasattr</span>(<span class="bp">self</span>, <span class="s2">&quot;mu&quot;</span>):
+            <span class="bp">self</span><span class="o">.</span>_validate_mu_lt_L(<span class="bp">self</span><span class="o">.</span>mu, L)
+        <span class="bp">self</span><span class="o">.</span>_set_dynamic_parameter(<span class="s2">&quot;L&quot;</span>, L)</div>
 
 
 <div class="viewcode-block" id="ITEM.set_mu">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM.set_mu">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_mu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">set_mu</span>(<span class="bp">self</span>, mu: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the strong-convexity parameter :math:`\mu`.</span>
 
 <span class="sd">        Shared notation follows the class-level reference in</span>
@@ -307,16 +306,16 @@
 <span class="sd">        - `ValueError`: If `mu` is not a finite real number, if :math:`\mu \le 0`,</span>
 <span class="sd">          or if :math:`\mu \ge L`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_positive_finite_real</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_validate_mu_lt_L</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_dynamic_parameter</span><span class="p">(</span><span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span></div>
+        mu <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_positive_finite_real(mu, <span class="s2">&quot;mu&quot;</span>)
+        <span class="k">if</span> <span class="nb">hasattr</span>(<span class="bp">self</span>, <span class="s2">&quot;L&quot;</span>):
+            <span class="bp">self</span><span class="o">.</span>_validate_mu_lt_L(mu, <span class="bp">self</span><span class="o">.</span>L)
+        <span class="bp">self</span><span class="o">.</span>_set_dynamic_parameter(<span class="s2">&quot;mu&quot;</span>, mu)</div>
 
     
 <div class="viewcode-block" id="ITEM.get_A">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM.get_A">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_A</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_A</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the scalar sequence value :math:`\tilde{A}_k`.</span>
 
 <span class="sd">        This scalar follows the recurrence stated in the class-level reference of</span>
@@ -325,52 +324,52 @@
 <span class="sd">        convention; this accessor returns only the scalar sequence</span>
 <span class="sd">        :math:`\tilde{A}_k`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nonnegative_integral</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span>
-        <span class="n">A_tilde</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
-            <span class="n">A_tilde</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">q</span><span class="p">)</span> <span class="o">*</span> <span class="n">A_tilde</span>
-                <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">A_tilde</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">q</span> <span class="o">*</span> <span class="n">A_tilde</span><span class="p">)))</span>
-            <span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">A_tilde</span></div>
+        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">&quot;k&quot;</span>)
+        q <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>mu <span class="o">/</span> <span class="bp">self</span><span class="o">.</span>L
+        A_tilde <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> _ <span class="ow">in</span> <span class="nb">range</span>(k):
+            A_tilde <span class="o">=</span> (
+                (<span class="mi">1</span> <span class="o">+</span> q) <span class="o">*</span> A_tilde
+                <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> (<span class="mi">1</span> <span class="o">+</span> math<span class="o">.</span>sqrt((<span class="mi">1</span> <span class="o">+</span> A_tilde) <span class="o">*</span> (<span class="mi">1</span> <span class="o">+</span> q <span class="o">*</span> A_tilde)))
+            ) <span class="o">/</span> ((<span class="mi">1</span> <span class="o">-</span> q) <span class="o">**</span> <span class="mi">2</span>)
+        <span class="k">return</span> A_tilde</div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">compute_beta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nonnegative_integral</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span>
-        <span class="n">A_tilde_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_A</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-        <span class="n">A_tilde_k1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_A</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">A_tilde_k</span> <span class="o">/</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span> <span class="o">*</span> <span class="n">A_tilde_k1</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">compute_beta</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
+        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">&quot;k&quot;</span>)
+        q <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>mu <span class="o">/</span> <span class="bp">self</span><span class="o">.</span>L
+        A_tilde_k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>get_A(k)
+        A_tilde_k1 <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>get_A(k <span class="o">+</span> <span class="mi">1</span>)
+        <span class="k">return</span> A_tilde_k <span class="o">/</span> ((<span class="mi">1</span> <span class="o">-</span> q) <span class="o">*</span> A_tilde_k1)
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">compute_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nonnegative_integral</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span>
-        <span class="n">A_tilde_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_A</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-        <span class="n">A_tilde_k1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_A</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">numerator</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">A_tilde_k1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">q</span><span class="p">)</span> <span class="o">*</span> <span class="n">A_tilde_k</span>
-        <span class="n">denominator</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">q</span> <span class="o">+</span> <span class="n">q</span> <span class="o">*</span> <span class="n">A_tilde_k</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+    <span class="k">def</span> <span class="nf">compute_delta</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
+        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">&quot;k&quot;</span>)
+        q <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>mu <span class="o">/</span> <span class="bp">self</span><span class="o">.</span>L
+        A_tilde_k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>get_A(k)
+        A_tilde_k1 <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>get_A(k <span class="o">+</span> <span class="mi">1</span>)
+        numerator <span class="o">=</span> ((<span class="mi">1</span> <span class="o">-</span> q) <span class="o">**</span> <span class="mi">2</span>) <span class="o">*</span> A_tilde_k1 <span class="o">-</span> (<span class="mi">1</span> <span class="o">+</span> q) <span class="o">*</span> A_tilde_k
+        denominator <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> (<span class="mi">1</span> <span class="o">+</span> q <span class="o">+</span> q <span class="o">*</span> A_tilde_k)
+        <span class="k">return</span> numerator <span class="o">/</span> denominator
 
 <div class="viewcode-block" id="ITEM.get_ABCD">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM.get_ABCD">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_ABCD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nonnegative_integral</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span>
-        <span class="n">beta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_beta</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-        <span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_delta</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_ABCD</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray]:
+        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">&quot;k&quot;</span>)
+        q <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>mu <span class="o">/</span> <span class="bp">self</span><span class="o">.</span>L
+        beta <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>compute_beta(k)
+        delta <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>compute_delta(k)
 
-        <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">beta</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">beta</span><span class="p">],</span>
-                      <span class="p">[</span><span class="n">q</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">delta</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">delta</span><span class="p">]])</span>
+        A <span class="o">=</span> np<span class="o">.</span>array([[beta, <span class="mi">1</span><span class="o">-</span>beta],
+                      [q<span class="o">*</span>beta<span class="o">*</span>delta, <span class="mi">1</span><span class="o">-</span>q<span class="o">*</span>beta<span class="o">*</span>delta]])
         
-        <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">],</span>
-                      <span class="p">[</span><span class="o">-</span><span class="n">delta</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">]])</span>
+        B <span class="o">=</span> np<span class="o">.</span>array([[<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span>L],
+                      [<span class="o">-</span>delta<span class="o">/</span><span class="bp">self</span><span class="o">.</span>L]])
         
-        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">beta</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">beta</span><span class="p">]])</span>
+        C <span class="o">=</span> np<span class="o">.</span>array([[beta, <span class="mi">1</span><span class="o">-</span>beta]])
         
-        <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">]])</span>
+        D <span class="o">=</span> np<span class="o">.</span>array([[<span class="mi">0</span>]])
         
-        <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span></div>
+        <span class="k">return</span> (A, B, C, D)</div>
 </div>
 
 </pre></div>

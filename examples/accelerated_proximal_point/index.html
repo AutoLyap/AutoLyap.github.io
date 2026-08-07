@@ -8,19 +8,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>The accelerated proximal point method | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/examples/accelerated_proximal_point/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/copybutton.js?v=36830154"></script>
     <script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
-    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"loader":{"load":["ui/lazy"]},"options":{"lazyMargin":"200px","lazyAlwaysTypeset":[".math.math-initial"]},"tex":{"packages":{"[+]":[]},"macros":{"reals":"\\mathbb{R}","naturals":"\\mathbb{N}_{0}","calH":"\\mathcal{H}","zer":"\\operatorname*{zer}","llbracket":"\\lbrack\\!\\lbrack","rrbracket":"\\rbrack\\!\\rbrack"}}}</script>
+    <script crossorigin="anonymous" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
   <script defer="defer" src="../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -31,11 +35,6 @@
     <link rel="next" title="The Chambolle–Pock method" href="../chambolle_pock/" />
     <link rel="prev" title="Nesterov’s fast gradient method" href="../nesterov_fast_gradient/" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -224,11 +223,11 @@
 <section id="problem-setup">
 <h2>Problem setup<a class="headerlink" href="#problem-setup" title="Link to this heading"></a></h2>
 <p>Consider the monotone inclusion</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[\text{find } x \in \calH \text{ such that } 0 \in G(x),\]</div>
-<p>where <span class="math notranslate nohighlight">\(G:\calH\rightrightarrows\calH\)</span> is maximally monotone.</p>
-<p>For initial points <span class="math notranslate nohighlight">\(x^0,y^0,y^{-1}\in\calH\)</span>, step size
-<span class="math notranslate nohighlight">\(\gamma\in\reals_{++}\)</span>, and
+<p>where <span class="math notranslate nohighlight math-initial">\(G:\calH\rightrightarrows\calH\)</span> is maximally monotone.</p>
+<p>For initial points <span class="math notranslate nohighlight math-initial">\(x^0,y^0,y^{-1}\in\calH\)</span>, step size
+<span class="math notranslate nohighlight math-initial">\(\gamma\in\reals_{++}\)</span>, and
 <span class="math notranslate nohighlight">\(\lambda_k = k/(k+2)\)</span>, the accelerated proximal point method
 <span id="id1">[<a class="reference internal" href="#id111" title="Donghwan Kim. Accelerated proximal point method for maximally monotone operators. Mathematical Programming, 190(1-2):57–87, March 2021. doi:10.1007/s10107-021-01643-0.">Kim21</a>]</span> is</p>
 <div class="math notranslate nohighlight">
@@ -250,76 +249,76 @@ y^{k+1} &amp;= x^{k+1} + \lambda_k(x^{k+1} - x^k) - \lambda_k(x^k - y^{k-1}).
 <h2>Model the problem in AutoLyap and search for the smallest c_K<a class="headerlink" href="#model-the-problem-in-autolyap-and-search-for-the-smallest-c-k" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(G\)</span> is modeled by
-<a class="reference internal" href="../../operator_classes/#autolyap.problemclass.MaximallyMonotone" title="autolyap.problemclass.MaximallyMonotone"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaximallyMonotone</span></code></a>.</p></li>
+<a class="reference internal" href="../../operator_classes/#autolyap.problemclass.MaximallyMonotone" title="autolyap.problemclass.MaximallyMonotone"><code class="xref py py-class docutils literal notranslate">MaximallyMonotone</code></a>.</p></li>
 <li><p>The monotone inclusion is represented by
-<a class="reference internal" href="../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a>.</p></li>
+<a class="reference internal" href="../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate">InclusionProblem</code></a>.</p></li>
 <li><p>The update rule is represented by
-<a class="reference internal" href="../../concrete_algorithms/#autolyap.algorithms.AcceleratedProximalPoint" title="autolyap.algorithms.AcceleratedProximalPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">AcceleratedProximalPoint</span></code></a>.</p></li>
+<a class="reference internal" href="../../concrete_algorithms/#autolyap.algorithms.AcceleratedProximalPoint" title="autolyap.algorithms.AcceleratedProximalPoint"><code class="xref py py-class docutils literal notranslate">AcceleratedProximalPoint</code></a>.</p></li>
 <li><p>Initial-horizon parameters
 <span class="math notranslate nohighlight">\(\|y^0-y^\star\|^2\)</span> are obtained with
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_distance_to_solution" title="autolyap.IterationDependent.get_parameters_state_component_distance_to_solution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationDependent.get_parameters_state_component_distance_to_solution</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_distance_to_solution" title="autolyap.IterationDependent.get_parameters_state_component_distance_to_solution"><code class="xref py py-meth docutils literal notranslate">IterationDependent.get_parameters_state_component_distance_to_solution</code></a>.</p></li>
 <li><p>Final-horizon parameters
 <span class="math notranslate nohighlight">\(\|x^{K+1}-y^K\|^2\)</span> are obtained with
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference" title="autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationDependent.get_parameters_state_component_cross_iteration_difference</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference" title="autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference"><code class="xref py py-meth docutils literal notranslate">IterationDependent.get_parameters_state_component_cross_iteration_difference</code></a>.</p></li>
 <li><p>The certificate constant is computed with
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationDependent.search_lyapunov</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate">IterationDependent.search_lyapunov</code></a>.</p></li>
 </ul>
 </section>
 <section id="run-the-iteration-dependent-analysis">
 <h2>Run the iteration-dependent analysis<a class="headerlink" href="#run-the-iteration-dependent-analysis" title="Link to this heading"></a></h2>
-<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate"><span class="pre">backend=&quot;mosek_fusion&quot;</span></code>).
+<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate">backend=&quot;mosek_fusion&quot;</code>).
 Install the optional MOSEK dependency first:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;autolyap[mosek]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">&quot;autolyap[mosek]&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">autolyap</span><span class="w"> </span><span class="kn">import</span> <span class="n">IterationDependent</span><span class="p">,</span> <span class="n">SolverOptions</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">AcceleratedProximalPoint</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">InclusionProblem</span><span class="p">,</span> <span class="n">MaximallyMonotone</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">autolyap</span> <span class="kn">import</span> IterationDependent, SolverOptions
+<span class="kn">from</span> <span class="nn">autolyap.algorithms</span> <span class="kn">import</span> AcceleratedProximalPoint
+<span class="kn">from</span> <span class="nn">autolyap.problemclass</span> <span class="kn">import</span> InclusionProblem, MaximallyMonotone
 
-<span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>
+gamma <span class="o">=</span> <span class="mf">1.0</span>
+K <span class="o">=</span> <span class="mi">10</span>
 
-<span class="n">problem</span> <span class="o">=</span> <span class="n">InclusionProblem</span><span class="p">([</span><span class="n">MaximallyMonotone</span><span class="p">()])</span>
-<span class="n">algorithm</span> <span class="o">=</span> <span class="n">AcceleratedProximalPoint</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;operator&quot;</span><span class="p">)</span>
-<span class="n">solver_options</span> <span class="o">=</span> <span class="n">SolverOptions</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span><span class="p">)</span>
+problem <span class="o">=</span> InclusionProblem([MaximallyMonotone()])
+algorithm <span class="o">=</span> AcceleratedProximalPoint(gamma<span class="o">=</span>gamma, <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;operator&quot;</span>)
+solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>)
 
 <span class="c1"># V(0) = ||y^0 - y^*||^2. In APP state x^k = (x^k, y^k, y^{k-1}),</span>
 <span class="c1"># y^k is state component ell=2 (1-indexed).</span>
-<span class="n">Q_0</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">get_parameters_state_component_distance_to_solution</span><span class="p">(</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">ell</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+Q_0 <span class="o">=</span> IterationDependent<span class="o">.</span>get_parameters_state_component_distance_to_solution(
+    algorithm,
+    k<span class="o">=</span><span class="mi">0</span>,
+    ell<span class="o">=</span><span class="mi">2</span>,
+)
 
 <span class="c1"># V(K) = ||x^{K+1} - y^K||^2 = ||x_1^{K+1} - x_2^K||^2</span>
 <span class="c1"># with 1-indexed state components: ell=1 and ell_prime=2.</span>
-<span class="n">Q_K</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">get_parameters_state_component_cross_iteration_difference</span><span class="p">(</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">,</span>
-    <span class="n">ell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">ell_prime</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+Q_K <span class="o">=</span> IterationDependent<span class="o">.</span>get_parameters_state_component_cross_iteration_difference(
+    algorithm,
+    k<span class="o">=</span>K,
+    ell<span class="o">=</span><span class="mi">1</span>,
+    ell_prime<span class="o">=</span><span class="mi">2</span>,
+)
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">search_lyapunov</span><span class="p">(</span>
-    <span class="n">problem</span><span class="p">,</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="n">K</span><span class="p">,</span>
-    <span class="n">Q_0</span><span class="p">,</span>
-    <span class="n">Q_K</span><span class="p">,</span>
-    <span class="n">solver_options</span><span class="o">=</span><span class="n">solver_options</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No feasible chained Lyapunov certificate for APP.&quot;</span><span class="p">)</span>
+result <span class="o">=</span> IterationDependent<span class="o">.</span>search_lyapunov(
+    problem,
+    algorithm,
+    K,
+    Q_0,
+    Q_K,
+    solver_options<span class="o">=</span>solver_options,
+)
+<span class="k">if</span> result[<span class="s2">&quot;status&quot;</span>] <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span>:
+    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">&quot;No feasible chained Lyapunov certificate for APP.&quot;</span>)
 
-<span class="n">c_K_autolyap</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;c_K&quot;</span><span class="p">]</span>
-<span class="n">c_K_kim</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">K</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+c_K_autolyap <span class="o">=</span> result[<span class="s2">&quot;c_K&quot;</span>]
+c_K_kim <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> (K <span class="o">+</span> <span class="mf">1.0</span>) <span class="o">**</span> <span class="mi">2</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;APP c_K (AutoLyap): </span><span class="si">{</span><span class="n">c_K_autolyap</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;APP c_K (Kim):      </span><span class="si">{</span><span class="n">c_K_kim</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;APP c_K (AutoLyap): </span><span class="si">{</span>c_K_autolyap<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;APP c_K (Kim):      </span><span class="si">{</span>c_K_kim<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span>)
 </pre></div>
 </div>
-<p>The computed value <code class="docutils literal notranslate"><span class="pre">APP</span> <span class="pre">c_K</span> <span class="pre">(AutoLyap)</span></code> matches (up to solver numerical
-tolerances) the theoretical horizon-<code class="docutils literal notranslate"><span class="pre">K</span></code> expression from
+<p>The computed value <code class="docutils literal notranslate">APP c_K (AutoLyap)</code> matches (up to solver numerical
+tolerances) the theoretical horizon-<code class="docutils literal notranslate">K</code> expression from
 <span id="id2">[<a class="reference internal" href="#id111" title="Donghwan Kim. Accelerated proximal point method for maximally monotone operators. Mathematical Programming, 190(1-2):57–87, March 2021. doi:10.1007/s10107-021-01643-0.">Kim21</a>, Theorem 4.1]</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\|x^{K+1} - y^K\|^2 \le \frac{1}{(K+1)^2}\|y^0 - y^\star\|^2.\]</div>
@@ -335,7 +334,7 @@ certificates as blue dots.</p>
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
 <div class="docutils container" id="id4">
 <div role="list" class="citation-list">
-<div class="citation" id="id111" role="doc-biblioentry">
+<div class="citation" id="id111" role="listitem">
 <span class="label"><span class="fn-bracket">[</span>Kim21<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>)</span>
 <p>Donghwan Kim. Accelerated proximal point method for maximally monotone operators. <em>Mathematical Programming</em>, 190(1-2):57–87, March 2021. <a class="reference external" href="https://doi.org/10.1007/s10107-021-01643-0">doi:10.1007/s10107-021-01643-0</a>.</p>

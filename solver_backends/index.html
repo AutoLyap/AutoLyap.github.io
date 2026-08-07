@@ -8,13 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>MOSEK Fusion and CVXPY Solver Backends | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/solver_backends/" />
+  <link rel="preload" href="../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../_static/copybutton.js?v=36830154"></script>
@@ -29,9 +31,6 @@
     <link rel="next" title="Contributing" href="../contributing/" />
     <link rel="prev" title="Iteration-dependent analysis" href="../iteration_dependent_analysis/" />
  
-<link rel="preload" href="../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../_static/favicon.png"/>
@@ -157,7 +156,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lyapunov_analyses/">Lyapunov analyses</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Solver backends</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#autolyap.SolverOptions"><code class="docutils literal notranslate"><span class="pre">SolverOptions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autolyap.SolverOptions"><code class="docutils literal notranslate">SolverOptions</code></a></li>
 </ul>
 </li>
 </ul>
@@ -206,154 +205,155 @@
 <h1>Solver backends<a class="headerlink" href="#solver-backends" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="autolyap.SolverOptions">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">autolyap.</span></span><span class="sig-name descname"><span class="pre">SolverOptions</span></span><span class="sig-paren">(</span>
+<span class="property"><span class="k">class</span> </span><span class="sig-prename descclassname">autolyap.</span><span class="sig-name descname">SolverOptions</span><span class="sig-paren">(</span>
 
 <dl>
-<dd><em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mosek_fusion'</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">mosek_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Any" title="typing.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">cvxpy_solver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">cvxpy_solver_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Any" title="typing.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>,</dd>
-<dd><em class="sig-param"><span class="n"><span class="pre">cvxpy_accept_inaccurate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../dev/dev_external_reference_targets/#bool" title="bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>,</dd>
+<dt class="autolyap-sr-only">Parameters</dt>
+<dd><em class="sig-param">backend: <a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str">str</a> <span class="o">=</span> <span class="default_value">'mosek_fusion'</span></em>,</dd>
+<dd><em class="sig-param">mosek_params: Mapping[<a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str">str</a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Any" title="typing.Any">Any</a>] | None <span class="o">=</span> <span class="default_value">None</span></em>,</dd>
+<dd><em class="sig-param">cvxpy_solver: <a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str">str</a> | None <span class="o">=</span> <span class="default_value">None</span></em>,</dd>
+<dd><em class="sig-param">cvxpy_solver_params: Mapping[<a class="reference internal" href="../dev/dev_external_reference_targets/#str" title="str">str</a>, <a class="reference internal" href="../dev/dev_external_reference_targets/#typing.Any" title="typing.Any">Any</a>] | None <span class="o">=</span> <span class="default_value">None</span></em>,</dd>
+<dd><em class="sig-param">cvxpy_accept_inaccurate: <a class="reference internal" href="../dev/dev_external_reference_targets/#bool" title="bool">bool</a> <span class="o">=</span> <span class="default_value">True</span></em>,</dd>
 </dl>
 
-<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/solver_options/#SolverOptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autolyap.SolverOptions" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<span class="sig-paren">)</span><a class="reference internal" href="../_modules/autolyap/solver_options/#SolverOptions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autolyap.SolverOptions" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate">object</code></p>
 <p>Configure solver backend selection and backend-specific options.</p>
 <p><strong>Used in</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">solver_options</span></code> argument of
-<a class="reference internal" href="../iteration_independent_analysis/#autolyap.IterationIndependent.search_lyapunov" title="autolyap.IterationIndependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_lyapunov()</span></code></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">solver_options</span></code> argument of
-<a class="reference internal" href="../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho" title="autolyap.IterationIndependent.LinearConvergence.bisection_search_rho"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bisection_search_rho()</span></code></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">solver_options</span></code> argument of
-<a class="reference internal" href="../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_lyapunov()</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate">solver_options</code> argument of
+<a class="reference internal" href="../iteration_independent_analysis/#autolyap.IterationIndependent.search_lyapunov" title="autolyap.IterationIndependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate">search_lyapunov()</code></a>.</p></li>
+<li><p><code class="docutils literal notranslate">solver_options</code> argument of
+<a class="reference internal" href="../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho" title="autolyap.IterationIndependent.LinearConvergence.bisection_search_rho"><code class="xref py py-meth docutils literal notranslate">bisection_search_rho()</code></a>.</p></li>
+<li><p><code class="docutils literal notranslate">solver_options</code> argument of
+<a class="reference internal" href="../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate">search_lyapunov()</code></a>.</p></li>
 </ul>
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">backend</span></code> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, default <code class="docutils literal notranslate"><span class="pre">&quot;mosek_fusion&quot;</span></code>)</dt><dd><p>Selects the modeling/solver backend.
-<code class="docutils literal notranslate"><span class="pre">&quot;mosek_fusion&quot;</span></code> builds and solves directly with MOSEK Fusion.
-<code class="docutils literal notranslate"><span class="pre">&quot;cvxpy&quot;</span></code> builds the problem in CVXPY and solves it with
-<code class="docutils literal notranslate"><span class="pre">cvxpy_solver</span></code>.</p>
+<dt><code class="docutils literal notranslate">backend</code> (<code class="docutils literal notranslate">str</code>, default <code class="docutils literal notranslate">&quot;mosek_fusion&quot;</code>)</dt><dd><p>Selects the modeling/solver backend.
+<code class="docutils literal notranslate">&quot;mosek_fusion&quot;</code> builds and solves directly with MOSEK Fusion.
+<code class="docutils literal notranslate">&quot;cvxpy&quot;</code> builds the problem in CVXPY and solves it with
+<code class="docutils literal notranslate">cvxpy_solver</code>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">mosek_params</span></code> (<code class="docutils literal notranslate"><span class="pre">Mapping[str,</span> <span class="pre">Any]</span> <span class="pre">|</span> <span class="pre">None</span></code>, default <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Extra MOSEK Fusion solver options as key-value pairs.
-Used only when <code class="docutils literal notranslate"><span class="pre">backend=&quot;mosek_fusion&quot;</span></code>.
-If <code class="docutils literal notranslate"><span class="pre">None</span></code>, AutoLyap applies the explicit default MOSEK profile:
-<code class="docutils literal notranslate"><span class="pre">intpntCoTolPfeas=1e-8</span></code>, <code class="docutils literal notranslate"><span class="pre">intpntCoTolDfeas=1e-8</span></code>,
-<code class="docutils literal notranslate"><span class="pre">intpntCoTolRelGap=1e-8</span></code>, and <code class="docutils literal notranslate"><span class="pre">intpntMaxIterations=1000</span></code>.</p>
+<dt><code class="docutils literal notranslate">mosek_params</code> (<code class="docutils literal notranslate">Mapping[str, Any] | None</code>, default <code class="docutils literal notranslate">None</code>)</dt><dd><p>Extra MOSEK Fusion solver options as key-value pairs.
+Used only when <code class="docutils literal notranslate">backend=&quot;mosek_fusion&quot;</code>.
+If <code class="docutils literal notranslate">None</code>, AutoLyap applies the explicit default MOSEK profile:
+<code class="docutils literal notranslate">intpntCoTolPfeas=1e-8</code>, <code class="docutils literal notranslate">intpntCoTolDfeas=1e-8</code>,
+<code class="docutils literal notranslate">intpntCoTolRelGap=1e-8</code>, and <code class="docutils literal notranslate">intpntMaxIterations=1000</code>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">cvxpy_solver</span></code> (<code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span></code>, default <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Name of the CVXPY solver, for example <code class="docutils literal notranslate"><span class="pre">&quot;CLARABEL&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;SCS&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;MOSEK&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;SDPA&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;COPT&quot;</span></code>.
-If <code class="docutils literal notranslate"><span class="pre">None</span></code>, CVXPY chooses the solver.
-Used only when <code class="docutils literal notranslate"><span class="pre">backend=&quot;cvxpy&quot;</span></code>.</p>
+<dt><code class="docutils literal notranslate">cvxpy_solver</code> (<code class="docutils literal notranslate">str | None</code>, default <code class="docutils literal notranslate">None</code>)</dt><dd><p>Name of the CVXPY solver, for example <code class="docutils literal notranslate">&quot;CLARABEL&quot;</code>, <code class="docutils literal notranslate">&quot;SCS&quot;</code>,
+<code class="docutils literal notranslate">&quot;MOSEK&quot;</code>, <code class="docutils literal notranslate">&quot;SDPA&quot;</code>, or <code class="docutils literal notranslate">&quot;COPT&quot;</code>.
+If <code class="docutils literal notranslate">None</code>, CVXPY chooses the solver.
+Used only when <code class="docutils literal notranslate">backend=&quot;cvxpy&quot;</code>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">cvxpy_solver_params</span></code> (<code class="docutils literal notranslate"><span class="pre">Mapping[str,</span> <span class="pre">Any]</span> <span class="pre">|</span> <span class="pre">None</span></code>, default <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Extra solver options for the selected CVXPY solver.
+<dt><code class="docutils literal notranslate">cvxpy_solver_params</code> (<code class="docutils literal notranslate">Mapping[str, Any] | None</code>, default <code class="docutils literal notranslate">None</code>)</dt><dd><p>Extra solver options for the selected CVXPY solver.
 See the examples below for recommended profiles and common options.
-AutoLyap applies <code class="docutils literal notranslate"><span class="pre">warm_start=True</span></code> by default.
-Used only when <code class="docutils literal notranslate"><span class="pre">backend=&quot;cvxpy&quot;</span></code>.</p>
+AutoLyap applies <code class="docutils literal notranslate">warm_start=True</code> by default.
+Used only when <code class="docutils literal notranslate">backend=&quot;cvxpy&quot;</code>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">cvxpy_accept_inaccurate</span></code> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, default <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>Controls which CVXPY statuses are accepted as successful solves.
-If <code class="docutils literal notranslate"><span class="pre">True</span></code>, accept both <code class="docutils literal notranslate"><span class="pre">OPTIMAL</span></code> and <code class="docutils literal notranslate"><span class="pre">OPTIMAL_INACCURATE</span></code>.
-If <code class="docutils literal notranslate"><span class="pre">False</span></code>, require <code class="docutils literal notranslate"><span class="pre">OPTIMAL</span></code>.
-Used only when <code class="docutils literal notranslate"><span class="pre">backend=&quot;cvxpy&quot;</span></code>.</p>
+<dt><code class="docutils literal notranslate">cvxpy_accept_inaccurate</code> (<code class="docutils literal notranslate">bool</code>, default <code class="docutils literal notranslate">True</code>)</dt><dd><p>Controls which CVXPY statuses are accepted as successful solves.
+If <code class="docutils literal notranslate">True</code>, accept both <code class="docutils literal notranslate">OPTIMAL</code> and <code class="docutils literal notranslate">OPTIMAL_INACCURATE</code>.
+If <code class="docutils literal notranslate">False</code>, require <code class="docutils literal notranslate">OPTIMAL</code>.
+Used only when <code class="docutils literal notranslate">backend=&quot;cvxpy&quot;</code>.</p>
 </dd>
 </dl>
 <p><strong>Examples</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># MOSEK Fusion (explicit default profile; requires `pip install mosek`)</span>
-<span class="n">SolverOptions</span><span class="p">(</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span><span class="p">,</span>
-    <span class="n">mosek_params</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;intpntCoTolPfeas&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;intpntCoTolDfeas&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;intpntCoTolRelGap&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;intpntMaxIterations&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="p">},</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span class="c1"># MOSEK Fusion (explicit default profile; requires `pip install mosek`)</span>
+SolverOptions(
+    backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>,
+    mosek_params<span class="o">=</span>{
+        <span class="s2">&quot;intpntCoTolPfeas&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;intpntCoTolDfeas&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;intpntCoTolRelGap&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;intpntMaxIterations&quot;</span>: <span class="mi">1000</span>,  <span class="c1"># default</span>
+    },
+)
 
 <span class="c1"># CVXPY + CLARABEL (explicit default profile)</span>
-<span class="n">SolverOptions</span><span class="p">(</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_solver</span><span class="o">=</span><span class="s2">&quot;CLARABEL&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_accept_inaccurate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="n">cvxpy_solver_params</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;max_iter&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;tol_feas&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;tol_gap_abs&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;tol_gap_rel&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;warm_start&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="p">},</span>
-<span class="p">)</span>
+SolverOptions(
+    backend<span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span>,
+    cvxpy_solver<span class="o">=</span><span class="s2">&quot;CLARABEL&quot;</span>,
+    cvxpy_accept_inaccurate<span class="o">=</span><span class="kc">True</span>,  <span class="c1"># default</span>
+    cvxpy_solver_params<span class="o">=</span>{
+        <span class="s2">&quot;max_iter&quot;</span>: <span class="mi">2000</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;tol_feas&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;tol_gap_abs&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;tol_gap_rel&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;warm_start&quot;</span>: <span class="kc">True</span>,  <span class="c1"># default</span>
+    },
+)
 
 <span class="c1"># CVXPY + MOSEK (explicit default profile; requires `pip install mosek`)</span>
-<span class="n">SolverOptions</span><span class="p">(</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_solver</span><span class="o">=</span><span class="s2">&quot;MOSEK&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_accept_inaccurate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="n">cvxpy_solver_params</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;MSK_DPAR_INTPNT_CO_TOL_PFEAS&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;MSK_DPAR_INTPNT_CO_TOL_DFEAS&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;MSK_DPAR_INTPNT_CO_TOL_REL_GAP&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;warm_start&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="p">},</span>
-<span class="p">)</span>
+SolverOptions(
+    backend<span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span>,
+    cvxpy_solver<span class="o">=</span><span class="s2">&quot;MOSEK&quot;</span>,
+    cvxpy_accept_inaccurate<span class="o">=</span><span class="kc">True</span>,  <span class="c1"># default</span>
+    cvxpy_solver_params<span class="o">=</span>{
+        <span class="s2">&quot;MSK_DPAR_INTPNT_CO_TOL_PFEAS&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;MSK_DPAR_INTPNT_CO_TOL_DFEAS&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;MSK_DPAR_INTPNT_CO_TOL_REL_GAP&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;warm_start&quot;</span>: <span class="kc">True</span>,  <span class="c1"># default</span>
+    },
+)
 
 <span class="c1"># CVXPY + SDPA (explicit default profile; requires `pip install sdpa-python`)</span>
-<span class="n">SolverOptions</span><span class="p">(</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_solver</span><span class="o">=</span><span class="s2">&quot;SDPA&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_accept_inaccurate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="n">cvxpy_solver_params</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;maxIteration&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;epsilonStar&quot;</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;epsilonDash&quot;</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;warm_start&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="p">},</span>
-<span class="p">)</span>
+SolverOptions(
+    backend<span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span>,
+    cvxpy_solver<span class="o">=</span><span class="s2">&quot;SDPA&quot;</span>,
+    cvxpy_accept_inaccurate<span class="o">=</span><span class="kc">True</span>,  <span class="c1"># default</span>
+    cvxpy_solver_params<span class="o">=</span>{
+        <span class="s2">&quot;maxIteration&quot;</span>: <span class="mi">100</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;epsilonStar&quot;</span>: <span class="mf">1e-7</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;epsilonDash&quot;</span>: <span class="mf">1e-7</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;warm_start&quot;</span>: <span class="kc">True</span>,  <span class="c1"># default</span>
+    },
+)
 
 <span class="c1"># CVXPY + SDPA multiprecision (high-precision profile; requires `pip install sdpa-multiprecision`)</span>
-<span class="n">SolverOptions</span><span class="p">(</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_solver</span><span class="o">=</span><span class="s2">&quot;SDPA&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_accept_inaccurate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="n">cvxpy_solver_params</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;maxIteration&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-        <span class="s2">&quot;epsilonStar&quot;</span><span class="p">:</span> <span class="mf">1e-30</span><span class="p">,</span>
-        <span class="s2">&quot;epsilonDash&quot;</span><span class="p">:</span> <span class="mf">1e-30</span><span class="p">,</span>
-        <span class="s2">&quot;mpfPrecision&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
-        <span class="s2">&quot;warm_start&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="p">},</span>
-<span class="p">)</span>
+SolverOptions(
+    backend<span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span>,
+    cvxpy_solver<span class="o">=</span><span class="s2">&quot;SDPA&quot;</span>,
+    cvxpy_accept_inaccurate<span class="o">=</span><span class="kc">True</span>,  <span class="c1"># default</span>
+    cvxpy_solver_params<span class="o">=</span>{
+        <span class="s2">&quot;maxIteration&quot;</span>: <span class="mi">500</span>,
+        <span class="s2">&quot;epsilonStar&quot;</span>: <span class="mf">1e-30</span>,
+        <span class="s2">&quot;epsilonDash&quot;</span>: <span class="mf">1e-30</span>,
+        <span class="s2">&quot;mpfPrecision&quot;</span>: <span class="mi">512</span>,
+        <span class="s2">&quot;warm_start&quot;</span>: <span class="kc">True</span>,  <span class="c1"># default</span>
+    },
+)
 
 <span class="c1"># CVXPY + SCS (explicit default profile)</span>
-<span class="n">SolverOptions</span><span class="p">(</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_solver</span><span class="o">=</span><span class="s2">&quot;SCS&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_accept_inaccurate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="n">cvxpy_solver_params</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;eps&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;max_iters&quot;</span><span class="p">:</span> <span class="mi">200000</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;acceleration_lookback&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;warm_start&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="p">},</span>
-<span class="p">)</span>
+SolverOptions(
+    backend<span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span>,
+    cvxpy_solver<span class="o">=</span><span class="s2">&quot;SCS&quot;</span>,
+    cvxpy_accept_inaccurate<span class="o">=</span><span class="kc">True</span>,  <span class="c1"># default</span>
+    cvxpy_solver_params<span class="o">=</span>{
+        <span class="s2">&quot;eps&quot;</span>: <span class="mf">1e-6</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;max_iters&quot;</span>: <span class="mi">200000</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;acceleration_lookback&quot;</span>: <span class="mi">0</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;warm_start&quot;</span>: <span class="kc">True</span>,  <span class="c1"># default</span>
+    },
+)
 
 <span class="c1"># CVXPY + COPT (explicit default profile; requires `pip install coptpy`)</span>
-<span class="n">SolverOptions</span><span class="p">(</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_solver</span><span class="o">=</span><span class="s2">&quot;COPT&quot;</span><span class="p">,</span>
-    <span class="n">cvxpy_accept_inaccurate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="n">cvxpy_solver_params</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;SDPMethod&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;BarIterLimit&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;FeasTol&quot;</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;DualTol&quot;</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;RelGap&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;AbsGap&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;Presolve&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;Scaling&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;Dualize&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># default</span>
-        <span class="s2">&quot;warm_start&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
-    <span class="p">},</span>
-<span class="p">)</span>
+SolverOptions(
+    backend<span class="o">=</span><span class="s2">&quot;cvxpy&quot;</span>,
+    cvxpy_solver<span class="o">=</span><span class="s2">&quot;COPT&quot;</span>,
+    cvxpy_accept_inaccurate<span class="o">=</span><span class="kc">True</span>,  <span class="c1"># default</span>
+    cvxpy_solver_params<span class="o">=</span>{
+        <span class="s2">&quot;SDPMethod&quot;</span>: <span class="mi">0</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;BarIterLimit&quot;</span>: <span class="mi">500</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;FeasTol&quot;</span>: <span class="mf">1e-7</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;DualTol&quot;</span>: <span class="mf">1e-7</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;RelGap&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;AbsGap&quot;</span>: <span class="mf">1e-8</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;Presolve&quot;</span>: <span class="o">-</span><span class="mi">1</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;Scaling&quot;</span>: <span class="o">-</span><span class="mi">1</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;Dualize&quot;</span>: <span class="o">-</span><span class="mi">1</span>,  <span class="c1"># default</span>
+        <span class="s2">&quot;warm_start&quot;</span>: <span class="kc">True</span>,  <span class="c1"># default</span>
+    },
+)
 </pre></div>
 </div>
 </dd></dl>

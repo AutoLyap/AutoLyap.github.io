@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.problemclass.operators</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/problemclass/operators/" />
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../../_static/copybutton.js?v=36830154"></script>
@@ -26,9 +28,6 @@
     <link rel="index" title="Index" href="../../../../genindex/" />
     <link rel="search" title="Search" href="../../../../search/" />
  
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../../_static/favicon.png"/>
@@ -155,45 +154,45 @@
            <div itemprop="articleBody">
              
   <h1>Source code for autolyap.problemclass.operators</h1><div class="highlight"><pre>
-<span></span><span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
+<span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
 <span class="sd">&quot;&quot;&quot;Concrete operator interpolation-condition classes.&quot;&quot;&quot;</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> List, Union, Tuple
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">_OperatorInterpolationCondition</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass.indices</span><span class="w"> </span><span class="kn">import</span> <span class="n">_InterpolationIndices</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.utils.validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">ensure_real_number</span>
+<span class="kn">from</span> <span class="nn">autolyap.problemclass.base</span> <span class="kn">import</span> _OperatorInterpolationCondition
+<span class="kn">from</span> <span class="nn">autolyap.problemclass.indices</span> <span class="kn">import</span> _InterpolationIndices
+<span class="kn">from</span> <span class="nn">autolyap.utils.validation</span> <span class="kn">import</span> ensure_real_number
 
 
 <div class="viewcode-block" id="_ensure_positive_finite">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.operators._ensure_positive_finite">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_ensure_positive_finite</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return `value` as float after enforcing strict positivity and finiteness.&quot;&quot;&quot;</span>
-    <span class="n">numeric_value</span> <span class="o">=</span> <span class="n">ensure_real_number</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">numeric_value</span><span class="p">)</span> <span class="ow">or</span> <span class="n">numeric_value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">numeric_value</span></div>
+<span class="k">def</span> <span class="nf">_ensure_positive_finite</span>(value: Union[<span class="nb">int</span>, <span class="nb">float</span>], parameter_name: <span class="nb">str</span>, error_message: <span class="nb">str</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return `value` as float after enforcing strict positivity and finiteness.&quot;&quot;&quot;</span>
+    numeric_value <span class="o">=</span> ensure_real_number(value, parameter_name)
+    <span class="k">if</span> <span class="ow">not</span> np<span class="o">.</span>isfinite(numeric_value) <span class="ow">or</span> numeric_value <span class="o">&lt;=</span> <span class="mi">0</span>:
+        <span class="k">raise</span> <span class="ne">ValueError</span>(error_message)
+    <span class="k">return</span> numeric_value</div>
 
 
 
 <div class="viewcode-block" id="_ensure_finite">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.operators._ensure_finite">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_ensure_finite</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return `value` as float after enforcing finiteness.&quot;&quot;&quot;</span>
-    <span class="n">numeric_value</span> <span class="o">=</span> <span class="n">ensure_real_number</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">numeric_value</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">numeric_value</span></div>
+<span class="k">def</span> <span class="nf">_ensure_finite</span>(value: Union[<span class="nb">int</span>, <span class="nb">float</span>], parameter_name: <span class="nb">str</span>, error_message: <span class="nb">str</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return `value` as float after enforcing finiteness.&quot;&quot;&quot;</span>
+    numeric_value <span class="o">=</span> ensure_real_number(value, parameter_name)
+    <span class="k">if</span> <span class="ow">not</span> np<span class="o">.</span>isfinite(numeric_value):
+        <span class="k">raise</span> <span class="ne">ValueError</span>(error_message)
+    <span class="k">return</span> numeric_value</div>
 
 
 
 <div class="viewcode-block" id="MaximallyMonotone">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.MaximallyMonotone">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">MaximallyMonotone</span><span class="p">(</span><span class="n">_OperatorInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">MaximallyMonotone</span>(_OperatorInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Operator interpolation condition for maximally monotone operators.</span>
 
 <span class="sd">    Let :math:`G: \calH \rightrightarrows \calH` be maximally monotone.</span>
@@ -231,8 +230,8 @@
 <span class="sd">    - :cite:`bauschke2017convexanalysismonotone{Theorem 20.21}`.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data for a maximally monotone operator.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -244,20 +243,20 @@
 <span class="sd">          interpolation matrix and indices.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">matrix</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="p">])</span>
-        <span class="n">interp_idx</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1&lt;r2&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">interp_idx</span><span class="p">)]</span></div>
+        matrix <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>],
+            [<span class="mi">0</span>, <span class="mi">0</span>,  <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
+            [<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>,  <span class="mi">0</span>, <span class="mi">0</span>],
+            [<span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>,  <span class="mi">0</span>, <span class="mi">0</span>]
+        ])
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&lt;r2&quot;</span>)
+        <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 
 <div class="viewcode-block" id="StronglyMonotone">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.StronglyMonotone">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">StronglyMonotone</span><span class="p">(</span><span class="n">_OperatorInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">StronglyMonotone</span>(_OperatorInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Operator interpolation condition for strongly and maximally monotone operators.</span>
 
 <span class="sd">    Let :math:`\mu \in \mathbb{R}_{++}` and</span>
@@ -302,16 +301,16 @@
 
 <span class="sd">    - :cite:`ryu2020operatorsplittingperformance{Proposition 1}`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mu</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span>
-            <span class="n">mu</span><span class="p">,</span>
-            <span class="s2">&quot;Strong monotonicity parameter&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Strong monotonicity parameter (mu) must be greater than 0 and finite.&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        mu <span class="o">=</span> _ensure_positive_finite(
+            mu,
+            <span class="s2">&quot;Strong monotonicity parameter&quot;</span>,
+            <span class="s2">&quot;Strong monotonicity parameter (mu) must be greater than 0 and finite.&quot;</span>,
+        )
+        <span class="bp">self</span><span class="o">.</span>mu <span class="o">=</span> mu
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data for the strongly monotone operator.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -323,20 +322,20 @@
 <span class="sd">          interpolation matrix and indices.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">matrix</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-            <span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="p">])</span>
-        <span class="n">interp_idx</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1&lt;r2&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">interp_idx</span><span class="p">)]</span></div>
+        matrix <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
+            [<span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>mu, <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>mu, <span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>],
+            [<span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>mu, <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>mu,  <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
+            [<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>, <span class="mi">0</span>, <span class="mi">0</span>],
+            [<span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">0</span>, <span class="mi">0</span>]
+        ])
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&lt;r2&quot;</span>)
+        <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 
 <div class="viewcode-block" id="LipschitzOperator">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.LipschitzOperator">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">LipschitzOperator</span><span class="p">(</span><span class="n">_OperatorInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">LipschitzOperator</span>(_OperatorInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Operator interpolation condition for Lipschitz operators.</span>
 
 <span class="sd">    Let :math:`L \in \mathbb{R}_{++}` and</span>
@@ -385,16 +384,16 @@
 <span class="sd">      :cite:`valentine1943extension`,</span>
 <span class="sd">      :cite:`valentine1945lipschitzconditionpreserving`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span>
-            <span class="n">L</span><span class="p">,</span>
-            <span class="s2">&quot;Lipschitz parameter&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Lipschitz parameter (L) must be greater than 0 and finite.&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="n">L</span>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, L: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        L <span class="o">=</span> _ensure_positive_finite(
+            L,
+            <span class="s2">&quot;Lipschitz parameter&quot;</span>,
+            <span class="s2">&quot;Lipschitz parameter (L) must be greater than 0 and finite.&quot;</span>,
+        )
+        <span class="bp">self</span><span class="o">.</span>L <span class="o">=</span> L
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data for the Lipschitz operator.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -406,20 +405,20 @@
 <span class="sd">          interpolation matrix and indices.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-            <span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-        <span class="p">])</span>
-        <span class="n">interp_idx</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1&lt;r2&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">interp_idx</span><span class="p">)]</span></div>
+        matrix <span class="o">=</span> np<span class="o">.</span>array([
+            [<span class="o">-</span><span class="bp">self</span><span class="o">.</span>L<span class="o">**</span><span class="mi">2</span>, <span class="bp">self</span><span class="o">.</span>L<span class="o">**</span><span class="mi">2</span>, <span class="mi">0</span>, <span class="mi">0</span>],
+            [<span class="bp">self</span><span class="o">.</span>L<span class="o">**</span><span class="mi">2</span>, <span class="o">-</span><span class="bp">self</span><span class="o">.</span>L<span class="o">**</span><span class="mi">2</span>, <span class="mi">0</span>, <span class="mi">0</span>],
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>]
+        ])
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&lt;r2&quot;</span>)
+        <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 
 <div class="viewcode-block" id="Cocoercive">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.Cocoercive">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Cocoercive</span><span class="p">(</span><span class="n">_OperatorInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">Cocoercive</span>(_OperatorInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Operator interpolation condition for cocoercive operators.</span>
 
 <span class="sd">    Let :math:`\beta \in \mathbb{R}_{++}` and</span>
@@ -465,16 +464,16 @@
 
 <span class="sd">    - :cite:`ryu2020operatorsplittingperformance{Proposition 2}`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">beta</span> <span class="o">=</span> <span class="n">_ensure_positive_finite</span><span class="p">(</span>
-            <span class="n">beta</span><span class="p">,</span>
-            <span class="s2">&quot;Cocoercivity parameter&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Cocoercivity parameter (beta) must be greater than 0 and finite.&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">beta</span>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, beta: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        beta <span class="o">=</span> _ensure_positive_finite(
+            beta,
+            <span class="s2">&quot;Cocoercivity parameter&quot;</span>,
+            <span class="s2">&quot;Cocoercivity parameter (beta) must be greater than 0 and finite.&quot;</span>,
+        )
+        <span class="bp">self</span><span class="o">.</span>beta <span class="o">=</span> beta
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data for the cocoercive operator.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -486,20 +485,20 @@
 <span class="sd">          interpolation matrix and indices.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">matrix</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-            <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">]</span>
-        <span class="p">])</span>
-        <span class="n">interp_idx</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1&lt;r2&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">interp_idx</span><span class="p">)]</span></div>
+        matrix <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>],
+            [<span class="mi">0</span>, <span class="mi">0</span>,  <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
+            [<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>, <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>beta, <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>beta],
+            [<span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>, <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>beta, <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>beta]
+        ])
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&lt;r2&quot;</span>)
+        <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 
 <div class="viewcode-block" id="WeakMintyVariationalInequality">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.WeakMintyVariationalInequality">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">WeakMintyVariationalInequality</span><span class="p">(</span><span class="n">_OperatorInterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">WeakMintyVariationalInequality</span>(_OperatorInterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Operator interpolation condition for operators that fulfill the weak Minty variational inequality.</span>
 
 <span class="sd">    Let :math:`\rho_{\textup{minty}} \in \mathbb{R}` and</span>
@@ -550,16 +549,16 @@
 <span class="sd">      :math:`m_{\textup{func}} = 0`. This single component may still</span>
 <span class="sd">      contain a list of operator conditions (an intersection).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rho_minty</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">rho_minty</span> <span class="o">=</span> <span class="n">_ensure_finite</span><span class="p">(</span>
-            <span class="n">rho_minty</span><span class="p">,</span>
-            <span class="s2">&quot;Weak MVI parameter&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Weak MVI parameter (rho_minty) must be finite.&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rho_minty</span> <span class="o">=</span> <span class="n">rho_minty</span>
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, rho_minty: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        rho_minty <span class="o">=</span> _ensure_finite(
+            rho_minty,
+            <span class="s2">&quot;Weak MVI parameter&quot;</span>,
+            <span class="s2">&quot;Weak MVI parameter (rho_minty) must be finite.&quot;</span>,
+        )
+        <span class="bp">self</span><span class="o">.</span>rho_minty <span class="o">=</span> rho_minty
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data for the weak Minty variational inequality condition.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -571,14 +570,14 @@
 <span class="sd">          interpolation matrix and indices.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">matrix</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho_minty</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="p">])</span>
-        <span class="n">interp_idx</span> <span class="o">=</span> <span class="n">_InterpolationIndices</span><span class="p">(</span><span class="s2">&quot;r1!=star&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">interp_idx</span><span class="p">)]</span></div>
+        matrix <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">0</span>],
+            [<span class="mi">0</span>, <span class="mi">0</span>,  <span class="mi">1</span>, <span class="mi">0</span>],
+            [<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>, <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>rho_minty, <span class="mi">0</span>],
+            [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>]
+        ])
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1!=star&quot;</span>)
+        <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 </pre></div>
 

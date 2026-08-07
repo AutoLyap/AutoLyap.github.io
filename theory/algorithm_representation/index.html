@@ -7,18 +7,22 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>3. Algorithm representation | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/theory/algorithm_representation/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
-    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"loader":{"load":["ui/lazy"]},"options":{"lazyMargin":"200px","lazyAlwaysTypeset":[".math.math-initial"]},"tex":{"packages":{"[+]":[]},"macros":{"abs":["\\left\\lvert #1 \\right\\rvert",1],"reals":"\\mathbb{R}","naturals":"\\mathbb{N}_{0}","calH":"\\mathcal{H}","kron":"\\otimes","Id":"\\operatorname*{Id}","bx":"\\mathbf{x}","bu":"\\mathbf{u}","by":"\\mathbf{y}","bfcn":"\\mathbf{f}","bFcn":"\\mathbf{F}","IndexOp":"\\mathcal{I}_{\\textup{op}}","IndexFunc":"\\mathcal{I}_{\\textup{func}}","NumFunc":"m_{\\textup{func}}","NumOp":"m_{\\textup{op}}","NumEval":"\\bar{m}","NumEvalOp":"\\bar{m}_{\\textup{op}}","NumEvalFunc":"\\bar{m}_{\\textup{func}}","set":["\\mathord{\\left.\\{ #1 \\} \\right. }",1],"p":["\\mathord{( #1 )}",1],"Bigp":["\\mathord{\\left( #1 \\right)}",1],"bm":["\\boldsymbol{#1}",1],"llbracket":"\\lbrack\\!\\lbrack","rrbracket":"\\rbrack\\!\\rbrack"}}}</script>
+    <script crossorigin="anonymous" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
   <script defer="defer" src="../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -29,11 +33,6 @@
     <link rel="next" title="4. Interpolation conditions" href="../interpolation_conditions/" />
     <link rel="prev" title="2. Problem classes" href="../problem_class/" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -206,15 +205,15 @@
 <a class="reference internal" href="../problem_class/#equation-eq-the-problem-inclusion">(2.1)</a> and can be
 represented as a discrete-time linear time‐varying system in state-space
 form in feedback interconnection with the potentially nonlinear and
-set-valued operators <span class="math notranslate nohighlight">\((\partial f_{i})_{i\in\IndexFunc}\)</span> and
-<span class="math notranslate nohighlight">\((G_{i})_{i\in\IndexOp}\)</span> that define the problem.</p>
+set-valued operators <span class="math notranslate nohighlight math-initial">\((\partial f_{i})_{i\in\IndexFunc}\)</span> and
+<span class="math notranslate nohighlight math-initial">\((G_{i})_{i\in\IndexOp}\)</span> that define the problem.</p>
 <p>Before presenting the algorithm representation, we introduce some
 notation:</p>
 <ol class="lowerroman simple">
-<li><p><span class="math notranslate nohighlight">\(\NumFunc = \abs{\IndexFunc}\)</span> denotes the number of
+<li><p><span class="math notranslate nohighlight math-initial">\(\NumFunc = \abs{\IndexFunc}\)</span> denotes the number of
 functional components in
 <a class="reference internal" href="../problem_class/#equation-eq-the-problem-inclusion">(2.1)</a>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\NumOp = \abs{\IndexOp}\)</span> denotes the number of operator
+<li><p><span class="math notranslate nohighlight math-initial">\(\NumOp = \abs{\IndexOp}\)</span> denotes the number of operator
 components in
 <a class="reference internal" href="../problem_class/#equation-eq-the-problem-inclusion">(2.1)</a>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\NumEval_{i}\in\mathbb{N}\)</span> denotes the number of

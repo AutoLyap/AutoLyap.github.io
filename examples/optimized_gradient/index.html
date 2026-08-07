@@ -8,19 +8,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>The optimized gradient method | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/examples/optimized_gradient/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/copybutton.js?v=36830154"></script>
     <script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
-    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"loader":{"load":["ui/lazy"]},"options":{"lazyMargin":"200px","lazyAlwaysTypeset":[".math.math-initial"]},"tex":{"packages":{"[+]":[]},"macros":{"reals":"\\mathbb{R}","calH":"\\mathcal{H}","minimize":"\\operatorname*{minimize}","Argmin":"\\operatorname*{Argmin}","llbracket":"\\lbrack\\!\\lbrack","rrbracket":"\\rbrack\\!\\rbrack"}}}</script>
+    <script crossorigin="anonymous" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
   <script defer="defer" src="../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -31,11 +35,6 @@
     <link rel="next" title="The proximal point method" href="../proximal_point/" />
     <link rel="prev" title="The Malitsky–Tam forward-reflected-backward method" href="../malitsky_tam_frb/" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -224,10 +223,10 @@
 <section id="problem-setup">
 <h2>Problem setup<a class="headerlink" href="#problem-setup" title="Link to this heading"></a></h2>
 <p>Consider the unconstrained minimization problem</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[\minimize_{x \in \calH} f(x),\]</div>
-<p>where <span class="math notranslate nohighlight">\(f : \calH \to \reals\)</span> is convex and <span class="math notranslate nohighlight">\(L\)</span>-smooth with
-<span class="math notranslate nohighlight">\(L&gt;0\)</span>.</p>
+<p>where <span class="math notranslate nohighlight math-initial">\(f : \calH \to \reals\)</span> is convex and <span class="math notranslate nohighlight math-initial">\(L\)</span>-smooth with
+<span class="math notranslate nohighlight math-initial">\(L&gt;0\)</span>.</p>
 <p>For initial points <span class="math notranslate nohighlight">\(x^0, y^0 \in \calH\)</span> and iteration budget
 <span class="math notranslate nohighlight">\(K \in \mathbb{N}\)</span>, the optimized gradient method <span id="id1">[<a class="reference internal" href="#id108" title="Donghwan Kim and Jeffrey A. Fessler. Optimized first-order methods for smooth convex minimization. Mathematical Programming, 159(1-2):81–107, October 2015. doi:10.1007/s10107-015-0949-3.">KF15</a>]</span> is given by</p>
 <div class="math notranslate nohighlight">
@@ -259,81 +258,81 @@
 <h2>Model the problem in AutoLyap and search for the smallest c_K<a class="headerlink" href="#model-the-problem-in-autolyap-and-search-for-the-smallest-c-k" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f\)</span> is modeled by
-<a class="reference internal" href="../../function_classes/#autolyap.problemclass.SmoothConvex" title="autolyap.problemclass.SmoothConvex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmoothConvex</span></code></a>.</p></li>
+<a class="reference internal" href="../../function_classes/#autolyap.problemclass.SmoothConvex" title="autolyap.problemclass.SmoothConvex"><code class="xref py py-class docutils literal notranslate">SmoothConvex</code></a>.</p></li>
 <li><p>The optimization problem is represented by
-<a class="reference internal" href="../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a>.</p></li>
+<a class="reference internal" href="../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate">InclusionProblem</code></a>.</p></li>
 <li><p>The update rule is represented by
-<a class="reference internal" href="../../concrete_algorithms/#autolyap.algorithms.OptimizedGradientMethod" title="autolyap.algorithms.OptimizedGradientMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptimizedGradientMethod</span></code></a>.</p></li>
+<a class="reference internal" href="../../concrete_algorithms/#autolyap.algorithms.OptimizedGradientMethod" title="autolyap.algorithms.OptimizedGradientMethod"><code class="xref py py-class docutils literal notranslate">OptimizedGradientMethod</code></a>.</p></li>
 <li><p>Initial-horizon parameters are obtained with
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_distance_to_solution" title="autolyap.IterationDependent.get_parameters_distance_to_solution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationDependent.get_parameters_distance_to_solution</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_distance_to_solution" title="autolyap.IterationDependent.get_parameters_distance_to_solution"><code class="xref py py-meth docutils literal notranslate">IterationDependent.get_parameters_distance_to_solution</code></a>.</p></li>
 <li><p>Final-horizon function-value parameters are obtained with
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_function_value_suboptimality" title="autolyap.IterationDependent.get_parameters_function_value_suboptimality"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationDependent.get_parameters_function_value_suboptimality</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_function_value_suboptimality" title="autolyap.IterationDependent.get_parameters_function_value_suboptimality"><code class="xref py py-meth docutils literal notranslate">IterationDependent.get_parameters_function_value_suboptimality</code></a>.</p></li>
 <li><p>The certificate constant is computed with
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationDependent.search_lyapunov</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate">IterationDependent.search_lyapunov</code></a>.</p></li>
 </ul>
 </section>
 <section id="run-the-iteration-dependent-analysis">
 <h2>Run the iteration-dependent analysis<a class="headerlink" href="#run-the-iteration-dependent-analysis" title="Link to this heading"></a></h2>
-<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate"><span class="pre">backend=&quot;mosek_fusion&quot;</span></code>).
+<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate">backend=&quot;mosek_fusion&quot;</code>).
 Install the optional MOSEK dependency first:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;autolyap[mosek]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">&quot;autolyap[mosek]&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">autolyap</span><span class="w"> </span><span class="kn">import</span> <span class="n">IterationDependent</span><span class="p">,</span> <span class="n">SolverOptions</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">OptimizedGradientMethod</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">InclusionProblem</span><span class="p">,</span> <span class="n">SmoothConvex</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">autolyap</span> <span class="kn">import</span> IterationDependent, SolverOptions
+<span class="kn">from</span> <span class="nn">autolyap.algorithms</span> <span class="kn">import</span> OptimizedGradientMethod
+<span class="kn">from</span> <span class="nn">autolyap.problemclass</span> <span class="kn">import</span> InclusionProblem, SmoothConvex
 
-<span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>
+L <span class="o">=</span> <span class="mf">1.0</span>
+K <span class="o">=</span> <span class="mi">5</span>
 
-<span class="n">problem</span> <span class="o">=</span> <span class="n">InclusionProblem</span><span class="p">([</span><span class="n">SmoothConvex</span><span class="p">(</span><span class="n">L</span><span class="p">)])</span>
-<span class="n">algorithm</span> <span class="o">=</span> <span class="n">OptimizedGradientMethod</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>
-<span class="n">solver_options</span> <span class="o">=</span> <span class="n">SolverOptions</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span><span class="p">)</span>
+problem <span class="o">=</span> InclusionProblem([SmoothConvex(L)])
+algorithm <span class="o">=</span> OptimizedGradientMethod(L<span class="o">=</span>L, K<span class="o">=</span>K)
+solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>)
 <span class="c1"># License-free option:</span>
 <span class="c1"># solver_options = SolverOptions(backend=&quot;cvxpy&quot;, cvxpy_solver=&quot;CLARABEL&quot;)</span>
 
-<span class="n">Q_0</span><span class="p">,</span> <span class="n">q_0</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">get_parameters_distance_to_solution</span><span class="p">(</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="mi">0</span><span class="p">,</span>
-    <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">Q_K</span><span class="p">,</span> <span class="n">q_K</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">get_parameters_function_value_suboptimality</span><span class="p">(</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="n">K</span><span class="p">,</span>
-<span class="p">)</span>
+Q_0, q_0 <span class="o">=</span> IterationDependent<span class="o">.</span>get_parameters_distance_to_solution(
+    algorithm,
+    <span class="mi">0</span>,
+    i<span class="o">=</span><span class="mi">1</span>,
+    j<span class="o">=</span><span class="mi">1</span>,
+)
+Q_K, q_K <span class="o">=</span> IterationDependent<span class="o">.</span>get_parameters_function_value_suboptimality(
+    algorithm,
+    K,
+)
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">IterationDependent</span><span class="o">.</span><span class="n">search_lyapunov</span><span class="p">(</span>
-    <span class="n">problem</span><span class="p">,</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="n">K</span><span class="p">,</span>
-    <span class="n">Q_0</span><span class="p">,</span>
-    <span class="n">Q_K</span><span class="p">,</span>
-    <span class="n">q_0</span><span class="o">=</span><span class="n">q_0</span><span class="p">,</span>
-    <span class="n">q_K</span><span class="o">=</span><span class="n">q_K</span><span class="p">,</span>
-    <span class="n">solver_options</span><span class="o">=</span><span class="n">solver_options</span><span class="p">,</span>
-<span class="p">)</span>
+result <span class="o">=</span> IterationDependent<span class="o">.</span>search_lyapunov(
+    problem,
+    algorithm,
+    K,
+    Q_0,
+    Q_K,
+    q_0<span class="o">=</span>q_0,
+    q_K<span class="o">=</span>q_K,
+    solver_options<span class="o">=</span>solver_options,
+)
 
-<span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No feasible chained Lyapunov certificate for this setup.&quot;</span><span class="p">)</span>
+<span class="k">if</span> result[<span class="s2">&quot;status&quot;</span>] <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span>:
+    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">&quot;No feasible chained Lyapunov certificate for this setup.&quot;</span>)
 
-<span class="n">c_K</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;c_K&quot;</span><span class="p">]</span>
-<span class="n">theta_K</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">compute_theta</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
-<span class="n">c_K_theory</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">theta_K</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+c_K <span class="o">=</span> result[<span class="s2">&quot;c_K&quot;</span>]
+theta_K <span class="o">=</span> algorithm<span class="o">.</span>compute_theta(K, K)
+c_K_theory <span class="o">=</span> L <span class="o">/</span> (<span class="mf">2.0</span> <span class="o">*</span> theta_K <span class="o">**</span> <span class="mi">2</span>)
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c_K (AutoLyap): </span><span class="si">{</span><span class="n">c_K</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c_K (theory):   </span><span class="si">{</span><span class="n">c_K_theory</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;c_K (AutoLyap): </span><span class="si">{</span>c_K<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;c_K (theory):   </span><span class="si">{</span>c_K_theory<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span>)
 </pre></div>
 </div>
-<p>What to inspect in <code class="docutils literal notranslate"><span class="pre">result</span></code>:</p>
+<p>What to inspect in <code class="docutils literal notranslate">result</code>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">result[&quot;status&quot;]</span></code>: <code class="docutils literal notranslate"><span class="pre">feasible</span></code>, <code class="docutils literal notranslate"><span class="pre">infeasible</span></code>, or <code class="docutils literal notranslate"><span class="pre">not_solved</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">result[&quot;solve_status&quot;]</span></code>: raw backend status.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">result[&quot;c_K&quot;]</span></code>: certified finite-horizon constant when feasible.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">result[&quot;certificate&quot;]</span></code>: chained Lyapunov certificate matrices/vectors.</p></li>
+<li><p><code class="docutils literal notranslate">result[&quot;status&quot;]</code>: <code class="docutils literal notranslate">feasible</code>, <code class="docutils literal notranslate">infeasible</code>, or <code class="docutils literal notranslate">not_solved</code>.</p></li>
+<li><p><code class="docutils literal notranslate">result[&quot;solve_status&quot;]</code>: raw backend status.</p></li>
+<li><p><code class="docutils literal notranslate">result[&quot;c_K&quot;]</code>: certified finite-horizon constant when feasible.</p></li>
+<li><p><code class="docutils literal notranslate">result[&quot;certificate&quot;]</code>: chained Lyapunov certificate matrices/vectors.</p></li>
 </ul>
-<p>The computed value <code class="docutils literal notranslate"><span class="pre">c_K</span> <span class="pre">(AutoLyap)</span></code> matches (up to solver numerical
-tolerances) the theoretical horizon-<code class="docutils literal notranslate"><span class="pre">K</span></code> expression:</p>
+<p>The computed value <code class="docutils literal notranslate">c_K (AutoLyap)</code> matches (up to solver numerical
+tolerances) the theoretical horizon-<code class="docutils literal notranslate">K</code> expression:</p>
 <div class="math notranslate nohighlight">
 \[f(x^K) - f(x^\star) \le c_K\,\|x^0 - x^\star\|^2, \qquad
 c_K = \frac{L}{2\theta_K^2}.\]</div>
@@ -354,7 +353,7 @@ dots.</p>
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
 <div class="docutils container" id="id2">
 <div role="list" class="citation-list">
-<div class="citation" id="id108" role="doc-biblioentry">
+<div class="citation" id="id108" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">KF15</a><span class="fn-bracket">]</span></span>
 <p>Donghwan Kim and Jeffrey A. Fessler. Optimized first-order methods for smooth convex minimization. <em>Mathematical Programming</em>, 159(1-2):81–107, October 2015. <a class="reference external" href="https://doi.org/10.1007/s10107-015-0949-3">doi:10.1007/s10107-015-0949-3</a>.</p>
 </div>

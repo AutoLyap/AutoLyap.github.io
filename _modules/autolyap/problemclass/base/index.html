@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.problemclass.base</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/problemclass/base/" />
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../../_static/copybutton.js?v=36830154"></script>
@@ -26,9 +28,6 @@
     <link rel="index" title="Index" href="../../../../genindex/" />
     <link rel="search" title="Search" href="../../../../search/" />
  
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../../_static/favicon.png"/>
@@ -155,25 +154,25 @@
            <div itemprop="articleBody">
              
   <h1>Source code for autolyap.problemclass.base</h1><div class="highlight"><pre>
-<span></span><span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
+<span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
 <span class="sd">&quot;&quot;&quot;Abstract interpolation-condition interfaces.&quot;&quot;&quot;</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> ABC, abstractmethod
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> List, Sequence, Tuple, Union
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass.indices</span><span class="w"> </span><span class="kn">import</span> <span class="n">_InterpolationIndices</span>
+<span class="kn">from</span> <span class="nn">autolyap.problemclass.indices</span> <span class="kn">import</span> _InterpolationIndices
 
-<span class="n">OperatorInterpolationData</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]</span>
-<span class="n">FunctionInterpolationData</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">_InterpolationIndices</span><span class="p">]</span>
-<span class="n">InterpolationData</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">OperatorInterpolationData</span><span class="p">,</span> <span class="n">FunctionInterpolationData</span><span class="p">]</span>
+OperatorInterpolationData <span class="o">=</span> Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]
+FunctionInterpolationData <span class="o">=</span> Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, <span class="nb">bool</span>, _InterpolationIndices]
+InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, FunctionInterpolationData]
 
 <div class="viewcode-block" id="_InterpolationCondition">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._InterpolationCondition">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">_InterpolationCondition</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">_InterpolationCondition</span>(ABC):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Abstract base class for an interpolation condition.</span>
 
 <span class="sd">    Class-level reference</span>
@@ -192,8 +191,8 @@
 <div class="viewcode-block" id="_InterpolationCondition.get_data">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._InterpolationCondition.get_data">[docs]</a>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">InterpolationData</span><span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> Sequence[InterpolationData]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return interpolation data.</span>
 
 <span class="sd">        Shared tuple conventions follow the class-level reference in</span>
@@ -211,8 +210,8 @@
 
 <div class="viewcode-block" id="_OperatorInterpolationCondition">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">_OperatorInterpolationCondition</span><span class="p">(</span><span class="n">_InterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">_OperatorInterpolationCondition</span>(_InterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for operator interpolation conditions.</span>
 
 <span class="sd">    Class-level reference</span>
@@ -259,8 +258,8 @@
 <div class="viewcode-block" id="_OperatorInterpolationCondition.get_data">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition.get_data">[docs]</a>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">OperatorInterpolationData</span><span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> Sequence[OperatorInterpolationData]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return operator interpolation data.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -278,8 +277,8 @@
 
 <div class="viewcode-block" id="_FunctionInterpolationCondition">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._FunctionInterpolationCondition">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">_FunctionInterpolationCondition</span><span class="p">(</span><span class="n">_InterpolationCondition</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">_FunctionInterpolationCondition</span>(_InterpolationCondition):
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for function interpolation conditions.</span>
 
 <span class="sd">    Class-level reference</span>
@@ -346,8 +345,8 @@
 <div class="viewcode-block" id="_FunctionInterpolationCondition.get_data">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._FunctionInterpolationCondition.get_data">[docs]</a>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">FunctionInterpolationData</span><span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> Sequence[FunctionInterpolationData]:
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return function interpolation data.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>

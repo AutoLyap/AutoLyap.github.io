@@ -8,19 +8,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>The proximal gradient method | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/examples/define_your_own_algorithm/proximal_gradient_method/" />
+  <link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../_static/copybutton.js?v=36830154"></script>
     <script defer="defer" src="../../../_static/content_width_toggle.js?v=eb58c7cb"></script>
-    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"loader":{"load":["ui/lazy"]},"options":{"lazyMargin":"200px","lazyAlwaysTypeset":[".math.math-initial"]},"tex":{"packages":{"[+]":[]},"macros":{"reals":"\\mathbb{R}","naturals":"\\mathbb{N}_{0}","calH":"\\mathcal{H}","prox":"{\\rm{prox}}","kron":"\\otimes","minimize":"\\operatorname*{minimize}","Argmin":"\\operatorname*{Argmin}","Id":"\\operatorname*{Id}","bx":"\\mathbf{x}","bu":"\\mathbf{u}","by":"\\mathbf{y}","bfcn":"\\mathbf{f}","IndexOp":"\\mathcal{I}_{\\textup{op}}","IndexFunc":"\\mathcal{I}_{\\textup{func}}"}}}</script>
+    <script crossorigin="anonymous" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
   <script defer="defer" src="../../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -31,11 +35,6 @@
     <link rel="next" title="Nesterov’s fast gradient method" href="../../nesterov_fast_gradient/" />
     <link rel="prev" title="Define your own algorithm" href="../" />
  
-<link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../_static/favicon.png"/>
@@ -168,7 +167,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#step-2-update-rule-and-equivalent-inclusion">Step 2: Update rule and equivalent inclusion</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#step-3-state-space-representation">Step 3: State-space representation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#step-4-implement-the-custom-algorithm">Step 4: Implement the custom algorithm</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#step-5-build-inclusionproblem-and-run-the-analysis">Step 5: Build <code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code> and run the analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-5-build-inclusionproblem-and-run-the-analysis">Step 5: Build <code class="xref py py-class docutils literal notranslate">InclusionProblem</code> and run the analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -234,12 +233,12 @@
 <section id="the-proximal-gradient-method">
 <h1>The proximal gradient method<a class="headerlink" href="#the-proximal-gradient-method" title="Link to this heading"></a></h1>
 <p>This example shows how to define a custom
-<a class="reference internal" href="../../../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a> for proximal gradient and
+<a class="reference internal" href="../../../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate">Algorithm</code></a> for proximal gradient and
 then analyze its convergence with AutoLyap.</p>
 <p>We consider the composite minimization problem</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[\minimize_{x \in \calH} \; f(x) + g(x) \quad  \iff \quad \text{find } x \in \calH \text{ such that } 0 \in \nabla f(x) + \partial g(x),\]</div>
-<p>where <span class="math notranslate nohighlight">\(f\)</span> is <span class="math notranslate nohighlight">\(L\)</span>-smooth and <span class="math notranslate nohighlight">\(\mu\)</span>-strongly convex with
+<p>where <span class="math notranslate nohighlight math-initial">\(f\)</span> is <span class="math notranslate nohighlight math-initial">\(L\)</span>-smooth and <span class="math notranslate nohighlight math-initial">\(\mu\)</span>-strongly convex with
 <span class="math notranslate nohighlight">\(0&lt;\mu&lt;L\)</span>, and <span class="math notranslate nohighlight">\(g\)</span> is proper, lower semicontinuous, and convex.</p>
 <p>For an initial point <span class="math notranslate nohighlight">\(x^0 \in \calH\)</span> and step size
 <span class="math notranslate nohighlight">\(\gamma \in \reals_{++}\)</span> with <span class="math notranslate nohighlight">\(0 &lt; \gamma &lt; 2/L\)</span>, the proximal
@@ -295,7 +294,7 @@ AutoLyap:</p>
 <section id="step-3-state-space-representation">
 <h2>Step 3: State-space representation<a class="headerlink" href="#step-3-state-space-representation" title="Link to this heading"></a></h2>
 <p>Match the base representation used by
-<a class="reference internal" href="../../../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Algorithm</span></code></a></p>
+<a class="reference internal" href="../../../base_algorithms/#autolyap.algorithms.Algorithm" title="autolyap.algorithms.Algorithm"><code class="xref py py-class docutils literal notranslate">Algorithm</code></a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
 \bx^{k+1} &amp;= (A_k \kron \Id)\bx^k + (B_k \kron \Id)\bu^k,\\
@@ -330,97 +329,97 @@ D_k &amp;=
 </section>
 <section id="step-4-implement-the-custom-algorithm">
 <h2>Step 4: Implement the custom algorithm<a class="headerlink" href="#step-4-implement-the-custom-algorithm" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> Tuple
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Algorithm</span>
+<span class="kn">from</span> <span class="nn">autolyap.algorithms</span> <span class="kn">import</span> Algorithm
 
-<span class="k">class</span><span class="w"> </span><span class="nc">ProximalGradientMethod</span><span class="p">(</span><span class="n">Algorithm</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m_bar_is</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">I_func</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">I_op</span><span class="o">=</span><span class="p">[])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_gamma</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ProximalGradientMethod</span>(Algorithm):
+    <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, gamma):
+        <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(n<span class="o">=</span><span class="mi">1</span>, m<span class="o">=</span><span class="mi">2</span>, m_bar_is<span class="o">=</span>[<span class="mi">1</span>, <span class="mi">1</span>], I_func<span class="o">=</span>[<span class="mi">1</span>, <span class="mi">2</span>], I_op<span class="o">=</span>[])
+        <span class="bp">self</span><span class="o">.</span>set_gamma(gamma)
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_gamma</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span>
+    <span class="k">def</span> <span class="nf">set_gamma</span>(<span class="bp">self</span>, gamma: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+        <span class="bp">self</span><span class="o">.</span>gamma <span class="o">=</span> gamma
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_ABCD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">]])</span>
-        <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">]])</span>
-        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]])</span>
-        <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-            <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
-            <span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">],</span>
-        <span class="p">])</span>
-        <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span>
+    <span class="k">def</span> <span class="nf">get_ABCD</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray]:
+        A <span class="o">=</span> np<span class="o">.</span>array([[<span class="mf">1.0</span>]])
+        B <span class="o">=</span> np<span class="o">.</span>array([[<span class="o">-</span><span class="bp">self</span><span class="o">.</span>gamma, <span class="o">-</span><span class="bp">self</span><span class="o">.</span>gamma]])
+        C <span class="o">=</span> np<span class="o">.</span>array([[<span class="mf">1.0</span>], [<span class="mf">1.0</span>]])
+        D <span class="o">=</span> np<span class="o">.</span>array([
+            [<span class="mf">0.0</span>, <span class="mf">0.0</span>],
+            [<span class="o">-</span><span class="bp">self</span><span class="o">.</span>gamma, <span class="o">-</span><span class="bp">self</span><span class="o">.</span>gamma],
+        ])
+        <span class="k">return</span> A, B, C, D
 </pre></div>
 </div>
 </section>
 <section id="step-5-build-inclusionproblem-and-run-the-analysis">
-<h2>Step 5: Build <a class="reference internal" href="../../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a> and run the analysis<a class="headerlink" href="#step-5-build-inclusionproblem-and-run-the-analysis" title="Link to this heading"></a></h2>
-<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate"><span class="pre">backend=&quot;mosek_fusion&quot;</span></code>).
+<h2>Step 5: Build <a class="reference internal" href="../../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate">InclusionProblem</code></a> and run the analysis<a class="headerlink" href="#step-5-build-inclusionproblem-and-run-the-analysis" title="Link to this heading"></a></h2>
+<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate">backend=&quot;mosek_fusion&quot;</code>).
 Install the optional MOSEK dependency first:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;autolyap[mosek]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">&quot;autolyap[mosek]&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">autolyap</span><span class="w"> </span><span class="kn">import</span> <span class="n">IterationIndependent</span><span class="p">,</span> <span class="n">SolverOptions</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">Convex</span><span class="p">,</span> <span class="n">InclusionProblem</span><span class="p">,</span> <span class="n">SmoothStronglyConvex</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">autolyap</span> <span class="kn">import</span> IterationIndependent, SolverOptions
+<span class="kn">from</span> <span class="nn">autolyap.problemclass</span> <span class="kn">import</span> Convex, InclusionProblem, SmoothStronglyConvex
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">validate_parameters</span><span class="p">(</span><span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">mu</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid parameters: require 0 &lt; mu &lt; L. Got mu=</span><span class="si">{</span><span class="n">mu</span><span class="si">}</span><span class="s2">, L=</span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s2">.&quot;</span>
-        <span class="p">)</span>
+<span class="k">def</span> <span class="nf">validate_parameters</span>(mu: <span class="nb">float</span>, L: <span class="nb">float</span>, gamma: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
+    <span class="k">if</span> <span class="ow">not</span> (<span class="mf">0.0</span> <span class="o">&lt;</span> mu <span class="o">&lt;</span> L):
+        <span class="k">raise</span> <span class="ne">ValueError</span>(
+            <span class="sa">f</span><span class="s2">&quot;Invalid parameters: require 0 &lt; mu &lt; L. Got mu=</span><span class="si">{</span>mu<span class="si">}</span><span class="s2">, L=</span><span class="si">{</span>L<span class="si">}</span><span class="s2">.&quot;</span>
+        )
 
-    <span class="n">gamma_max</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">L</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">gamma</span> <span class="o">&lt;</span> <span class="n">gamma_max</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid parameters: require 0 &lt; gamma &lt; 2/L. Got gamma=</span><span class="si">{</span><span class="n">gamma</span><span class="si">}</span><span class="s2">, 2/L=</span><span class="si">{</span><span class="n">gamma_max</span><span class="si">}</span><span class="s2">.&quot;</span>
-        <span class="p">)</span>
+    gamma_max <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span> L
+    <span class="k">if</span> <span class="ow">not</span> (<span class="mf">0.0</span> <span class="o">&lt;</span> gamma <span class="o">&lt;</span> gamma_max):
+        <span class="k">raise</span> <span class="ne">ValueError</span>(
+            <span class="sa">f</span><span class="s2">&quot;Invalid parameters: require 0 &lt; gamma &lt; 2/L. Got gamma=</span><span class="si">{</span>gamma<span class="si">}</span><span class="s2">, 2/L=</span><span class="si">{</span>gamma_max<span class="si">}</span><span class="s2">.&quot;</span>
+        )
 
 
-<span class="n">mu</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">L</span> <span class="o">=</span> <span class="mf">4.0</span>
-<span class="n">gamma</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="n">mu</span><span class="p">)</span>
-<span class="n">validate_parameters</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+mu <span class="o">=</span> <span class="mf">1.0</span>
+L <span class="o">=</span> <span class="mf">4.0</span>
+gamma <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span> (L <span class="o">+</span> mu)
+validate_parameters(mu<span class="o">=</span>mu, L<span class="o">=</span>L, gamma<span class="o">=</span>gamma)
 
-<span class="n">problem</span> <span class="o">=</span> <span class="n">InclusionProblem</span><span class="p">([</span>
-    <span class="n">SmoothStronglyConvex</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">L</span><span class="p">),</span>    <span class="c1"># component i=1: f</span>
-    <span class="n">Convex</span><span class="p">(),</span>                       <span class="c1"># component i=2: g</span>
-<span class="p">])</span>
-<span class="n">algorithm</span> <span class="o">=</span> <span class="n">ProximalGradientMethod</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
-<span class="n">solver_options</span> <span class="o">=</span> <span class="n">SolverOptions</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span><span class="p">)</span>
+problem <span class="o">=</span> InclusionProblem([
+    SmoothStronglyConvex(mu, L),    <span class="c1"># component i=1: f</span>
+    Convex(),                       <span class="c1"># component i=2: g</span>
+])
+algorithm <span class="o">=</span> ProximalGradientMethod(gamma<span class="o">=</span>gamma)
+solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>)
 
-<span class="n">P</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">IterationIndependent</span><span class="o">.</span><span class="n">LinearConvergence</span><span class="o">.</span><span class="n">get_parameters_distance_to_solution</span><span class="p">(</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
+P, p, T, t <span class="o">=</span> IterationIndependent<span class="o">.</span>LinearConvergence<span class="o">.</span>get_parameters_distance_to_solution(
+    algorithm,
+    i<span class="o">=</span><span class="mi">1</span>,
+    j<span class="o">=</span><span class="mi">1</span>,
+)
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">IterationIndependent</span><span class="o">.</span><span class="n">LinearConvergence</span><span class="o">.</span><span class="n">bisection_search_rho</span><span class="p">(</span>
-    <span class="n">problem</span><span class="p">,</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="n">P</span><span class="p">,</span>
-    <span class="n">T</span><span class="p">,</span>
-    <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span>
-    <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
-    <span class="n">S_equals_T</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">s_equals_t</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">remove_C3</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">solver_options</span><span class="o">=</span><span class="n">solver_options</span><span class="p">,</span>
-<span class="p">)</span>
+result <span class="o">=</span> IterationIndependent<span class="o">.</span>LinearConvergence<span class="o">.</span>bisection_search_rho(
+    problem,
+    algorithm,
+    P,
+    T,
+    p<span class="o">=</span>p,
+    t<span class="o">=</span>t,
+    S_equals_T<span class="o">=</span><span class="kc">True</span>,
+    s_equals_t<span class="o">=</span><span class="kc">True</span>,
+    remove_C3<span class="o">=</span><span class="kc">True</span>,
+    solver_options<span class="o">=</span>solver_options,
+)
 
-<span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No feasible Lyapunov certificate in the requested rho interval.&quot;</span><span class="p">)</span>
+<span class="k">if</span> result[<span class="s2">&quot;status&quot;</span>] <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span>:
+    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">&quot;No feasible Lyapunov certificate in the requested rho interval.&quot;</span>)
 
-<span class="n">rho_autolyap</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">]</span>
-<span class="n">rho_taylor</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+rho_autolyap <span class="o">=</span> result[<span class="s2">&quot;rho&quot;</span>]
+rho_taylor <span class="o">=</span> <span class="nb">max</span>(<span class="nb">abs</span>(<span class="mf">1.0</span> <span class="o">-</span> L <span class="o">*</span> gamma), <span class="nb">abs</span>(<span class="mf">1.0</span> <span class="o">-</span> mu <span class="o">*</span> gamma)) <span class="o">**</span> <span class="mi">2</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (AutoLyap):  </span><span class="si">{</span><span class="n">rho_autolyap</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (theory):    </span><span class="si">{</span><span class="n">rho_taylor</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;rho (AutoLyap):  </span><span class="si">{</span>rho_autolyap<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;rho (theory):    </span><span class="si">{</span>rho_taylor<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span>)
 </pre></div>
 </div>
-<p>The computed value <code class="docutils literal notranslate"><span class="pre">rho</span> <span class="pre">(AutoLyap)</span></code> matches (up to solver numerical
+<p>The computed value <code class="docutils literal notranslate">rho (AutoLyap)</code> matches (up to solver numerical
 tolerances) the closed-form theoretical rate expression in <span id="id1">[<a class="reference internal" href="#id193" title="Adrien B. Taylor, Julien M. Hendrickx, and Francois Glineur. The exact worst-case convergence rate of the proximal gradient method for composite convex optimization. Journal of Optimization Theory and Applications, 178(2):455–476, 2018. doi:10.1007/s10957-018-1298-1.">THG18</a>]</span>,
 Theorem 2.1, i.e.,</p>
 <div class="math notranslate nohighlight">
@@ -441,7 +440,7 @@ as blue dots.</p>
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
 <div class="docutils container" id="id2">
 <div role="list" class="citation-list">
-<div class="citation" id="id193" role="doc-biblioentry">
+<div class="citation" id="id193" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">THG18</a><span class="fn-bracket">]</span></span>
 <p>Adrien B. Taylor, Julien M. Hendrickx, and Francois Glineur. The exact worst-case convergence rate of the proximal gradient method for composite convex optimization. <em>Journal of Optimization Theory and Applications</em>, 178(2):455–476, 2018. <a class="reference external" href="https://doi.org/10.1007/s10957-018-1298-1">doi:10.1007/s10957-018-1298-1</a>.</p>
 </div>

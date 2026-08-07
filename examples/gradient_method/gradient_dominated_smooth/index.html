@@ -8,19 +8,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Gradient Method: Smooth Gradient-Dominated Rate | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/" />
+  <link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../_static/copybutton.js?v=36830154"></script>
     <script defer="defer" src="../../../_static/content_width_toggle.js?v=eb58c7cb"></script>
-    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"loader":{"load":["ui/lazy"]},"options":{"lazyMargin":"200px","lazyAlwaysTypeset":[".math.math-initial"]},"tex":{"packages":{"[+]":[]},"macros":{"reals":"\\mathbb{R}","naturals":"\\mathbb{N}_{0}","calH":"\\mathcal{H}","minimize":"\\operatorname*{minimize}","Argmin":"\\operatorname*{Argmin}","set":["\\mathord{\\left.\\{ #1 \\} \\right. }",1]}}}</script>
+    <script crossorigin="anonymous" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
   <script defer="defer" src="../../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -31,11 +35,6 @@
     <link rel="next" title="The gradient method: Smooth and strongly convex" href="../smooth_strongly_convex/" />
     <link rel="prev" title="The gradient method" href="../" />
  
-<link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../_static/favicon.png"/>
@@ -235,10 +234,10 @@
 <section id="problem-setup">
 <h2>Problem setup<a class="headerlink" href="#problem-setup" title="Link to this heading"></a></h2>
 <p>Consider the unconstrained minimization problem</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[\minimize_{x \in \calH} f(x) \quad \iff \quad \text{find } x \in \calH \;\text{ such that }\; 0 \in \partial f(x) = \set{\nabla f(x)},\]</div>
-<p>where <span class="math notranslate nohighlight">\(f : \calH \to \reals\)</span> is <span class="math notranslate nohighlight">\(\mu_{\textup{gd}}\)</span>-gradient
-dominated and <span class="math notranslate nohighlight">\(L\)</span>-smooth with <span class="math notranslate nohighlight">\(0&lt;\mu_{\textup{gd}}\le L\)</span>. This
+<p>where <span class="math notranslate nohighlight math-initial">\(f : \calH \to \reals\)</span> is <span class="math notranslate nohighlight math-initial">\(\mu_{\textup{gd}}\)</span>-gradient
+dominated and <span class="math notranslate nohighlight math-initial">\(L\)</span>-smooth with <span class="math notranslate nohighlight">\(0&lt;\mu_{\textup{gd}}\le L\)</span>. This
 setting is not necessarily convex.</p>
 <p>For an initial point <span class="math notranslate nohighlight">\(x^0 \in \calH\)</span> and step size
 <span class="math notranslate nohighlight">\(0 &lt; \gamma &lt; 2/L\)</span>, the gradient update is</p>
@@ -257,93 +256,93 @@ x^{k+1} = x^k - \gamma \nabla f(x^k).\]</div>
 <h2>Model the problem in AutoLyap and search for the smallest rho<a class="headerlink" href="#model-the-problem-in-autolyap-and-search-for-the-smallest-rho" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f\)</span> is modeled as an intersection of
-<a class="reference internal" href="../../../function_classes/#autolyap.problemclass.GradientDominated" title="autolyap.problemclass.GradientDominated"><code class="xref py py-class docutils literal notranslate"><span class="pre">GradientDominated</span></code></a> and
-<a class="reference internal" href="../../../function_classes/#autolyap.problemclass.Smooth" title="autolyap.problemclass.Smooth"><code class="xref py py-class docutils literal notranslate"><span class="pre">Smooth</span></code></a>.</p></li>
+<a class="reference internal" href="../../../function_classes/#autolyap.problemclass.GradientDominated" title="autolyap.problemclass.GradientDominated"><code class="xref py py-class docutils literal notranslate">GradientDominated</code></a> and
+<a class="reference internal" href="../../../function_classes/#autolyap.problemclass.Smooth" title="autolyap.problemclass.Smooth"><code class="xref py py-class docutils literal notranslate">Smooth</code></a>.</p></li>
 <li><p>The optimization problem is represented by
-<a class="reference internal" href="../../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">InclusionProblem</span></code></a>.</p></li>
+<a class="reference internal" href="../../../problem_class/#autolyap.problemclass.InclusionProblem" title="autolyap.problemclass.InclusionProblem"><code class="xref py py-class docutils literal notranslate">InclusionProblem</code></a>.</p></li>
 <li><p>The update rule is represented by
-<a class="reference internal" href="../../../concrete_algorithms/#autolyap.algorithms.GradientMethod" title="autolyap.algorithms.GradientMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">GradientMethod</span></code></a>.</p></li>
+<a class="reference internal" href="../../../concrete_algorithms/#autolyap.algorithms.GradientMethod" title="autolyap.algorithms.GradientMethod"><code class="xref py py-class docutils literal notranslate">GradientMethod</code></a>.</p></li>
 <li><p>Function-value parameters are obtained with
-<a class="reference internal" href="../../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.get_parameters_function_value_suboptimality" title="autolyap.IterationIndependent.LinearConvergence.get_parameters_function_value_suboptimality"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationIndependent.LinearConvergence.get_parameters_function_value_suboptimality</span></code></a>.</p></li>
+<a class="reference internal" href="../../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.get_parameters_function_value_suboptimality" title="autolyap.IterationIndependent.LinearConvergence.get_parameters_function_value_suboptimality"><code class="xref py py-meth docutils literal notranslate">IterationIndependent.LinearConvergence.get_parameters_function_value_suboptimality</code></a>.</p></li>
 <li><p>The contraction factor is searched with
-<a class="reference internal" href="../../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho" title="autolyap.IterationIndependent.LinearConvergence.bisection_search_rho"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IterationIndependent.LinearConvergence.bisection_search_rho</span></code></a>.</p></li>
+<a class="reference internal" href="../../../iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho" title="autolyap.IterationIndependent.LinearConvergence.bisection_search_rho"><code class="xref py py-meth docutils literal notranslate">IterationIndependent.LinearConvergence.bisection_search_rho</code></a>.</p></li>
 </ul>
 </section>
 <section id="run-the-iteration-independent-analysis">
 <h2>Run the iteration-independent analysis<a class="headerlink" href="#run-the-iteration-independent-analysis" title="Link to this heading"></a></h2>
-<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate"><span class="pre">backend=&quot;mosek_fusion&quot;</span></code>).
+<p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate">backend=&quot;mosek_fusion&quot;</code>).
 Install the optional MOSEK dependency first:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;autolyap[mosek]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">&quot;autolyap[mosek]&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolverOptions</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientMethod</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.problemclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientDominated</span><span class="p">,</span> <span class="n">InclusionProblem</span><span class="p">,</span> <span class="n">Smooth</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.iteration_independent</span><span class="w"> </span><span class="kn">import</span> <span class="n">IterationIndependent</span>
+<span class="kn">from</span> <span class="nn">autolyap</span> <span class="kn">import</span> SolverOptions
+<span class="kn">from</span> <span class="nn">autolyap.algorithms</span> <span class="kn">import</span> GradientMethod
+<span class="kn">from</span> <span class="nn">autolyap.problemclass</span> <span class="kn">import</span> GradientDominated, InclusionProblem, Smooth
+<span class="kn">from</span> <span class="nn">autolyap.iteration_independent</span> <span class="kn">import</span> IterationIndependent
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">rho_theory_theorem3_specialized</span><span class="p">(</span><span class="n">mu_gd</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">rho_theory_theorem3_specialized</span>(mu_gd: <span class="nb">float</span>, L: <span class="nb">float</span>, gamma: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
     <span class="c1"># Theorem 3 in abbaszadehpeivasti2023conditionslinearconvergence,</span>
     <span class="c1"># specialized to the L-smooth (possibly nonconvex) setting via mu = -L.</span>
-    <span class="n">threshold_1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">L</span>
-    <span class="n">threshold_2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span>
+    threshold_1 <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> L
+    threshold_2 <span class="o">=</span> math<span class="o">.</span>sqrt(<span class="mf">3.0</span>) <span class="o">/</span> L
 
-    <span class="k">if</span> <span class="n">gamma</span> <span class="o">&lt;</span> <span class="n">threshold_1</span><span class="p">:</span>
-        <span class="n">discriminant</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="n">L</span> <span class="o">-</span> <span class="p">(</span>
-            <span class="mf">2.0</span> <span class="o">*</span> <span class="n">L</span> <span class="o">*</span> <span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="n">mu_gd</span><span class="p">)</span> <span class="o">*</span> <span class="n">mu_gd</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="n">discriminant</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">discriminant</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-        <span class="n">numerator</span> <span class="o">=</span> <span class="n">mu_gd</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">discriminant</span><span class="p">)</span>
-        <span class="n">denominator</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">L</span> <span class="o">+</span> <span class="n">mu_gd</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">if</span> gamma <span class="o">&lt;</span> threshold_1:
+        discriminant <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> L <span class="o">*</span> L <span class="o">-</span> (
+            <span class="mf">2.0</span> <span class="o">*</span> L <span class="o">*</span> (L <span class="o">+</span> mu_gd) <span class="o">*</span> mu_gd <span class="o">*</span> gamma <span class="o">*</span> (<span class="mf">2.0</span> <span class="o">-</span> L <span class="o">*</span> gamma)
+        )
+        discriminant <span class="o">=</span> <span class="nb">max</span>(discriminant, <span class="mf">0.0</span>)
+        numerator <span class="o">=</span> mu_gd <span class="o">*</span> (<span class="mf">1.0</span> <span class="o">-</span> L <span class="o">*</span> gamma) <span class="o">+</span> math<span class="o">.</span>sqrt(discriminant)
+        denominator <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> L <span class="o">+</span> mu_gd
+        <span class="k">return</span> (numerator <span class="o">/</span> denominator) <span class="o">**</span> <span class="mi">2</span>
 
-    <span class="k">if</span> <span class="n">gamma</span> <span class="o">&lt;=</span> <span class="n">threshold_2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu_gd</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">+</span> <span class="n">mu_gd</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span>
+    <span class="k">if</span> gamma <span class="o">&lt;=</span> threshold_2:
+        <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> (mu_gd <span class="o">*</span> gamma <span class="o">*</span> (<span class="mf">4.0</span> <span class="o">-</span> (L <span class="o">*</span> gamma) <span class="o">**</span> <span class="mi">2</span>)) <span class="o">/</span> (<span class="mf">2.0</span> <span class="o">+</span> mu_gd <span class="o">*</span> gamma)
 
-    <span class="n">numerator</span> <span class="o">=</span> <span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-    <span class="n">denominator</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">+</span> <span class="n">mu_gd</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">L</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+    numerator <span class="o">=</span> (L <span class="o">*</span> gamma <span class="o">-</span> <span class="mf">1.0</span>) <span class="o">**</span> <span class="mi">2</span>
+    denominator <span class="o">=</span> numerator <span class="o">+</span> mu_gd <span class="o">*</span> gamma <span class="o">*</span> (<span class="mf">2.0</span> <span class="o">-</span> L <span class="o">*</span> gamma)
+    <span class="k">return</span> numerator <span class="o">/</span> denominator
 
 
-<span class="n">mu_gd</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span>
+mu_gd <span class="o">=</span> <span class="mf">0.5</span>
+L <span class="o">=</span> <span class="mf">1.0</span>
+gamma <span class="o">=</span> <span class="mf">1.0</span>
 
-<span class="n">problem</span> <span class="o">=</span> <span class="n">InclusionProblem</span><span class="p">(</span>
-    <span class="p">[</span>
-        <span class="p">[</span><span class="n">GradientDominated</span><span class="p">(</span><span class="n">mu_gd</span><span class="o">=</span><span class="n">mu_gd</span><span class="p">),</span> <span class="n">Smooth</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">)],</span>  <span class="c1"># f in intersection</span>
-    <span class="p">]</span>
-<span class="p">)</span>
-<span class="n">algorithm</span> <span class="o">=</span> <span class="n">GradientMethod</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
-<span class="n">solver_options</span> <span class="o">=</span> <span class="n">SolverOptions</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span><span class="p">)</span>
+problem <span class="o">=</span> InclusionProblem(
+    [
+        [GradientDominated(mu_gd<span class="o">=</span>mu_gd), Smooth(L<span class="o">=</span>L)],  <span class="c1"># f in intersection</span>
+    ]
+)
+algorithm <span class="o">=</span> GradientMethod(gamma<span class="o">=</span>gamma)
+solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>)
 <span class="c1"># License-free option:</span>
 <span class="c1"># solver_options = SolverOptions(backend=&quot;cvxpy&quot;, cvxpy_solver=&quot;CLARABEL&quot;)</span>
 
-<span class="n">P</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">IterationIndependent</span><span class="o">.</span><span class="n">LinearConvergence</span><span class="o">.</span><span class="n">get_parameters_function_value_suboptimality</span><span class="p">(</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="n">tau</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="p">)</span>
+P, p, T, t <span class="o">=</span> IterationIndependent<span class="o">.</span>LinearConvergence<span class="o">.</span>get_parameters_function_value_suboptimality(
+    algorithm,
+    tau<span class="o">=</span><span class="mi">0</span>,
+)
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">IterationIndependent</span><span class="o">.</span><span class="n">LinearConvergence</span><span class="o">.</span><span class="n">bisection_search_rho</span><span class="p">(</span>
-    <span class="n">problem</span><span class="p">,</span>
-    <span class="n">algorithm</span><span class="p">,</span>
-    <span class="n">P</span><span class="p">,</span>
-    <span class="n">T</span><span class="p">,</span>
-    <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span>
-    <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
-    <span class="n">solver_options</span><span class="o">=</span><span class="n">solver_options</span><span class="p">,</span>
-<span class="p">)</span>
+result <span class="o">=</span> IterationIndependent<span class="o">.</span>LinearConvergence<span class="o">.</span>bisection_search_rho(
+    problem,
+    algorithm,
+    P,
+    T,
+    p<span class="o">=</span>p,
+    t<span class="o">=</span>t,
+    solver_options<span class="o">=</span>solver_options,
+)
 
-<span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No feasible Lyapunov certificate in the requested rho interval.&quot;</span><span class="p">)</span>
+<span class="k">if</span> result[<span class="s2">&quot;status&quot;</span>] <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span>:
+    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">&quot;No feasible Lyapunov certificate in the requested rho interval.&quot;</span>)
 
-<span class="n">rho_autolyap</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">]</span>
-<span class="n">rho_theory</span> <span class="o">=</span> <span class="n">rho_theory_theorem3_specialized</span><span class="p">(</span><span class="n">mu_gd</span><span class="o">=</span><span class="n">mu_gd</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
+rho_autolyap <span class="o">=</span> result[<span class="s2">&quot;rho&quot;</span>]
+rho_theory <span class="o">=</span> rho_theory_theorem3_specialized(mu_gd<span class="o">=</span>mu_gd, L<span class="o">=</span>L, gamma<span class="o">=</span>gamma)
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (AutoLyap): </span><span class="si">{</span><span class="n">rho_autolyap</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rho (theory):   </span><span class="si">{</span><span class="n">rho_theory</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;rho (AutoLyap): </span><span class="si">{</span>rho_autolyap<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;rho (theory):   </span><span class="si">{</span>rho_theory<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span>)
 </pre></div>
 </div>
 <p>In the <span class="math notranslate nohighlight">\(L\)</span>-smooth (possibly nonconvex) setting, we can specialize
@@ -385,7 +384,7 @@ which introduces a source of a priori conservatism.</p>
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
 <div class="docutils container" id="id3">
 <div role="list" class="citation-list">
-<div class="citation" id="id4" role="doc-biblioentry">
+<div class="citation" id="id4" role="listitem">
 <span class="label"><span class="fn-bracket">[</span>AdKZ23<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
 <p>Hadi Abbaszadehpeivasti, Etienne de Klerk, and Moslem Zamani. Conditions for linear convergence of the gradient method for non-convex optimization. <em>Optimization Letters</em>, 17(5):1105–1125, 2023. <a class="reference external" href="https://doi.org/10.1007/s11590-023-01981-2">doi:10.1007/s11590-023-01981-2</a>.</p>

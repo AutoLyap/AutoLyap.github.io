@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.solver_options</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/solver_options/" />
+  <link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../_static/copybutton.js?v=36830154"></script>
@@ -26,9 +28,6 @@
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
  
-<link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../_static/favicon.png"/>
@@ -155,58 +154,58 @@
            <div itemprop="articleBody">
              
   <h1>Source code for autolyap.solver_options</h1><div class="highlight"><pre>
-<span></span><span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
+<span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> dataclass
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> Any, Dict, Mapping, Optional
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.utils.backend_types</span><span class="w"> </span><span class="kn">import</span> <span class="n">CvxpyStatusModuleProtocol</span>
+<span class="kn">from</span> <span class="nn">autolyap.utils.backend_types</span> <span class="kn">import</span> CvxpyStatusModuleProtocol
 
 
-<span class="n">SUPPORTED_SOLVER_BACKENDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;mosek_fusion&quot;</span><span class="p">,</span> <span class="s2">&quot;cvxpy&quot;</span><span class="p">)</span>
-<span class="n">_DEFAULT_MOSEK_FUSION_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;intpntCoTolPfeas&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
-    <span class="s2">&quot;intpntCoTolDfeas&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
-    <span class="s2">&quot;intpntCoTolRelGap&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
-    <span class="s2">&quot;intpntMaxIterations&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="n">_DEFAULT_CVXPY_SOLVER_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;CLARABEL&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;max_iter&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
-        <span class="s2">&quot;tol_feas&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
-        <span class="s2">&quot;tol_gap_abs&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
-        <span class="s2">&quot;tol_gap_rel&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;SCS&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;eps&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">,</span>
-        <span class="s2">&quot;max_iters&quot;</span><span class="p">:</span> <span class="mi">200000</span><span class="p">,</span>
-        <span class="s2">&quot;acceleration_lookback&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;SDPA&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;maxIteration&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-        <span class="s2">&quot;epsilonStar&quot;</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">,</span>
-        <span class="s2">&quot;epsilonDash&quot;</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;COPT&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;SDPMethod&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;BarIterLimit&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-        <span class="s2">&quot;FeasTol&quot;</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">,</span>
-        <span class="s2">&quot;DualTol&quot;</span><span class="p">:</span> <span class="mf">1e-7</span><span class="p">,</span>
-        <span class="s2">&quot;RelGap&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
-        <span class="s2">&quot;AbsGap&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
-        <span class="s2">&quot;Presolve&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;Scaling&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;Dualize&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-    <span class="p">},</span>
-<span class="p">}</span>
+SUPPORTED_SOLVER_BACKENDS <span class="o">=</span> (<span class="s2">&quot;mosek_fusion&quot;</span>, <span class="s2">&quot;cvxpy&quot;</span>)
+_DEFAULT_MOSEK_FUSION_PARAMS <span class="o">=</span> {
+    <span class="s2">&quot;intpntCoTolPfeas&quot;</span>: <span class="mf">1e-8</span>,
+    <span class="s2">&quot;intpntCoTolDfeas&quot;</span>: <span class="mf">1e-8</span>,
+    <span class="s2">&quot;intpntCoTolRelGap&quot;</span>: <span class="mf">1e-8</span>,
+    <span class="s2">&quot;intpntMaxIterations&quot;</span>: <span class="mi">1000</span>,
+}
+_DEFAULT_CVXPY_SOLVER_PARAMS <span class="o">=</span> {
+    <span class="s2">&quot;CLARABEL&quot;</span>: {
+        <span class="s2">&quot;max_iter&quot;</span>: <span class="mi">2000</span>,
+        <span class="s2">&quot;tol_feas&quot;</span>: <span class="mf">1e-8</span>,
+        <span class="s2">&quot;tol_gap_abs&quot;</span>: <span class="mf">1e-8</span>,
+        <span class="s2">&quot;tol_gap_rel&quot;</span>: <span class="mf">1e-8</span>,
+    },
+    <span class="s2">&quot;SCS&quot;</span>: {
+        <span class="s2">&quot;eps&quot;</span>: <span class="mf">1e-6</span>,
+        <span class="s2">&quot;max_iters&quot;</span>: <span class="mi">200000</span>,
+        <span class="s2">&quot;acceleration_lookback&quot;</span>: <span class="mi">0</span>,
+    },
+    <span class="s2">&quot;SDPA&quot;</span>: {
+        <span class="s2">&quot;maxIteration&quot;</span>: <span class="mi">100</span>,
+        <span class="s2">&quot;epsilonStar&quot;</span>: <span class="mf">1e-7</span>,
+        <span class="s2">&quot;epsilonDash&quot;</span>: <span class="mf">1e-7</span>,
+    },
+    <span class="s2">&quot;COPT&quot;</span>: {
+        <span class="s2">&quot;SDPMethod&quot;</span>: <span class="mi">0</span>,
+        <span class="s2">&quot;BarIterLimit&quot;</span>: <span class="mi">500</span>,
+        <span class="s2">&quot;FeasTol&quot;</span>: <span class="mf">1e-7</span>,
+        <span class="s2">&quot;DualTol&quot;</span>: <span class="mf">1e-7</span>,
+        <span class="s2">&quot;RelGap&quot;</span>: <span class="mf">1e-8</span>,
+        <span class="s2">&quot;AbsGap&quot;</span>: <span class="mf">1e-8</span>,
+        <span class="s2">&quot;Presolve&quot;</span>: <span class="o">-</span><span class="mi">1</span>,
+        <span class="s2">&quot;Scaling&quot;</span>: <span class="o">-</span><span class="mi">1</span>,
+        <span class="s2">&quot;Dualize&quot;</span>: <span class="o">-</span><span class="mi">1</span>,
+    },
+}
 
 
 <div class="viewcode-block" id="SolverOptions">
 <a class="viewcode-back" href="../../../solver_backends/#autolyap.solver_options.SolverOptions">[docs]</a>
-<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">SolverOptions</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="nd">@dataclass</span>(frozen<span class="o">=</span><span class="kc">True</span>)
+<span class="k">class</span> <span class="nc">SolverOptions</span>:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Configure solver backend selection and backend-specific options.</span>
 
 <span class="sd">    **Used in**</span>
@@ -354,67 +353,67 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mosek_fusion&quot;</span>
-    <span class="n">mosek_params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">cvxpy_solver</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">cvxpy_solver_params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">cvxpy_accept_inaccurate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></div>
+    backend: <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mosek_fusion&quot;</span>
+    mosek_params: Optional[Mapping[<span class="nb">str</span>, Any]] <span class="o">=</span> <span class="kc">None</span>
+    cvxpy_solver: Optional[<span class="nb">str</span>] <span class="o">=</span> <span class="kc">None</span>
+    cvxpy_solver_params: Optional[Mapping[<span class="nb">str</span>, Any]] <span class="o">=</span> <span class="kc">None</span>
+    cvxpy_accept_inaccurate: <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 
 
 <div class="viewcode-block" id="_normalize_solver_options">
 <a class="viewcode-back" href="../../../dev/dev_internal_core/#autolyap.solver_options._normalize_solver_options">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_normalize_solver_options</span><span class="p">(</span><span class="n">options</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SolverOptions</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">SolverOptions</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">_normalize_solver_options</span>(options: Optional[SolverOptions]) <span class="o">-&gt;</span> SolverOptions:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Validate and normalize user-provided solver options.</span>
 
 <span class="sd">    If `options` is `None`, returns the default ``SolverOptions()`` profile.</span>
 <span class="sd">    Otherwise, this routine checks backend names, normalizes mapping fields,</span>
 <span class="sd">    and returns a sanitized immutable `SolverOptions` instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">SolverOptions</span><span class="p">()</span>
+    <span class="k">if</span> options <span class="ow">is</span> <span class="kc">None</span>:
+        <span class="k">return</span> SolverOptions()
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">SolverOptions</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(options, SolverOptions):
+        <span class="k">raise</span> <span class="ne">ValueError</span>(
             <span class="s2">&quot;solver_options must be an instance of autolyap.solver_options.SolverOptions or None.&quot;</span>
-        <span class="p">)</span>
+        )
 
-    <span class="n">backend</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">backend</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">backend</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SUPPORTED_SOLVER_BACKENDS</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Unsupported solver backend &#39;</span><span class="si">{</span><span class="n">options</span><span class="o">.</span><span class="n">backend</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;Expected one of </span><span class="si">{</span><span class="n">SUPPORTED_SOLVER_BACKENDS</span><span class="si">}</span><span class="s2">.&quot;</span>
-        <span class="p">)</span>
+    backend <span class="o">=</span> <span class="nb">str</span>(options<span class="o">.</span>backend)<span class="o">.</span>strip()<span class="o">.</span>lower()
+    <span class="k">if</span> backend <span class="ow">not</span> <span class="ow">in</span> SUPPORTED_SOLVER_BACKENDS:
+        <span class="k">raise</span> <span class="ne">ValueError</span>(
+            <span class="sa">f</span><span class="s2">&quot;Unsupported solver backend &#39;</span><span class="si">{</span>options<span class="o">.</span>backend<span class="si">}</span><span class="s2">&#39;. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Expected one of </span><span class="si">{</span>SUPPORTED_SOLVER_BACKENDS<span class="si">}</span><span class="s2">.&quot;</span>
+        )
 
-    <span class="n">mosek_params</span> <span class="o">=</span> <span class="n">_normalize_named_mapping</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">mosek_params</span><span class="p">,</span> <span class="s2">&quot;mosek_params&quot;</span><span class="p">)</span>
-    <span class="n">cvxpy_solver</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">cvxpy_solver</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">cvxpy_solver</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;cvxpy_solver cannot be an empty string.&quot;</span><span class="p">)</span>
-    <span class="n">cvxpy_solver_params</span> <span class="o">=</span> <span class="n">_normalize_cvxpy_solver_params</span><span class="p">(</span>
-        <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver</span><span class="p">,</span>
-        <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver_params</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">cvxpy_accept_inaccurate</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_accept_inaccurate</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cvxpy_accept_inaccurate</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;cvxpy_accept_inaccurate must be a bool.&quot;</span><span class="p">)</span>
+    mosek_params <span class="o">=</span> _normalize_named_mapping(options<span class="o">.</span>mosek_params, <span class="s2">&quot;mosek_params&quot;</span>)
+    cvxpy_solver <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> options<span class="o">.</span>cvxpy_solver <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>:
+        cvxpy_solver <span class="o">=</span> <span class="nb">str</span>(options<span class="o">.</span>cvxpy_solver)<span class="o">.</span>strip()
+        <span class="k">if</span> <span class="ow">not</span> cvxpy_solver:
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;cvxpy_solver cannot be an empty string.&quot;</span>)
+    cvxpy_solver_params <span class="o">=</span> _normalize_cvxpy_solver_params(
+        options<span class="o">.</span>cvxpy_solver,
+        options<span class="o">.</span>cvxpy_solver_params,
+    )
+    cvxpy_accept_inaccurate <span class="o">=</span> options<span class="o">.</span>cvxpy_accept_inaccurate
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(cvxpy_accept_inaccurate, <span class="nb">bool</span>):
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;cvxpy_accept_inaccurate must be a bool.&quot;</span>)
 
-    <span class="k">return</span> <span class="n">SolverOptions</span><span class="p">(</span>
-        <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
-        <span class="n">mosek_params</span><span class="o">=</span><span class="n">mosek_params</span><span class="p">,</span>
-        <span class="n">cvxpy_solver</span><span class="o">=</span><span class="n">cvxpy_solver</span><span class="p">,</span>
-        <span class="n">cvxpy_solver_params</span><span class="o">=</span><span class="n">cvxpy_solver_params</span><span class="p">,</span>
-        <span class="n">cvxpy_accept_inaccurate</span><span class="o">=</span><span class="n">cvxpy_accept_inaccurate</span><span class="p">,</span>
-    <span class="p">)</span></div>
+    <span class="k">return</span> SolverOptions(
+        backend<span class="o">=</span>backend,
+        mosek_params<span class="o">=</span>mosek_params,
+        cvxpy_solver<span class="o">=</span>cvxpy_solver,
+        cvxpy_solver_params<span class="o">=</span>cvxpy_solver_params,
+        cvxpy_accept_inaccurate<span class="o">=</span>cvxpy_accept_inaccurate,
+    )</div>
 
 
 
 <div class="viewcode-block" id="_get_cvxpy_solve_kwargs">
 <a class="viewcode-back" href="../../../dev/dev_internal_core/#autolyap.solver_options._get_cvxpy_solve_kwargs">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_cvxpy_solve_kwargs</span><span class="p">(</span><span class="n">options</span><span class="p">:</span> <span class="n">SolverOptions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">_get_cvxpy_solve_kwargs</span>(options: SolverOptions) <span class="o">-&gt;</span> Dict[<span class="nb">str</span>, Any]:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Build keyword arguments for ``cvxpy.Problem.solve(...)``.</span>
 
 <span class="sd">    Merges:</span>
@@ -424,67 +423,67 @@
 
 <span class="sd">    Always defaults ``warm_start=True`` unless explicitly overridden.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">kwargs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">solver_name</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver</span>
-        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;solver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">solver_name</span>
-        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-            <span class="nb">dict</span><span class="p">(</span><span class="n">_DEFAULT_CVXPY_SOLVER_PARAMS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">solver_name</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="p">{}))</span>
-        <span class="p">)</span>
-    <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver_params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">user_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver_params</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_solver</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;COPT&quot;</span><span class="p">:</span>
-            <span class="n">nested_copt_params</span> <span class="o">=</span> <span class="n">user_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;params&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nested_copt_params</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-                <span class="n">user_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;params&quot;</span><span class="p">)</span>
-                <span class="n">flattened_copt_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">nested_copt_params</span><span class="p">)</span>
-                <span class="n">flattened_copt_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">user_kwargs</span><span class="p">)</span>
-                <span class="n">user_kwargs</span> <span class="o">=</span> <span class="n">flattened_copt_params</span>
-        <span class="n">default_params</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;params&quot;</span><span class="p">)</span>
-        <span class="n">user_params</span> <span class="o">=</span> <span class="n">user_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;params&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">default_params</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">user_params</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-            <span class="n">merged_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">default_params</span><span class="p">)</span>
-            <span class="n">merged_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">user_params</span><span class="p">))</span>
-            <span class="n">user_kwargs</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_params</span>
-        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">user_kwargs</span><span class="p">)</span>
-    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;warm_start&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">kwargs</span></div>
+    kwargs: Dict[<span class="nb">str</span>, Any] <span class="o">=</span> {}
+    <span class="k">if</span> options<span class="o">.</span>cvxpy_solver <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>:
+        solver_name <span class="o">=</span> options<span class="o">.</span>cvxpy_solver
+        kwargs[<span class="s2">&quot;solver&quot;</span>] <span class="o">=</span> solver_name
+        kwargs<span class="o">.</span>update(
+            <span class="nb">dict</span>(_DEFAULT_CVXPY_SOLVER_PARAMS<span class="o">.</span>get(solver_name<span class="o">.</span>upper(), {}))
+        )
+    <span class="k">if</span> options<span class="o">.</span>cvxpy_solver_params <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>:
+        user_kwargs <span class="o">=</span> <span class="nb">dict</span>(options<span class="o">.</span>cvxpy_solver_params)
+        <span class="k">if</span> options<span class="o">.</span>cvxpy_solver <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> options<span class="o">.</span>cvxpy_solver<span class="o">.</span>upper() <span class="o">==</span> <span class="s2">&quot;COPT&quot;</span>:
+            nested_copt_params <span class="o">=</span> user_kwargs<span class="o">.</span>get(<span class="s2">&quot;params&quot;</span>)
+            <span class="k">if</span> <span class="nb">isinstance</span>(nested_copt_params, Mapping):
+                user_kwargs<span class="o">.</span>pop(<span class="s2">&quot;params&quot;</span>)
+                flattened_copt_params <span class="o">=</span> <span class="nb">dict</span>(nested_copt_params)
+                flattened_copt_params<span class="o">.</span>update(user_kwargs)
+                user_kwargs <span class="o">=</span> flattened_copt_params
+        default_params <span class="o">=</span> kwargs<span class="o">.</span>get(<span class="s2">&quot;params&quot;</span>)
+        user_params <span class="o">=</span> user_kwargs<span class="o">.</span>get(<span class="s2">&quot;params&quot;</span>)
+        <span class="k">if</span> <span class="nb">isinstance</span>(default_params, Mapping) <span class="ow">and</span> <span class="nb">isinstance</span>(user_params, Mapping):
+            merged_params <span class="o">=</span> <span class="nb">dict</span>(default_params)
+            merged_params<span class="o">.</span>update(<span class="nb">dict</span>(user_params))
+            user_kwargs[<span class="s2">&quot;params&quot;</span>] <span class="o">=</span> merged_params
+        kwargs<span class="o">.</span>update(user_kwargs)
+    kwargs<span class="o">.</span>setdefault(<span class="s2">&quot;warm_start&quot;</span>, <span class="kc">True</span>)
+    <span class="k">return</span> kwargs</div>
 
 
 
 <div class="viewcode-block" id="_get_cvxpy_accepted_statuses">
 <a class="viewcode-back" href="../../../dev/dev_internal_core/#autolyap.solver_options._get_cvxpy_accepted_statuses">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_cvxpy_accepted_statuses</span><span class="p">(</span><span class="n">cp</span><span class="p">:</span> <span class="n">CvxpyStatusModuleProtocol</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">SolverOptions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">_get_cvxpy_accepted_statuses</span>(cp: CvxpyStatusModuleProtocol, options: SolverOptions) <span class="o">-&gt;</span> <span class="nb">set</span>[<span class="nb">str</span>]:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return CVXPY statuses treated as successful solves.</span>
 
 <span class="sd">    Always includes ``OPTIMAL``; optionally includes</span>
 <span class="sd">    ``OPTIMAL_INACCURATE`` when enabled by solver options.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">statuses</span> <span class="o">=</span> <span class="p">{</span><span class="n">cp</span><span class="o">.</span><span class="n">OPTIMAL</span><span class="p">}</span>
-    <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">cvxpy_accept_inaccurate</span><span class="p">:</span>
-        <span class="n">statuses</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">OPTIMAL_INACCURATE</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">statuses</span></div>
+    statuses <span class="o">=</span> {cp<span class="o">.</span>OPTIMAL}
+    <span class="k">if</span> options<span class="o">.</span>cvxpy_accept_inaccurate:
+        statuses<span class="o">.</span>add(cp<span class="o">.</span>OPTIMAL_INACCURATE)
+    <span class="k">return</span> statuses</div>
 
 
 
 <div class="viewcode-block" id="_normalize_mapping">
 <a class="viewcode-back" href="../../../dev/dev_internal_core/#autolyap.solver_options._normalize_mapping">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_normalize_mapping</span><span class="p">(</span><span class="n">mapping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Validate an optional mapping and return it as a plain dict copy.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">mapping</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">_normalize_mapping</span>(mapping: Optional[Mapping[<span class="nb">str</span>, Any]], name: <span class="nb">str</span>) <span class="o">-&gt;</span> Optional[Dict[<span class="nb">str</span>, Any]]:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Validate an optional mapping and return it as a plain dict copy.&quot;&quot;&quot;</span>
+    <span class="k">if</span> mapping <span class="ow">is</span> <span class="kc">None</span>:
         <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> must be a mapping/dict when provided.&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span></div>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(mapping, Mapping):
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be a mapping/dict when provided.&quot;</span>)
+    <span class="k">return</span> <span class="nb">dict</span>(mapping)</div>
 
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_normalize_cvxpy_solver_params</span><span class="p">(</span>
-        <span class="n">cvxpy_solver</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-        <span class="n">cvxpy_solver_params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">_normalize_cvxpy_solver_params</span>(
+        cvxpy_solver: Optional[<span class="nb">str</span>],
+        cvxpy_solver_params: Optional[Mapping[<span class="nb">str</span>, Any]],
+) <span class="o">-&gt;</span> Optional[Dict[<span class="nb">str</span>, Any]]:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Validate and normalize CVXPY solver kwargs.</span>
 
 <span class="sd">    For ``cvxpy_solver=&quot;COPT&quot;``, AutoLyap accepts either a flat parameter map</span>
@@ -492,72 +491,72 @@
 <span class="sd">    For ``cvxpy_solver=&quot;MOSEK&quot;``, AutoLyap accepts MOSEK parameters either</span>
 <span class="sd">    under ``mosek_params={...}`` or as top-level ``MSK_*`` keys.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">normalized</span> <span class="o">=</span> <span class="n">_normalize_mapping</span><span class="p">(</span><span class="n">cvxpy_solver_params</span><span class="p">,</span> <span class="s2">&quot;cvxpy_solver_params&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">normalized</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    normalized <span class="o">=</span> _normalize_mapping(cvxpy_solver_params, <span class="s2">&quot;cvxpy_solver_params&quot;</span>)
+    <span class="k">if</span> normalized <span class="ow">is</span> <span class="kc">None</span>:
         <span class="k">return</span> <span class="kc">None</span>
 
-    <span class="n">solver_name</span> <span class="o">=</span> <span class="n">cvxpy_solver</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">if</span> <span class="n">cvxpy_solver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+    solver_name <span class="o">=</span> cvxpy_solver<span class="o">.</span>upper() <span class="k">if</span> cvxpy_solver <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
 
-    <span class="k">if</span> <span class="n">solver_name</span> <span class="o">==</span> <span class="s2">&quot;COPT&quot;</span><span class="p">:</span>
-        <span class="n">nested_copt_params</span> <span class="o">=</span> <span class="n">normalized</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;params&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">nested_copt_params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nested_copt_params</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+    <span class="k">if</span> solver_name <span class="o">==</span> <span class="s2">&quot;COPT&quot;</span>:
+        nested_copt_params <span class="o">=</span> normalized<span class="o">.</span>get(<span class="s2">&quot;params&quot;</span>)
+        <span class="k">if</span> nested_copt_params <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>:
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(nested_copt_params, Mapping):
+                <span class="k">raise</span> <span class="ne">ValueError</span>(
                     <span class="s2">&quot;For cvxpy_solver=&#39;COPT&#39;, cvxpy_solver_params[&#39;params&#39;] must be a mapping.&quot;</span>
-                <span class="p">)</span>
-            <span class="n">normalized</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;params&quot;</span><span class="p">)</span>
-            <span class="n">flattened_copt_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">nested_copt_params</span><span class="p">)</span>
-            <span class="n">flattened_copt_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span>
-            <span class="n">normalized</span> <span class="o">=</span> <span class="n">flattened_copt_params</span>
+                )
+            normalized<span class="o">.</span>pop(<span class="s2">&quot;params&quot;</span>)
+            flattened_copt_params <span class="o">=</span> <span class="nb">dict</span>(nested_copt_params)
+            flattened_copt_params<span class="o">.</span>update(normalized)
+            normalized <span class="o">=</span> flattened_copt_params
 
-    <span class="k">if</span> <span class="n">solver_name</span> <span class="o">==</span> <span class="s2">&quot;MOSEK&quot;</span><span class="p">:</span>
-        <span class="n">nested_mosek_params</span> <span class="o">=</span> <span class="n">normalized</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mosek_params&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">nested_mosek_params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nested_mosek_params</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+    <span class="k">if</span> solver_name <span class="o">==</span> <span class="s2">&quot;MOSEK&quot;</span>:
+        nested_mosek_params <span class="o">=</span> normalized<span class="o">.</span>get(<span class="s2">&quot;mosek_params&quot;</span>)
+        <span class="k">if</span> nested_mosek_params <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span>(nested_mosek_params, Mapping):
+            <span class="k">raise</span> <span class="ne">ValueError</span>(
                 <span class="s2">&quot;For cvxpy_solver=&#39;MOSEK&#39;, cvxpy_solver_params[&#39;mosek_params&#39;] must be a mapping.&quot;</span>
-            <span class="p">)</span>
+            )
 
-        <span class="n">flat_mosek_params</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
-            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">normalized</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">_is_mosek_param_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">flat_mosek_params</span><span class="p">:</span>
-            <span class="n">normalized</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        flat_mosek_params <span class="o">=</span> {
+            key: value
+            <span class="k">for</span> key, value <span class="ow">in</span> normalized<span class="o">.</span>items()
+            <span class="k">if</span> _is_mosek_param_key(key)
+        }
+        <span class="k">for</span> key <span class="ow">in</span> flat_mosek_params:
+            normalized<span class="o">.</span>pop(key)
 
-        <span class="k">if</span> <span class="n">nested_mosek_params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">flat_mosek_params</span><span class="p">:</span>
-            <span class="n">merged_mosek_params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nested_mosek_params</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-                <span class="n">merged_mosek_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nested_mosek_params</span><span class="p">))</span>
-            <span class="n">merged_mosek_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">flat_mosek_params</span><span class="p">)</span>
-            <span class="n">normalized</span><span class="p">[</span><span class="s2">&quot;mosek_params&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_mosek_params</span>
+        <span class="k">if</span> nested_mosek_params <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> flat_mosek_params:
+            merged_mosek_params: Dict[<span class="nb">str</span>, Any] <span class="o">=</span> {}
+            <span class="k">if</span> <span class="nb">isinstance</span>(nested_mosek_params, Mapping):
+                merged_mosek_params<span class="o">.</span>update(<span class="nb">dict</span>(nested_mosek_params))
+            merged_mosek_params<span class="o">.</span>update(flat_mosek_params)
+            normalized[<span class="s2">&quot;mosek_params&quot;</span>] <span class="o">=</span> merged_mosek_params
 
-    <span class="k">return</span> <span class="n">normalized</span>
+    <span class="k">return</span> normalized
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_is_mosek_param_key</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return True when a key looks like a MOSEK string parameter name.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;MSK_&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_is_mosek_param_key</span>(key: Any) <span class="o">-&gt;</span> <span class="nb">bool</span>:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return True when a key looks like a MOSEK string parameter name.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">isinstance</span>(key, <span class="nb">str</span>) <span class="ow">and</span> key<span class="o">.</span>strip()<span class="o">.</span>upper()<span class="o">.</span>startswith(<span class="s2">&quot;MSK_&quot;</span>)
 
 
 <div class="viewcode-block" id="_normalize_named_mapping">
 <a class="viewcode-back" href="../../../dev/dev_internal_core/#autolyap.solver_options._normalize_named_mapping">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_normalize_named_mapping</span><span class="p">(</span><span class="n">mapping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">_normalize_named_mapping</span>(mapping: Optional[Mapping[<span class="nb">str</span>, Any]], name: <span class="nb">str</span>) <span class="o">-&gt;</span> Optional[Dict[<span class="nb">str</span>, Any]]:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Validate an optional mapping with string keys and return a dict copy.</span>
 
 <span class="sd">    Keys must be non-empty strings after stripping whitespace.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">mapping</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> mapping <span class="ow">is</span> <span class="kc">None</span>:
         <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> must be a mapping/dict when provided.&quot;</span><span class="p">)</span>
-    <span class="n">normalized</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;All keys in </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> must be non-empty strings.&quot;</span><span class="p">)</span>
-        <span class="n">normalized</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-    <span class="k">return</span> <span class="n">normalized</span></div>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(mapping, Mapping):
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be a mapping/dict when provided.&quot;</span>)
+    normalized: Dict[<span class="nb">str</span>, Any] <span class="o">=</span> {}
+    <span class="k">for</span> key, value <span class="ow">in</span> mapping<span class="o">.</span>items():
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(key, <span class="nb">str</span>) <span class="ow">or</span> <span class="ow">not</span> key<span class="o">.</span>strip():
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;All keys in </span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be non-empty strings.&quot;</span>)
+        normalized[key] <span class="o">=</span> value
+    <span class="k">return</span> normalized</div>
 
 </pre></div>
 

@@ -7,20 +7,24 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>5.3. Iteration-dependent analyses | AutoLyap</title>
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/theory/iteration_dependent_analyses/" />
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../_static/content_width_toggle.js?v=eb58c7cb"></script>
     <script defer="defer" src="../../_static/proof_toggle.js?v=3eed1268"></script>
-    <script defer="defer" src="../../_static/math_tag_links.js?v=ff06e015"></script>
-    <script>window.MathJax = {"loader": {"load": []}, "tex": {"packages": {"[+]": []}, "macros": {"abs": ["\\left\\lvert #1 \\right\\rvert", 1], "Bignorm": ["\\left\\lVert #1 \\right\\rVert", 1], "norm": ["\\lVert #1 \\rVert", 1], "Biginner": ["\\left\\langle #1, #2 \\right\\rangle", 2], "inner": ["\\langle #1, #2 \\rangle", 2], "reals": "\\mathbb{R}", "Rbar": "\\overline{\\mathbf{R}}", "N": "\\mathbf{N}", "naturals": "\\mathbb{N}_{0}", "K": "\\mathbf{K}", "Or": "\\mathbf{O}", "D": "\\mathbf{D}", "Sym": "\\mathbf{S}", "sym": "\\mathbb{S}", "calA": "\\mathcal{A}", "calL": "\\mathcal{L}", "calH": "\\mathcal{H}", "calG": "\\mathcal{G}", "calD": "\\mathcal{D}", "calT": "\\mathcal{T}", "tr": ["\\operatorname{tr}\\left(#1\\right)", 1], "trace": "\\mathrm{trace}", "Fix": "\\operatorname{fix}", "epi": "\\operatorname{epi}", "diag": "\\operatorname{diag}", "Range": "\\operatorname{Range}", "rank": "\\operatorname{rank}", "sgn": "\\operatorname{sgn}", "Prox": "\\operatorname{Prox}", "prox": "{\\rm{prox}}", "kron": "\\otimes", "minimize": "\\operatorname*{minimize}", "maximize": "\\operatorname*{maximize}", "argmax": "\\operatorname*{argmax}", "argmin": "\\operatorname*{argmin}", "Argmin": "\\operatorname*{Argmin}", "adj": "\\operatorname*{adj}", "gra": "\\operatorname*{gra}", "ran": "\\operatorname*{ran}", "zer": "\\operatorname*{zer}", "dom": "\\operatorname*{dom}", "Id": "\\operatorname*{Id}", "Ker": "\\operatorname*{Ker}", "Ima": "\\operatorname*{Im}", "Cl": "\\operatorname*{cl}", "Int": "\\operatorname*{int}", "Conv": "\\operatorname*{conv}", "quadform": ["\\mathcal{Q}\\p{#1,#2}", 2], "XId": ["#1_{\\Id}", 1], "xmiddle": ["\\;\\middle#1\\;", 1], "allowbreak": "", "bx": "\\mathbf{x}", "bu": "\\mathbf{u}", "by": "\\mathbf{y}", "bz": "\\mathbf{z}", "bfcn": "\\mathbf{f}", "bFcn": "\\mathbf{F}", "bM": "\\mathbf{M}", "bMlij": "\\bM_{(l,i,j)}", "ba": "\\mathbf{a}", "balij": "\\mathbf{a}_{(l,i,j)}", "bzeta": "\\boldsymbol{\\zeta}", "bchi": "\\boldsymbol{\\chi}", "bxi": "\\boldsymbol{\\xi}", "bXi": "\\boldsymbol{\\Xi}", "bQ": "\\mathbf{Q}", "bq": "\\mathbf{q}", "id": "I", "gramFunc": "\\mathtt{G}", "SumToZeroMat": "N", "indentconstr": "\\;\\;\\;", "PEPObjMat": "W", "PEPObjVec": "w", "munderbar": ["\\underline{#1}", 1], "PEPMaxIter": "\\bar{k}", "PEPMinIter": "\\underline{k}", "IndexOp": "\\mathcal{I}_{\\textup{op}}", "IndexFunc": "\\mathcal{I}_{\\textup{func}}", "NumFunc": "m_{\\textup{func}}", "NumOp": "m_{\\textup{op}}", "NumEval": "\\bar{m}", "NumEvalOp": "\\bar{m}_{\\textup{op}}", "NumEvalFunc": "\\bar{m}_{\\textup{func}}", "set": ["\\mathord{\\left.\\{ #1 \\} \\right. }", 1], "Bigset": ["\\mathord{\\left\\{ #1 \\right\\}}", 1], "p": ["\\mathord{( #1 )}", 1], "Bigp": ["\\mathord{\\left( #1 \\right)}", 1], "bm": ["\\boldsymbol{#1}", 1], "llbracket": "\\lbrack\\!\\lbrack", "rrbracket": "\\rbrack\\!\\rbrack", "underbracket": ["\\underbrace{#1}", 1]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="../../_static/math_tag_links.js?v=aa1c2d68"></script>
+    <script>window.MathJax = {"loader":{"load":["ui/lazy"]},"options":{"lazyMargin":"200px","lazyAlwaysTypeset":[".math.math-initial"]},"tex":{"packages":{"[+]":[]},"macros":{"reals":"\\mathbb{R}","sym":"\\mathbb{S}","calH":"\\mathcal{H}","trace":"\\mathrm{trace}","kron":"\\otimes","Id":"\\operatorname*{Id}","quadform":["\\mathcal{Q}\\p{#1,#2}",2],"bx":"\\mathbf{x}","bu":"\\mathbf{u}","by":"\\mathbf{y}","bFcn":"\\mathbf{F}","bchi":"\\boldsymbol{\\chi}","IndexOp":"\\mathcal{I}_{\\textup{op}}","IndexFunc":"\\mathcal{I}_{\\textup{func}}","NumFunc":"m_{\\textup{func}}","NumEval":"\\bar{m}","NumEvalFunc":"\\bar{m}_{\\textup{func}}","p":["\\mathord{( #1 )}",1],"bm":["\\boldsymbol{#1}",1],"llbracket":"\\lbrack\\!\\lbrack","rrbracket":"\\rbrack\\!\\rbrack","underbracket":["\\underbrace{#1}",1]}}}</script>
+    <script crossorigin="anonymous" defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
   <script defer="defer" src="../../_static/js/theme.js"></script>
   <link rel="search" type="application/opensearchdescription+xml"
         title="Search within AutoLyap 0.2.1 documentation"
@@ -31,11 +35,6 @@
     <link rel="next" title="Examples" href="../../examples/" />
     <link rel="prev" title="5.2. Iteration-independent analyses" href="../iteration_independent_analyses/" />
  
-<link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
@@ -220,7 +219,7 @@
 algorithms that run indefinitely, as well as algorithms with finite
 iteration budgets matching or exceeding the horizon. For notational
 simplicity, we assume that</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[K\in\mathbb{N}\]</div>
 <p>in
 <a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>,
@@ -233,15 +232,15 @@ functions, also often referred to as <em>potential functions</em>
 <p id="def-iteration-dependent-lyapunov-chain"><strong>Definition 5.3.1 (Chained Lyapunov inequalities).</strong></p>
 <p>Suppose that
 <a class="reference internal" href="../algorithm_representation/#ass-well-posedness"><span class="std std-ref">Assumption 3.1 (Well-posedness)</span></a> holds. Let</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[\bx_{0}\in\calH^{n}, \qquad
 \p{ ( \bx^{k}, \bu^{k}, \by^{k}, \bFcn^{k} ) }_{k=0}^{K},\]</div>
 <p>be an initial point and a sequence of iterates satisfying
 <a class="reference internal" href="../algorithm_representation/#equation-eq-linear-system-with-nonlinearity">(3.1)</a>, and let</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[\p{y^{\star}, \hat{\bu}^{\star}, \bFcn^{\star}}\]</div>
 <p>be a point satisfying <a class="reference internal" href="../lyapunov_analyses/#equation-eq-solution">(5.1)</a>. Also let</p>
-<div class="math notranslate nohighlight">
+<div class="math notranslate nohighlight math-initial">
 \[c_K\in\reals_{+}.\]</div>
 <p>Define</p>
 <div class="math notranslate nohighlight" id="equation-eq-iteration-dependent-lyapunov-chain-v">
@@ -292,22 +291,22 @@ Lyapunov expressions <span class="math notranslate nohighlight">\(\mathcal{V}\p{
 <p>For built-in choices of these boundary terms:</p>
 <ul class="simple">
 <li><p>Distance to solution:
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_distance_to_solution" title="autolyap.IterationDependent.get_parameters_distance_to_solution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Distance-to-solution</span> <span class="pre">helper</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_distance_to_solution" title="autolyap.IterationDependent.get_parameters_distance_to_solution"><code class="xref py py-meth docutils literal notranslate">Distance-to-solution helper</code></a>.</p></li>
 <li><p>State-component distance to solution:
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_distance_to_solution" title="autolyap.IterationDependent.get_parameters_state_component_distance_to_solution"><code class="xref py py-meth docutils literal notranslate"><span class="pre">State-component-distance</span> <span class="pre">helper</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_distance_to_solution" title="autolyap.IterationDependent.get_parameters_state_component_distance_to_solution"><code class="xref py py-meth docutils literal notranslate">State-component-distance helper</code></a>.</p></li>
 <li><p>State-component same-iteration difference:
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_difference" title="autolyap.IterationDependent.get_parameters_state_component_difference"><code class="xref py py-meth docutils literal notranslate"><span class="pre">State-component-difference</span> <span class="pre">helper</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_difference" title="autolyap.IterationDependent.get_parameters_state_component_difference"><code class="xref py py-meth docutils literal notranslate">State-component-difference helper</code></a>.</p></li>
 <li><p>State-component cross-iteration difference:
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference" title="autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference"><code class="xref py py-meth docutils literal notranslate"><span class="pre">State-component-cross-iteration-difference</span> <span class="pre">helper</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference" title="autolyap.IterationDependent.get_parameters_state_component_cross_iteration_difference"><code class="xref py py-meth docutils literal notranslate">State-component-cross-iteration-difference helper</code></a>.</p></li>
 <li><p>Function-value suboptimality:
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_function_value_suboptimality" title="autolyap.IterationDependent.get_parameters_function_value_suboptimality"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Function-value-suboptimality</span> <span class="pre">helper</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_function_value_suboptimality" title="autolyap.IterationDependent.get_parameters_function_value_suboptimality"><code class="xref py py-meth docutils literal notranslate">Function-value-suboptimality helper</code></a>.</p></li>
 <li><p>Fixed-point residual:
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_fixed_point_residual" title="autolyap.IterationDependent.get_parameters_fixed_point_residual"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Fixed-point-residual</span> <span class="pre">helper</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_fixed_point_residual" title="autolyap.IterationDependent.get_parameters_fixed_point_residual"><code class="xref py py-meth docutils literal notranslate">Fixed-point-residual helper</code></a>.</p></li>
 <li><p>Optimality measure:
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_optimality_measure" title="autolyap.IterationDependent.get_parameters_optimality_measure"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Optimality-measure</span> <span class="pre">helper</span></code></a>.</p></li>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.get_parameters_optimality_measure" title="autolyap.IterationDependent.get_parameters_optimality_measure"><code class="xref py py-meth docutils literal notranslate">Optimality-measure helper</code></a>.</p></li>
 </ul>
 <p>The corresponding API entry point is
-<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_lyapunov()</span></code></a>.</p>
+<a class="reference internal" href="../../iteration_dependent_analysis/#autolyap.IterationDependent.search_lyapunov" title="autolyap.IterationDependent.search_lyapunov"><code class="xref py py-meth docutils literal notranslate">search_lyapunov()</code></a>.</p>
 <p>The SDP characterization is given in
 <a class="reference internal" href="#thm-iteration-dependent-lyapunov"><span class="std std-ref">Theorem 5.3.2 (Chained Lyapunov inequalities via SDP)</span></a>. Computationally,
 each inequality in <a class="reference internal" href="#equation-eq-iteration-dependent-lyapunov-chain">(5.50)</a> is enforced by
@@ -594,11 +593,11 @@ in <a class="reference internal" href="#eq-iteration-dependent-lyapunov-conditio
 <p class="rubric">References</p>
 <div class="docutils container" id="id3">
 <div role="list" class="citation-list">
-<div class="citation" id="id19" role="doc-biblioentry">
+<div class="citation" id="id19" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">BG19</a><span class="fn-bracket">]</span></span>
 <p>Nikhil Bansal and Anupam Gupta. Potential-function proofs for gradient methods. <em>Theory of Computing</em>, 15(1):1–32, 2019. <a class="reference external" href="https://doi.org/10.4086/toc.2019.v015a004">doi:10.4086/toc.2019.v015a004</a>.</p>
 </div>
-<div class="citation" id="id195" role="doc-biblioentry">
+<div class="citation" id="id195" role="listitem">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">TB19</a><span class="fn-bracket">]</span></span>
 <p>Adrien Taylor and Francis Bach. Stochastic first-order methods: Non-asymptotic and computer-aided analyses via potential functions. In <em>Conference on Learning Theory (COLT)</em>. 2019.</p>
 </div>

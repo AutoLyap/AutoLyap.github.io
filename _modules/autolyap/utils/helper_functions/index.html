@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.utils.helper_functions</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=facf6d1f" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/utils/helper_functions/" />
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
-    <script defer="defer" src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script defer="defer" src="../../../../_static/documentation_options.js?v=da039c51"></script>
+    <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script defer="defer" src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="../../../../_static/copybutton.js?v=36830154"></script>
@@ -26,9 +28,6 @@
     <link rel="index" title="Index" href="../../../../genindex/" />
     <link rel="search" title="Search" href="../../../../search/" />
  
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 <link rel="icon" type="image/svg+xml" href="../../../../_static/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../../_static/favicon.png"/>
@@ -155,44 +154,44 @@
            <div itemprop="articleBody">
              
   <h1>Source code for autolyap.utils.helper_functions</h1><div class="highlight"><pre>
-<span></span><span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
+<span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> Any
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">autolyap.utils.backend_types</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">MosekExprProtocol</span><span class="p">,</span>
-    <span class="n">MosekUpperTriangleVectorProtocol</span><span class="p">,</span>
-    <span class="n">UpperTriangleValuesProtocol</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">autolyap.utils.backend_types</span> <span class="kn">import</span> (
+    MosekExprProtocol,
+    MosekUpperTriangleVectorProtocol,
+    UpperTriangleValuesProtocol,
+)
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_import_mosek_expr</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">MosekExprProtocol</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Import MOSEK Fusion `Expr` lazily for MOSEK-backed model builders.&quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">mosek.fusion</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mf</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">mosek.fusion.pythonic</span>  <span class="c1"># noqa: F401  # enables Fusion operator overloads</span>
-    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">_import_mosek_expr</span>() <span class="o">-&gt;</span> MosekExprProtocol:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Import MOSEK Fusion `Expr` lazily for MOSEK-backed model builders.&quot;&quot;&quot;</span>
+    <span class="k">try</span>:
+        <span class="kn">import</span> <span class="nn">mosek.fusion</span> <span class="k">as</span> <span class="nn">mf</span>
+        <span class="kn">import</span> <span class="nn">mosek.fusion.pythonic</span>  <span class="c1"># noqa: F401  # enables Fusion operator overloads</span>
+    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> exc:
+        <span class="k">raise</span> <span class="ne">ImportError</span>(
             <span class="s2">&quot;MOSEK Fusion backend requested, but `mosek` is not installed. &quot;</span>
             <span class="s2">&quot;Install it with `pip install autolyap[mosek]`.&quot;</span>
-        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
-    <span class="k">return</span> <span class="n">mf</span><span class="o">.</span><span class="n">Expr</span>
+        ) <span class="kn">from</span> <span class="nn">exc</span>
+    <span class="k">return</span> mf<span class="o">.</span>Expr
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_upper_triangle_size</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of entries in the upper triangle of an `n x n` matrix.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="k">def</span> <span class="nf">_upper_triangle_size</span>(n: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">int</span>:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of entries in the upper triangle of an `n x n` matrix.&quot;&quot;&quot;</span>
+    <span class="k">return</span> n <span class="o">*</span> (n <span class="o">+</span> <span class="mi">1</span>) <span class="o">//</span> <span class="mi">2</span>
 
 
 <div class="viewcode-block" id="create_symmetric_matrix_expression">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.helper_functions.create_symmetric_matrix_expression">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">create_symmetric_matrix_expression</span><span class="p">(</span>
-    <span class="n">Xij</span><span class="p">:</span> <span class="n">MosekUpperTriangleVectorProtocol</span><span class="p">,</span>
-    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">create_symmetric_matrix_expression</span>(
+    Xij: MosekUpperTriangleVectorProtocol,
+    n: <span class="nb">int</span>,
+) <span class="o">-&gt;</span> Any:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a list of upper triangle variables to a symmetric matrix expression.</span>
 
 <span class="sd">    **Parameters**</span>
@@ -204,29 +203,29 @@
 
 <span class="sd">    - Symmetric matrix expression of size :math:`n \times n`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">Expr</span> <span class="o">=</span> <span class="n">_import_mosek_expr</span><span class="p">()</span>
+    Expr <span class="o">=</span> _import_mosek_expr()
     <span class="c1"># Keep upper-triangle ordering consistent with create_symmetric_matrix.</span>
-    <span class="n">X_expr</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-            <span class="n">X_expr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">Xij</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+    X_expr <span class="o">=</span> [[<span class="kc">None</span>] <span class="o">*</span> n <span class="k">for</span> _ <span class="ow">in</span> <span class="nb">range</span>(n)]
+    idx <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> i <span class="ow">in</span> <span class="nb">range</span>(n):
+        <span class="k">for</span> j <span class="ow">in</span> <span class="nb">range</span>(i, n):
+            X_expr[i][j] <span class="o">=</span> Xij<span class="o">.</span>index(idx)
+            <span class="k">if</span> i <span class="o">!=</span> j:
                 <span class="c1"># Mirror the upper-triangle entry to enforce symmetry.</span>
-                <span class="n">X_expr</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Xij</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
-            <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="n">X_rows</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">X_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Expr</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">X_expr</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">Expr</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">X_rows</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">X</span></div>
+                X_expr[j][i] <span class="o">=</span> Xij<span class="o">.</span>index(idx)
+            idx <span class="o">+=</span> <span class="mi">1</span>
+    X_rows <span class="o">=</span> []
+    <span class="k">for</span> i <span class="ow">in</span> <span class="nb">range</span>(n):
+        X_rows<span class="o">.</span>append(Expr<span class="o">.</span>hstack(X_expr[i]))
+    X <span class="o">=</span> Expr<span class="o">.</span>vstack(X_rows)
+    <span class="k">return</span> X</div>
 
 
 
 <div class="viewcode-block" id="create_symmetric_matrix">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.helper_functions.create_symmetric_matrix">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">create_symmetric_matrix</span><span class="p">(</span><span class="n">upper_triangle_values</span><span class="p">:</span> <span class="n">UpperTriangleValuesProtocol</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">create_symmetric_matrix</span>(upper_triangle_values: UpperTriangleValuesProtocol, n: <span class="nb">int</span>) <span class="o">-&gt;</span> np<span class="o">.</span>ndarray:
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a list of upper triangle values to a symmetric matrix.</span>
 
 <span class="sd">    **Parameters**</span>
@@ -244,21 +243,21 @@
 <span class="sd">    - `ValueError`: If the length of `upper_triangle_values` is not :math:`n(n+1)/2`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Guard against mismatched upper-triangle length to avoid silent shape errors.</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">upper_triangle_values</span><span class="p">)</span> <span class="o">!=</span> <span class="n">_upper_triangle_size</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The length of upper_triangle_values must be n(n+1)/2&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span>(upper_triangle_values) <span class="o">!=</span> _upper_triangle_size(n):
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;The length of upper_triangle_values must be n(n+1)/2&quot;</span>)
 
-    <span class="n">symmetric_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    symmetric_matrix <span class="o">=</span> np<span class="o">.</span>zeros((n, n))
 
-    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-            <span class="n">symmetric_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">upper_triangle_values</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+    idx <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> i <span class="ow">in</span> <span class="nb">range</span>(n):
+        <span class="k">for</span> j <span class="ow">in</span> <span class="nb">range</span>(i, n):
+            symmetric_matrix[i, j] <span class="o">=</span> upper_triangle_values[idx]
+            <span class="k">if</span> i <span class="o">!=</span> j:
                 <span class="c1"># Mirror the upper-triangle entry to enforce symmetry.</span>
-                <span class="n">symmetric_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">upper_triangle_values</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-            <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+                symmetric_matrix[j, i] <span class="o">=</span> upper_triangle_values[idx]
+            idx <span class="o">+=</span> <span class="mi">1</span>
 
-    <span class="k">return</span> <span class="n">symmetric_matrix</span></div>
+    <span class="k">return</span> symmetric_matrix</div>
 
 </pre></div>
 
