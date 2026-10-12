@@ -1,0 +1,89 @@
+# AutoLyap
+
+> AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.
+
+Documentation version: 0.2.1
+
+- [Canonical HTML documentation](https://autolyap.github.io/)
+- [Source repository](https://github.com/AutoLyap/AutoLyap)
+- [Python package](https://pypi.org/project/autolyap/)
+
+The linked Markdown pages are generated from the canonical HTML articles in the same documentation build. Each page identifies its canonical HTML URL and documentation version.
+
+## Quick start and guides
+
+- [AutoLyap](https://autolyap.github.io/index.md): AutoLyap is a Python package for computer-assisted Lyapunov analyses of first-order optimization and inclusion methods.
+- [Quick start](https://autolyap.github.io/quick_start/index.md): Quick start guide for AutoLyap with iteration-independent and iteration-dependent Lyapunov analysis workflows.
+
+## Theory
+
+- [3. Algorithm representation](https://autolyap.github.io/theory/algorithm_representation/index.md): Algorithm-representation theory in AutoLyap, including lifted states and linear recursion modeling.
+- [Theory](https://autolyap.github.io/theory/index.md): Mathematical background for AutoLyap, including Lyapunov certificate modeling and SDP-based verification.
+- [4. Interpolation conditions](https://autolyap.github.io/theory/interpolation_conditions/index.md): Interpolation-condition theory in AutoLyap for encoding function and operator classes as SDP constraints.
+- [5.3. Iteration-dependent analyses](https://autolyap.github.io/theory/iteration_dependent_analyses/index.md): Iteration-dependent theory in AutoLyap for finite-horizon guarantees and chained Lyapunov inequalities.
+- [5.2. Iteration-independent analyses](https://autolyap.github.io/theory/iteration_independent_analyses/index.md): Iteration-independent theory in AutoLyap for certifying asymptotic linear and sublinear convergence rates.
+- [5. Lyapunov analyses](https://autolyap.github.io/theory/lyapunov_analyses/index.md): Lyapunov-analysis theory in AutoLyap, including certificate inequalities and feasibility interpretations.
+- [1. Notation and preliminaries](https://autolyap.github.io/theory/notation_and_preliminaries/index.md): Notation and preliminaries for AutoLyap theory, including set-valued operator conventions and subdifferential notation.
+- [5.1. Performance estimation via SDPs](https://autolyap.github.io/theory/performance_estimation_via_sdps/index.md): Performance-estimation theory via semidefinite programs in AutoLyap, including Gram-matrix formulations.
+- [2. Problem classes](https://autolyap.github.io/theory/problem_class/index.md): Theory for problem-class modeling in AutoLyap, including optimization and inclusion formulations.
+
+## Worked examples
+
+- [The accelerated proximal point method](https://autolyap.github.io/examples/accelerated_proximal_point/index.md): Accelerated proximal-point example in AutoLyap with iteration-dependent finite-horizon c_K certification.
+- [The Chambolle–Pock method: Convex](https://autolyap.github.io/examples/chambolle_pock/convex_fixed_point_residual/index.md): Chambolle–Pock convex example in AutoLyap with fixed-point-residual summability certification and layered (h, alpha) regions.
+- [The Chambolle–Pock method](https://autolyap.github.io/examples/chambolle_pock/index.md): Chambolle–Pock examples in AutoLyap for Lyapunov-based analysis under multiple problem settings.
+- [The Chambolle–Pock method: Smooth and strongly convex](https://autolyap.github.io/examples/chambolle_pock/smooth_strongly_convex/index.md): Chambolle–Pock smooth strongly-convex example in AutoLyap with iteration-independent linear-rate certification.
+- [The Davis–Yin three-operator splitting method](https://autolyap.github.io/examples/davis_yin_three_operator/index.md): Davis–Yin three-operator splitting example in AutoLyap with computer-assisted linear-rate rho certification.
+- [Define your own algorithm](https://autolyap.github.io/examples/define_your_own_algorithm/index.md): Examples in AutoLyap for defining custom algorithms from the base Algorithm interface.
+- [The proximal gradient method](https://autolyap.github.io/examples/define_your_own_algorithm/proximal_gradient_method/index.md): Proximal gradient example in AutoLyap with SDP-based Lyapunov verification.
+- [The Douglas–Rachford method: Cocoercive + strongly monotone](https://autolyap.github.io/examples/douglas_rachford/cocoercive_plus_strongly_monotone/index.md): Douglas–Rachford cocoercive-plus-strongly-monotone example in AutoLyap with linear-rate rho certification.
+- [The Douglas–Rachford method](https://autolyap.github.io/examples/douglas_rachford/index.md): Douglas–Rachford examples in AutoLyap covering cocoercive, Lipschitz, and smooth strongly-convex problem settings.
+- [The Douglas–Rachford method: Maximally monotone/Lipschitz + strongly monotone](https://autolyap.github.io/examples/douglas_rachford/maximally_monotone_lipschitz_plus_strongly_monotone/index.md): Douglas–Rachford example for maximally-monotone-Lipschitz plus strongly-monotone operators with certified rates.
+- [The Douglas–Rachford method: Maximally monotone + strongly monotone/cocoercive](https://autolyap.github.io/examples/douglas_rachford/maximally_monotone_plus_strongly_monotone_cocoercive/index.md): Douglas–Rachford example for maximally-monotone plus strongly-monotone-cocoercive operators with rho certification.
+- [The Douglas–Rachford method: Maximally monotone + strongly monotone/Lipschitz](https://autolyap.github.io/examples/douglas_rachford/maximally_monotone_plus_strongly_monotone_lipschitz/index.md): Douglas–Rachford example for maximally-monotone plus strongly-monotone-Lipschitz operators with certified rates.
+- [The Douglas–Rachford method: Smooth and strongly convex + convex](https://autolyap.github.io/examples/douglas_rachford/smooth_strongly_convex_plus_convex/index.md): Douglas–Rachford smooth-strongly-convex-plus-convex example in AutoLyap with iteration-independent linear-rate analysis.
+- [The gradient method: Gradient-dominated and smooth](https://autolyap.github.io/examples/gradient_method/gradient_dominated_smooth/index.md): Gradient-method gradient-dominated smooth example in AutoLyap with certified linear function-value rates.
+- [The gradient method](https://autolyap.github.io/examples/gradient_method/index.md): Gradient-method examples in AutoLyap for Lyapunov-based convergence analysis under different problem settings.
+- [The gradient method: Smooth and strongly convex](https://autolyap.github.io/examples/gradient_method/smooth_strongly_convex/index.md): Gradient-method smooth strongly-convex example in AutoLyap with iteration-independent Lyapunov analysis and bisection search.
+- [The heavy-ball method: Gradient-dominated and smooth](https://autolyap.github.io/examples/heavy_ball/gradient_dominated_smooth/index.md): Heavy-ball gradient-dominated-smooth example in AutoLyap with computer-assisted linear function-value rate certification.
+- [The heavy-ball method](https://autolyap.github.io/examples/heavy_ball/index.md): Heavy-ball examples in AutoLyap for Lyapunov-based convergence analysis under different problem settings.
+- [The heavy-ball method: Smooth and convex](https://autolyap.github.io/examples/heavy_ball/smooth_convex/index.md): Heavy-ball smooth-convex example in AutoLyap with certified sublinear function-value convergence.
+- [Examples](https://autolyap.github.io/examples/index.md): Worked AutoLyap examples for gradient, proximal, splitting, and momentum methods with computer-assisted convergence rates.
+- [The information-theoretic exact method](https://autolyap.github.io/examples/information_theoretic_exact_method/index.md): Information-theoretic exact method example in AutoLyap with iteration-dependent function-value c_K guarantees.
+- [The Malitsky–Tam forward-reflected-backward method](https://autolyap.github.io/examples/malitsky_tam_frb/index.md): Malitsky–Tam forward-reflected-backward example in AutoLyap with computer-assisted linear-rate certification.
+- [Nesterov’s fast gradient method](https://autolyap.github.io/examples/nesterov_fast_gradient/index.md): Nesterov fast-gradient example in AutoLyap with iteration-dependent finite-horizon function-value bounds.
+- [The gradient method with constant Nesterov momentum: Gradient-dominated and smooth](https://autolyap.github.io/examples/nesterov_momentum/gradient_dominated_smooth/index.md): Constant Nesterov momentum gradient-dominated smooth example in AutoLyap with certified linear rates.
+- [The gradient method with constant Nesterov momentum](https://autolyap.github.io/examples/nesterov_momentum/index.md): Constant Nesterov momentum examples in AutoLyap for Lyapunov-based convergence analysis under different problem settings.
+- [The gradient method with constant Nesterov momentum: Smooth and convex](https://autolyap.github.io/examples/nesterov_momentum/smooth_convex/index.md): Constant Nesterov momentum smooth-convex example in AutoLyap with certified sublinear function-value convergence.
+- [The optimized gradient method](https://autolyap.github.io/examples/optimized_gradient/index.md): Optimized gradient method example in AutoLyap with iteration-dependent Lyapunov analysis and finite-horizon function-value guarantees.
+- [The proximal point method](https://autolyap.github.io/examples/proximal_point/index.md): Proximal point example in AutoLyap with a computer-assisted Lyapunov convergence analysis.
+- [The triple-momentum method](https://autolyap.github.io/examples/triple_momentum/index.md): Certify the triple-momentum method's linear rate for smooth strongly convex optimization using AutoLyap Lyapunov analysis and the MOSEK Fusion backend.
+
+## API reference
+
+- [Algorithms](https://autolyap.github.io/algorithms/index.md): Overview of algorithm abstractions and concrete first-order methods supported in AutoLyap.
+- [API reference](https://autolyap.github.io/api_reference/index.md): AutoLyap API reference for algorithms, problem classes, and Lyapunov analysis helpers.
+- [Base algorithm](https://autolyap.github.io/base_algorithms/index.md): Base algorithm interfaces in AutoLyap for defining iterative optimization and inclusion methods.
+- [Concrete algorithms](https://autolyap.github.io/concrete_algorithms/index.md): Concrete algorithm implementations in AutoLyap, including gradient, proximal, heavy-ball, and accelerated methods.
+- [Function classes](https://autolyap.github.io/function_classes/index.md): Function interpolation classes in AutoLyap for modeling convex, smooth, and strongly convex objectives.
+- [Iteration-dependent analysis](https://autolyap.github.io/iteration_dependent_analysis/index.md): Iteration-dependent Lyapunov analysis tools in AutoLyap for finite-horizon and chained-inequality certification.
+- [Iteration-independent analysis](https://autolyap.github.io/iteration_independent_analysis/index.md): Iteration-independent Lyapunov analysis tools in AutoLyap for linear and sublinear convergence certification.
+- [Lyapunov analyses](https://autolyap.github.io/lyapunov_analyses/index.md): Lyapunov analysis entry points in AutoLyap for constructing and verifying convergence certificates.
+- [Operator classes](https://autolyap.github.io/operator_classes/index.md): Operator interpolation classes in AutoLyap for monotone, Lipschitz, and cocoercive operator models.
+- [Problem classes](https://autolyap.github.io/problem_class/index.md): Problem class definitions in AutoLyap for constructing optimization and inclusion formulations.
+- [Solver backends](https://autolyap.github.io/solver_backends/index.md): Solver backend options in AutoLyap, including MOSEK Fusion and CVXPY-based workflows.
+
+## Project and development
+
+- [Development workflow](https://autolyap.github.io/contributing/development_workflow/index.md): Follow the AutoLyap development workflow for branches, tests, documentation builds, formatting, and pre-commit validation.
+- [Getting started](https://autolyap.github.io/contributing/getting_started/index.md): Set up an AutoLyap development environment, install test and documentation dependencies, and verify a local checkout.
+- [Contributing](https://autolyap.github.io/contributing/index.md): Contribution guidelines for AutoLyap development, testing, and documentation workflows.
+- [Pull request process](https://autolyap.github.io/contributing/pull_request_process/index.md): Prepare, validate, and submit an AutoLyap pull request with the project's review checklist and contribution requirements.
+- [Internal algorithm modules](https://autolyap.github.io/dev/dev_internal_algorithms/index.md): Internal AutoLyap algorithm APIs for contributors implementing or modifying first-order optimization methods.
+- [Internal analysis and solver modules](https://autolyap.github.io/dev/dev_internal_core/index.md): Internal AutoLyap APIs for Lyapunov analysis assembly, solver backends, diagnostics, and certificate execution.
+- [Internal problem-class modules](https://autolyap.github.io/dev/dev_internal_problemclass/index.md): Internal AutoLyap problem-class APIs for function, operator, inclusion-problem, and interpolation-index implementations.
+- [Internal utility modules](https://autolyap.github.io/dev/dev_internal_utils/index.md): Internal AutoLyap utility APIs shared by algorithm, problem class, analysis, validation, and solver modules.
+- [Developer reference](https://autolyap.github.io/dev/dev_reference/index.md): Developer reference for AutoLyap internals, including analysis assembly, solver execution, algorithms, and problem classes.
+- [v0.2.0](https://autolyap.github.io/release_notes/v0_2_0/index.md): AutoLyap v0.2.0 release notes with new diagnostics, verbosity output improvements, and documentation updates.
+- [v0.2.1](https://autolyap.github.io/release_notes/v0_2_1/index.md): AutoLyap v0.2.1 release notes covering notebooks and documentation consistency updates.
+- [What’s new](https://autolyap.github.io/whats_new/index.md): Explore AutoLyap release highlights, new analysis features, documentation updates, and changes across package versions.

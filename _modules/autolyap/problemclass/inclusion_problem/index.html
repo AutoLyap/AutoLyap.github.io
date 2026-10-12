@@ -5,15 +5,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.problemclass.inclusion_problem</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/problemclass/inclusion_problem/" />
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -46,6 +49,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="og:updated_time" content="2026-03-27T16:01:09Z"/>
+<meta property="article:modified_time" content="2026-03-27T16:01:09Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="autolyap.problemclass.inclusion_problem."/>
 <meta name="robots" content="noindex,follow"/>
@@ -80,7 +85,8 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
+  ,"dateModified": "2026-03-27T16:01:09Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
   ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
   ,"learningResourceType": "technical documentation"
@@ -157,7 +163,7 @@
 <span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
-<span class="sd">&quot;&quot;&quot;Inclusion-problem container and validation logic.&quot;&quot;&quot;</span>
+<span class="sd">"""Inclusion-problem container and validation logic."""</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> Dict, List, Tuple, Union
 
@@ -181,7 +187,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <div class="viewcode-block" id="InclusionProblem">
 <a class="viewcode-back" href="../../../../problem_class/#autolyap.problemclass.inclusion_problem.InclusionProblem">[docs]</a>
 <span class="k">class</span> <span class="nc">InclusionProblem</span>:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Representation of an inclusion problem defined by interpolation conditions.</span>
 
 <span class="sd">    See :doc:`2. Problem classes &lt;/theory/problem_class&gt;` for notation and</span>
@@ -214,14 +220,14 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">      :math:`m_{\textup{op}} = 1` and :math:`m_{\textup{func}} = 0`.</span>
 <span class="sd">      This single component may still contain a list of operator</span>
 <span class="sd">      conditions (an intersection).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     _SINGLE_COMPONENT_ONLY_CONDITIONS <span class="o">=</span> (
         GradientDominated,
         WeakMintyVariationalInequality,
     )
 
     <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, components: List[ComponentInput]) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Build an inclusion problem from user-provided interpolation conditions.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -232,9 +238,9 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If no components are provided or if a component payload is invalid.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> components <span class="ow">or</span> <span class="nb">len</span>(components) <span class="o">&lt;</span> <span class="mi">1</span>:
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;Error in InclusionProblem __init__: At least one component is required.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"Error in InclusionProblem __init__: At least one component is required."</span>)
 
         <span class="bp">self</span><span class="o">.</span>m <span class="o">=</span> <span class="nb">len</span>(components)
         <span class="bp">self</span><span class="o">.</span>components: Dict[<span class="nb">int</span>, List[_InterpolationCondition]] <span class="o">=</span> {}
@@ -253,7 +259,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_readonly_view</span>(array: np<span class="o">.</span>ndarray) <span class="o">-&gt;</span> np<span class="o">.</span>ndarray:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return a read-only view of an array used in cached interpolation payloads.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -263,13 +269,13 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Returns**</span>
 
 <span class="sd">        - (:class:`numpy.ndarray`): Read-only view of `array`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         view <span class="o">=</span> array<span class="o">.</span>view()
         view<span class="o">.</span>setflags(write<span class="o">=</span><span class="kc">False</span>)
         <span class="k">return</span> view
 
     <span class="k">def</span> <span class="nf">_freeze_component_data</span>(<span class="bp">self</span>, data: List[ComponentData]) <span class="o">-&gt;</span> Tuple[ComponentData, <span class="o">...</span>]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Freeze component data into an immutable tuple of read-only payload items.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -279,11 +285,11 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Returns**</span>
 
 <span class="sd">        - (:class:`tuple`): Tuple of frozen component data entries.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="nb">tuple</span>(<span class="bp">self</span><span class="o">.</span>_freeze_data_item(item) <span class="k">for</span> item <span class="ow">in</span> data)
 
     <span class="k">def</span> <span class="nf">_freeze_data_item</span>(<span class="bp">self</span>, item: ComponentData) <span class="o">-&gt;</span> ComponentData:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Freeze one interpolation data item by converting arrays to read-only views.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -293,7 +299,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Returns**</span>
 
 <span class="sd">        - (:class:`~typing.Union`\[:class:`~typing.Tuple`, :class:`~typing.Tuple`\]): Frozen interpolation tuple.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">len</span>(item) <span class="o">==</span> <span class="mi">2</span>:
             matrix, interp_idx <span class="o">=</span> item
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span>_readonly_view(matrix), interp_idx
@@ -302,7 +308,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span>_readonly_view(matrix), <span class="bp">self</span><span class="o">.</span>_readonly_view(vector), eq, interp_idx
 
     <span class="k">def</span> <span class="nf">_normalize_init_component</span>(<span class="bp">self</span>, index: <span class="nb">int</span>, component: ComponentInput) <span class="o">-&gt;</span> List[_InterpolationCondition]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Normalize one constructor component entry into a non-empty condition list.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -317,25 +323,25 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If `component` is empty or contains invalid condition types.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">isinstance</span>(component, <span class="nb">list</span>):
             <span class="k">if</span> <span class="ow">not</span> component:
                 <span class="k">raise</span> <span class="ne">ValueError</span>(
-                    <span class="sa">f</span><span class="s2">&quot;Error in InclusionProblem __init__: Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must contain &quot;</span>
-                    <span class="s2">&quot;at least one _InterpolationCondition instance.&quot;</span>
+                    <span class="sa">f</span><span class="s2">"Error in InclusionProblem __init__: Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must contain "</span>
+                    <span class="s2">"at least one _InterpolationCondition instance."</span>
                 )
             <span class="k">for</span> condition <span class="ow">in</span> component:
                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(condition, _InterpolationCondition):
                     <span class="k">raise</span> <span class="ne">ValueError</span>(
-                        <span class="sa">f</span><span class="s2">&quot;Error in InclusionProblem __init__: Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must contain only &quot;</span>
-                        <span class="sa">f</span><span class="s2">&quot;_InterpolationCondition instances. Got </span><span class="si">{</span><span class="nb">type</span>(condition)<span class="si">}</span><span class="s2">.&quot;</span>
+                        <span class="sa">f</span><span class="s2">"Error in InclusionProblem __init__: Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must contain only "</span>
+                        <span class="sa">f</span><span class="s2">"_InterpolationCondition instances. Got </span><span class="si">{</span><span class="nb">type</span>(condition)<span class="si">}</span><span class="s2">."</span>
                     )
             <span class="k">return</span> <span class="nb">list</span>(component)
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(component, _InterpolationCondition):
             <span class="k">raise</span> <span class="ne">ValueError</span>(
-                <span class="sa">f</span><span class="s2">&quot;Error in InclusionProblem __init__: Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must be an &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;_InterpolationCondition instance. Got </span><span class="si">{</span><span class="nb">type</span>(component)<span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="sa">f</span><span class="s2">"Error in InclusionProblem __init__: Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must be an "</span>
+                <span class="sa">f</span><span class="s2">"_InterpolationCondition instance. Got </span><span class="si">{</span><span class="nb">type</span>(component)<span class="si">}</span><span class="s2">."</span>
             )
         <span class="k">return</span> [component]
 
@@ -344,7 +350,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
         index: <span class="nb">int</span>,
         new_instances: ComponentInput,
     ) <span class="o">-&gt;</span> List[_InterpolationCondition]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Normalize replacement instances for a component to a validated list.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -359,30 +365,30 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If `new_instances` is empty or contains invalid condition types.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">isinstance</span>(new_instances, <span class="nb">list</span>):
             <span class="k">if</span> <span class="ow">not</span> new_instances:
                 <span class="k">raise</span> <span class="ne">ValueError</span>(
-                    <span class="sa">f</span><span class="s2">&quot;Error: New instances for component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must contain at least one &quot;</span>
-                    <span class="s2">&quot;_InterpolationCondition instance.&quot;</span>
+                    <span class="sa">f</span><span class="s2">"Error: New instances for component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must contain at least one "</span>
+                    <span class="s2">"_InterpolationCondition instance."</span>
                 )
             <span class="k">for</span> inst <span class="ow">in</span> new_instances:
                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(inst, _InterpolationCondition):
                     <span class="k">raise</span> <span class="ne">ValueError</span>(
-                        <span class="sa">f</span><span class="s2">&quot;Error: All new instances for component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must be &quot;</span>
-                        <span class="s2">&quot;_InterpolationCondition instances.&quot;</span>
+                        <span class="sa">f</span><span class="s2">"Error: All new instances for component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must be "</span>
+                        <span class="s2">"_InterpolationCondition instances."</span>
                     )
             <span class="k">return</span> <span class="nb">list</span>(new_instances)
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(new_instances, _InterpolationCondition):
             <span class="k">raise</span> <span class="ne">ValueError</span>(
-                <span class="sa">f</span><span class="s2">&quot;Error: New instance for component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must be an &quot;</span>
-                <span class="s2">&quot;_InterpolationCondition instance.&quot;</span>
+                <span class="sa">f</span><span class="s2">"Error: New instance for component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> must be an "</span>
+                <span class="s2">"_InterpolationCondition instance."</span>
             )
         <span class="k">return</span> [new_instances]
 
     <span class="k">def</span> <span class="nf">_validate_single_component_constraints</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Enforce global restrictions for conditions that require `m == 1`.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -396,20 +402,20 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If a single-component-only condition is used with `m &gt; 1`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span>m <span class="o">==</span> <span class="mi">1</span>:
             <span class="k">return</span>
 
         <span class="k">for</span> conditions <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span>components<span class="o">.</span>values():
             <span class="k">if</span> <span class="nb">any</span>(<span class="nb">isinstance</span>(cond, <span class="bp">self</span><span class="o">.</span>_SINGLE_COMPONENT_ONLY_CONDITIONS) <span class="k">for</span> cond <span class="ow">in</span> conditions):
                 <span class="k">raise</span> <span class="ne">ValueError</span>(
-                    <span class="s2">&quot;Error: If any component contains a GradientDominated or &quot;</span>
-                    <span class="s2">&quot;WeakMintyVariationalInequality instance, the total number of &quot;</span>
-                    <span class="s2">&quot;components (m) must be exactly 1.&quot;</span>
+                    <span class="s2">"Error: If any component contains a GradientDominated or "</span>
+                    <span class="s2">"WeakMintyVariationalInequality instance, the total number of "</span>
+                    <span class="s2">"components (m) must be exactly 1."</span>
                 )
 
     <span class="k">def</span> <span class="nf">_refresh_index_sets</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Recompute the operator and function index sets from `components`.</span>
 
 <span class="sd">        Component conventions follow the class-level reference in</span>
@@ -423,14 +429,14 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 
 <span class="sd">        - `None`: This method updates :attr:`I_op` and :attr:`I_func` in place.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span>I_op <span class="o">=</span> [k <span class="k">for</span> k, conds <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span>components<span class="o">.</span>items()
                      <span class="k">if</span> <span class="nb">isinstance</span>(conds[<span class="mi">0</span>], _OperatorInterpolationCondition)]
         <span class="bp">self</span><span class="o">.</span>I_func <span class="o">=</span> [k <span class="k">for</span> k, conds <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span>components<span class="o">.</span>items()
                        <span class="k">if</span> <span class="nb">isinstance</span>(conds[<span class="mi">0</span>], _FunctionInterpolationCondition)]
 
     <span class="k">def</span> <span class="nf">_validate_component_index</span>(<span class="bp">self</span>, index: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">int</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Validate and normalize a 1-indexed component identifier.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -444,20 +450,20 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If `index` is outside `1, ..., m`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         index <span class="o">=</span> ensure_integral(
             index,
-            <span class="s2">&quot;Index&quot;</span>,
+            <span class="s2">"Index"</span>,
             minimum<span class="o">=</span><span class="mi">1</span>,
         )
         <span class="k">if</span> index <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span>m:
             <span class="k">raise</span> <span class="ne">ValueError</span>(
-                <span class="sa">f</span><span class="s2">&quot;Error: Index must be in 1,...,</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span>m<span class="si">}</span><span class="s2">. Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> is not defined.&quot;</span>
+                <span class="sa">f</span><span class="s2">"Error: Index must be in 1,...,</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span>m<span class="si">}</span><span class="s2">. Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> is not defined."</span>
             )
         <span class="k">return</span> index
     
     <span class="k">def</span> <span class="nf">_validate_component_uniformity</span>(<span class="bp">self</span>, index: <span class="nb">int</span>, conditions: List[_InterpolationCondition]) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Ensure all conditions for a component are of the same type.</span>
 
 <span class="sd">        Component conventions follow the class-level reference in</span>
@@ -475,7 +481,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If the conditions contain a mix of operator and function conditions.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         first_is_operator <span class="o">=</span> <span class="nb">isinstance</span>(conditions[<span class="mi">0</span>], _OperatorInterpolationCondition)
         has_mixed_types <span class="o">=</span> <span class="nb">any</span>(
             <span class="nb">isinstance</span>(condition, _OperatorInterpolationCondition) <span class="o">!=</span> first_is_operator
@@ -483,12 +489,12 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
         )
         <span class="k">if</span> has_mixed_types:
             <span class="k">raise</span> <span class="ne">ValueError</span>(
-                <span class="sa">f</span><span class="s2">&quot;Error: Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> contains a mix of operator and function &quot;</span>
-                <span class="s2">&quot;interpolation conditions.&quot;</span>
+                <span class="sa">f</span><span class="s2">"Error: Component </span><span class="si">{</span>index<span class="si">}</span><span class="s2"> contains a mix of operator and function "</span>
+                <span class="s2">"interpolation conditions."</span>
             )
     
     <span class="k">def</span> <span class="nf">_validate_condition_data</span>(<span class="bp">self</span>, cond: _InterpolationCondition) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Validate the data returned by an interpolation condition.</span>
 
 <span class="sd">        Tuple conventions follow the class-level reference in</span>
@@ -505,10 +511,10 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If the condition data does not conform to the expected structure.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         condition_data <span class="o">=</span> cond<span class="o">.</span>get_data()
         <span class="k">if</span> <span class="ow">not</span> condition_data:
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;Error: Interpolation condition data must be non-empty.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"Error: Interpolation condition data must be non-empty."</span>)
 
         <span class="k">if</span> <span class="nb">isinstance</span>(cond, _OperatorInterpolationCondition):
             <span class="k">for</span> item <span class="ow">in</span> condition_data:
@@ -520,11 +526,11 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
                 <span class="bp">self</span><span class="o">.</span>_validate_function_data_item(item)
             <span class="k">return</span>
 
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;Error: Unknown interpolation condition type.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"Error: Unknown interpolation condition type."</span>)
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_validate_square_symmetric_matrix</span>(matrix: np<span class="o">.</span>ndarray, matrix_name: <span class="nb">str</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Validate that a matrix is a finite square symmetric NumPy array.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -539,17 +545,17 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If shape, finiteness, or symmetry checks fail.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(matrix, np<span class="o">.</span>ndarray):
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span>matrix_name<span class="si">}</span><span class="s2"> must be a numpy array.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"Error: </span><span class="si">{</span>matrix_name<span class="si">}</span><span class="s2"> must be a numpy array."</span>)
         <span class="k">if</span> matrix<span class="o">.</span>ndim <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> matrix<span class="o">.</span>shape[<span class="mi">0</span>] <span class="o">!=</span> matrix<span class="o">.</span>shape[<span class="mi">1</span>]:
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span>matrix_name<span class="si">}</span><span class="s2"> must be square.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"Error: </span><span class="si">{</span>matrix_name<span class="si">}</span><span class="s2"> must be square."</span>)
         ensure_finite_array(matrix, matrix_name)
         <span class="k">if</span> <span class="ow">not</span> np<span class="o">.</span>allclose(matrix, matrix<span class="o">.</span>T, atol<span class="o">=</span><span class="mf">1e-8</span>):
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span>matrix_name<span class="si">}</span><span class="s2"> must be symmetric.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"Error: </span><span class="si">{</span>matrix_name<span class="si">}</span><span class="s2"> must be symmetric."</span>)
 
     <span class="k">def</span> <span class="nf">_validate_operator_data_item</span>(<span class="bp">self</span>, item: <span class="nb">object</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Validate one operator interpolation tuple `(matrix, interpolation_indices)`.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -563,21 +569,21 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If tuple structure or field types are invalid.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> (<span class="nb">isinstance</span>(item, <span class="nb">tuple</span>) <span class="ow">and</span> <span class="nb">len</span>(item) <span class="o">==</span> <span class="mi">2</span>):
             <span class="k">raise</span> <span class="ne">ValueError</span>(
-                <span class="sa">f</span><span class="s2">&quot;Error: Operator condition data must be a tuple of 2 elements. Received: </span><span class="si">{</span>item<span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">"Error: Operator condition data must be a tuple of 2 elements. Received: </span><span class="si">{</span>item<span class="si">}</span><span class="s2">"</span>
             )
 
         matrix, interp_idx <span class="o">=</span> item
-        <span class="bp">self</span><span class="o">.</span>_validate_square_symmetric_matrix(matrix, <span class="s2">&quot;Operator interpolation matrix&quot;</span>)
+        <span class="bp">self</span><span class="o">.</span>_validate_square_symmetric_matrix(matrix, <span class="s2">"Operator interpolation matrix"</span>)
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(interp_idx, _InterpolationIndices):
             <span class="k">raise</span> <span class="ne">ValueError</span>(
-                <span class="s2">&quot;Error: Operator interpolation indices must be an instance of _InterpolationIndices.&quot;</span>
+                <span class="s2">"Error: Operator interpolation indices must be an instance of _InterpolationIndices."</span>
             )
 
     <span class="k">def</span> <span class="nf">_validate_function_data_item</span>(<span class="bp">self</span>, item: <span class="nb">object</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Validate one function interpolation tuple `(matrix, vector, eq, interpolation_indices)`.</span>
 
 <span class="sd">        **Parameters**</span>
@@ -591,32 +597,32 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If tuple structure, dimensions, or field types are invalid.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> (<span class="nb">isinstance</span>(item, <span class="nb">tuple</span>) <span class="ow">and</span> <span class="nb">len</span>(item) <span class="o">==</span> <span class="mi">4</span>):
             <span class="k">raise</span> <span class="ne">ValueError</span>(
-                <span class="sa">f</span><span class="s2">&quot;Error: Function condition data must be a tuple of 4 elements. Received: </span><span class="si">{</span>item<span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">"Error: Function condition data must be a tuple of 4 elements. Received: </span><span class="si">{</span>item<span class="si">}</span><span class="s2">"</span>
             )
 
         matrix, vector, eq, interp_idx <span class="o">=</span> item
-        <span class="bp">self</span><span class="o">.</span>_validate_square_symmetric_matrix(matrix, <span class="s2">&quot;Function interpolation matrix&quot;</span>)
+        <span class="bp">self</span><span class="o">.</span>_validate_square_symmetric_matrix(matrix, <span class="s2">"Function interpolation matrix"</span>)
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(vector, np<span class="o">.</span>ndarray):
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;Error: Function interpolation vector must be a numpy array.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"Error: Function interpolation vector must be a numpy array."</span>)
         <span class="k">if</span> vector<span class="o">.</span>ndim <span class="o">!=</span> <span class="mi">1</span>:
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;Error: Function interpolation vector must be 1-dimensional.&quot;</span>)
-        ensure_finite_array(vector, <span class="s2">&quot;Function interpolation vector&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"Error: Function interpolation vector must be 1-dimensional."</span>)
+        ensure_finite_array(vector, <span class="s2">"Function interpolation vector"</span>)
         <span class="k">if</span> matrix<span class="o">.</span>shape[<span class="mi">0</span>] <span class="o">!=</span> <span class="mi">2</span> <span class="o">*</span> vector<span class="o">.</span>shape[<span class="mi">0</span>]:
             <span class="k">raise</span> <span class="ne">ValueError</span>(
-                <span class="s2">&quot;Error: Function interpolation matrix rows must equal 2 times the length of the vector.&quot;</span>
+                <span class="s2">"Error: Function interpolation matrix rows must equal 2 times the length of the vector."</span>
             )
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(eq, (<span class="nb">bool</span>, np<span class="o">.</span>bool_)):
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;Error: Function interpolation eq flag must be a boolean.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"Error: Function interpolation eq flag must be a boolean."</span>)
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(interp_idx, _InterpolationIndices):
             <span class="k">raise</span> <span class="ne">ValueError</span>(
-                <span class="s2">&quot;Error: Function interpolation indices must be an instance of _InterpolationIndices.&quot;</span>
+                <span class="s2">"Error: Function interpolation indices must be an instance of _InterpolationIndices."</span>
             )
     
     <span class="k">def</span> <span class="nf">_validate_component_data</span>(<span class="bp">self</span>, index: <span class="nb">int</span>, conditions: List[_InterpolationCondition]) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Validate the data of all conditions for a component.</span>
 
 <span class="sd">        Component conventions follow the class-level reference in</span>
@@ -634,14 +640,14 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If any condition returns invalid interpolation data.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">for</span> cond <span class="ow">in</span> conditions:
             <span class="bp">self</span><span class="o">.</span>_validate_condition_data(cond)
     
 <div class="viewcode-block" id="InclusionProblem._get_component_data">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.inclusion_problem.InclusionProblem._get_component_data">[docs]</a>
     <span class="k">def</span> <span class="nf">_get_component_data</span>(<span class="bp">self</span>, index: <span class="nb">int</span>) <span class="o">-&gt;</span> List[ComponentData]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return the raw interpolation data for a component.</span>
 
 <span class="sd">        Tuple conventions follow the class-level reference in</span>
@@ -661,7 +667,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If the index is not defined.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         index <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_component_index(index)
         cached <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_component_data_cache<span class="o">.</span>get(index)
         <span class="k">if</span> cached <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>:
@@ -675,7 +681,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 
     
     <span class="k">def</span> <span class="nf">_get_component</span>(<span class="bp">self</span>, index: <span class="nb">int</span>) <span class="o">-&gt;</span> List[_InterpolationCondition]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return the interpolation condition instances for a component.</span>
 
 <span class="sd">        Component conventions follow the class-level reference in</span>
@@ -692,7 +698,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If the index is not defined.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         index <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_component_index(index)
         <span class="k">return</span> <span class="nb">list</span>(<span class="bp">self</span><span class="o">.</span>components[index])
     
@@ -701,7 +707,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
         index: <span class="nb">int</span>,
         new_instances: ComponentInput,
     ) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Update the interpolation condition instances for a component.</span>
 
 <span class="sd">        Component conventions follow the class-level reference in</span>
@@ -722,7 +728,7 @@ ComponentInput <span class="o">=</span> Union[_InterpolationCondition, List[_Int
 <span class="sd">        **Raises**</span>
 
 <span class="sd">        - `ValueError`: If the index is not defined or if `new_instances` are invalid.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         index <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_component_index(index)
         <span class="bp">self</span><span class="o">.</span>_component_data_cache<span class="o">.</span>pop(index, <span class="kc">None</span>)
         normalized_instances <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_normalize_new_instances(index, new_instances)

@@ -5,15 +5,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.problemclass.base</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/problemclass/base/" />
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -46,6 +49,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="og:updated_time" content="2026-03-27T16:01:09Z"/>
+<meta property="article:modified_time" content="2026-03-27T16:01:09Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="autolyap.problemclass.base."/>
 <meta name="robots" content="noindex,follow"/>
@@ -80,7 +85,8 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
+  ,"dateModified": "2026-03-27T16:01:09Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
   ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
   ,"learningResourceType": "technical documentation"
@@ -157,7 +163,7 @@
 <span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
-<span class="sd">&quot;&quot;&quot;Abstract interpolation-condition interfaces.&quot;&quot;&quot;</span>
+<span class="sd">"""Abstract interpolation-condition interfaces."""</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> ABC, abstractmethod
@@ -172,7 +178,7 @@ InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, Func
 <div class="viewcode-block" id="_InterpolationCondition">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._InterpolationCondition">[docs]</a>
 <span class="k">class</span> <span class="nc">_InterpolationCondition</span>(ABC):
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Abstract base class for an interpolation condition.</span>
 
 <span class="sd">    Class-level reference</span>
@@ -187,12 +193,12 @@ InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, Func
 <span class="sd">    :class:`~autolyap.problemclass.base._FunctionInterpolationCondition` for</span>
 <span class="sd">    the detailed notation and the corresponding interpolation constraints.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 <div class="viewcode-block" id="_InterpolationCondition.get_data">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._InterpolationCondition.get_data">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> Sequence[InterpolationData]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return interpolation data.</span>
 
 <span class="sd">        Shared tuple conventions follow the class-level reference in</span>
@@ -203,7 +209,7 @@ InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, Func
 <span class="sd">        - (:class:`~typing.List`\[:class:`~typing.Union`\[:class:`~typing.Tuple`\[:class:`numpy.ndarray`, :class:`~autolyap.problemclass.indices._InterpolationIndices`\], :class:`~typing.Tuple`\[:class:`numpy.ndarray`, :class:`numpy.ndarray`, :class:`bool`, :class:`~autolyap.problemclass.indices._InterpolationIndices`\]\]\]):</span>
 <span class="sd">          A list of tuples representing the interpolation data.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span></div>
 </div>
 
@@ -211,7 +217,7 @@ InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, Func
 <div class="viewcode-block" id="_OperatorInterpolationCondition">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition">[docs]</a>
 <span class="k">class</span> <span class="nc">_OperatorInterpolationCondition</span>(_InterpolationCondition):
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Base class for operator interpolation conditions.</span>
 
 <span class="sd">    Class-level reference</span>
@@ -254,12 +260,12 @@ InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, Func
 
 <span class="sd">    for :math:`z = (z_1,\ldots,z_b) \in \calH^{b}`.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 <div class="viewcode-block" id="_OperatorInterpolationCondition.get_data">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._OperatorInterpolationCondition.get_data">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> Sequence[OperatorInterpolationData]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return operator interpolation data.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -270,7 +276,7 @@ InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, Func
 <span class="sd">        - (:class:`~typing.List`\[:class:`~typing.Tuple`\[:class:`numpy.ndarray`, :class:`~autolyap.problemclass.indices._InterpolationIndices`\]\]): A list of tuples, each containing a square</span>
 <span class="sd">          symmetric matrix and an instance of :class:`~autolyap.problemclass.indices._InterpolationIndices`.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span></div>
 </div>
 
@@ -278,7 +284,7 @@ InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, Func
 <div class="viewcode-block" id="_FunctionInterpolationCondition">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._FunctionInterpolationCondition">[docs]</a>
 <span class="k">class</span> <span class="nc">_FunctionInterpolationCondition</span>(_InterpolationCondition):
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Base class for function interpolation conditions.</span>
 
 <span class="sd">    Class-level reference</span>
@@ -341,12 +347,12 @@ InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, Func
 
 <span class="sd">    for :math:`z = (z_1,\ldots,z_b) \in \calH^{b}`.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 <div class="viewcode-block" id="_FunctionInterpolationCondition.get_data">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.base._FunctionInterpolationCondition.get_data">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> Sequence[FunctionInterpolationData]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return function interpolation data.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -358,7 +364,7 @@ InterpolationData <span class="o">=</span> Union[OperatorInterpolationData, Func
 <span class="sd">          containing a square symmetric matrix, a 1D vector, a boolean flag, and an instance of</span>
 <span class="sd">          :class:`~autolyap.problemclass.indices._InterpolationIndices`.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span></div>
 </div>
 

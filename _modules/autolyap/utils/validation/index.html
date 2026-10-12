@@ -5,15 +5,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.utils.validation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/utils/validation/" />
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -46,6 +49,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="og:updated_time" content="2026-03-27T16:01:09Z"/>
+<meta property="article:modified_time" content="2026-03-27T16:01:09Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="autolyap.utils.validation."/>
 <meta name="robots" content="noindex,follow"/>
@@ -80,7 +85,8 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
+  ,"dateModified": "2026-03-27T16:01:09Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
   ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
   ,"learningResourceType": "technical documentation"
@@ -157,7 +163,7 @@
 <span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
-<span class="sd">&quot;&quot;&quot;Validation helpers shared across algorithms and problem classes.&quot;&quot;&quot;</span>
+<span class="sd">"""Validation helpers shared across algorithms and problem classes."""</span>
 
 <span class="kn">from</span> <span class="nn">numbers</span> <span class="kn">import</span> Integral, Real
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> Any, Iterable, List, Optional, Sequence, Union, cast
@@ -174,7 +180,7 @@ RealScalar <span class="o">=</span> Union[<span class="nb">int</span>, <span cla
     name: <span class="nb">str</span>,
     error_message: <span class="nb">str</span>,
 ) <span class="o">-&gt;</span> Sequence[Any]:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Ensure index-like input is a concrete finite-length sequence container.</span>
 
 <span class="sd">    Accepted container types are ``list``, ``tuple``, and ``numpy.ndarray``.</span>
@@ -188,7 +194,7 @@ RealScalar <span class="o">=</span> Union[<span class="nb">int</span>, <span cla
 <span class="sd">    **Returns**</span>
 
 <span class="sd">    - A sequence view of `values` suitable for indexed iteration.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> values <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span>(values, _INDEX_LIST_TYPES):
         <span class="k">raise</span> <span class="ne">ValueError</span>(error_message)
     <span class="k">return</span> cast(Sequence[Any], values)
@@ -198,20 +204,20 @@ RealScalar <span class="o">=</span> Union[<span class="nb">int</span>, <span cla
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.validation.ensure_integral">[docs]</a>
 <span class="k">def</span> <span class="nf">ensure_integral</span>(value: RealScalar, name: <span class="nb">str</span>, minimum: Optional[<span class="nb">int</span>] <span class="o">=</span> <span class="kc">None</span>,
                     maximum: Optional[<span class="nb">int</span>] <span class="o">=</span> <span class="kc">None</span>) <span class="o">-&gt;</span> <span class="nb">int</span>:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Validate and normalize an integer-valued scalar.</span>
 
 <span class="sd">    Rejects booleans explicitly and optionally enforces lower/upper bounds.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Reject bools explicitly; they are subclasses of int in Python.</span>
     <span class="k">if</span> <span class="nb">isinstance</span>(value, <span class="nb">bool</span>) <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span>(value, Integral):
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be an integer.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be an integer."</span>)
     value <span class="o">=</span> <span class="nb">int</span>(value)
     <span class="c1"># Bounds checks are optional; use when caller cares about valid ranges.</span>
     <span class="k">if</span> minimum <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> value <span class="o">&lt;</span> minimum:
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be &gt;= </span><span class="si">{</span>minimum<span class="si">}</span><span class="s2">.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be &gt;= </span><span class="si">{</span>minimum<span class="si">}</span><span class="s2">."</span>)
     <span class="k">if</span> maximum <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> value <span class="o">&gt;</span> maximum:
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be &lt;= </span><span class="si">{</span>maximum<span class="si">}</span><span class="s2">.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be &lt;= </span><span class="si">{</span>maximum<span class="si">}</span><span class="s2">."</span>)
     <span class="k">return</span> value</div>
 
 
@@ -221,24 +227,24 @@ RealScalar <span class="o">=</span> Union[<span class="nb">int</span>, <span cla
 <span class="k">def</span> <span class="nf">ensure_real_number</span>(value: RealScalar, name: <span class="nb">str</span>, finite: <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,
                        minimum: Optional[<span class="nb">float</span>] <span class="o">=</span> <span class="kc">None</span>,
                        maximum: Optional[<span class="nb">float</span>] <span class="o">=</span> <span class="kc">None</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Validate and normalize a real-valued scalar.</span>
 
 <span class="sd">    Rejects booleans and NaNs explicitly. Optional flags enforce finiteness</span>
 <span class="sd">    and lower/upper bounds.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Reject bools explicitly; they are subclasses of int/float in Python.</span>
     <span class="k">if</span> <span class="nb">isinstance</span>(value, <span class="nb">bool</span>) <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span>(value, Real):
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be a real number.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be a real number."</span>)
     value <span class="o">=</span> <span class="nb">float</span>(value)
     <span class="k">if</span> np<span class="o">.</span>isnan(value):
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be a real number.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be a real number."</span>)
     <span class="k">if</span> finite <span class="ow">and</span> <span class="ow">not</span> np<span class="o">.</span>isfinite(value):
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be finite.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be finite."</span>)
     <span class="k">if</span> minimum <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> value <span class="o">&lt;</span> minimum:
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be &gt;= </span><span class="si">{</span>minimum<span class="si">}</span><span class="s2">.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be &gt;= </span><span class="si">{</span>minimum<span class="si">}</span><span class="s2">."</span>)
     <span class="k">if</span> maximum <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> value <span class="o">&gt;</span> maximum:
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be &lt;= </span><span class="si">{</span>maximum<span class="si">}</span><span class="s2">.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be &lt;= </span><span class="si">{</span>maximum<span class="si">}</span><span class="s2">."</span>)
     <span class="k">return</span> value</div>
 
 
@@ -246,38 +252,38 @@ RealScalar <span class="o">=</span> Union[<span class="nb">int</span>, <span cla
 <div class="viewcode-block" id="ensure_finite_array">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.validation.ensure_finite_array">[docs]</a>
 <span class="k">def</span> <span class="nf">ensure_finite_array</span>(array: np<span class="o">.</span>ndarray, name: <span class="nb">str</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Raise if `array` contains non-finite entries (NaN or inf).&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""Raise if `array` contains non-finite entries (NaN or inf)."""</span>
     <span class="c1"># Centralized finite check used across matrix/vector inputs.</span>
     <span class="k">try</span>:
         <span class="k">if</span> <span class="ow">not</span> np<span class="o">.</span>all(np<span class="o">.</span>isfinite(array)):
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must contain only finite entries.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must contain only finite entries."</span>)
     <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> exc:
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must contain only finite entries.&quot;</span>) <span class="kn">from</span> <span class="nn">exc</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must contain only finite entries."</span>) <span class="kn">from</span> <span class="nn">exc</span></div>
 
 
 
 <div class="viewcode-block" id="ensure_index_list">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.validation.ensure_index_list">[docs]</a>
 <span class="k">def</span> <span class="nf">ensure_index_list</span>(values: Iterable[RealScalar], name: <span class="nb">str</span>, m: <span class="nb">int</span>) <span class="o">-&gt;</span> List[<span class="nb">int</span>]:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Validate a sorted, duplicate-free component-index list.</span>
 
 <span class="sd">    The returned list is guaranteed to contain integers in ``[1, m]`` in</span>
 <span class="sd">    strictly increasing order.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    values <span class="o">=</span> _ensure_index_container(values, name, <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be a list of integers.&quot;</span>)
+<span class="sd">    """</span>
+    values <span class="o">=</span> _ensure_index_container(values, name, <span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be a list of integers."</span>)
     items: List[<span class="nb">int</span>] <span class="o">=</span> []
     <span class="k">for</span> v <span class="ow">in</span> values:
         <span class="k">if</span> <span class="nb">isinstance</span>(v, <span class="nb">bool</span>) <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span>(v, Integral):
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must contain only integers.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must contain only integers."</span>)
         v_int <span class="o">=</span> <span class="nb">int</span>(v)
         <span class="k">if</span> v_int <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> v_int <span class="o">&gt;</span> m:
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> entries must be in [1, </span><span class="si">{</span>m<span class="si">}</span><span class="s2">].&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> entries must be in [1, </span><span class="si">{</span>m<span class="si">}</span><span class="s2">]."</span>)
         items<span class="o">.</span>append(v_int)
     <span class="k">if</span> <span class="nb">len</span>(<span class="nb">set</span>(items)) <span class="o">!=</span> <span class="nb">len</span>(items):
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must not contain duplicates.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must not contain duplicates."</span>)
     <span class="k">if</span> items <span class="o">!=</span> <span class="nb">sorted</span>(items):
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be in increasing order.&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"</span><span class="si">{</span>name<span class="si">}</span><span class="s2"> must be in increasing order."</span>)
     <span class="k">return</span> items</div>
 
 
@@ -285,22 +291,22 @@ RealScalar <span class="o">=</span> Union[<span class="nb">int</span>, <span cla
 <div class="viewcode-block" id="ensure_m_bar_list">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.validation.ensure_m_bar_list">[docs]</a>
 <span class="k">def</span> <span class="nf">ensure_m_bar_list</span>(values: Iterable[RealScalar], m: <span class="nb">int</span>) <span class="o">-&gt;</span> List[<span class="nb">int</span>]:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Validate per-component evaluation counts.</span>
 
 <span class="sd">    Ensures the sequence length equals ``m`` and every entry is an integer</span>
 <span class="sd">    strictly greater than zero.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    values <span class="o">=</span> _ensure_index_container(values, <span class="s2">&quot;m_bar_is&quot;</span>, <span class="s2">&quot;m_bar_is must be a list of positive integers.&quot;</span>)
+<span class="sd">    """</span>
+    values <span class="o">=</span> _ensure_index_container(values, <span class="s2">"m_bar_is"</span>, <span class="s2">"m_bar_is must be a list of positive integers."</span>)
     <span class="k">if</span> <span class="nb">len</span>(values) <span class="o">!=</span> m:
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;m must equal the length of m_bar_is&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"m must equal the length of m_bar_is"</span>)
     out: List[<span class="nb">int</span>] <span class="o">=</span> []
     <span class="k">for</span> idx, v <span class="ow">in</span> <span class="nb">enumerate</span>(values, start<span class="o">=</span><span class="mi">1</span>):
         <span class="k">if</span> <span class="nb">isinstance</span>(v, <span class="nb">bool</span>) <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span>(v, Integral):
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;m_bar_is must contain only integers.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"m_bar_is must contain only integers."</span>)
         v_int <span class="o">=</span> <span class="nb">int</span>(v)
         <span class="k">if</span> v_int <span class="o">&lt;=</span> <span class="mi">0</span>:
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;m_bar_is entries must be &gt; 0. Got </span><span class="si">{</span>v_int<span class="si">}</span><span class="s2"> at index </span><span class="si">{</span>idx<span class="si">}</span><span class="s2">.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"m_bar_is entries must be &gt; 0. Got </span><span class="si">{</span>v_int<span class="si">}</span><span class="s2"> at index </span><span class="si">{</span>idx<span class="si">}</span><span class="s2">."</span>)
         out<span class="o">.</span>append(v_int)
     <span class="k">return</span> out</div>
 

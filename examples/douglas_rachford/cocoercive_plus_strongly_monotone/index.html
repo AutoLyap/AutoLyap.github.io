@@ -6,15 +6,18 @@
   <meta charset="utf-8" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Douglas–Rachford: Cocoercive + Strongly Monotone | AutoLyap</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/examples/douglas_rachford/cocoercive_plus_strongly_monotone/" />
-  <link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
   <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../../_static/jquery.js?v=5d32c60e"></script>
@@ -39,6 +42,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../_static/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../../../_static/apple-touch-icon.png"/>
+<link rel="alternate" type="text/markdown" title="Markdown documentation" href="https://autolyap.github.io/examples/douglas_rachford/cocoercive_plus_strongly_monotone/index.md"/>
+<link rel="describedby" type="text/plain" href="https://autolyap.github.io/llms.txt"/>
 <meta property="og:url" content="https://autolyap.github.io/examples/douglas_rachford/cocoercive_plus_strongly_monotone/"/>
 <meta name="twitter:url" content="https://autolyap.github.io/examples/douglas_rachford/cocoercive_plus_strongly_monotone/"/>
 <link rel="license" href="https://spdx.org/licenses/GPL-3.0-only.html"/>
@@ -90,7 +95,7 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
   ,"datePublished": "2026-03-02T18:04:37Z"
   ,"dateModified": "2026-05-25T14:36:54Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
@@ -286,7 +291,7 @@ x^{k+1} &amp;= x^k + \lambda (w^k - v^k).
 <h2>Run the iteration-independent analysis<a class="headerlink" href="#run-the-iteration-independent-analysis" title="Link to this heading"></a></h2>
 <p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate">backend=&quot;mosek_fusion&quot;</code>).
 Install the optional MOSEK dependency first:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">&quot;autolyap[mosek]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">"autolyap[mosek]"</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -311,10 +316,10 @@ problem <span class="o">=</span> InclusionProblem(
         StronglyMonotone(mu<span class="o">=</span>mu),  <span class="c1"># G2</span>
     ]
 )
-algorithm <span class="o">=</span> DouglasRachford(gamma<span class="o">=</span>gamma, lambda_value<span class="o">=</span>lambda_value, <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;operator&quot;</span>)
-solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>)
+algorithm <span class="o">=</span> DouglasRachford(gamma<span class="o">=</span>gamma, lambda_value<span class="o">=</span>lambda_value, <span class="nb">type</span><span class="o">=</span><span class="s2">"operator"</span>)
+solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">"mosek_fusion"</span>)
 <span class="c1"># License-free option:</span>
-<span class="c1"># solver_options = SolverOptions(backend=&quot;cvxpy&quot;, cvxpy_solver=&quot;CLARABEL&quot;)</span>
+<span class="c1"># solver_options = SolverOptions(backend="cvxpy", cvxpy_solver="CLARABEL")</span>
 
 <span class="c1"># Build V(P, p, k) and R(T, t, k) for distance-to-solution analysis.</span>
 P, T <span class="o">=</span> IterationIndependent<span class="o">.</span>LinearConvergence<span class="o">.</span>get_parameters_distance_to_solution(
@@ -332,10 +337,10 @@ result <span class="o">=</span> IterationIndependent<span class="o">.</span>Line
     solver_options<span class="o">=</span>solver_options,
 )
 
-<span class="k">if</span> result[<span class="s2">&quot;status&quot;</span>] <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span>:
-    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">&quot;No feasible Lyapunov certificate in the requested rho interval.&quot;</span>)
+<span class="k">if</span> result[<span class="s2">"status"</span>] <span class="o">!=</span> <span class="s2">"feasible"</span>:
+    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">"No feasible Lyapunov certificate in the requested rho interval."</span>)
 
-rho_autolyap <span class="o">=</span> result[<span class="s2">&quot;rho&quot;</span>]
+rho_autolyap <span class="o">=</span> result[<span class="s2">"rho"</span>]
 
 <span class="k">def</span> <span class="nf">rho_theoretical</span>(mu: <span class="nb">float</span>, beta: <span class="nb">float</span>, lambda_value: <span class="nb">float</span>, gamma: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
     scaled_mu <span class="o">=</span> gamma <span class="o">*</span> mu
@@ -432,8 +437,8 @@ rho_autolyap <span class="o">=</span> result[<span class="s2">&quot;rho&quot;</s
 
 rho_theory <span class="o">=</span> rho_theoretical(mu, beta, lambda_value, gamma)
 
-<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;rho (AutoLyap): </span><span class="si">{</span>rho_autolyap<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span>)
-<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;rho (theory):   </span><span class="si">{</span>rho_theory<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">"rho (AutoLyap): </span><span class="si">{</span>rho_autolyap<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">"</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">"rho (theory):   </span><span class="si">{</span>rho_theory<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">"</span>)
 </pre></div>
 </div>
 <p>What to inspect in <code class="docutils literal notranslate">result</code>:</p>

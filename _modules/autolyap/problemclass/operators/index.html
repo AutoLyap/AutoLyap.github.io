@@ -5,15 +5,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.problemclass.operators</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/problemclass/operators/" />
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -46,6 +49,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="og:updated_time" content="2026-03-27T16:01:09Z"/>
+<meta property="article:modified_time" content="2026-03-27T16:01:09Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="autolyap.problemclass.operators."/>
 <meta name="robots" content="noindex,follow"/>
@@ -80,7 +85,8 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
+  ,"dateModified": "2026-03-27T16:01:09Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
   ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
   ,"learningResourceType": "technical documentation"
@@ -157,7 +163,7 @@
 <span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
-<span class="sd">&quot;&quot;&quot;Concrete operator interpolation-condition classes.&quot;&quot;&quot;</span>
+<span class="sd">"""Concrete operator interpolation-condition classes."""</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> List, Union, Tuple
@@ -170,7 +176,7 @@
 <div class="viewcode-block" id="_ensure_positive_finite">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.operators._ensure_positive_finite">[docs]</a>
 <span class="k">def</span> <span class="nf">_ensure_positive_finite</span>(value: Union[<span class="nb">int</span>, <span class="nb">float</span>], parameter_name: <span class="nb">str</span>, error_message: <span class="nb">str</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return `value` as float after enforcing strict positivity and finiteness.&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""Return `value` as float after enforcing strict positivity and finiteness."""</span>
     numeric_value <span class="o">=</span> ensure_real_number(value, parameter_name)
     <span class="k">if</span> <span class="ow">not</span> np<span class="o">.</span>isfinite(numeric_value) <span class="ow">or</span> numeric_value <span class="o">&lt;=</span> <span class="mi">0</span>:
         <span class="k">raise</span> <span class="ne">ValueError</span>(error_message)
@@ -181,7 +187,7 @@
 <div class="viewcode-block" id="_ensure_finite">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.operators._ensure_finite">[docs]</a>
 <span class="k">def</span> <span class="nf">_ensure_finite</span>(value: Union[<span class="nb">int</span>, <span class="nb">float</span>], parameter_name: <span class="nb">str</span>, error_message: <span class="nb">str</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return `value` as float after enforcing finiteness.&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""Return `value` as float after enforcing finiteness."""</span>
     numeric_value <span class="o">=</span> ensure_real_number(value, parameter_name)
     <span class="k">if</span> <span class="ow">not</span> np<span class="o">.</span>isfinite(numeric_value):
         <span class="k">raise</span> <span class="ne">ValueError</span>(error_message)
@@ -192,7 +198,7 @@
 <div class="viewcode-block" id="MaximallyMonotone">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.MaximallyMonotone">[docs]</a>
 <span class="k">class</span> <span class="nc">MaximallyMonotone</span>(_OperatorInterpolationCondition):
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Operator interpolation condition for maximally monotone operators.</span>
 
 <span class="sd">    Let :math:`G: \calH \rightrightarrows \calH` be maximally monotone.</span>
@@ -229,9 +235,9 @@
 
 <span class="sd">    - :cite:`bauschke2017convexanalysismonotone{Theorem 20.21}`.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return interpolation data for a maximally monotone operator.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -242,21 +248,21 @@
 <span class="sd">        - (:class:`~typing.List`\[:class:`~typing.Tuple`\[:class:`numpy.ndarray`, :class:`~autolyap.problemclass.indices._InterpolationIndices`\]\]): A list containing one tuple with the</span>
 <span class="sd">          interpolation matrix and indices.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         matrix <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
             [<span class="mi">0</span>, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>],
             [<span class="mi">0</span>, <span class="mi">0</span>,  <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
             [<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>,  <span class="mi">0</span>, <span class="mi">0</span>],
             [<span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>,  <span class="mi">0</span>, <span class="mi">0</span>]
         ])
-        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&lt;r2&quot;</span>)
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">"r1&lt;r2"</span>)
         <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 
 <div class="viewcode-block" id="StronglyMonotone">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.StronglyMonotone">[docs]</a>
 <span class="k">class</span> <span class="nc">StronglyMonotone</span>(_OperatorInterpolationCondition):
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Operator interpolation condition for strongly and maximally monotone operators.</span>
 
 <span class="sd">    Let :math:`\mu \in \mathbb{R}_{++}` and</span>
@@ -300,17 +306,17 @@
 <span class="sd">    **References**</span>
 
 <span class="sd">    - :cite:`ryu2020operatorsplittingperformance{Proposition 1}`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
         mu <span class="o">=</span> _ensure_positive_finite(
             mu,
-            <span class="s2">&quot;Strong monotonicity parameter&quot;</span>,
-            <span class="s2">&quot;Strong monotonicity parameter (mu) must be greater than 0 and finite.&quot;</span>,
+            <span class="s2">"Strong monotonicity parameter"</span>,
+            <span class="s2">"Strong monotonicity parameter (mu) must be greater than 0 and finite."</span>,
         )
         <span class="bp">self</span><span class="o">.</span>mu <span class="o">=</span> mu
 
     <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return interpolation data for the strongly monotone operator.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -321,21 +327,21 @@
 <span class="sd">        - (:class:`~typing.List`\[:class:`~typing.Tuple`\[:class:`numpy.ndarray`, :class:`~autolyap.problemclass.indices._InterpolationIndices`\]\]): A list containing one tuple with the</span>
 <span class="sd">          interpolation matrix and indices.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         matrix <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
             [<span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>mu, <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>mu, <span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>],
             [<span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>mu, <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>mu,  <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
             [<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>, <span class="mi">0</span>, <span class="mi">0</span>],
             [<span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">0</span>, <span class="mi">0</span>]
         ])
-        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&lt;r2&quot;</span>)
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">"r1&lt;r2"</span>)
         <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 
 <div class="viewcode-block" id="LipschitzOperator">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.LipschitzOperator">[docs]</a>
 <span class="k">class</span> <span class="nc">LipschitzOperator</span>(_OperatorInterpolationCondition):
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Operator interpolation condition for Lipschitz operators.</span>
 
 <span class="sd">    Let :math:`L \in \mathbb{R}_{++}` and</span>
@@ -383,17 +389,17 @@
 <span class="sd">      :cite:`kirszbraun1934lipschitz`,</span>
 <span class="sd">      :cite:`valentine1943extension`,</span>
 <span class="sd">      :cite:`valentine1945lipschitzconditionpreserving`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, L: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
         L <span class="o">=</span> _ensure_positive_finite(
             L,
-            <span class="s2">&quot;Lipschitz parameter&quot;</span>,
-            <span class="s2">&quot;Lipschitz parameter (L) must be greater than 0 and finite.&quot;</span>,
+            <span class="s2">"Lipschitz parameter"</span>,
+            <span class="s2">"Lipschitz parameter (L) must be greater than 0 and finite."</span>,
         )
         <span class="bp">self</span><span class="o">.</span>L <span class="o">=</span> L
 
     <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return interpolation data for the Lipschitz operator.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -404,21 +410,21 @@
 <span class="sd">        - (:class:`~typing.List`\[:class:`~typing.Tuple`\[:class:`numpy.ndarray`, :class:`~autolyap.problemclass.indices._InterpolationIndices`\]\]): A list containing one tuple with the</span>
 <span class="sd">          interpolation matrix and indices.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         matrix <span class="o">=</span> np<span class="o">.</span>array([
             [<span class="o">-</span><span class="bp">self</span><span class="o">.</span>L<span class="o">**</span><span class="mi">2</span>, <span class="bp">self</span><span class="o">.</span>L<span class="o">**</span><span class="mi">2</span>, <span class="mi">0</span>, <span class="mi">0</span>],
             [<span class="bp">self</span><span class="o">.</span>L<span class="o">**</span><span class="mi">2</span>, <span class="o">-</span><span class="bp">self</span><span class="o">.</span>L<span class="o">**</span><span class="mi">2</span>, <span class="mi">0</span>, <span class="mi">0</span>],
             [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
             [<span class="mi">0</span>, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>]
         ])
-        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&lt;r2&quot;</span>)
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">"r1&lt;r2"</span>)
         <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 
 <div class="viewcode-block" id="Cocoercive">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.Cocoercive">[docs]</a>
 <span class="k">class</span> <span class="nc">Cocoercive</span>(_OperatorInterpolationCondition):
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Operator interpolation condition for cocoercive operators.</span>
 
 <span class="sd">    Let :math:`\beta \in \mathbb{R}_{++}` and</span>
@@ -463,17 +469,17 @@
 <span class="sd">    **References**</span>
 
 <span class="sd">    - :cite:`ryu2020operatorsplittingperformance{Proposition 2}`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, beta: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
         beta <span class="o">=</span> _ensure_positive_finite(
             beta,
-            <span class="s2">&quot;Cocoercivity parameter&quot;</span>,
-            <span class="s2">&quot;Cocoercivity parameter (beta) must be greater than 0 and finite.&quot;</span>,
+            <span class="s2">"Cocoercivity parameter"</span>,
+            <span class="s2">"Cocoercivity parameter (beta) must be greater than 0 and finite."</span>,
         )
         <span class="bp">self</span><span class="o">.</span>beta <span class="o">=</span> beta
 
     <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return interpolation data for the cocoercive operator.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -484,21 +490,21 @@
 <span class="sd">        - (:class:`~typing.List`\[:class:`~typing.Tuple`\[:class:`numpy.ndarray`, :class:`~autolyap.problemclass.indices._InterpolationIndices`\]\]): A list containing one tuple with the</span>
 <span class="sd">          interpolation matrix and indices.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         matrix <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
             [<span class="mi">0</span>, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>],
             [<span class="mi">0</span>, <span class="mi">0</span>,  <span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>],
             [<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>, <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>beta, <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>beta],
             [<span class="mi">1</span>, <span class="o">-</span><span class="mi">1</span>, <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>beta, <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>beta]
         ])
-        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1&lt;r2&quot;</span>)
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">"r1&lt;r2"</span>)
         <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 
 <div class="viewcode-block" id="WeakMintyVariationalInequality">
 <a class="viewcode-back" href="../../../../operator_classes/#autolyap.problemclass.operators.WeakMintyVariationalInequality">[docs]</a>
 <span class="k">class</span> <span class="nc">WeakMintyVariationalInequality</span>(_OperatorInterpolationCondition):
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Operator interpolation condition for operators that fulfill the weak Minty variational inequality.</span>
 
 <span class="sd">    Let :math:`\rho_{\textup{minty}} \in \mathbb{R}` and</span>
@@ -548,17 +554,17 @@
 <span class="sd">      :math:`m = 1`, :math:`m_{\textup{op}} = 1`, and</span>
 <span class="sd">      :math:`m_{\textup{func}} = 0`. This single component may still</span>
 <span class="sd">      contain a list of operator conditions (an intersection).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, rho_minty: Union[<span class="nb">int</span>, <span class="nb">float</span>]) <span class="o">-&gt;</span> <span class="kc">None</span>:
         rho_minty <span class="o">=</span> _ensure_finite(
             rho_minty,
-            <span class="s2">&quot;Weak MVI parameter&quot;</span>,
-            <span class="s2">&quot;Weak MVI parameter (rho_minty) must be finite.&quot;</span>,
+            <span class="s2">"Weak MVI parameter"</span>,
+            <span class="s2">"Weak MVI parameter (rho_minty) must be finite."</span>,
         )
         <span class="bp">self</span><span class="o">.</span>rho_minty <span class="o">=</span> rho_minty
 
     <span class="k">def</span> <span class="nf">get_data</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> List[Tuple[np<span class="o">.</span>ndarray, _InterpolationIndices]]:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return interpolation data for the weak Minty variational inequality condition.</span>
 
 <span class="sd">        The tuple format and notation follow the class-level reference in</span>
@@ -569,14 +575,14 @@
 <span class="sd">        - (:class:`~typing.List`\[:class:`~typing.Tuple`\[:class:`numpy.ndarray`, :class:`~autolyap.problemclass.indices._InterpolationIndices`\]\]): A list containing one tuple with the</span>
 <span class="sd">          interpolation matrix and indices.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         matrix <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> np<span class="o">.</span>array([
             [<span class="mi">0</span>, <span class="mi">0</span>, <span class="o">-</span><span class="mi">1</span>, <span class="mi">0</span>],
             [<span class="mi">0</span>, <span class="mi">0</span>,  <span class="mi">1</span>, <span class="mi">0</span>],
             [<span class="o">-</span><span class="mi">1</span>, <span class="mi">1</span>, <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span>rho_minty, <span class="mi">0</span>],
             [<span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>, <span class="mi">0</span>]
         ])
-        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">&quot;r1!=star&quot;</span>)
+        interp_idx <span class="o">=</span> _InterpolationIndices(<span class="s2">"r1!=star"</span>)
         <span class="k">return</span> [(matrix, interp_idx)]</div>
 
 </pre></div>

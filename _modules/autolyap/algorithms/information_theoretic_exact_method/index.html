@@ -5,15 +5,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.algorithms.information_theoretic_exact_method</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/algorithms/information_theoretic_exact_method/" />
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -46,6 +49,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="og:updated_time" content="2026-03-27T16:01:09Z"/>
+<meta property="article:modified_time" content="2026-03-27T16:01:09Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="autolyap.algorithms.information_theoretic_exact_method."/>
 <meta name="robots" content="noindex,follow"/>
@@ -80,7 +85,8 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
+  ,"dateModified": "2026-03-27T16:01:09Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
   ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
   ,"learningResourceType": "technical documentation"
@@ -165,7 +171,7 @@
 <div class="viewcode-block" id="ITEM">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM">[docs]</a>
 <span class="k">class</span> <span class="nc">ITEM</span>(Algorithm):
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Information-theoretic exact method (ITEM) :cite:`taylor2023optimalgradientmethod`.</span>
 
 <span class="sd">    See :doc:`3. Algorithm representation &lt;/theory/algorithm_representation&gt;`</span>
@@ -244,9 +250,9 @@
 
 <span class="sd">    .. math::</span>
 <span class="sd">        I_{\text{func}} = \{1\},\quad I_{\text{op}} = \varnothing.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, mu: <span class="nb">float</span>, L: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Initialize ITEM.</span>
 
 <span class="sd">        Structural inputs passed to :class:`~autolyap.algorithms.Algorithm` are</span>
@@ -254,7 +260,7 @@
 <span class="sd">        .. math::</span>
 <span class="sd">            n = 2,\quad m = 1,\quad (\bar m_i)_{i=1}^{m} = (1),\quad \bar m = 1,\quad</span>
 <span class="sd">            I_{\mathrm{func}} = \{1\},\quad I_{\mathrm{op}} = \varnothing.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span>()<span class="o">.</span><span class="fm">__init__</span>(<span class="mi">2</span>, <span class="mi">1</span>, [<span class="mi">1</span>], [<span class="mi">1</span>], [])
         <span class="bp">self</span><span class="o">.</span>set_L(L)
         <span class="bp">self</span><span class="o">.</span>set_mu(mu)
@@ -262,12 +268,12 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_validate_mu_lt_L</span>(mu: <span class="nb">float</span>, L: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
         <span class="k">if</span> mu <span class="o">&gt;=</span> L:
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;Require mu &lt; L. Got mu=</span><span class="si">{</span>mu<span class="si">}</span><span class="s2">, L=</span><span class="si">{</span>L<span class="si">}</span><span class="s2">.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"Require mu &lt; L. Got mu=</span><span class="si">{</span>mu<span class="si">}</span><span class="s2">, L=</span><span class="si">{</span>L<span class="si">}</span><span class="s2">."</span>)
     
 <div class="viewcode-block" id="ITEM.set_L">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM.set_L">[docs]</a>
     <span class="k">def</span> <span class="nf">set_L</span>(<span class="bp">self</span>, L: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Set the smoothness parameter :math:`L`.</span>
 
 <span class="sd">        Shared notation follows the class-level reference in</span>
@@ -281,17 +287,17 @@
 
 <span class="sd">        - `ValueError`: If `L` is not a finite real number, if :math:`L \le 0`,</span>
 <span class="sd">          or if :math:`\mu \ge L`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        L <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_positive_finite_real(L, <span class="s2">&quot;L&quot;</span>)
-        <span class="k">if</span> <span class="nb">hasattr</span>(<span class="bp">self</span>, <span class="s2">&quot;mu&quot;</span>):
+<span class="sd">        """</span>
+        L <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_positive_finite_real(L, <span class="s2">"L"</span>)
+        <span class="k">if</span> <span class="nb">hasattr</span>(<span class="bp">self</span>, <span class="s2">"mu"</span>):
             <span class="bp">self</span><span class="o">.</span>_validate_mu_lt_L(<span class="bp">self</span><span class="o">.</span>mu, L)
-        <span class="bp">self</span><span class="o">.</span>_set_dynamic_parameter(<span class="s2">&quot;L&quot;</span>, L)</div>
+        <span class="bp">self</span><span class="o">.</span>_set_dynamic_parameter(<span class="s2">"L"</span>, L)</div>
 
 
 <div class="viewcode-block" id="ITEM.set_mu">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM.set_mu">[docs]</a>
     <span class="k">def</span> <span class="nf">set_mu</span>(<span class="bp">self</span>, mu: <span class="nb">float</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Set the strong-convexity parameter :math:`\mu`.</span>
 
 <span class="sd">        Shared notation follows the class-level reference in</span>
@@ -305,17 +311,17 @@
 
 <span class="sd">        - `ValueError`: If `mu` is not a finite real number, if :math:`\mu \le 0`,</span>
 <span class="sd">          or if :math:`\mu \ge L`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        mu <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_positive_finite_real(mu, <span class="s2">&quot;mu&quot;</span>)
-        <span class="k">if</span> <span class="nb">hasattr</span>(<span class="bp">self</span>, <span class="s2">&quot;L&quot;</span>):
+<span class="sd">        """</span>
+        mu <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_positive_finite_real(mu, <span class="s2">"mu"</span>)
+        <span class="k">if</span> <span class="nb">hasattr</span>(<span class="bp">self</span>, <span class="s2">"L"</span>):
             <span class="bp">self</span><span class="o">.</span>_validate_mu_lt_L(mu, <span class="bp">self</span><span class="o">.</span>L)
-        <span class="bp">self</span><span class="o">.</span>_set_dynamic_parameter(<span class="s2">&quot;mu&quot;</span>, mu)</div>
+        <span class="bp">self</span><span class="o">.</span>_set_dynamic_parameter(<span class="s2">"mu"</span>, mu)</div>
 
     
 <div class="viewcode-block" id="ITEM.get_A">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM.get_A">[docs]</a>
     <span class="k">def</span> <span class="nf">get_A</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">        Return the scalar sequence value :math:`\tilde{A}_k`.</span>
 
 <span class="sd">        This scalar follows the recurrence stated in the class-level reference of</span>
@@ -323,8 +329,8 @@
 <span class="sd">        The system matrix :math:`A_k` in :meth:`get_ABCD` uses the same letter by</span>
 <span class="sd">        convention; this accessor returns only the scalar sequence</span>
 <span class="sd">        :math:`\tilde{A}_k`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">&quot;k&quot;</span>)
+<span class="sd">        """</span>
+        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">"k"</span>)
         q <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>mu <span class="o">/</span> <span class="bp">self</span><span class="o">.</span>L
         A_tilde <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">for</span> _ <span class="ow">in</span> <span class="nb">range</span>(k):
@@ -336,14 +342,14 @@
 
 
     <span class="k">def</span> <span class="nf">compute_beta</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
-        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">&quot;k&quot;</span>)
+        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">"k"</span>)
         q <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>mu <span class="o">/</span> <span class="bp">self</span><span class="o">.</span>L
         A_tilde_k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>get_A(k)
         A_tilde_k1 <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>get_A(k <span class="o">+</span> <span class="mi">1</span>)
         <span class="k">return</span> A_tilde_k <span class="o">/</span> ((<span class="mi">1</span> <span class="o">-</span> q) <span class="o">*</span> A_tilde_k1)
 
     <span class="k">def</span> <span class="nf">compute_delta</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">float</span>:
-        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">&quot;k&quot;</span>)
+        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">"k"</span>)
         q <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>mu <span class="o">/</span> <span class="bp">self</span><span class="o">.</span>L
         A_tilde_k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>get_A(k)
         A_tilde_k1 <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>get_A(k <span class="o">+</span> <span class="mi">1</span>)
@@ -354,7 +360,7 @@
 <div class="viewcode-block" id="ITEM.get_ABCD">
 <a class="viewcode-back" href="../../../../concrete_algorithms/#autolyap.algorithms.ITEM.get_ABCD">[docs]</a>
     <span class="k">def</span> <span class="nf">get_ABCD</span>(<span class="bp">self</span>, k: <span class="nb">int</span>) <span class="o">-&gt;</span> Tuple[np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray, np<span class="o">.</span>ndarray]:
-        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">&quot;k&quot;</span>)
+        k <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>_validate_nonnegative_integral(k, <span class="s2">"k"</span>)
         q <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>mu <span class="o">/</span> <span class="bp">self</span><span class="o">.</span>L
         beta <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>compute_beta(k)
         delta <span class="o">=</span> <span class="bp">self</span><span class="o">.</span>compute_delta(k)

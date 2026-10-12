@@ -6,15 +6,18 @@
   <meta charset="utf-8" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>AutoLyap Quick Start: Certify Optimization Convergence</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/quick_start/" />
-  <link rel="preload" href="../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
   <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../_static/jquery.js?v=5d32c60e"></script>
@@ -39,6 +42,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../_static/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../_static/apple-touch-icon.png"/>
+<link rel="alternate" type="text/markdown" title="Markdown documentation" href="https://autolyap.github.io/quick_start/index.md"/>
+<link rel="describedby" type="text/plain" href="https://autolyap.github.io/llms.txt"/>
 <meta property="og:url" content="https://autolyap.github.io/quick_start/"/>
 <meta name="twitter:url" content="https://autolyap.github.io/quick_start/"/>
 <link rel="license" href="https://spdx.org/licenses/GPL-3.0-only.html"/>
@@ -53,8 +58,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
-<meta property="og:updated_time" content="2026-05-25T14:36:54Z"/>
-<meta property="article:modified_time" content="2026-05-25T14:36:54Z"/>
+<meta property="og:updated_time" content="2026-10-12T08:55:22Z"/>
+<meta property="article:modified_time" content="2026-10-12T08:55:22Z"/>
 <meta property="article:published_time" content="2026-03-02T18:04:37Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="Quick start guide for AutoLyap with iteration-independent and iteration-dependent Lyapunov analysis workflows."/>
@@ -90,9 +95,9 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
   ,"datePublished": "2026-03-02T18:04:37Z"
-  ,"dateModified": "2026-05-25T14:36:54Z"
+  ,"dateModified": "2026-10-12T08:55:22Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
   ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
   ,"wordCount": 1311
@@ -218,7 +223,7 @@
 <p>Both examples follow the same modeling pattern and differ mainly in the
 Lyapunov construction and target metric.</p>
 <p><strong>Google Colab</strong></p>
-<p><a class="reference external" href="https://colab.research.google.com/github/AutoLyap/AutoLyap/blob/main/notebooks/quick_start_colab.ipynb" target="_blank" rel="noopener noreferrer"><img alt="Open in Colab" src="https://img.shields.io/badge/Open_in-Colab-5fa8e8?style=flat&amp;logo=googlecolab&amp;logoColor=white&amp;labelColor=111111" width="111" height="20" decoding="async" loading="eager" fetchpriority="low" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AutoLyap/AutoLyap/blob/main/notebooks/quick_start_colab.ipynb" target="_blank" rel="noopener noreferrer"><img alt="Open in Colab" src="https://img.shields.io/badge/Open_in-Colab-2570ae?style=flat&amp;logo=googlecolab&amp;logoColor=white&amp;labelColor=111111" width="111" height="20" decoding="async" loading="eager" fetchpriority="low" /></a></p>
 <section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Link to this heading"></a></h2>
 <p>Install AutoLyap:</p>
@@ -226,7 +231,7 @@ Lyapunov construction and target metric.</p>
 </pre></div>
 </div>
 <p>If you plan to use the MOSEK backend, install the optional MOSEK extra:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">&quot;autolyap[mosek]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">"autolyap[mosek]"</span>
 </pre></div>
 </div>
 <p>Backend notes:</p>
@@ -299,10 +304,10 @@ gamma <span class="o">=</span> <span class="mf">0.2</span>
 
 problem <span class="o">=</span> InclusionProblem([SmoothStronglyConvex(mu, L)])
 algorithm <span class="o">=</span> GradientMethod(gamma<span class="o">=</span>gamma)
-solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>)  <span class="c1"># requires `autolyap[mosek]`</span>
+solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">"mosek_fusion"</span>)  <span class="c1"># requires `autolyap[mosek]`</span>
 
 <span class="c1"># License-free option:</span>
-<span class="c1"># solver_options = SolverOptions(backend=&quot;cvxpy&quot;, cvxpy_solver=&quot;CLARABEL&quot;)</span>
+<span class="c1"># solver_options = SolverOptions(backend="cvxpy", cvxpy_solver="CLARABEL")</span>
 
 P, p, T, t <span class="o">=</span> IterationIndependent<span class="o">.</span>LinearConvergence<span class="o">.</span>get_parameters_distance_to_solution(
     algorithm
@@ -321,15 +326,15 @@ result <span class="o">=</span> IterationIndependent<span class="o">.</span>Line
     solver_options<span class="o">=</span>solver_options,
 )
 
-<span class="k">if</span> result[<span class="s2">&quot;status&quot;</span>] <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span>:
-    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">&quot;No feasible Lyapunov certificate in the requested rho interval.&quot;</span>)
+<span class="k">if</span> result[<span class="s2">"status"</span>] <span class="o">!=</span> <span class="s2">"feasible"</span>:
+    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">"No feasible Lyapunov certificate in the requested rho interval."</span>)
 
-rho <span class="o">=</span> result[<span class="s2">&quot;rho&quot;</span>]
-certificate <span class="o">=</span> result[<span class="s2">&quot;certificate&quot;</span>]
+rho <span class="o">=</span> result[<span class="s2">"rho"</span>]
+certificate <span class="o">=</span> result[<span class="s2">"certificate"</span>]
 
 rho_theory_value <span class="o">=</span> <span class="nb">max</span>(<span class="nb">abs</span>(<span class="mf">1.0</span> <span class="o">-</span> gamma <span class="o">*</span> L), <span class="nb">abs</span>(<span class="mf">1.0</span> <span class="o">-</span> gamma <span class="o">*</span> mu)) <span class="o">**</span> <span class="mi">2</span>
-<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;rho (AutoLyap): </span><span class="si">{</span>rho<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span>)
-<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;rho (theory):   </span><span class="si">{</span>rho_theory_value<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">"rho (AutoLyap): </span><span class="si">{</span>rho<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">"</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">"rho (theory):   </span><span class="si">{</span>rho_theory_value<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">"</span>)
 </pre></div>
 </div>
 <p>The computed value <code class="docutils literal notranslate">rho (AutoLyap)</code> matches (up to solver numerical
@@ -417,10 +422,10 @@ K <span class="o">=</span> <span class="mi">5</span>
 
 problem <span class="o">=</span> InclusionProblem([SmoothConvex(L)])
 algorithm <span class="o">=</span> OptimizedGradientMethod(L<span class="o">=</span>L, K<span class="o">=</span>K)
-solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>)  <span class="c1"># requires `autolyap[mosek]`</span>
+solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">"mosek_fusion"</span>)  <span class="c1"># requires `autolyap[mosek]`</span>
 
 <span class="c1"># License-free option:</span>
-<span class="c1"># solver_options = SolverOptions(backend=&quot;cvxpy&quot;, cvxpy_solver=&quot;CLARABEL&quot;)</span>
+<span class="c1"># solver_options = SolverOptions(backend="cvxpy", cvxpy_solver="CLARABEL")</span>
 
 Q_0, q_0 <span class="o">=</span> IterationDependent<span class="o">.</span>get_parameters_distance_to_solution(
     algorithm,
@@ -444,20 +449,20 @@ result <span class="o">=</span> IterationDependent<span class="o">.</span>search
     solver_options<span class="o">=</span>solver_options,
 )
 
-<span class="k">if</span> result[<span class="s2">&quot;status&quot;</span>] <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span>:
-    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">&quot;No feasible chained Lyapunov certificate for this setup.&quot;</span>)
+<span class="k">if</span> result[<span class="s2">"status"</span>] <span class="o">!=</span> <span class="s2">"feasible"</span>:
+    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">"No feasible chained Lyapunov certificate for this setup."</span>)
 
-c_K <span class="o">=</span> result[<span class="s2">&quot;c_K&quot;</span>]
-certificate <span class="o">=</span> result[<span class="s2">&quot;certificate&quot;</span>]
+c_K <span class="o">=</span> result[<span class="s2">"c_K"</span>]
+certificate <span class="o">=</span> result[<span class="s2">"certificate"</span>]
 
-Q_sequence <span class="o">=</span> certificate[<span class="s2">&quot;Q_sequence&quot;</span>]  <span class="c1"># [Q_0, Q_1, ..., Q_K]</span>
-q_sequence <span class="o">=</span> certificate[<span class="s2">&quot;q_sequence&quot;</span>]  <span class="c1"># [q_0, q_1, ..., q_K] or None</span>
+Q_sequence <span class="o">=</span> certificate[<span class="s2">"Q_sequence"</span>]  <span class="c1"># [Q_0, Q_1, ..., Q_K]</span>
+q_sequence <span class="o">=</span> certificate[<span class="s2">"q_sequence"</span>]  <span class="c1"># [q_0, q_1, ..., q_K] or None</span>
 
 theta_K <span class="o">=</span> algorithm<span class="o">.</span>compute_theta(K, K)
 c_K_theory_value <span class="o">=</span> L <span class="o">/</span> (<span class="mf">2.0</span> <span class="o">*</span> theta_K <span class="o">**</span> <span class="mi">2</span>)
 
-<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;c_K (AutoLyap): </span><span class="si">{</span>c_K<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span>)
-<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;c_K (theory):   </span><span class="si">{</span>c_K_theory_value<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">"c_K (AutoLyap): </span><span class="si">{</span>c_K<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">"</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">"c_K (theory):   </span><span class="si">{</span>c_K_theory_value<span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">"</span>)
 </pre></div>
 </div>
 <p>The computed value <code class="docutils literal notranslate">c_K (AutoLyap)</code> matches (up to solver numerical

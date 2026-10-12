@@ -6,15 +6,18 @@
   <meta charset="utf-8" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Constant Nesterov Momentum: Gradient-Dominated | AutoLyap</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/examples/nesterov_momentum/gradient_dominated_smooth/" />
-  <link rel="preload" href="../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
   <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
     <script defer="defer" src="../../../_static/jquery.js?v=5d32c60e"></script>
@@ -39,6 +42,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../../_static/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../../../_static/apple-touch-icon.png"/>
+<link rel="alternate" type="text/markdown" title="Markdown documentation" href="https://autolyap.github.io/examples/nesterov_momentum/gradient_dominated_smooth/index.md"/>
+<link rel="describedby" type="text/plain" href="https://autolyap.github.io/llms.txt"/>
 <meta property="og:url" content="https://autolyap.github.io/examples/nesterov_momentum/gradient_dominated_smooth/"/>
 <meta name="twitter:url" content="https://autolyap.github.io/examples/nesterov_momentum/gradient_dominated_smooth/"/>
 <link rel="license" href="https://spdx.org/licenses/GPL-3.0-only.html"/>
@@ -90,7 +95,7 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
   ,"datePublished": "2026-03-02T18:04:37Z"
   ,"dateModified": "2026-05-25T14:36:54Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
@@ -277,7 +282,7 @@ x^{k+1} &amp;= y^k - \gamma \nabla f(y^k).
 <h2>Run the iteration-independent analysis<a class="headerlink" href="#run-the-iteration-independent-analysis" title="Link to this heading"></a></h2>
 <p>This example uses the MOSEK Fusion backend (<code class="docutils literal notranslate">backend=&quot;mosek_fusion&quot;</code>).
 Install the optional MOSEK dependency first:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">&quot;autolyap[mosek]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>pip install <span class="s2">"autolyap[mosek]"</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">autolyap</span> <span class="kn">import</span> SolverOptions
@@ -296,9 +301,9 @@ problem <span class="o">=</span> InclusionProblem(
     ]
 )
 algorithm <span class="o">=</span> GradientNesterovMomentum(gamma<span class="o">=</span>gamma, delta<span class="o">=</span>delta)
-solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">&quot;mosek_fusion&quot;</span>)
+solver_options <span class="o">=</span> SolverOptions(backend<span class="o">=</span><span class="s2">"mosek_fusion"</span>)
 <span class="c1"># License-free option:</span>
-<span class="c1"># solver_options = SolverOptions(backend=&quot;cvxpy&quot;, cvxpy_solver=&quot;CLARABEL&quot;)</span>
+<span class="c1"># solver_options = SolverOptions(backend="cvxpy", cvxpy_solver="CLARABEL")</span>
 
 <span class="c1"># Build V(P, p, k) and R(T, t, k) for function-value suboptimality analysis.</span>
 P, p, T, t <span class="o">=</span> IterationIndependent<span class="o">.</span>LinearConvergence<span class="o">.</span>get_parameters_function_value_suboptimality(
@@ -316,10 +321,10 @@ result <span class="o">=</span> IterationIndependent<span class="o">.</span>Line
     solver_options<span class="o">=</span>solver_options,
 )
 
-<span class="k">if</span> result[<span class="s2">&quot;status&quot;</span>] <span class="o">!=</span> <span class="s2">&quot;feasible&quot;</span>:
-    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">&quot;No feasible Lyapunov certificate in the requested rho interval.&quot;</span>)
+<span class="k">if</span> result[<span class="s2">"status"</span>] <span class="o">!=</span> <span class="s2">"feasible"</span>:
+    <span class="k">raise</span> <span class="ne">RuntimeError</span>(<span class="s2">"No feasible Lyapunov certificate in the requested rho interval."</span>)
 
-<span class="nb">print</span>(<span class="sa">f</span><span class="s2">&quot;rho (AutoLyap): </span><span class="si">{</span>result[<span class="s1">&#39;rho&#39;</span>]<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span>)
+<span class="nb">print</span>(<span class="sa">f</span><span class="s2">"rho (AutoLyap): </span><span class="si">{</span>result[<span class="s1">'rho'</span>]<span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">"</span>)
 </pre></div>
 </div>
 <p>What to inspect in <code class="docutils literal notranslate">result</code>:</p>

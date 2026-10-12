@@ -5,15 +5,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.utils.helper_functions</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/utils/helper_functions/" />
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -46,6 +49,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="og:updated_time" content="2026-03-27T16:01:09Z"/>
+<meta property="article:modified_time" content="2026-03-27T16:01:09Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="autolyap.utils.helper_functions."/>
 <meta name="robots" content="noindex,follow"/>
@@ -80,7 +85,8 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
+  ,"dateModified": "2026-03-27T16:01:09Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
   ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
   ,"learningResourceType": "technical documentation"
@@ -168,20 +174,20 @@
 
 
 <span class="k">def</span> <span class="nf">_import_mosek_expr</span>() <span class="o">-&gt;</span> MosekExprProtocol:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Import MOSEK Fusion `Expr` lazily for MOSEK-backed model builders.&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""Import MOSEK Fusion `Expr` lazily for MOSEK-backed model builders."""</span>
     <span class="k">try</span>:
         <span class="kn">import</span> <span class="nn">mosek.fusion</span> <span class="k">as</span> <span class="nn">mf</span>
         <span class="kn">import</span> <span class="nn">mosek.fusion.pythonic</span>  <span class="c1"># noqa: F401  # enables Fusion operator overloads</span>
     <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> exc:
         <span class="k">raise</span> <span class="ne">ImportError</span>(
-            <span class="s2">&quot;MOSEK Fusion backend requested, but `mosek` is not installed. &quot;</span>
-            <span class="s2">&quot;Install it with `pip install autolyap[mosek]`.&quot;</span>
+            <span class="s2">"MOSEK Fusion backend requested, but `mosek` is not installed. "</span>
+            <span class="s2">"Install it with `pip install autolyap[mosek]`."</span>
         ) <span class="kn">from</span> <span class="nn">exc</span>
     <span class="k">return</span> mf<span class="o">.</span>Expr
 
 
 <span class="k">def</span> <span class="nf">_upper_triangle_size</span>(n: <span class="nb">int</span>) <span class="o">-&gt;</span> <span class="nb">int</span>:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of entries in the upper triangle of an `n x n` matrix.&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""Return the number of entries in the upper triangle of an `n x n` matrix."""</span>
     <span class="k">return</span> n <span class="o">*</span> (n <span class="o">+</span> <span class="mi">1</span>) <span class="o">//</span> <span class="mi">2</span>
 
 
@@ -191,7 +197,7 @@
     Xij: MosekUpperTriangleVectorProtocol,
     n: <span class="nb">int</span>,
 ) <span class="o">-&gt;</span> Any:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Convert a list of upper triangle variables to a symmetric matrix expression.</span>
 
 <span class="sd">    **Parameters**</span>
@@ -202,7 +208,7 @@
 <span class="sd">    **Returns**</span>
 
 <span class="sd">    - Symmetric matrix expression of size :math:`n \times n`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     Expr <span class="o">=</span> _import_mosek_expr()
     <span class="c1"># Keep upper-triangle ordering consistent with create_symmetric_matrix.</span>
     X_expr <span class="o">=</span> [[<span class="kc">None</span>] <span class="o">*</span> n <span class="k">for</span> _ <span class="ow">in</span> <span class="nb">range</span>(n)]
@@ -225,7 +231,7 @@
 <div class="viewcode-block" id="create_symmetric_matrix">
 <a class="viewcode-back" href="../../../../dev/dev_internal_utils/#autolyap.utils.helper_functions.create_symmetric_matrix">[docs]</a>
 <span class="k">def</span> <span class="nf">create_symmetric_matrix</span>(upper_triangle_values: UpperTriangleValuesProtocol, n: <span class="nb">int</span>) <span class="o">-&gt;</span> np<span class="o">.</span>ndarray:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Convert a list of upper triangle values to a symmetric matrix.</span>
 
 <span class="sd">    **Parameters**</span>
@@ -241,10 +247,10 @@
 <span class="sd">    **Raises**</span>
 
 <span class="sd">    - `ValueError`: If the length of `upper_triangle_values` is not :math:`n(n+1)/2`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Guard against mismatched upper-triangle length to avoid silent shape errors.</span>
     <span class="k">if</span> <span class="nb">len</span>(upper_triangle_values) <span class="o">!=</span> _upper_triangle_size(n):
-        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;The length of upper_triangle_values must be n(n+1)/2&quot;</span>)
+        <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"The length of upper_triangle_values must be n(n+1)/2"</span>)
 
     symmetric_matrix <span class="o">=</span> np<span class="o">.</span>zeros((n, n))
 

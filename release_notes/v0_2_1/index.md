@@ -1,0 +1,26 @@
+Canonical HTML: https://autolyap.github.io/release_notes/v0_2_1/
+Documentation version: 0.2.1
+
+<a id="v0-2-1"></a>
+
+
+
+# v0.2.1
+
+AutoLyap 0.2.1 focuses on new example notebooks and documentation polish on
+top of 0.2.0.
+Status: Published on 2026-03-27.
+
+<a id="highlights"></a>
+
+
+
+## Highlights
+
+- Added `quick_start_colab.ipynb` and `gradient_method.ipynb` walkthrough
+  notebooks.
+- Refreshed quick-start examples and Colab content for a smoother getting
+  started experience.
+- Cleaned up badge links and quick-start documentation navigation.
+- Normalized asymptotic notation and cleaned up small documentation
+  inconsistencies across quick-start, theory, and example pages.

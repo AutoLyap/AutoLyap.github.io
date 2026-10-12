@@ -1,0 +1,179 @@
+Canonical HTML: https://autolyap.github.io/examples/chambolle_pock/smooth_strongly_convex/
+Documentation version: 0.2.1
+
+<a id="the-chambolle-pock-method-smooth-and-strongly-convex"></a>
+
+
+
+# The Chambolle–Pock method: Smooth and strongly convex
+
+<a id="problem-setup"></a>
+
+
+
+## Problem setup
+
+Suppose \(f_1,f_2:\calH \to \reals\) are \(\mu\)-strongly convex and
+\(L\)-smooth with \(0<\mu<L\).
+In the identity-operator case, the Chambolle–Pock method
+<a id="id1"></a>[[CP11](https://autolyap.github.io/examples/chambolle_pock/smooth_strongly_convex/#id44 "Antonin Chambolle and Thomas Pock. A first-order primal-dual algorithm for convex problems with applications to imaging. Journal of Mathematical Imaging and Vision, 40(1):120–145, 2011. doi:10.1007/s10851-010-0251-1.")] solves
+
+
+\[\minimize_{x\in\calH}\; f_1(x)+f_2(x)\]
+
+via the inclusion
+
+
+\[\text{find } x\in\calH\;\text{such that}\; 0\in\partial f_1(x)+\partial f_2(x),\]
+
+with iterations
+
+
+\[\begin{split}(\forall k\in\naturals)\quad
+\left[
+\begin{aligned}
+x^{k+1} &= \prox_{\tau f_1}(x^k-\tau y^k), \\
+y^{k+1} &= \prox_{\sigma f_2^*}\!\left(y^k + \sigma\left(x^{k+1}+\theta(x^{k+1}-x^k)\right)\right),
+\end{aligned}
+\right.\end{split}\]
+
+where \(\tau,\sigma\in\reals_{++}\) are primal and dual step sizes,
+respectively, and \(\theta\in\reals\) is a relaxation parameter.
+
+In this example, we search for the smallest contraction factor
+\(\rho\in[0,1)\) provable using AutoLyap such that
+
+
+\[\|x^{k+1} - x^\star\|^2 \in \mathcal{O}(\rho^k) \quad \textup{ as } \quad k\to\infty,\]
+
+where
+
+
+\[x^\star \in \zer\bigl(\partial f_1 + \partial f_2\bigr).\]
+
+<a id="model-the-problem-in-autolyap-and-search-for-the-smallest-rho"></a>
+
+
+
+## Model the problem in AutoLyap and search for the smallest rho
+
+- \(f_1,f_2\) are modeled by
+  [`SmoothStronglyConvex`](https://autolyap.github.io/function_classes/#autolyap.problemclass.SmoothStronglyConvex "autolyap.problemclass.SmoothStronglyConvex").
+- The optimization problem is represented by
+  [`InclusionProblem`](https://autolyap.github.io/problem_class/#autolyap.problemclass.InclusionProblem "autolyap.problemclass.InclusionProblem").
+- The update rule is represented by
+  [`ChambollePock`](https://autolyap.github.io/concrete_algorithms/#autolyap.algorithms.ChambollePock "autolyap.algorithms.ChambollePock").
+- Distance-to-solution parameters are obtained with
+  [`IterationIndependent.LinearConvergence.get_parameters_distance_to_solution`](https://autolyap.github.io/iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.get_parameters_distance_to_solution "autolyap.IterationIndependent.LinearConvergence.get_parameters_distance_to_solution")
+  using `i=1`.
+- The contraction factor is searched with
+  [`IterationIndependent.LinearConvergence.bisection_search_rho`](https://autolyap.github.io/iteration_independent_analysis/#autolyap.IterationIndependent.LinearConvergence.bisection_search_rho "autolyap.IterationIndependent.LinearConvergence.bisection_search_rho").
+
+<a id="run-the-iteration-independent-analysis"></a>
+
+
+
+## Run the iteration-independent analysis
+
+This example uses the MOSEK Fusion backend (`backend="mosek_fusion"`).
+Install the optional MOSEK dependency first:
+
+
+
+```bash
+pip install "autolyap[mosek]"
+```
+
+
+
+
+
+```python
+from autolyap import IterationIndependent, SolverOptions
+from autolyap.algorithms import ChambollePock
+from autolyap.problemclass import InclusionProblem, SmoothStronglyConvex
+
+mu = 0.05
+L = 50.0
+tau = 1.6
+sigma = tau
+theta = 0.22
+
+problem = InclusionProblem(
+    [
+        SmoothStronglyConvex(mu=mu, L=L),  # f_1
+        SmoothStronglyConvex(mu=mu, L=L),  # f_2
+    ]
+)
+algorithm = ChambollePock(tau=tau, sigma=sigma, theta=theta)
+solver_options = SolverOptions(backend="mosek_fusion")
+# License-free option:
+# solver_options = SolverOptions(backend="cvxpy", cvxpy_solver="CLARABEL")
+
+P, p, T, t = IterationIndependent.LinearConvergence.get_parameters_distance_to_solution(
+    algorithm,
+    i=1,
+)
+
+result = IterationIndependent.LinearConvergence.bisection_search_rho(
+    problem,
+    algorithm,
+    P,
+    T,
+    p=p,
+    t=t,
+    tol=1e-3,
+    solver_options=solver_options,
+)
+
+if result["status"] != "feasible":
+    raise RuntimeError("No feasible Lyapunov certificate in the requested rho interval.")
+
+print(f"rho (AutoLyap): {result['rho']:.6f}")
+```
+
+
+
+What to inspect in `result`:
+
+- `result["status"]`: `feasible`, `infeasible`, or `not_solved`.
+- `result["solve_status"]`: raw backend status.
+- `result["rho"]`: certified contraction factor when feasible.
+- `result["certificate"]`: Lyapunov certificate matrices/scalars.
+
+Sweeping over 100 values of \(\tau=\sigma\) on \([0.5,1.75]\) and 100
+values of \(\theta\) on \([0,8]\) with
+\(f_1,f_2\in\mathcal{F}_{0.05,50}\) gives the plot below.
+Each dot is a feasible parameter pair, and the color encodes the certified
+contraction factor \(\rho\).
+
+[![Certified Chambolle--Pock linear rates over (tau equals sigma, theta) for smooth strongly convex objectives.](https://autolyap.github.io/_images/chambolle_pock_smooth_strongly_convex_rho.svg)](https://autolyap.github.io/_images/chambolle_pock_smooth_strongly_convex_rho.svg)
+
+<a id="references"></a>
+
+
+
+## References
+
+<a id="id2"></a>
+
+
+
+<a id="id44"></a>
+
+
+
+[[CP11](https://autolyap.github.io/examples/chambolle_pock/smooth_strongly_convex/#id1)]
+
+Antonin Chambolle and Thomas Pock. A first-order primal-dual algorithm for convex problems with applications to imaging. *Journal of Mathematical Imaging and Vision*, 40(1):120–145, 2011. [doi:10.1007/s10851-010-0251-1](https://doi.org/10.1007/s10851-010-0251-1).
+
+TeX macro definitions used in this page:
+
+```latex
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\minimize}{\operatorname*{minimize}}
+\newcommand{\naturals}{\mathbb{N}_{0}}
+\newcommand{\prox}{{\rm{prox}}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\zer}{\operatorname*{zer}}
+```

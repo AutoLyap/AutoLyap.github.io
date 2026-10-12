@@ -5,15 +5,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>autolyap.problemclass.indices</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/_modules/autolyap/problemclass/indices/" />
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
     <script defer="defer" src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script defer="defer" src="../../../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -46,6 +49,8 @@
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:image" content="https://autolyap.github.io/_static/favicon-master.png"/>
 <meta name="twitter:image:alt" content="AutoLyap logo"/>
+<meta property="og:updated_time" content="2026-03-27T16:01:09Z"/>
+<meta property="article:modified_time" content="2026-03-27T16:01:09Z"/>
 <meta name="author" content="AutoLyap contributors"/>
 <meta name="description" content="autolyap.problemclass.indices."/>
 <meta name="robots" content="noindex,follow"/>
@@ -80,7 +85,8 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
+  ,"dateModified": "2026-03-27T16:01:09Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
   ,"publisher": { "@id": "https://autolyap.github.io/#organization" }
   ,"learningResourceType": "technical documentation"
@@ -157,12 +163,12 @@
 <span class="c1"># SPDX-FileCopyrightText: 2025-2026 AutoLyap contributors</span>
 <span class="c1"># SPDX-License-Identifier: GPL-3.0-only</span>
 
-<span class="sd">&quot;&quot;&quot;Interpolation index helpers for problem classes.&quot;&quot;&quot;</span>
+<span class="sd">"""Interpolation index helpers for problem classes."""</span>
 
 <div class="viewcode-block" id="_InterpolationIndices">
 <a class="viewcode-back" href="../../../../dev/dev_internal_problemclass/#autolyap.problemclass.indices._InterpolationIndices">[docs]</a>
 <span class="k">class</span> <span class="nc">_InterpolationIndices</span>:
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Wrapper for interpolation indices that enforces allowed values.</span>
 
 <span class="sd">    Class-level reference</span>
@@ -185,13 +191,13 @@
 <span class="sd">    **Raises**</span>
 
 <span class="sd">    - `ValueError`: If `value` is not in the allowed set.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Frozen set prevents accidental runtime mutation of allowed values.</span>
 
 
 
-    ALLOWED_VALUES <span class="o">=</span> <span class="nb">frozenset</span>({<span class="s2">&quot;r1&lt;r2&quot;</span>, <span class="s2">&quot;r1!=r2&quot;</span>, <span class="s2">&quot;r1&quot;</span>, <span class="s2">&quot;r1!=star&quot;</span>})
-    <span class="vm">__slots__</span> <span class="o">=</span> (<span class="s2">&quot;_value&quot;</span>,)
+    ALLOWED_VALUES <span class="o">=</span> <span class="nb">frozenset</span>({<span class="s2">"r1&lt;r2"</span>, <span class="s2">"r1!=r2"</span>, <span class="s2">"r1"</span>, <span class="s2">"r1!=star"</span>})
+    <span class="vm">__slots__</span> <span class="o">=</span> (<span class="s2">"_value"</span>,)
 
     <span class="k">def</span> <span class="fm">__init__</span>(<span class="bp">self</span>, value: <span class="nb">str</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
         <span class="bp">self</span><span class="o">.</span>value <span class="o">=</span> value
@@ -203,9 +209,9 @@
     <span class="nd">@value</span><span class="o">.</span>setter
     <span class="k">def</span> <span class="nf">value</span>(<span class="bp">self</span>, value: <span class="nb">str</span>) <span class="o">-&gt;</span> <span class="kc">None</span>:
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span>(value, <span class="nb">str</span>):
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">&quot;Interpolation index must be a string.&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="s2">"Interpolation index must be a string."</span>)
         <span class="k">if</span> value <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span>ALLOWED_VALUES:
-            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">&quot;Invalid interpolation index: </span><span class="si">{</span>value<span class="si">}</span><span class="s2">. Allowed values: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span>ALLOWED_VALUES<span class="si">}</span><span class="s2">&quot;</span>)
+            <span class="k">raise</span> <span class="ne">ValueError</span>(<span class="sa">f</span><span class="s2">"Invalid interpolation index: </span><span class="si">{</span>value<span class="si">}</span><span class="s2">. Allowed values: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span>ALLOWED_VALUES<span class="si">}</span><span class="s2">"</span>)
         <span class="bp">self</span><span class="o">.</span>_value <span class="o">=</span> value
 
     <span class="k">def</span> <span class="fm">__str__</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> <span class="nb">str</span>:
@@ -219,7 +225,7 @@
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span>(<span class="bp">self</span>) <span class="o">-&gt;</span> <span class="nb">str</span>:
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;_InterpolationIndices(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span>_value<span class="si">}</span><span class="s2">)&quot;</span></div>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"_InterpolationIndices(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span>_value<span class="si">}</span><span class="s2">)"</span></div>
 
 </pre></div>
 

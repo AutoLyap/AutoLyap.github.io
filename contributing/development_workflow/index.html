@@ -6,15 +6,18 @@
   <meta charset="utf-8" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>AutoLyap Development and Testing Workflow</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3a4c1a1e" />
+      <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="../../_static/styles-e7cbd97135e2.css" />
+      
+      
 
   
     <link rel="canonical" href="https://autolyap.github.io/contributing/development_workflow/" />
-  <link rel="preload" href="../../_static/fonts/autolyap-lato-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../_static/fonts/autolyap-lato-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
-  <link rel="preload" href="../../_static/fonts/autolyap-fontawesome.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+  
+  
+  
     <script defer="defer" src="../../_static/jquery.js?v=5d32c60e"></script>
     <script defer="defer" src="../../_static/documentation_options.js?v=9517b960"></script>
     <script defer="defer" src="../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -35,6 +38,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../../_static/favicon-32.png"/>
 <link rel="icon" type="image/png" sizes="64x64" href="../../_static/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../../_static/apple-touch-icon.png"/>
+<link rel="alternate" type="text/markdown" title="Markdown documentation" href="https://autolyap.github.io/contributing/development_workflow/index.md"/>
+<link rel="describedby" type="text/plain" href="https://autolyap.github.io/llms.txt"/>
 <meta property="og:url" content="https://autolyap.github.io/contributing/development_workflow/"/>
 <meta name="twitter:url" content="https://autolyap.github.io/contributing/development_workflow/"/>
 <link rel="license" href="https://spdx.org/licenses/GPL-3.0-only.html"/>
@@ -86,7 +91,7 @@
     "@id": "https://autolyap.github.io/#website",
     "name": "AutoLyap"
   },
-  "about": { "@id": "https://github.com/AutoLyap/AutoLyap#source" }
+  "about": { "@id": "https://autolyap.github.io/#software" }
   ,"datePublished": "2026-03-02T18:04:37Z"
   ,"dateModified": "2026-05-25T14:36:54Z"
   ,"author": { "@id": "https://autolyap.github.io/#organization" }
@@ -220,7 +225,7 @@ git rebase upstream/main
 </pre></div>
 </div>
 <p>If <code class="docutils literal notranslate">make check</code> reports missing lint/typecheck tools, install or refresh test extras:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre>python -m pip install -e <span class="s1">&#39;.[test]&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>python -m pip install -e <span class="s1">'.[test]'</span>
 </pre></div>
 </div>
 <p>The CI test matrix runs on Python <code class="docutils literal notranslate">3.9</code>, <code class="docutils literal notranslate">3.10</code>, <code class="docutils literal notranslate">3.11</code>, <code class="docutils literal notranslate">3.12</code>, and <code class="docutils literal notranslate">3.13</code>.
